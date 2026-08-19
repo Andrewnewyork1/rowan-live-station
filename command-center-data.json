@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T08:04:31-05:00",
+  "generated_at": "2026-08-19T08:06:48-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "Google",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-19T13:02:41Z",
+          "summary_generated_at": "2026-08-19T13:06:02Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-19T13:02:41Z",
+          "summary_generated_at": "2026-08-19T13:06:02Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-19T13:02:41Z",
+      "generated_at": "2026-08-19T13:06:02Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -1207,34 +1207,32 @@
     "automation_policy_status": "unavailable"
   },
   "netlify_usage": {
-    "checked_at": "2026-08-19T13:01:29Z",
-    "mode": "blocked",
+    "checked_at": "2026-08-19T13:02:48Z",
+    "mode": "warning",
     "billing_period_start": "2026-07-27",
     "billing_period_end": "2026-08-26",
     "last_exact_observation_at": "2026-08-19T04:14:26.446693+00:00",
     "observed_credits_available": 639.4,
-    "credits_available_upper_bound": 639.4,
-    "credits_consumed_lower_bound": 3514.1,
+    "credits_available_upper_bound": 399.4,
+    "credits_consumed_lower_bound": 3754.1,
     "plan_monthly_credits": 3000.0,
     "production_deploy_credits_observed": 3480.0,
-    "production_deploy_credits_since_observation": 0.0,
+    "production_deploy_credits_since_observation": 240.0,
     "ai_inference_credits_observed": 0.0,
     "web_request_credits_observed": 8.0,
     "compute_credits_observed": 0.2,
     "bandwidth_credits_observed": 25.9,
     "protected_reserve_credits": 300.0,
     "one_production_release_credits": 15.0,
-    "successful_production_deploys_since_observation": 0,
-    "release_authorized": false,
+    "successful_production_deploys_since_observation": 16,
+    "release_authorized": true,
     "automatic_production_deploys_enabled": null,
     "automatic_production_deploys_verified_off": false,
     "auto_recharge_enabled": false,
-    "control_api_available": false,
+    "control_api_available": true,
     "balance_basis": "Exact owner-authenticated balance less confirmed production-deploy debits; traffic meters remain conservative between exact observations.",
     "next_check_seconds": 900,
-    "issue_codes": [
-      "NETLIFY_CONTROL_API_UNAVAILABLE"
-    ]
+    "issue_codes": []
   },
   "google_usage": {
     "plan": "Google One AI Ultra",
@@ -2319,7 +2317,7 @@
       "external_actions_authorized": false,
       "model_call_required": false,
       "issue_codes": [
-        "ETSY_BROWSER_COMMAND_FAILED"
+        "ETSY_BROWSER_EXTENSION_SESSION_REQUIRED"
       ]
     },
     "etsy_browser_dispatch": {
@@ -2863,7 +2861,7 @@
         "next_action": "Rowan Autonomous Company Director · Aug 19, 8:18 AM",
         "completed_24h": 10,
         "failed_24h": 8,
-        "runs_7d": 780,
+        "runs_7d": 779,
         "history": [
           {
             "at": "Aug 19, 7:18 AM",
@@ -3245,7 +3243,7 @@
       "name": "Atlas",
       "role": "Chief Technology Officer",
       "mission": "Building state-specific real estate, landlord, and home care PDF template products.",
-      "status": "working",
+      "status": "attention",
       "automation": "2 enabled",
       "last_outcome": "Recent run ok",
       "last_activity": "Aug 15, 11:39 PM",
@@ -3253,16 +3251,16 @@
       "model": "OpenAI GPT-5.5",
       "sessions_24h": 0,
       "sessions_7d": 3,
-      "error_streak": 0,
+      "error_streak": 1,
       "authority": "Bounded",
       "performance": {
         "grade": "D",
-        "score": 66,
+        "score": 62,
         "provisional": true,
         "verified_points_7d": 0,
         "tokens_7d": 88097,
         "dimensions": {
-          "reliability": 100,
+          "reliability": 85,
           "efficiency": 85,
           "effectiveness": 0,
           "safety": 100,
@@ -3273,27 +3271,27 @@
       "city": {
         "district": "Systems Foundry",
         "workspace": "Reliability and delivery lab",
-        "presence": "at_desk",
-        "activity_mode": "Active now",
-        "location": "Systems Foundry · Reliability and delivery lab",
-        "current_activity": "Working on Rowan 15-Minute Resource Circuit Breaker",
+        "presence": "incident_room",
+        "activity_mode": "Needs review",
+        "location": "Systems Foundry · incident room",
+        "current_activity": "Reviewing Rowan 15-Minute Resource Circuit Breaker",
         "current_assignment": "Building state-specific real estate, landlord, and home care PDF template products.",
         "observed_at": "Aug 19, 8:01 AM",
         "observed_at_iso": "2026-08-19T08:01:55-05:00",
-        "presence_source": "Live task ledger",
-        "next_action": "Rowan 15-Minute Resource Circuit Breaker · Aug 19, 8:01 AM",
+        "presence_source": "Scheduler exception",
+        "next_action": "Rowan Netlify Decision Sync · Aug 19, 8:08 AM",
         "completed_24h": 80,
-        "failed_24h": 14,
+        "failed_24h": 15,
         "runs_7d": 447,
         "history": [
           {
-            "at": "Aug 19, 8:01 AM",
-            "at_iso": "2026-08-19T08:01:55-05:00",
-            "at_ms": 1787144515149,
+            "at": "Aug 19, 8:05 AM",
+            "at_iso": "2026-08-19T08:05:18-05:00",
+            "at_ms": 1787144718623,
             "title": "Rowan 15-Minute Resource Circuit Breaker",
-            "detail": "In progress",
-            "status": "running",
-            "location": "Systems Foundry · Reliability and delivery lab"
+            "detail": "Ended with an exception",
+            "status": "failed",
+            "location": "Systems Foundry · incident room"
           },
           {
             "at": "Aug 19, 7:53 AM",
@@ -3923,8 +3921,8 @@
       {
         "category": "Netlify reserve",
         "name": "Credit and deploy circuit breaker",
-        "status": "critical",
-        "detail": "At most 639.4 credits remain from the latest exact owner observation, with a 300-credit hard reserve. Automatic production deploy status is not verified off; auto recharge is disabled. One explicit release costs 15 credits. The deterministic monitor checks every 15 minutes."
+        "status": "attention",
+        "detail": "At most 399.4 credits remain from the latest exact owner observation, with a 300-credit hard reserve. Automatic production deploy status is not verified off; auto recharge is disabled. One explicit release costs 15 credits. The deterministic monitor checks every 15 minutes."
       },
       {
         "category": "AI reserve",
@@ -4007,23 +4005,6 @@
     ],
     "automations": [
       {
-        "name": "Rowan 15-Minute Resource Circuit Breaker",
-        "owner": "atlas",
-        "cadence": "Every 15m",
-        "last_run": "Aug 19, 7:01 AM",
-        "last_run_at": "2026-08-19T07:01:14-05:00",
-        "last_run_ms": 1787140874441,
-        "next_run": "Aug 19, 8:01 AM",
-        "next_run_at": "2026-08-19T08:01:54-05:00",
-        "next_run_ms": 1787144514913,
-        "running": true,
-        "running_since": "Aug 19, 8:01 AM",
-        "running_since_at": "2026-08-19T08:01:55-05:00",
-        "status": "ok",
-        "error_streak": 0,
-        "duration_ms": 40472
-      },
-      {
         "name": "SwirlCraft 15-Minute Customer Reply Triage",
         "owner": "ivy",
         "cadence": "Every 15m",
@@ -4056,6 +4037,23 @@
         "status": "ok",
         "error_streak": 0,
         "duration_ms": 5284
+      },
+      {
+        "name": "Rowan 15-Minute Resource Circuit Breaker",
+        "owner": "atlas",
+        "cadence": "Every 15m",
+        "last_run": "Aug 19, 8:01 AM",
+        "last_run_at": "2026-08-19T08:01:55-05:00",
+        "last_run_ms": 1787144515149,
+        "next_run": "Aug 19, 8:16 AM",
+        "next_run_at": "2026-08-19T08:16:55-05:00",
+        "next_run_ms": 1787145415149,
+        "running": false,
+        "running_since": "Unavailable",
+        "running_since_at": null,
+        "status": "error",
+        "error_streak": 1,
+        "duration_ms": 203474
       },
       {
         "name": "Rowan Autonomous Company Director",
@@ -4092,7 +4090,7 @@
         "duration_ms": 94
       }
     ],
-    "error_count": 1
+    "error_count": 2
   },
   "risks": [
     {
@@ -4436,8 +4434,8 @@
     },
     {
       "label": "Netlify credit reserve",
-      "status": "critical",
-      "detail": "Conservative available balance is at most 639.4 credits; current-cycle consumption is at least 3,514.1. Production deploys consumed 3,480 credits at the exact observation. Automatic production deploy status is not verified off; every explicit release is budget-gated, and snapshot refreshes use private storage instead."
+      "status": "attention",
+      "detail": "Conservative available balance is at most 399.4 credits; current-cycle consumption is at least 3,754.1. Production deploys consumed 3,480 credits at the exact observation. Automatic production deploy status is not verified off; every explicit release is budget-gated, and snapshot refreshes use private storage instead."
     },
     {
       "label": "Automation signature policy",

@@ -3212,3 +3212,22 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--ice); outli
   text-decoration: line-through;
   color: #8fa0b5 !important;
 }
+
+/* Interactive Fast-Track R&D */
+.rd-card.fast-tracked {
+  border-color: rgba(168, 85, 247, 0.5);
+  background: linear-gradient(145deg, rgba(168, 85, 247, 0.08), rgba(6, 12, 22, 0.95));
+  box-shadow: 0 0 24px rgba(168, 85, 247, 0.15);
+}
+.btn-launch-rd.is-fast-tracked {
+  background: rgba(168, 85, 247, 0.25) !important;
+  color: #c084fc !important;
+  border: 1px solid rgba(168, 85, 247, 0.6) !important;
+  cursor: default !important;
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.3);
+}
+.badge-production {
+  background: rgba(168, 85, 247, 0.25) !important;
+  color: #c084fc !important;
+  border-color: rgba(168, 85, 247, 0.6) !important;
+}
