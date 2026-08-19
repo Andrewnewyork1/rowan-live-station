@@ -1601,15 +1601,15 @@ function applySearch(query) {
 }
 
 function isLocalPreview() {
-  return ["127.0.0.1", "localhost"].includes(location.hostname);
+  return ["127.0.0.1", "localhost"].includes(location.hostname) || location.hostname.includes("github.io");
 }
 
 function decisionEndpoint() {
-  return isLocalPreview() ? "/api/approvals" : "/api/rowan-decisions";
+  return isLocalPreview() ? "./command-center-data.json" : "/api/rowan-decisions";
 }
 
 function snapshotEndpoint() {
-  return isLocalPreview() ? "./command-center-data.json" : "/api/rowan-snapshot";
+  return "./command-center-data.json";
 }
 
 function bindDecisionButtons() {
@@ -1912,7 +1912,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
   window.addEventListener("hashchange", () => setView(location.hash.slice(1)));
   setView(location.hash.slice(1) || "command");
-  try { await loadData(); await requestDecisionState(); } catch (error) { showLoadError(error); }
+  try {
+    await loadData();
+  } catch (error) {
+    showLoadError(error);
+  }
+  try {
+    await requestDecisionState();
+  } catch (e) {
+    console.warn('[Rowan] Decision state fetch note:', e);
+  }
   setInterval(() => {
     if (!DATA) return;
     renderMeta();
