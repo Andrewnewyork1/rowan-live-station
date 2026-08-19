@@ -1582,6 +1582,13 @@ function setView(view) {
   $(".mobile-menu").setAttribute("aria-expanded", "false");
   if (location.hash !== `#${target}`) history.replaceState(null, "", `#${target}`);
   window.scrollTo({ top: 0, behavior: "smooth" });
+  if (target === "city") {
+    setTimeout(() => {
+      if (typeof globalThis.bootCity3D === "function") {
+        globalThis.bootCity3D();
+      }
+    }, 60);
+  }
 }
 
 function applySearch(query) {

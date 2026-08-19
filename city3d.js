@@ -763,23 +763,40 @@ export async function bootCity3D() {
 }
 
 globalThis.bootCity3D = bootCity3D;
+window.bootCity3D = bootCity3D;
 
 function _watchCityViewport() {
   const vp = document.querySelector('.city-viewport');
-  if (vp && vp.clientWidth > 10) bootCity3D();
+  if (vp && vp.clientWidth > 10) {
+    bootCity3D();
+  }
+}
+
+if (typeof ResizeObserver !== 'undefined') {
+  const ro = new ResizeObserver((entries) => {
+    for (let entry of entries) {
+      if (entry.contentRect.width > 10) {
+        bootCity3D();
+      }
+    }
+  });
+  const vp = document.querySelector('.city-viewport');
+  if (vp) ro.observe(vp);
+  const cityView = document.getElementById('view-city');
+  if (cityView) ro.observe(cityView);
 }
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => setTimeout(_watchCityViewport, 100));
+  document.addEventListener('DOMContentLoaded', () => setTimeout(_watchCityViewport, 50));
 } else {
-  setTimeout(_watchCityViewport, 100);
+  setTimeout(_watchCityViewport, 50);
 }
 
 document.addEventListener('click', (event) => {
   const btn = event.target.closest('[data-view-target="city"]');
-  if (btn) setTimeout(bootCity3D, 80);
+  if (btn) setTimeout(bootCity3D, 50);
 });
 
 window.addEventListener('hashchange', () => {
-  if (location.hash === '#city') setTimeout(bootCity3D, 80);
+  if (location.hash === '#city') setTimeout(bootCity3D, 50);
 });
