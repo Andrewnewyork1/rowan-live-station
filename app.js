@@ -912,7 +912,7 @@ function cityLot(item, index) {
   const bubbleActive = isActive && activeTask && activeTask.length > 0;
 
   // Avatar image tag (shown on building face)
-  const avatarImg = `<img src="/avatars/${esc(item.id)}.jpg" class="building-avatar" alt="${esc(item.name)}" onerror="this.style.display='none'">`;
+  const avatarImg = `<img src="./avatars/${esc(item.id)}.jpg" class="building-avatar" alt="${esc(item.name)}" onerror="this.style.display='none'">`;
 
   // Status bubble
   const statusBubble = `<span class="building-status-bubble${bubbleActive ? " active" : ""}"><span class="status-dot"></span>${esc(taskLabel)}</span>`;
@@ -1074,7 +1074,7 @@ function renderCityInspector(item) {
   panel.innerHTML = `
     <div class="city-inspector-head">
       <div class="city-agent-avatar tone-${Math.max(0, (DATA.team || []).findIndex((entry) => entry.id === item.id))}" style="padding:0;overflow:hidden;position:relative;">
-        <img src="/avatars/${esc(item.id)}.jpg" alt="${esc(item.name)}" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+        <img src="./avatars/${esc(item.id)}.jpg" alt="${esc(item.name)}" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
         <span style="display:none;width:100%;height:100%;place-items:center;font-family:Georgia,serif;font-size:21px;">${esc(item.name.slice(0, 1))}</span>
       </div>
       <div><span class="kicker">Selected workspace</span><h2>${esc(item.name)}</h2><p>${esc(item.role)}</p></div>

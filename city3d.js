@@ -45,8 +45,8 @@ export async function bootCity3D() {
 
   let THREE, OrbitControls;
   try {
-    THREE = await import('/lib/three.module.js');
-    const ocMod = await import('/lib/OrbitControls.js');
+    THREE = await import('./lib/three.module.js');
+    const ocMod = await import('./lib/OrbitControls.js');
     OrbitControls = ocMod.OrbitControls;
   } catch (err) {
     console.error('[City3D] Module import failed:', err);
