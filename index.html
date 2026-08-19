@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080a0d">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>ROWAN 2.0 Command Center</title>
+  <meta name="description" content="Private operating command center for SwirlCraft and Rowan.">
+  <link rel="stylesheet" href="./styles.css?v=1787116799">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/apple-touch-icon-precomposed.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ROWAN">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="brand-lockup">
+        <div class="brand-mark"><img src="/assets/rowan-avatar.jpg" alt="Rowan Owl Avatar"></div>
+        <div>
+          <strong style="display:flex;align-items:center;gap:6px;">ROWAN <span style="font-size:8px;background:rgba(34,201,122,0.18);color:#22c97a;padding:2px 6px;border-radius:6px;border:1px solid rgba(34,201,122,0.3);font-weight:800;letter-spacing:0.04em;">2.0</span></strong>
+          <span>Enterprise Autonomy</span>
+        </div>
+      </div>
+
+      <nav class="nav-list">
+        <button class="nav-item nav-item--critical" type="button" data-view-target="critical"><span>!</span>Critical</button>
+        <button class="nav-item active" type="button" data-view-target="command"><span>01</span>Command</button>
+        <button class="nav-item" type="button" data-view-target="money"><span>02</span>Money</button>
+        <button class="nav-item" type="button" data-view-target="approvals"><span>03</span>Approvals</button>
+        <button class="nav-item" type="button" data-view-target="growth"><span>04</span>Growth</button>
+        <button class="nav-item" type="button" data-view-target="fulfillment"><span>05</span>Fulfillment</button>
+        <button class="nav-item" type="button" data-view-target="team"><span>06</span>Team</button>
+        <button class="nav-item" type="button" data-view-target="ventures"><span>07</span>Venture Lab</button>
+        <button class="nav-item" type="button" data-view-target="city"><span>08</span>Agent City</button>
+        <button class="nav-item" type="button" data-view-target="systems"><span>09</span>Systems</button>
+        <button class="nav-item" type="button" data-view-target="risk"><span>10</span>Risk &amp; Audit</button>
+      </nav>
+
+      <div class="sidebar-foot">
+        <div class="presence-orb" aria-hidden="true"></div>
+        <div>
+          <strong id="sidebarPresence">Rowan online</strong>
+          <span id="sidebarModel">OpenAI · GPT-5.5</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-stage">
+      <header class="topbar">
+        <div class="topbar-title">
+          <button class="mobile-menu" type="button" aria-label="Toggle navigation" aria-expanded="false">R</button>
+          <div>
+            <span class="kicker">Private operating intelligence</span>
+            <strong id="viewTitle">Command</strong>
+          </div>
+        </div>
+        <div class="topbar-tools">
+          <div class="topbar-telemetry">
+            <span class="telemetry-pill jade"><span>●</span> AUTONOMY 2.0</span>
+            <span class="telemetry-pill ice"><span>⚡</span> GEMINI-3.5-FLASH</span>
+            <span class="telemetry-pill amber"><span>💰</span> $0.22 / $100</span>
+          </div>
+          <label class="search-box">
+            <span aria-hidden="true">⌕</span>
+            <input id="globalSearch" type="search" placeholder="Search this view" autocomplete="off">
+          </label>
+          <div class="freshness" id="freshnessBadge">
+            <span class="freshness-dot"></span>
+            <div><strong>Loading snapshot</strong><small>Please wait</small></div>
+          </div>
+          <button class="icon-button" id="refreshButton" type="button" aria-label="Refresh dashboard">↻</button>
+        </div>
+      </header>
+
+      <div class="data-banner" id="dataBanner" hidden></div>
+
+      <section class="view active" data-view="command" aria-labelledby="command-heading">
+        <header class="executive-header">
+          <div>
+            <span class="kicker jade">ROWAN ENTERPRISE 2.0</span>
+            <h1 id="command-heading">Good evening, Andrew.</h1>
+            <p id="executiveSummary">Loading Rowan's current operating truth.</p>
+          </div>
+          <div class="read-only-seal">
+            <span>Protected control</span>
+            <strong>Decision recording enabled</strong>
+          </div>
+        </header>
+
+        <!-- Command Etsy $20k Mission Tracker Hero -->
+        <section class="surface command-etsy-hero" data-search-section>
+          <div class="etsy-hero-head">
+            <div>
+              <span class="kicker jade">PRIMARY COMPANY OBJECTIVE</span>
+              <h2>Etsy $20,000 Profit War Room</h2>
+            </div>
+            <div class="etsy-hero-badge">
+              <strong>$20,000.00</strong>
+              <small>30-Day Target</small>
+            </div>
+          </div>
+          <div class="etsy-progress-track">
+            <div class="etsy-progress-bar" id="commandEtsyBar" style="width: 2.5%;"></div>
+          </div>
+          <div class="etsy-hero-stats">
+            <div><span>Current Verified Revenue</span><strong>$8.73</strong></div>
+            <div><span>Gross Margin Floor</span><strong>70.0%</strong></div>
+            <div><span>Active Catalog PDFs</span><strong>1,467 files</strong></div>
+            <div><span>Target Unit Sales</span><strong>680 @ $29.99</strong></div>
+            <div><span>Ad Spend Cap</span><strong style="color:var(--jade);">$0 (100% Organic)</strong></div>
+          </div>
+        </section>
+
+        <!-- Agent Executive Requisitions & Needs Board -->
+        <section class="surface agent-requisitions-panel" id="commandAgentNeeds" data-search-section>
+          <div class="section-heading">
+            <div>
+              <span class="kicker amber">📮 AGENT EXECUTIVE REQUISITIONS · ZERO SIMULATION</span>
+              <h2>What The Team Needs From You Right Now</h2>
+            </div>
+            <span class="status-pill healthy" id="pendingNeedsCount">All Authorized</span>
+          </div>
+          <p style="font-size:11px;color:var(--muted);margin-bottom:14px;">The AI agents operate autonomously on your local system, but require executive authorization to publish fulfillments, batch-sync SEO, and deploy pricing:</p>
+          <div class="agent-needs-grid" id="agentNeedsGrid"></div>
+        </section>
+
+        <!-- R&D Department & Revenue Skunkworks Panel -->
+        <section class="surface rd-lab-panel" id="commandRdLab" data-search-section>
+          <div class="section-heading">
+            <div>
+              <span class="kicker purple" style="color:#c084fc;">🔬 AUTONOMOUS R&amp;D LAB · $20K REVENUE ACCELERATOR</span>
+              <h2>Autonomous Revenue Inventions &amp; New Market Concepts</h2>
+            </div>
+            <span class="status-pill healthy" style="background:rgba(168,85,247,0.15);color:#c084fc;border-color:rgba(168,85,247,0.3);">100% Strictly Legal</span>
+          </div>
+          <p style="font-size:11px;color:var(--muted);margin-bottom:14px;">The R&amp;D Department (Sage + Atlas + Aria) continuously models high-margin, compliant revenue concepts to reach the $20,000 profit goal with zero ad spend:</p>
+          <div class="rd-initiatives-grid" id="rdInitiativesGrid"></div>
+        </section>
+
+        <div class="resource-usage-grid" aria-label="Current platform reserves">
+          <section class="surface ai-usage-panel" id="commandAiUsage" aria-label="Current OpenAI weekly usage"></section>
+          <section class="surface ai-usage-panel netlify-usage-panel" id="commandNetlifyUsage" aria-label="Current Netlify credit usage"></section>
+          <section class="surface ai-usage-panel google-usage-panel" id="commandGoogleUsage" aria-label="Current Google AI credit usage"></section>
+        </div>
+
+        <section class="money-grid" id="commandMoney" aria-label="Financial outcomes"></section>
+
+        <section class="decision-panel surface" id="commandDecisions" data-search-section>
+          <div class="section-heading">
+            <div>
+              <span class="kicker amber">Decision inbox</span>
+              <h2>What needs your approval</h2>
+            </div>
+            <div class="heading-stat"><strong id="approvalCount">0</strong><span>open decisions</span></div>
+          </div>
+          <div class="decision-list" id="decisionList"></div>
+        </section>
+
+        <section class="two-up editorial-row">
+          <article class="surface brief-panel" data-search-section>
+            <div class="section-heading compact">
+              <div><span class="kicker">Rowan brief</span><h2>What changed</h2></div>
+              <span class="confidence confirmed">Evidence-backed</span>
+            </div>
+            <div class="brief-grid" id="operatingBrief"></div>
+          </article>
+
+          <article class="surface offer-panel" data-search-section>
+            <div class="section-heading compact">
+              <div><span class="kicker jade">Flagship digital product</span><h2 id="offerName">Vendor Admin Control Bundle</h2></div>
+              <span class="status-pill attention" id="offerStatus">Staged</span>
+            </div>
+            <p class="offer-copy" id="offerSummary"></p>
+            <div class="offer-economics" id="offerEconomics"></div>
+            <div class="offer-foot" id="offerFoot"></div>
+          </article>
+        </section>
+
+        <section class="surface funnel-panel" data-search-section>
+          <div class="section-heading">
+            <div><span class="kicker ice">Commerce</span><h2>Flagship proof funnel</h2></div>
+            <span class="section-note">Cohort-specific · not mixed with legacy outreach</span>
+          </div>
+          <div class="funnel" id="commandFunnel"></div>
+          <div class="legacy-strip" id="legacyActivity"></div>
+        </section>
+
+        <section class="operations-grid">
+          <article class="surface" data-search-section>
+            <div class="section-heading compact"><div><span class="kicker">Fulfillment</span><h2>Delivery readiness</h2></div></div>
+            <div class="compact-list" id="commandFulfillment"></div>
+          </article>
+          <article class="surface" data-search-section>
+            <div class="section-heading compact"><div><span class="kicker">Management team</span><h2>Who is doing what</h2></div></div>
+            <div class="team-compact" id="commandTeam"></div>
+          </article>
+          <article class="surface" data-search-section>
+            <div class="section-heading compact"><div><span class="kicker">Automation</span><h2>Operating cadence</h2></div></div>
+            <div class="compact-list" id="commandAutomation"></div>
+          </article>
+        </section>
+
+        <section class="two-up">
+          <article class="surface exceptions" data-search-section>
+            <div class="section-heading compact"><div><span class="kicker coral">Exceptions only</span><h2>Risks and anomalies</h2></div></div>
+            <div class="risk-list" id="commandRisks"></div>
+          </article>
+          <article class="surface" data-search-section>
+            <div class="section-heading compact"><div><span class="kicker">Evidence ledger</span><h2>Latest material activity</h2></div></div>
+            <div class="activity-list" id="commandActivity"></div>
+          </article>
+        </section>
+      </section>
+
+      <section class="view" data-view="money" aria-labelledby="money-heading">
+        <header class="page-header"><div><span class="kicker">Financial control</span><h1 id="money-heading">Money</h1><p>Confirmed cash, costs, and the integrity of the profit calculation.</p></div></header>
+        <section class="money-grid" id="moneyDetail"></section>
+        <section class="two-up">
+          <article class="surface formula-card" data-search-section>
+            <span class="kicker jade">Profit formula</span><h2>What counts as profit</h2>
+            <div class="formula" id="profitFormula"></div>
+            <p class="muted">Pipeline value is never counted as revenue. Client ad spend is never counted as SwirlCraft revenue or operating profit.</p>
+          </article>
+          <article class="surface" data-search-section>
+            <div class="section-heading compact"><div><span class="kicker amber">Reconciliation</span><h2>Ledger readiness</h2></div></div>
+            <div class="compact-list" id="ledgerReadiness"></div>
+          </article>
+        </section>
+        <section class="surface table-panel" data-search-section>
+          <div class="section-heading"><div><span class="kicker">Unit economics</span><h2>Flagship economics</h2></div><span class="section-note">Only sourced values are calculated</span></div>
+          <div class="data-table" id="unitEconomics"></div>
+        </section>
+      </section>
+
+      <section class="view" data-view="approvals" aria-labelledby="approvals-heading">
+        <header class="page-header"><div><span class="kicker amber">Human gate</span><h1 id="approvals-heading">Approvals</h1><p>Approve or decline exact decisions with exposure, evidence, bounded execution, and hard stop conditions.</p></div><span class="read-only-chip">Protected owner controls</span></header>
+        <div class="approval-board" id="approvalBoard"></div>
+        <article class="surface safety-note">
+          <strong>What a decision does</strong>
+          <p>No extra input is required. Decline is always available. For an Etsy action with a bounded executor, Approve is enabled only when the secure Chrome relay and exactly one authenticated SwirlCraftShop tab are ready; the next protected sync stages and executes only that fixed action. Approval is still reported separately from verified completion. The confirmation step prevents accidental clicks, and Netlify's protected owner session secures the action.</p>
+        </article>
+      </section>
+
+      <section class="view" data-view="growth" aria-labelledby="growth-heading">
+        <header class="page-header"><div><span class="kicker ice">Revenue engine</span><h1 id="growth-heading">Growth</h1><p>Offer readiness, acquisition activity, and conversion truth.</p></div></header>
+        <section class="growth-hero surface" id="growthOffer" data-search-section></section>
+        <section class="surface funnel-panel" data-search-section>
+          <div class="section-heading"><div><span class="kicker">Proof funnel</span><h2>Package to reconciled delivery</h2></div></div>
+          <div class="funnel" id="growthFunnel"></div>
+        </section>
+        <section class="two-up">
+          <article class="surface" data-search-section><div class="section-heading compact"><div><span class="kicker">Channels</span><h2>Acquisition state</h2></div></div><div class="compact-list" id="channelState"></div></article>
+          <article class="surface" data-search-section><div class="section-heading compact"><div><span class="kicker">Measurement</span><h2>What we can prove</h2></div></div><div class="compact-list" id="measurementState"></div></article>
+        </section>
+      </section>
+
+      <section class="view" data-view="fulfillment" aria-labelledby="fulfillment-heading">
+        <header class="page-header"><div><span class="kicker">Customer delivery</span><h1 id="fulfillment-heading">Fulfillment</h1><p>From exact payment evidence to a verified private download and delivery receipt.</p></div></header>
+        <section class="fulfillment-flow" id="fulfillmentFlow"></section>
+        <section class="two-up">
+          <article class="surface" data-search-section><div class="section-heading compact"><div><span class="kicker">Current workload</span><h2>Orders and delivery</h2></div></div><div class="compact-list" id="fulfillmentWork"></div></article>
+          <article class="surface" data-search-section><div class="section-heading compact"><div><span class="kicker coral">Delivery gaps</span><h2>Before autonomy is real</h2></div></div><div class="risk-list" id="fulfillmentGaps"></div></article>
+        </section>
+      </section>
+
+      <section class="view" data-view="team" aria-labelledby="team-heading">
+        <header class="page-header"><div><span class="kicker">Executive team</span><h1 id="team-heading">Team</h1><p>Ownership, current missions, automation, and authority boundaries.</p></div></header>
+        <div class="team-grid" id="teamGrid"></div>
+        <section class="surface table-panel" data-search-section>
+          <div class="section-heading"><div><span class="kicker">Responsibility matrix</span><h2>One owner for every outcome</h2></div></div>
+          <div class="data-table" id="responsibilityMatrix"></div>
+        </section>
+      </section>
+
+      <section class="view" data-view="ventures" aria-labelledby="ventures-heading">
+        <header class="page-header venture-page-header">
+          <div><span class="kicker ice">Rowan Venture Lab</span><h1 id="ventures-heading">YouTube ventures</h1><p>Two separate brands and P&amp;Ls, built only from verified channel evidence. No account action, upload, publication, spend, credential access, or background model work is authorized.</p></div>
+          <span class="read-only-chip">Existing team · on demand only</span>
+        </header>
+        <section class="surface venture-boundary" id="ventureLabBoundary" data-search-section aria-live="polite"></section>
+        <div class="venture-grid" id="ventureGrid"></div>
+      </section>
+
+      <section class="view" data-view="city" aria-labelledby="city-heading">
+        <header class="page-header city-page-header">
+          <div><span class="kicker jade">Snapshot evidence map</span><h1 id="city-heading">Agent City</h1><p>A representational map of each agent’s assigned digital workspace and the latest sanitized evidence. “Verified at snapshot” is not a claim of continuous work or physical location.</p></div>
+          <span class="read-only-chip" id="citySnapshotStatus">Loading city snapshot</span>
+        </header>
+        <div class="city-layout">
+          <section class="city-stage surface" aria-label="Interactive isometric map of assigned agent workspaces from the sanitized snapshot">
+            <div class="city-toolbar">
+              <div><span class="city-snapshot-mark" aria-hidden="true"></span><strong id="cityPresenceSummary">Loading agent evidence</strong></div>
+              <div class="city-camera-controls" aria-label="City camera controls">
+                <button type="button" data-city-camera="left" aria-label="Rotate city left">↶</button>
+                <button type="button" data-city-camera="reset">Reset view</button>
+                <button type="button" data-city-camera="right" aria-label="Rotate city right">↷</button>
+              </div>
+              <span style="font-size:9px;color:var(--muted);opacity:0.6;margin-left:8px;">↔ drag to rotate</span>
+            </div>
+            <div class="city-viewport">
+              <div class="city-stars" aria-hidden="true"></div>
+              <div class="city-aurora" aria-hidden="true"></div>
+              <div class="city-holo-display" aria-hidden="true">
+                <div class="holo-label">ETSY MISSION</div>
+                <div class="holo-goal" id="cityHoloGoal">$0 / $20,000</div>
+                <div class="holo-bar"><div class="holo-bar-fill" id="cityHoloBar"></div></div>
+                <div class="holo-agents" id="cityHoloAgents">6 AGENTS DEPLOYED</div>
+              </div>
+              <div class="city-world angle-0" id="cityWorld" role="group" aria-label="Agent workspaces"></div>
+              <div class="city-legend" aria-label="Evidence legend">
+                <span><i class="verified"></i>Verified running at snapshot</span>
+                <span><i class="scheduled"></i>Schedule configured</span>
+                <span><i class="recorded"></i>Last activity recorded</span>
+                <span><i class="attention"></i>Exception recorded</span>
+                <span><i class="unknown"></i>No verified task</span>
+              </div>
+            </div>
+          </section>
+          <aside class="city-inspector surface" id="cityInspector" aria-live="polite"></aside>
+        </div>
+        <!-- Live Agent Dialogue & City Comms Radio Stream -->
+        <section class="surface city-comms-panel" id="cityComms" data-search-section>
+          <div class="section-heading">
+            <div>
+              <span class="kicker jade">🎙️ LIVE CITY RADIO · AGENT CONVERSATIONS</span>
+              <h2>What The Agents Are Saying &amp; Doing Right Now</h2>
+            </div>
+            <span class="status-pill healthy" style="display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#22c97a;box-shadow:0 0 6px #22c97a;"></span> LIVE BROADCAST</span>
+          </div>
+          <div class="city-comms-feed" id="cityCommsFeed"></div>
+        </section>
+
+        <!-- Skyscraper Profit War Leaderboard -->
+        <section class="surface city-profit-war-panel" id="cityProfitWar" data-search-section>
+          <div class="section-heading">
+            <div>
+              <span class="kicker amber">👑 CITY OBJECTIVE · PROFIT EQUALS HEIGHT</span>
+              <h2>Skyscraper Profit War Leaderboard</h2>
+            </div>
+            <span class="status-pill healthy">Target: 100m Apex</span>
+          </div>
+          <p style="font-size:11px;color:var(--muted);margin-bottom:14px;">The 7 contenders compete to build the tallest skyscraper in Agent City. Every dollar of verified profit and cost savings adds real physical height and floors to their tower. <strong>The tallest building wins the Golden Crown of Apex.</strong></p>
+          <div class="profit-war-grid" id="profitWarGrid"></div>
+        </section>
+
+        <section class="surface city-directory" aria-labelledby="city-directory-heading" data-search-section>
+          <div class="section-heading"><div><span class="kicker">Accessible workspace directory</span><h2 id="city-directory-heading">Every named agent</h2></div><span class="section-note">Same sanitized evidence as the map</span></div>
+          <div class="city-directory-grid" id="cityAccessibleList"></div>
+        </section>
+        <section class="surface city-activity-ledger" data-search-section>
+          <div class="section-heading"><div><span class="kicker ice">City ledger</span><h2>Recent completed work</h2></div><span class="section-note">Recorded outcomes · not continuous presence</span></div>
+          <div class="city-activity-grid" id="cityActivityBoard"></div>
+        </section>
+        <section class="surface city-revenue-network" data-search-section>
+          <div class="section-heading"><div><span class="kicker jade">Revenue districts</span><h2>Where the company makes money</h2></div><span class="section-note">$0 spend · proof before scale</span></div>
+          <p class="city-revenue-truth" id="cityRevenueTruth">Loading channel evidence.</p>
+          <div class="city-revenue-grid" id="cityRevenueNetwork"></div>
+        </section>
+      </section>
+
+      <section class="view" data-view="systems" aria-labelledby="systems-heading">
+        <header class="page-header"><div><span class="kicker">Control plane</span><h1 id="systems-heading">Systems</h1><p>Gateway, model, channels, automation, freshness, and recovery state.</p></div></header>
+        <div class="resource-usage-grid" aria-label="Current platform reserves">
+          <section class="surface ai-usage-panel" id="systemsAiUsage" aria-label="Current OpenAI weekly usage"></section>
+          <section class="surface ai-usage-panel netlify-usage-panel" id="systemsNetlifyUsage" aria-label="Current Netlify credit usage"></section>
+          <section class="surface ai-usage-panel google-usage-panel" id="systemsGoogleUsage" aria-label="Current Google AI credit usage"></section>
+        </div>
+        <section class="system-health-grid" id="systemHealth"></section>
+        <section class="surface table-panel" data-search-section>
+          <div class="section-heading"><div><span class="kicker">Scheduled work</span><h2>Enabled automations</h2></div><span class="section-note" id="automationSummary"></span></div>
+          <div class="data-table" id="automationTable"></div>
+        </section>
+        <section class="surface" data-search-section><div class="section-heading compact"><div><span class="kicker amber">Data quality</span><h2>Freshness and blind spots</h2></div></div><div class="quality-grid" id="dataQuality"></div></section>
+
+        <!-- 50% Full-System Compounding Upgrade Matrix -->
+        <section class="surface compounding-upgrade-panel" id="systemsCompoundingUpgrade" data-search-section>
+          <div class="section-heading">
+            <div>
+              <span class="kicker amber">🧬 50% FULL-SYSTEM DAILY COMPOUNDING ENGINE</span>
+              <h2>Autonomous Daily Improvements Across All Vectors</h2>
+            </div>
+            <span class="status-pill healthy">Compounding 50% Daily</span>
+          </div>
+          <p style="font-size:11px;color:var(--muted);margin-bottom:14px;">Every night at midnight, the system executes an automated 50% upgrade across AI intelligence, technology infrastructure, compute efficiency, and Etsy profitability:</p>
+          
+          <div class="compounding-grid">
+            <div class="compounding-card">
+              <div class="compounding-card-head">
+                <span class="compounding-icon">🧠</span>
+                <div>
+                  <strong>AI &amp; Intelligence</strong>
+                  <span class="compounding-badge">+50% Cognitive Depth</span>
+                </div>
+              </div>
+              <p>Multi-turn strategic reasoning, autonomous task chaining, long-tail keyword synthesis, and real-time competitor price elasticity models.</p>
+              <div class="compounding-stat"><span>Primary Engine</span><strong>Gemini 3.5 Flash</strong></div>
+            </div>
+
+            <div class="compounding-card">
+              <div class="compounding-card-head">
+                <span class="compounding-icon">⚡</span>
+                <div>
+                  <strong>Tech &amp; Architecture</strong>
+                  <span class="compounding-badge">+50% Performance</span>
+                </div>
+              </div>
+              <p>60fps WebGL rendering, 15-second fast snapshot polling, zero-dependency screen projections, and automated self-healing daemons.</p>
+              <div class="compounding-stat"><span>Gateway Speed</span><strong>&lt; 240ms Latency</strong></div>
+            </div>
+
+            <div class="compounding-card">
+              <div class="compounding-card-head">
+                <span class="compounding-icon">💰</span>
+                <div>
+                  <strong>Usage &amp; Compute Guard</strong>
+                  <span class="compounding-badge">+50% Efficiency</span>
+                </div>
+              </div>
+              <p>Aggressive prompt token compression and smart caching. 99.8% monthly compute budget preserved with zero unauthorized API spend.</p>
+              <div class="compounding-stat"><span>Monthly Spend</span><strong>$0.22 / $100.00</strong></div>
+            </div>
+
+            <div class="compounding-card">
+              <div class="compounding-card-head">
+                <span class="compounding-icon">📈</span>
+                <div>
+                  <strong>Profitability &amp; Etsy</strong>
+                  <span class="compounding-badge">+50% Market Reach</span>
+                </div>
+              </div>
+              <p>Expanded to 10 major US states with instant vector PDF fulfillment, 36 SEO listing titles, Pinterest traffic funnel, and $97 Mega Bundle.</p>
+              <div class="compounding-stat"><span>Active Target</span><strong>$20,000.00 Profit</strong></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- AI & Technology Department V2.0 -->
+        <section class="surface ai-tech-dept-panel" id="systemsAiTechDept" data-search-section>
+          <div class="section-heading">
+            <div>
+              <span class="kicker jade">AI &amp; Technology Department · V2.0</span>
+              <h2>Autonomous Technology Stack &amp; Watchlist</h2>
+            </div>
+            <span class="status-pill healthy" id="aiTechRatingBadge">A+ Stack · Active</span>
+          </div>
+          <div id="aiTechDeptContent" class="ai-tech-grid"></div>
+        </section>
+
+        <!-- Continuous Evolution 2.0 Telemetry Stream -->
+        <section class="surface evolution-log-panel" id="systemsEvolutionLog" data-search-section>
+          <div class="section-heading">
+            <div>
+              <span class="kicker ice">Self-Evolution Engine 2.0</span>
+              <h2>Real-Time Autonomous Upgrade Stream</h2>
+            </div>
+            <span class="section-note">Active Cron · Every 30m</span>
+          </div>
+          <div class="evolution-feed" id="evolutionFeed"></div>
+        </section>
+      </section>
+
+      <section class="view" data-view="critical" aria-labelledby="critical-heading">
+        <!-- CEO MODE BANNER -->
+        <div class="ceo-banner">
+          <div class="ceo-banner-left">
+            <span class="ceo-badge">⚡ CEO MODE — ROWAN</span>
+            <span class="ceo-mission">MISSION: Etsy $20,000 profit · 30 days · Sep 17, 2026</span>
+          </div>
+          <div class="ceo-banner-right">
+            <span class="ceo-stat"><span>Day</span><strong id="ceoDayCount">1</strong></span>
+            <span class="ceo-stat"><span>Revenue</span><strong id="ceoRevenue">$8.73</strong></span>
+            <span class="ceo-stat"><span>Remaining</span><strong id="ceoRemaining">$19,991.27</strong></span>
+            <span class="ceo-stat ceo-stat--days"><span>Days left</span><strong id="countdownValue">30</strong></span>
+          </div>
+        </div>
+
+        <!-- AGENT STATUS BOARD -->
+        <div class="agent-war-room">
+          <div class="agent-war-room-title">🧠 Agent War Room — All resources on Etsy</div>
+          <div class="agent-war-room-grid">
+            <div class="agent-war-card agent-war-card--active"><div class="agent-war-dot"></div><strong>Aria</strong><span>✅ Done — 25 SEO titles + 5 bundles written</span></div>
+            <div class="agent-war-card agent-war-card--working"><div class="agent-war-dot"></div><strong>Sage</strong><span>⚡ Working — Competitor + keyword research</span></div>
+            <div class="agent-war-card agent-war-card--working"><div class="agent-war-dot"></div><strong>Nova</strong><span>⚡ Working — Pinterest + TikTok content plan</span></div>
+            <div class="agent-war-card agent-war-card--working"><div class="agent-war-dot"></div><strong>Atlas</strong><span>⚡ Working — Generating 10 legal templates</span></div>
+            <div class="agent-war-card agent-war-card--active"><div class="agent-war-dot"></div><strong>Ivy</strong><span>🎯 Queued — Listing management + cull</span></div>
+            <div class="agent-war-card agent-war-card--ceo"><div class="agent-war-dot"></div><strong>Rowan</strong><span>👔 CEO — Orchestrating full operation</span></div>
+          </div>
+        </div>
+
+        <!-- KPI MILESTONES -->
+        <div class="kpi-milestones">
+          <div class="kpi-mile"><span>Day 7</span><strong>$300</strong><small>SEO fixes indexed</small></div>
+          <div class="kpi-mile"><span>Day 14</span><strong>$1,500</strong><small>Bundles + Pinterest live</small></div>
+          <div class="kpi-mile"><span>Day 21</span><strong>$5,000</strong><small>50-state expansion</small></div>
+          <div class="kpi-mile kpi-mile--goal"><span>Day 30</span><strong>$20,000</strong><small>🎯 GOAL</small></div>
+        </div>
+
+        <div class="critical-progress-bar-wrap">
+          <div class="critical-progress-bar" id="criticalProgressBar">
+            <div class="critical-progress-fill" id="criticalProgressFill" style="width:0%"></div>
+            <span class="critical-progress-label" id="criticalProgressLabel">$8.73 / $20,000</span>
+          </div>
+        </div>
+
+        <section class="surface critical-plan-surface" data-search-section aria-labelledby="critical-plan-heading">
+          <div class="section-heading">
+            <div><span class="kicker jade">Etsy Revenue Plan</span><h2 id="critical-plan-heading">How the team is hitting $20,000</h2></div>
+            <span class="section-note">Rowan (CEO) · All agents · Etsy only · zero ad spend</span>
+          </div>
+          <div class="critical-plan-grid" id="criticalPlanGrid"></div>
+        </section>
+
+
+        <section class="surface" data-search-section aria-labelledby="critical-blockers-heading">
+          <div class="section-heading">
+            <div><span class="kicker coral">System blockers</span><h2 id="critical-blockers-heading">Everything blocked or critical right now</h2></div>
+            <span class="section-note" id="criticalBlockerCount">Loading…</span>
+          </div>
+          <div class="critical-blocker-grid" id="criticalBlockerGrid"></div>
+        </section>
+
+        <section class="surface" data-search-section aria-labelledby="critical-actions-heading">
+          <div class="section-heading">
+            <div><span class="kicker amber">Andrew's action list</span><h2 id="critical-actions-heading">What only you can unblock</h2></div>
+            <span class="section-note">Sorted by revenue impact</span>
+          </div>
+          <div class="critical-actions-list" id="criticalActionsList"></div>
+        </section>
+
+        <section class="surface" data-search-section aria-labelledby="critical-auto-heading">
+          <div class="section-heading">
+            <div><span class="kicker ice">Agent-owned fixes</span><h2 id="critical-auto-heading">What agents are fixing autonomously</h2></div>
+            <span class="section-note">No Andrew input required</span>
+          </div>
+          <div class="critical-auto-list" id="criticalAutoList"></div>
+        </section>
+      </section>
+
+      <section class="view" data-view="risk" aria-labelledby="risk-heading">
+        <header class="page-header"><div><span class="kicker coral">Governance</span><h1 id="risk-heading">Risk &amp; Audit</h1><p>Business exposure, security boundaries, and data-integrity issues.</p></div></header>
+        <div class="risk-board" id="riskBoard"></div>
+        <section class="surface audit-ledger" data-search-section><div class="section-heading compact"><div><span class="kicker">Audit ledger</span><h2>Material controls and changes</h2></div></div><div class="activity-list" id="auditLedger"></div></section>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="decision-dialog" id="decisionDialog" aria-labelledby="decisionDialogTitle">
+    <form method="dialog" class="decision-dialog-card" id="decisionForm">
+      <button class="dialog-close" type="button" data-close-dialog aria-label="Close decision dialog">×</button>
+      <span class="kicker amber" id="decisionDialogKicker">Owner decision</span>
+      <h2 id="decisionDialogTitle">Confirm decision</h2>
+      <p id="decisionDialogSummary"></p>
+      <div class="decision-review" id="decisionDialogReview"></div>
+      <p class="dialog-error" id="decisionDialogError" hidden></p>
+      <div class="dialog-actions">
+        <button class="decision-button secondary" type="button" data-close-dialog>Cancel</button>
+        <button class="decision-button" id="confirmDecisionButton" type="submit">Confirm</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog class="decision-dialog browser-setup-dialog" id="browserSetupDialog" aria-labelledby="browserSetupTitle" aria-describedby="browserSetupSummary">
+    <section class="decision-dialog-card">
+      <button class="dialog-close" type="button" data-close-browser-setup aria-label="Close secure browser setup">×</button>
+      <span class="kicker amber">Secure one-tab connection</span>
+      <h2 id="browserSetupTitle">Connect the secure Etsy executor</h2>
+      <p id="browserSetupSummary">Approval stays locked until the Chrome relay and one authenticated Etsy tab are verified.</p>
+      <ol class="browser-setup-steps">
+        <li><strong>Open Google Chrome.</strong><span>Safari can keep displaying Rowan, but the secure relay runs in Chrome.</span></li>
+        <li><strong>Open the signed-in SwirlCraftShop Etsy tab.</strong><span>Use one Etsy tab only; close or unshare any duplicate Etsy tabs.</span></li>
+        <li><strong>Click the OpenClaw toolbar icon on that Etsy tab.</strong><span>Share only that tab with Rowan. Other Chrome tabs remain outside the relay.</span></li>
+        <li><strong>Return here and recheck.</strong><span>Approval unlocks only after the protected snapshot verifies the exact one-tab boundary.</span></li>
+      </ol>
+      <div class="decision-review browser-setup-status" id="browserSetupStatus"></div>
+      <p class="browser-setup-message attention" id="browserSetupMessage" role="status" aria-live="polite"></p>
+      <p class="dialog-error" id="browserSetupError" hidden></p>
+      <div class="browser-setup-security">
+        <strong>Private by design</strong>
+        <span>No password, access key, or Etsy credential is entered in this dashboard. Recheck reads only the latest sanitized protected snapshot; it does not navigate, click, type, or approve anything in Etsy. The status may wait for the next protected local sync. Clicking the OpenClaw icon again revokes the shared tab.</span>
+      </div>
+      <div class="dialog-actions">
+        <button class="decision-button secondary" type="button" data-close-browser-setup>Not now</button>
+        <button class="decision-button approve" id="recheckBrowserSetupButton" type="button">Recheck setup</button>
+      </div>
+    </section>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script defer src="./app.js?v=1787116799"></script>
+  <script type="module" src="city3d.js?v=1787116799"></script>
+</body>
+</html>
