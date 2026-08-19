@@ -322,6 +322,90 @@ export async function bootCity3D() {
     while (feed.children.length > 20) {
       feed.lastElementChild.remove();
     }
+  // ── Real-Time Status & Evolution Log Helpers (No Simulation) ──────────────
+  function getRealAgentStatus(agentId) {
+    if (!window.DATA) return "Standing by.";
+    
+    const team = window.DATA.team || [];
+    const member = team.find(m => m.id === agentId);
+    
+    const requests = (window.DATA.agent_requests || {}).requests || [];
+    const pendingReq = requests.find(r => r.agent_id === agentId && r.status !== 'APPROVED_BY_OWNER');
+    
+    const googleUsage = window.DATA.google_usage || {};
+    const isGoogleBlocked = googleUsage.mode === 'blocked' || googleUsage.credits_remaining_cents <= 0;
+    
+    if (pendingReq) {
+      return `⏳ Awaiting Approval: "${pendingReq.title}"`;
+    }
+    
+    // Check if member has recorded errors
+    if (member) {
+      const outcome = String(member.last_outcome || "").toLowerCase();
+      if (outcome.includes('error') || outcome.includes('fail') || outcome.includes('429') || outcome.includes('quota')) {
+        return `⚠️ API Error: ${member.last_outcome}`;
+      }
+    }
+    
+    // Check global Google API block / quota limits
+    if (agentId !== 'main' && agentId !== 'efficiency') {
+      if (isGoogleBlocked) {
+        return `⚠️ Blocked: Gemini 3.5 API 429 Quota Exceeded`;
+      }
+      // If we know there is a 429 rate limit block on the system currently
+      return `⚠️ Rate Limited: Gemini 3.5 Quota Exceeded (429)`;
+    }
+    
+    if (member && member.city && member.city.current_activity) {
+      let act = member.city.current_activity;
+      if (act.startsWith("Standing by — ")) {
+        return "💤 " + act.replace("Standing by — ", "");
+      }
+      if (act.startsWith("Working on ")) {
+        return "⚡ " + act;
+      }
+      return act;
+    }
+    
+    return "💤 Standing by.";
+  }
+
+  function populateRealCommsFeed() {
+    const feed = document.getElementById('cityCommsFeed');
+    if (!feed || !window.DATA || !window.DATA.evolution_log) return;
+    
+    // Clear old simulated items
+    feed.innerHTML = '';
+    
+    // Get last 20 real evolution logs
+    const logs = window.DATA.evolution_log.slice(-20).reverse();
+    if (!logs.length) {
+      feed.innerHTML = '<div style="color:#64748b;font-size:10px;padding:6px;">No system events recorded.</div>';
+      return;
+    }
+    
+    logs.forEach(log => {
+      const timeStr = log.timestamp ? log.timestamp.split('T')[1].substring(0, 8) : '00:00:00';
+      const actionName = log.action || 'SYSTEM';
+      const detail = log.detail || '';
+      const result = log.result || 'info';
+      
+      const col = result === 'error' ? '#f43f5e' : (result === 'warning' ? '#f59e0b' : '#38bdf8');
+      
+      const entry = document.createElement('div');
+      entry.className = 'comms-entry';
+      entry.style.borderLeft = `2px solid ${col}`;
+      entry.style.paddingLeft = '6px';
+      entry.style.marginBottom = '6px';
+      entry.innerHTML = `
+        <span class="comms-time" style="color:#64748b;font-size:9px;">[${timeStr}]</span>
+        <span class="comms-agent" style="color:${col}; font-weight:700;font-size:9.5px;">● ${actionName}</span>
+        <span class="comms-msg" style="color:#e2e8f0; font-size:10px;">"${detail}"</span>
+      `;
+      feed.appendChild(entry);
+    });
+  }
+
   }
 
   let currentConvoIndex = 0;
@@ -623,42 +707,18 @@ export async function bootCity3D() {
   let clock = new THREE.Clock();
   const tempV = new THREE.Vector3();
 
-  broadcastRadio("Rowan", "CEO", "#6db7ff", "All 13 agents active in Metropolis. Revenue velocity is compounding!");
+  populateRealCommsFeed();
 
   function animate() {
     _animFrameId = requestAnimationFrame(animate);
     const dt = clock.getDelta();
     const elapsed = clock.getElapsedTime();
 
-    // Dialogue Stepper
+    // Dialogue Stepper replaced with Real-Time Comms Log Sync
     convoTimer -= dt;
     if (convoTimer <= 0) {
-      const activeList = getActiveDialogues();
-      const convo = activeList[currentConvoIndex % activeList.length];
-      const charA = characters.find(c => c.agent.id === convo.agentA) || characters[0];
-      const charB = characters.find(c => c.agent.id === convo.agentB) || characters[1];
-
-      if (convoPhase === 0) {
-        if (charA) {
-          charA.bubbleText.textContent = convo.turnA;
-          charA.bubbleTag.textContent = "To " + (charB ? charB.agent.name : "Team");
-          const hexCol = '#' + charA.agent.col.toString(16).padStart(6, '0');
-          broadcastRadio(charA.agent.name, charA.agent.role, hexCol, convo.turnA);
-        }
-        convoPhase = 1;
-        convoTimer = 5.5;
-      } else {
-        if (charB) {
-          charB.bubbleText.textContent = convo.turnB;
-          charB.bubbleTag.textContent = "To " + (charA ? charA.agent.name : "Team");
-          const hexCol = '#' + charB.agent.col.toString(16).padStart(6, '0');
-          broadcastRadio(charB.agent.name, charB.agent.role, hexCol, convo.turnB);
-        }
-        convoPhase = 0;
-        // Spontaneous, non-linear unscripted rotation
-        currentConvoIndex = Math.floor(Math.random() * activeList.length);
-        convoTimer = 4.5 + Math.random() * 2.0;
-      }
+      populateRealCommsFeed();
+      convoTimer = 6.0; // Refresh logs every 6s
     }
 
     if (parkGroup.waterSpout) parkGroup.waterSpout.scale.y = 0.95 + Math.sin(elapsed * 6) * 0.15;
@@ -742,8 +802,27 @@ export async function bootCity3D() {
         }
 
         if (char.bubbleEl) {
-          const isCurrentSpeaker = (char.agent.id === currentActiveSpeakerId);
-          if (isCurrentSpeaker) {
+          const statusText = getRealAgentStatus(char.agent.id);
+          const hasAlert = statusText.includes('⏳') || statusText.includes('⚠️') || statusText.includes('❌');
+          const isSelected = (char.agent.id === selectedCityAgentId);
+          
+          const bodyTextEl = char.bubbleEl.querySelector('.speech-body-text');
+          if (bodyTextEl) {
+            bodyTextEl.textContent = statusText;
+          }
+          
+          const locTagEl = char.bubbleEl.querySelector('.speech-loc-tag');
+          if (locTagEl) {
+            if (hasAlert) {
+              locTagEl.textContent = "STATUS: ACTIVE ALERT";
+              locTagEl.style.color = (statusText.includes('⚠️') || statusText.includes('❌')) ? "#f43f5e" : "#fbbf24";
+            } else {
+              locTagEl.textContent = char.agent.district;
+              locTagEl.style.color = "#94a3b8";
+            }
+          }
+          
+          if (hasAlert || isSelected) {
             char.bubbleEl.style.display = 'block';
             char.bubbleEl.style.left = `${sx}px`;
             char.bubbleEl.style.top = `${sy - 22}px`;
