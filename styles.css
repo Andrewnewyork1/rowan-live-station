@@ -3155,3 +3155,20 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--ice); outli
 .btn-launch-rd:hover {
   transform: translateY(-1px);
 }
+
+/* Approved Agent Requisitions */
+.agent-need-card.approved {
+  border-color: rgba(34, 201, 122, 0.4);
+  background: linear-gradient(145deg, rgba(34, 201, 122, 0.08), rgba(6, 12, 22, 0.95));
+}
+.btn-need-approve.is-approved {
+  background: rgba(34, 201, 122, 0.2) !important;
+  color: #22c97a !important;
+  border: 1px solid rgba(34, 201, 122, 0.5) !important;
+  cursor: default !important;
+}
+.badge-approved {
+  background: rgba(34, 201, 122, 0.2) !important;
+  color: #22c97a !important;
+  border-color: rgba(34, 201, 122, 0.4) !important;
+}

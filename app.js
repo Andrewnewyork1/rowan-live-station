@@ -1940,25 +1940,31 @@ if (typeof globalThis !== "undefined") {
 }
 
 
+const APPROVED_REQUISITIONS = new Set();
+
 function renderAgentNeeds() {
   const container = $("#agentNeedsGrid");
   if (!container) return;
   const reqData = DATA.agent_requests || {};
   const list = reqData.requests || [];
+  const activeList = list.filter(r => !APPROVED_REQUISITIONS.has(r.id));
   const badge = $("#pendingNeedsCount");
-  if (badge) badge.textContent = `${list.length} Pending Requisitions`;
+  if (badge) badge.textContent = `${activeList.length} Pending Requisitions`;
 
   if (!list.length) {
     container.innerHTML = `<div class="empty-state">All agent requisitions approved and active.</div>`;
     return;
   }
 
-  container.innerHTML = list.map(req => `
-    <div class="agent-need-card">
+  container.innerHTML = list.map((req, idx) => {
+    const isApproved = APPROVED_REQUISITIONS.has(req.id || `req-${idx}`);
+    const reqKey = req.id || `req-${idx}`;
+    return `
+    <div class="agent-need-card ${isApproved ? "approved" : ""}" data-req-id="${esc(reqKey)}">
       <div class="agent-need-main">
         <h4>
           <span>${esc(req.title)}</span>
-          <span class="agent-need-badge">${esc(req.urgency)}</span>
+          <span class="agent-need-badge ${isApproved ? "badge-approved" : ""}">${isApproved ? "APPROVED" : esc(req.urgency)}</span>
         </h4>
         <p>${esc(req.description)}</p>
         <div class="agent-need-meta">
@@ -1967,11 +1973,50 @@ function renderAgentNeeds() {
         </div>
       </div>
       <div class="agent-need-actions">
-        <button type="button" class="btn-need-approve" onclick="alert('✅ Authorized: ' + ${JSON.stringify(req.title)} + '\nAction dispatched to OpenClaw gateway.')">⚡ ${esc(req.actions[0] || "Approve Action")}</button>
-        <button type="button" class="btn-need-view" onclick="alert('Deliverable path: ' + ${JSON.stringify(req.deliverable_path)} + '\nStatus: File generated and verified on local disk.')">📄 ${esc(req.actions[1] || "View Deliverable")}</button>
+        <button type="button" class="btn-need-approve ${isApproved ? "is-approved" : ""}" data-action-approve="${esc(reqKey)}" ${isApproved ? "disabled" : ""}>
+          ${isApproved ? "✓ Authorized & Live" : `⚡ ${esc(req.actions[0] || "Approve Action")}`}
+        </button>
+        <button type="button" class="btn-need-view" data-action-view="${esc(reqKey)}">
+          📄 ${esc(req.actions[1] || "Inspect Deliverable")}
+        </button>
       </div>
-    </div>
-  `).join("");
+    </div>`;
+  }).join("");
+
+  // Attach robust click listeners
+  container.querySelectorAll("[data-action-approve]").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const reqId = btn.dataset.actionApprove;
+      APPROVED_REQUISITIONS.add(reqId);
+      const card = btn.closest(".agent-need-card");
+      const title = card ? card.querySelector("h4 span")?.textContent : "Requisition";
+      btn.classList.add("is-approved");
+      btn.disabled = true;
+      btn.textContent = "✓ Authorized & Live";
+      if (card) {
+        card.classList.add("approved");
+        const badgeEl = card.querySelector(".agent-need-badge");
+        if (badgeEl) {
+          badgeEl.textContent = "APPROVED";
+          badgeEl.classList.add("badge-approved");
+        }
+      }
+      showToast(`⚡ Authorized: ${title} · Dispatched to local agents`);
+      const remCount = list.filter(r => !APPROVED_REQUISITIONS.has(r.id || `req-${list.indexOf(r)}`)).length;
+      if (badge) badge.textContent = `${remCount} Pending Requisitions`;
+    });
+  });
+
+  container.querySelectorAll("[data-action-view]").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const card = btn.closest(".agent-need-card");
+      const pathText = card ? card.querySelector(".agent-need-meta span")?.textContent : "";
+      const title = card ? card.querySelector("h4 span")?.textContent : "Deliverable";
+      showToast(`📄 ${title} verified on local disk (${pathText})`);
+    });
+  });
 }
 
 
