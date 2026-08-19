@@ -17,6 +17,21 @@ const VIEW_TITLES = {
 
 let DATA = null;
 let toastTimer = null;
+const MEMORY_STORAGE = {};
+function safeGetItem(key) {
+  try {
+    return window.localStorage ? window.localStorage.getItem(key) : (MEMORY_STORAGE[key] || null);
+  } catch {
+    return MEMORY_STORAGE[key] || null;
+  }
+}
+function safeSetItem(key, val) {
+  try {
+    if (window.localStorage) window.localStorage.setItem(key, val);
+  } catch {}
+  MEMORY_STORAGE[key] = val;
+}
+
 let DECISION_STATE = {};
 let pendingDecision = null;
 let browserSetupDecision = null;
@@ -233,8 +248,12 @@ function decisionEventMatchesItem(event, item) {
 }
 
 function currentDecision(item) {
+  if (!item || !item.id) return null;
   const state = DECISION_STATE[item.id];
-  if (decisionEventMatchesItem(state, item)) return state.action;
+  if (state) {
+    if (typeof state === "string" && ["approved", "declined"].includes(state)) return state;
+    if (typeof state === "object" && ["approved", "declined"].includes(state.action)) return state.action;
+  }
   const recorded = String(item.status || "").toLowerCase();
   if (recorded.startsWith("approved")) return "approved";
   if (recorded.startsWith("declined")) return "declined";
@@ -727,7 +746,7 @@ function renderCritical() {
 
   function getCompletedAndrewActions() {
     try {
-      const raw = localStorage.getItem("rowan_completed_andrew_actions");
+      const raw = safeGetItem("rowan_completed_andrew_actions");
       return raw ? JSON.parse(raw) : [];
     } catch {
       return [];
@@ -742,7 +761,7 @@ function renderCritical() {
       completed.push(id);
       showToast("✅ Unblocked: " + id);
     }
-    localStorage.setItem("rowan_completed_andrew_actions", JSON.stringify(completed));
+    safeSetItem("rowan_completed_andrew_actions", JSON.stringify(completed));
     renderCritical();
   }
   globalThis.toggleAndrewAction = toggleAndrewAction;
@@ -1739,7 +1758,7 @@ function closeDecisionDialog() {
 
 function getLocalDecisionState() {
   try {
-    const raw = localStorage.getItem("rowan_andrew_decisions");
+    const raw = safeGetItem("rowan_andrew_decisions");
     return raw ? JSON.parse(raw) : {};
   } catch {
     return {};
@@ -1747,9 +1766,7 @@ function getLocalDecisionState() {
 }
 
 function saveLocalDecisionState(state) {
-  try {
-    localStorage.setItem("rowan_andrew_decisions", JSON.stringify(state));
-  } catch {}
+  safeSetItem("rowan_andrew_decisions", JSON.stringify(state));
 }
 
 async function requestDecisionState() {
@@ -1984,12 +2001,29 @@ if (typeof globalThis !== "undefined") {
 
 const APPROVED_REQUISITIONS = new Set();
 
+function getLocalApprovedRequisitions() {
+  try {
+    const raw = safeGetItem("rowan_approved_requisitions");
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveLocalApprovedRequisitions(arr) {
+  safeSetItem("rowan_approved_requisitions", JSON.stringify(arr));
+}
+
 function renderAgentNeeds() {
   const container = $("#agentNeedsGrid");
   if (!container) return;
   const reqData = DATA.agent_requests || {};
   const list = reqData.requests || [];
-  const activeList = list.filter(r => !APPROVED_REQUISITIONS.has(r.id));
+
+  const saved = getLocalApprovedRequisitions();
+  saved.forEach(id => APPROVED_REQUISITIONS.add(id));
+
+  const activeList = list.filter(r => !APPROVED_REQUISITIONS.has(r.id || `req-${list.indexOf(r)}`));
   const badge = $("#pendingNeedsCount");
   if (badge) badge.textContent = `${activeList.length} Pending Requisitions`;
 
@@ -1999,8 +2033,8 @@ function renderAgentNeeds() {
   }
 
   container.innerHTML = list.map((req, idx) => {
-    const isApproved = APPROVED_REQUISITIONS.has(req.id || `req-${idx}`);
     const reqKey = req.id || `req-${idx}`;
+    const isApproved = APPROVED_REQUISITIONS.has(reqKey);
     return `
     <div class="agent-need-card ${isApproved ? "approved" : ""}" data-req-id="${esc(reqKey)}">
       <div class="agent-need-main">
@@ -2031,6 +2065,8 @@ function renderAgentNeeds() {
       e.stopPropagation();
       const reqId = btn.dataset.actionApprove;
       APPROVED_REQUISITIONS.add(reqId);
+      saveLocalApprovedRequisitions(Array.from(APPROVED_REQUISITIONS));
+
       const card = btn.closest(".agent-need-card");
       const title = card ? card.querySelector("h4 span")?.textContent : "Requisition";
       btn.classList.add("is-approved");
@@ -2059,22 +2095,6 @@ function renderAgentNeeds() {
       showToast(`📄 ${title} verified on local disk (${pathText})`);
     });
   });
-}
-
-
-const MEMORY_STORAGE = {};
-function safeGetItem(key) {
-  try {
-    return window.localStorage ? window.localStorage.getItem(key) : (MEMORY_STORAGE[key] || null);
-  } catch {
-    return MEMORY_STORAGE[key] || null;
-  }
-}
-function safeSetItem(key, val) {
-  try {
-    if (window.localStorage) window.localStorage.setItem(key, val);
-  } catch {}
-  MEMORY_STORAGE[key] = val;
 }
 
 const FAST_TRACKED_RD = new Set();
