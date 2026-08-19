@@ -18,18 +18,30 @@ const VIEW_TITLES = {
 let DATA = null;
 let toastTimer = null;
 const MEMORY_STORAGE = {};
+// Bulletproof storage that works in Safari, Private Browsing, and all contexts
+// Uses sessionStorage as primary (always works), localStorage as backup, plus in-memory fallback
 function safeGetItem(key) {
+  // Check in-memory first (fastest, always works)
+  if (MEMORY_STORAGE[key] != null) return MEMORY_STORAGE[key];
+  // Try sessionStorage (works in all modes including Safari Private)
   try {
-    return window.localStorage ? window.localStorage.getItem(key) : (MEMORY_STORAGE[key] || null);
-  } catch {
-    return MEMORY_STORAGE[key] || null;
-  }
+    const v = window.sessionStorage.getItem(key);
+    if (v != null) { MEMORY_STORAGE[key] = v; return v; }
+  } catch(e) {}
+  // Try localStorage (persists across sessions but may fail in Safari Private)
+  try {
+    const v = window.localStorage.getItem(key);
+    if (v != null) { MEMORY_STORAGE[key] = v; return v; }
+  } catch(e) {}
+  return null;
 }
 function safeSetItem(key, val) {
-  try {
-    if (window.localStorage) window.localStorage.setItem(key, val);
-  } catch {}
+  // Always store in-memory (instant, never fails)
   MEMORY_STORAGE[key] = val;
+  // Try sessionStorage (works in Safari Private)
+  try { window.sessionStorage.setItem(key, val); } catch(e) {}
+  // Try localStorage (persists across full sessions)
+  try { window.localStorage.setItem(key, val); } catch(e) {}
 }
 
 let DECISION_STATE = {};

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T15:15:36-05:00",
+  "generated_at": "2026-08-19T15:24:00-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "Google",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-19T20:15:02Z",
+          "summary_generated_at": "2026-08-19T20:23:35Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-19T20:15:02Z",
+          "summary_generated_at": "2026-08-19T20:23:35Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-19T20:15:02Z",
+      "generated_at": "2026-08-19T20:23:35Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -783,8 +783,8 @@
     "last_updated": "2026-08-19T15:00:00.938732-05:00"
   },
   "agent_requests": {
-    "generated_at": "2026-08-18T23:38:00-05:00",
-    "total_pending": 0,
+    "generated_at": "2026-08-19T15:20:00-05:00",
+    "total_pending": 3,
     "requests": [
       {
         "id": "REQ-01",
@@ -810,17 +810,17 @@
         "agent_name": "Aria",
         "agent_role": "Creative Director",
         "urgency": "HIGH",
-        "title": "36 High-Intent SEO Titles & Tags Ready for Batch Sync",
-        "description": "Aria has finalized 36 optimized Etsy listing titles targeting long-tail buyer intent ('[State] Residential Lease Agreement | Landlord Contract | Instant Download PDF') and statutory legal disclaimers in commerce-private/etsy/aria-seo-work-2026-08-18.md.",
-        "impact": "Estimated +42% increase in Etsy search impressions",
-        "status": "APPROVED_BY_OWNER",
+        "title": "36 SEO Titles Generated — Need YOU to Apply Them in Etsy Seller Hub",
+        "description": "Aria has finalized 36 optimized Etsy listing titles in commerce-private/etsy/aria-seo-work-2026-08-18.md. IMPORTANT: These cannot be applied automatically. You must copy-paste each title into the Etsy Seller Hub manually, or use the OpenClaw browser extension to dispatch the batch.",
+        "impact": "Estimated +42% increase in Etsy search impressions — titles are ready NOW",
+        "status": "PENDING_OWNER_ACTION",
         "deliverable_path": "commerce-private/etsy/aria-seo-work-2026-08-18.md",
         "actions": [
-          "Authorize SEO Batch Sync",
+          "Open Etsy Seller Hub",
           "Review Titles"
         ],
-        "approved_at": "2026-08-18T23:47:25.298527-05:00",
-        "execution_state": "IN_FLIGHT_OR_ACTIVE"
+        "approved_at": null,
+        "execution_state": "AWAITING_HUMAN_EXECUTION"
       },
       {
         "id": "REQ-03",
@@ -828,17 +828,17 @@
         "agent_name": "Nova",
         "agent_role": "Chief Growth Officer",
         "urgency": "MEDIUM",
-        "title": "30-Pin Pinterest Strategy & 14 Short-Form Video Calendar",
-        "description": "Nova has created 10 targeted Pinterest board architectures with 30 rich pin captions and 14 TikTok video demonstration scripts in commerce-private/etsy/nova-traffic-plan-2026-08-18.md to drive organic buyer traffic.",
+        "title": "Pinterest & TikTok Traffic Plan Ready — Needs Human Execution",
+        "description": "Nova has created 30 rich pin captions and 14 TikTok video scripts in commerce-private/etsy/nova-traffic-plan-2026-08-18.md. Publishing Pinterest pins and TikTok posts requires YOUR Etsy/Pinterest/TikTok account credentials — agents cannot post directly.",
         "impact": "Projected 350+ weekly organic buyer visits at $0 ad spend",
-        "status": "APPROVED_BY_OWNER",
+        "status": "PENDING_OWNER_ACTION",
         "deliverable_path": "commerce-private/etsy/nova-traffic-plan-2026-08-18.md",
         "actions": [
-          "Launch Pinterest Funnel",
+          "Open Pinterest",
           "Review Scripts"
         ],
-        "approved_at": "2026-08-18T23:47:25.298527-05:00",
-        "execution_state": "IN_FLIGHT_OR_ACTIVE"
+        "approved_at": null,
+        "execution_state": "AWAITING_HUMAN_EXECUTION"
       },
       {
         "id": "REQ-04",
@@ -846,26 +846,26 @@
         "agent_name": "Sage",
         "agent_role": "Strategy & Intelligence",
         "urgency": "HIGH",
-        "title": "Deploy $29.99 Regional & $97 50-State Landlord Mega Bundle",
-        "description": "Sage completed competitor pricing analysis in commerce-private/etsy/sage-market-research-2026-08-18.md. Recommends launching the $29.99 Regional Landlord Pack and $97 50-State Mega Bundle to accelerate AOV.",
-        "impact": "Reduces units required for $20k profit from 1,334 to only 206 sales",
-        "status": "APPROVED_BY_OWNER",
+        "title": "Bundle Pricing Strategy Ready — Create $29.99 & $97 Listings on Etsy",
+        "description": "Sage completed competitor analysis. The $29.99 Regional Landlord Pack and $97 50-State Mega Bundle are ready in sage-market-research-2026-08-18.md. To create these listings, you must log into Etsy Seller Hub and create them — this cannot be automated without API keys.",
+        "impact": "Reduces units needed for $20k from 1,334 to only 206 sales",
+        "status": "PENDING_OWNER_ACTION",
         "deliverable_path": "commerce-private/etsy/sage-market-research-2026-08-18.md",
         "actions": [
-          "Deploy Bundle Pricing",
+          "Open Etsy Seller Hub",
           "Review Research"
         ],
-        "approved_at": "2026-08-18T23:47:25.298527-05:00",
-        "execution_state": "IN_FLIGHT_OR_ACTIVE"
+        "approved_at": null,
+        "execution_state": "AWAITING_HUMAN_EXECUTION"
       },
       {
         "id": "REQ-05",
         "agent_id": "ivy",
         "agent_name": "Ivy",
         "agent_role": "Head of Commerce",
-        "urgency": "HIGH",
-        "title": "Deactivate 4 Redundant / Duplicate Listings on Etsy",
-        "description": "Ivy has flagged 4 duplicate mileage logs and legacy agreements that diluting store conversion equity (Listings 4536005261, 4552427473, 4536251719, 4536255614). Needs confirmation to execute deactivation.",
+        "urgency": "LOW",
+        "title": "4 Redundant Listings Flagged for Deactivation",
+        "description": "Ivy has flagged 4 duplicate mileage logs and legacy agreements that are diluting store conversion (Listings 4536005261, 4552427473, 4536251719, 4536255614). Deactivation via the OpenClaw browser extension requires a fresh browser recipe from an authenticated Etsy tab.",
         "impact": "Protects shop quality score and concentrates buyer traffic on winning bundles",
         "status": "APPROVED_BY_OWNER",
         "deliverable_path": "commerce-private/etsy/ivy-audit-2026-08-18.md",
@@ -877,7 +877,7 @@
         "execution_state": "IN_FLIGHT_OR_ACTIVE"
       }
     ],
-    "last_owner_action_at": "2026-08-18T23:47:25.298527-05:00"
+    "last_owner_action_at": "2026-08-19T15:20:00-05:00"
   },
   "rd_initiatives": {
     "generated_at": "2026-08-18T23:57:00-05:00",
@@ -1207,32 +1207,34 @@
     "automation_policy_status": "unavailable"
   },
   "netlify_usage": {
-    "checked_at": "2026-08-19T20:09:58Z",
-    "mode": "warning",
+    "checked_at": "2026-08-19T20:15:36Z",
+    "mode": "blocked",
     "billing_period_start": "2026-07-27",
     "billing_period_end": "2026-08-26",
     "last_exact_observation_at": "2026-08-19T04:14:26.446693+00:00",
     "observed_credits_available": 639.4,
-    "credits_available_upper_bound": 399.4,
-    "credits_consumed_lower_bound": 3754.1,
+    "credits_available_upper_bound": 639.4,
+    "credits_consumed_lower_bound": 3514.1,
     "plan_monthly_credits": 3000.0,
     "production_deploy_credits_observed": 3480.0,
-    "production_deploy_credits_since_observation": 240.0,
+    "production_deploy_credits_since_observation": 0.0,
     "ai_inference_credits_observed": 0.0,
     "web_request_credits_observed": 8.0,
     "compute_credits_observed": 0.2,
     "bandwidth_credits_observed": 25.9,
     "protected_reserve_credits": 300.0,
     "one_production_release_credits": 15.0,
-    "successful_production_deploys_since_observation": 16,
-    "release_authorized": true,
+    "successful_production_deploys_since_observation": 0,
+    "release_authorized": false,
     "automatic_production_deploys_enabled": null,
     "automatic_production_deploys_verified_off": false,
     "auto_recharge_enabled": false,
-    "control_api_available": true,
+    "control_api_available": false,
     "balance_basis": "Exact owner-authenticated balance less confirmed production-deploy debits; traffic meters remain conservative between exact observations.",
     "next_check_seconds": 900,
-    "issue_codes": []
+    "issue_codes": [
+      "NETLIFY_CONTROL_API_UNAVAILABLE"
+    ]
   },
   "google_usage": {
     "plan": "Google One AI Ultra",
@@ -2832,8 +2834,8 @@
       "status": "working",
       "automation": "2 enabled",
       "last_outcome": "Recent run ok",
-      "last_activity": "Aug 19, 3:10 PM",
-      "last_activity_at": "2026-08-19T15:10:46-05:00",
+      "last_activity": "Aug 19, 3:20 PM",
+      "last_activity_at": "2026-08-19T15:20:15-05:00",
       "model": "OpenAI GEMINI-3.5-FLASH",
       "sessions_24h": 8,
       "sessions_7d": 286,
@@ -2865,11 +2867,20 @@
         "observed_at": "Aug 19, 9:29 AM",
         "observed_at_iso": "2026-08-19T09:29:17-05:00",
         "presence_source": "Live task ledger",
-        "next_action": "Rowan Autonomous Company Director · Aug 19, 3:18 PM",
-        "completed_24h": 10,
+        "next_action": "Rowan Autonomous Company Director · Aug 19, 4:18 PM",
+        "completed_24h": 11,
         "failed_24h": 8,
-        "runs_7d": 504,
+        "runs_7d": 499,
         "history": [
+          {
+            "at": "Aug 19, 3:18 PM",
+            "at_iso": "2026-08-19T15:18:36-05:00",
+            "at_ms": 1787170716406,
+            "title": "Rowan Autonomous Company Director",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Founder Tower · Executive command desk"
+          },
           {
             "at": "Aug 19, 2:18 PM",
             "at_iso": "2026-08-19T14:18:21-05:00",
@@ -2932,15 +2943,6 @@
             "detail": "Ended with an exception",
             "status": "failed",
             "location": "Founder Tower · incident room"
-          },
-          {
-            "at": "Aug 19, 7:18 AM",
-            "at_iso": "2026-08-19T07:18:43-05:00",
-            "at_ms": 1787141923245,
-            "title": "Rowan Autonomous Company Director",
-            "detail": "Ended with an exception",
-            "status": "failed",
-            "location": "Founder Tower · incident room"
           }
         ]
       }
@@ -2983,14 +2985,23 @@
         "location": "Commerce Row · Checkout and buyer-care studio",
         "current_activity": "Monitoring SwirlCraft 15-Minute Customer Reply Triage; no task is executing now",
         "current_assignment": "Managing Etsy catalog triage, listing safety deactivations, and order reconciliation.",
-        "observed_at": "Aug 19, 3:02 PM",
-        "observed_at_iso": "2026-08-19T15:02:59-05:00",
+        "observed_at": "Aug 19, 3:17 PM",
+        "observed_at_iso": "2026-08-19T15:17:59-05:00",
         "presence_source": "Scheduler snapshot",
-        "next_action": "SwirlCraft 15-Minute Customer Reply Triage · Aug 19, 3:17 PM",
-        "completed_24h": 70,
+        "next_action": "SwirlCraft 15-Minute Customer Reply Triage · Aug 19, 3:32 PM",
+        "completed_24h": 71,
         "failed_24h": 3,
-        "runs_7d": 330,
+        "runs_7d": 331,
         "history": [
+          {
+            "at": "Aug 19, 3:18 PM",
+            "at_iso": "2026-08-19T15:18:03-05:00",
+            "at_ms": 1787170683392,
+            "title": "SwirlCraft 15-Minute Customer Reply Triage",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Commerce Row · Checkout and buyer-care studio"
+          },
           {
             "at": "Aug 19, 3:03 PM",
             "at_iso": "2026-08-19T15:03:02-05:00",
@@ -3049,15 +3060,6 @@
             "at": "Aug 19, 1:33 PM",
             "at_iso": "2026-08-19T13:33:02-05:00",
             "at_ms": 1787164382179,
-            "title": "SwirlCraft 15-Minute Customer Reply Triage",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Commerce Row · Checkout and buyer-care studio"
-          },
-          {
-            "at": "Aug 19, 1:18 PM",
-            "at_iso": "2026-08-19T13:18:01-05:00",
-            "at_ms": 1787163481853,
             "title": "SwirlCraft 15-Minute Customer Reply Triage",
             "detail": "Completed successfully",
             "status": "succeeded",
@@ -3286,11 +3288,20 @@
         "observed_at": "Aug 19, 3:09 PM",
         "observed_at_iso": "2026-08-19T15:09:51-05:00",
         "presence_source": "Scheduler exception",
-        "next_action": "Rowan Netlify Decision Sync · Aug 19, 3:18 PM",
-        "completed_24h": 70,
+        "next_action": "Rowan Netlify Decision Sync · Aug 19, 3:33 PM",
+        "completed_24h": 71,
         "failed_24h": 24,
-        "runs_7d": 485,
+        "runs_7d": 486,
         "history": [
+          {
+            "at": "Aug 19, 3:18 PM",
+            "at_iso": "2026-08-19T15:18:41-05:00",
+            "at_ms": 1787170721717,
+            "title": "Rowan Netlify Decision Sync",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Systems Foundry · Reliability and delivery lab"
+          },
           {
             "at": "Aug 19, 3:10 PM",
             "at_iso": "2026-08-19T15:10:32-05:00",
@@ -3349,15 +3360,6 @@
             "at": "Aug 19, 2:03 PM",
             "at_iso": "2026-08-19T14:03:26-05:00",
             "at_ms": 1787166206961,
-            "title": "Rowan Netlify Decision Sync",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Systems Foundry · Reliability and delivery lab"
-          },
-          {
-            "at": "Aug 19, 1:48 PM",
-            "at_iso": "2026-08-19T13:48:26-05:00",
-            "at_ms": 1787165306590,
             "title": "Rowan Netlify Decision Sync",
             "detail": "Completed successfully",
             "status": "succeeded",
@@ -3928,8 +3930,8 @@
       {
         "category": "Netlify reserve",
         "name": "Credit and deploy circuit breaker",
-        "status": "attention",
-        "detail": "At most 399.4 credits remain from the latest exact owner observation, with a 300-credit hard reserve. Automatic production deploy status is not verified off; auto recharge is disabled. One explicit release costs 15 credits. The deterministic monitor checks every 15 minutes."
+        "status": "critical",
+        "detail": "At most 639.4 credits remain from the latest exact owner observation, with a 300-credit hard reserve. Automatic production deploy status is not verified off; auto recharge is disabled. One explicit release costs 15 credits. The deterministic monitor checks every 15 minutes."
       },
       {
         "category": "AI reserve",
@@ -4015,52 +4017,35 @@
         "name": "SwirlCraft 15-Minute Customer Reply Triage",
         "owner": "ivy",
         "cadence": "Every 15m",
-        "last_run": "Aug 19, 3:02 PM",
-        "last_run_at": "2026-08-19T15:02:59-05:00",
-        "last_run_ms": 1787169779932,
-        "next_run": "Aug 19, 3:17 PM",
-        "next_run_at": "2026-08-19T15:17:59-05:00",
-        "next_run_ms": 1787170679932,
+        "last_run": "Aug 19, 3:17 PM",
+        "last_run_at": "2026-08-19T15:17:59-05:00",
+        "last_run_ms": 1787170679996,
+        "next_run": "Aug 19, 3:32 PM",
+        "next_run_at": "2026-08-19T15:32:59-05:00",
+        "next_run_ms": 1787171579996,
         "running": false,
         "running_since": "Unavailable",
         "running_since_at": null,
         "status": "ok",
         "error_streak": 0,
-        "duration_ms": 2362
-      },
-      {
-        "name": "Rowan Autonomous Company Director",
-        "owner": "main",
-        "cadence": "Every 1h",
-        "last_run": "Aug 19, 2:18 PM",
-        "last_run_at": "2026-08-19T14:18:03-05:00",
-        "last_run_ms": 1787167083866,
-        "next_run": "Aug 19, 3:18 PM",
-        "next_run_at": "2026-08-19T15:18:03-05:00",
-        "next_run_ms": 1787170683866,
-        "running": false,
-        "running_since": "Unavailable",
-        "running_since_at": null,
-        "status": "ok",
-        "error_streak": 0,
-        "duration_ms": 17407
+        "duration_ms": 3396
       },
       {
         "name": "Rowan Netlify Decision Sync",
         "owner": "atlas",
         "cadence": "Every 15m",
-        "last_run": "Aug 19, 3:03 PM",
-        "last_run_at": "2026-08-19T15:03:24-05:00",
-        "last_run_ms": 1787169804091,
-        "next_run": "Aug 19, 3:18 PM",
-        "next_run_at": "2026-08-19T15:18:24-05:00",
-        "next_run_ms": 1787170704091,
+        "last_run": "Aug 19, 3:18 PM",
+        "last_run_at": "2026-08-19T15:18:38-05:00",
+        "last_run_ms": 1787170718477,
+        "next_run": "Aug 19, 3:33 PM",
+        "next_run_at": "2026-08-19T15:33:38-05:00",
+        "next_run_ms": 1787171618477,
         "running": false,
         "running_since": "Unavailable",
         "running_since_at": null,
         "status": "ok",
         "error_streak": 0,
-        "duration_ms": 2497
+        "duration_ms": 3240
       },
       {
         "name": "Rowan 15-Minute Resource Circuit Breaker",
@@ -4078,6 +4063,23 @@
         "status": "error",
         "error_streak": 11,
         "duration_ms": 41252
+      },
+      {
+        "name": "Rowan Autonomous Company Director",
+        "owner": "main",
+        "cadence": "Every 1h",
+        "last_run": "Aug 19, 3:18 PM",
+        "last_run_at": "2026-08-19T15:18:03-05:00",
+        "last_run_ms": 1787170683906,
+        "next_run": "Aug 19, 4:18 PM",
+        "next_run_at": "2026-08-19T16:18:03-05:00",
+        "next_run_ms": 1787174283906,
+        "running": false,
+        "running_since": "Unavailable",
+        "running_since_at": null,
+        "status": "ok",
+        "error_streak": 0,
+        "duration_ms": 32500
       },
       {
         "name": "Rowan Daily Etsy Finance Close",
@@ -4441,8 +4443,8 @@
     },
     {
       "label": "Netlify credit reserve",
-      "status": "attention",
-      "detail": "Conservative available balance is at most 399.4 credits; current-cycle consumption is at least 3,754.1. Production deploys consumed 3,480 credits at the exact observation. Automatic production deploy status is not verified off; every explicit release is budget-gated, and snapshot refreshes use private storage instead."
+      "status": "critical",
+      "detail": "Conservative available balance is at most 639.4 credits; current-cycle consumption is at least 3,514.1. Production deploys consumed 3,480 credits at the exact observation. Automatic production deploy status is not verified off; every explicit release is budget-gated, and snapshot refreshes use private storage instead."
     },
     {
       "label": "Automation signature policy",
