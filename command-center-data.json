@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T15:24:00-05:00",
+  "generated_at": "2026-08-19T15:30:39-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "Google",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-19T20:23:35Z",
+          "summary_generated_at": "2026-08-19T20:30:02Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-19T20:23:35Z",
+          "summary_generated_at": "2026-08-19T20:30:02Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-19T20:23:35Z",
+      "generated_at": "2026-08-19T20:30:02Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -452,48 +452,6 @@
   },
   "evolution_log": [
     {
-      "timestamp": "2026-08-19T13:30:01.502582-05:00",
-      "action": "PROFIT_WAR_ERROR",
-      "detail": "'building_name'",
-      "result": "error",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T13:30:01.502582-05:00",
-      "action": "EVOLVE_CYCLE_COMPLETE",
-      "detail": "Full cycle complete. Results: {\"model\": \"no_change\", \"seo\": \"complete\", \"dashboard\": \"ok\", \"watchdog\": {\"active\": [\"aria\", \"nova\", \"sage\", \"atlas\", \"ivy\", \"main\"], \"idle\": [], \"woken\": []}, \"cost\": \"ok\", \"profit_war\": \"error:'building_name'\"}",
-      "result": "success",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T14:00:00.569221-05:00",
-      "action": "SEO_COMPLETE",
-      "detail": "All 36 Etsy SEO titles batched from aria-seo-work-2026-08-18.md",
-      "result": "success",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T14:00:00.569221-05:00",
-      "action": "DASHBOARD_HEALED",
-      "detail": "Sync OK. Warnings: 0. Stale: 0.",
-      "result": "ok",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T14:00:00.569221-05:00",
-      "action": "AGENT_WATCHDOG",
-      "detail": "Active: ['aria', 'nova', 'sage', 'atlas', 'ivy', 'main']. Idle: []. Woken: [].",
-      "result": "success",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T14:00:00.569221-05:00",
-      "action": "COST_GUARD_RUN",
-      "detail": "Daily $0.0000/$3.33. Monthly 0.2%. Alerts: []. Actions: [].",
-      "result": "ok",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
       "timestamp": "2026-08-19T14:00:00.569221-05:00",
       "action": "PROFIT_WAR_ERROR",
       "detail": "'building_name'",
@@ -586,6 +544,48 @@
     },
     {
       "timestamp": "2026-08-19T15:00:00.938732-05:00",
+      "action": "EVOLVE_CYCLE_COMPLETE",
+      "detail": "Full cycle complete. Results: {\"model\": \"no_change\", \"seo\": \"complete\", \"dashboard\": \"ok\", \"watchdog\": {\"active\": [\"aria\", \"nova\", \"sage\", \"atlas\", \"ivy\", \"main\"], \"idle\": [], \"woken\": []}, \"cost\": \"ok\", \"profit_war\": \"error:'building_name'\"}",
+      "result": "success",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T15:30:00.526556-05:00",
+      "action": "SEO_COMPLETE",
+      "detail": "All 36 Etsy SEO titles batched from aria-seo-work-2026-08-18.md",
+      "result": "success",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T15:30:00.526556-05:00",
+      "action": "DASHBOARD_HEALED",
+      "detail": "Sync OK. Warnings: 0. Stale: 0.",
+      "result": "ok",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T15:30:00.526556-05:00",
+      "action": "AGENT_WATCHDOG",
+      "detail": "Active: ['aria', 'nova', 'sage', 'atlas', 'ivy', 'main']. Idle: []. Woken: [].",
+      "result": "success",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T15:30:00.526556-05:00",
+      "action": "COST_GUARD_RUN",
+      "detail": "Daily $0.0000/$3.33. Monthly 0.2%. Alerts: []. Actions: [].",
+      "result": "ok",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T15:30:00.526556-05:00",
+      "action": "PROFIT_WAR_ERROR",
+      "detail": "'building_name'",
+      "result": "error",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T15:30:00.526556-05:00",
       "action": "EVOLVE_CYCLE_COMPLETE",
       "detail": "Full cycle complete. Results: {\"model\": \"no_change\", \"seo\": \"complete\", \"dashboard\": \"ok\", \"watchdog\": {\"active\": [\"aria\", \"nova\", \"sage\", \"atlas\", \"ivy\", \"main\"], \"idle\": [], \"woken\": []}, \"cost\": \"ok\", \"profit_war\": \"error:'building_name'\"}",
       "result": "success",
@@ -780,7 +780,7 @@
         "height_m": 4.0
       }
     ],
-    "last_updated": "2026-08-19T15:00:00.938732-05:00"
+    "last_updated": "2026-08-19T15:30:00.526556-05:00"
   },
   "agent_requests": {
     "generated_at": "2026-08-19T15:20:00-05:00",
@@ -2834,8 +2834,8 @@
       "status": "working",
       "automation": "2 enabled",
       "last_outcome": "Recent run ok",
-      "last_activity": "Aug 19, 3:20 PM",
-      "last_activity_at": "2026-08-19T15:20:15-05:00",
+      "last_activity": "Aug 19, 3:30 PM",
+      "last_activity_at": "2026-08-19T15:30:24-05:00",
       "model": "OpenAI GEMINI-3.5-FLASH",
       "sessions_24h": 8,
       "sessions_7d": 286,
@@ -2870,7 +2870,7 @@
         "next_action": "Rowan Autonomous Company Director · Aug 19, 4:18 PM",
         "completed_24h": 11,
         "failed_24h": 8,
-        "runs_7d": 499,
+        "runs_7d": 493,
         "history": [
           {
             "at": "Aug 19, 3:18 PM",
