@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T10:15:30-05:00",
+  "generated_at": "2026-08-19T10:16:01-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "Google",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-19T15:15:01Z",
+          "summary_generated_at": "2026-08-19T15:15:53Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-19T15:15:01Z",
+          "summary_generated_at": "2026-08-19T15:15:53Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-19T15:15:01Z",
+      "generated_at": "2026-08-19T15:15:53Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -1207,7 +1207,7 @@
     "automation_policy_status": "unavailable"
   },
   "netlify_usage": {
-    "checked_at": "2026-08-19T15:08:43Z",
+    "checked_at": "2026-08-19T15:15:30Z",
     "mode": "blocked",
     "billing_period_start": "2026-07-27",
     "billing_period_end": "2026-08-26",
@@ -2863,7 +2863,7 @@
         "next_action": "Rowan Autonomous Company Director · Aug 19, 10:29 AM",
         "completed_24h": 8,
         "failed_24h": 8,
-        "runs_7d": 751,
+        "runs_7d": 749,
         "history": [
           {
             "at": "Aug 19, 9:29 AM",
