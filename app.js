@@ -482,50 +482,50 @@ const REVENUE_PLAN = [
     unblocks: "Outbound guard cleared · email deliverability green · postal address confirmed",
     category: "Services"
   },
+const REVENUE_PLAN = [
   {
-    id: "swirlcraft-case-study",
     id: "b2b-compliance-kits",
     agent: "Sage + Cipher + Rowan",
-    title: "B2B Commercial Compliance & Vendor Packs",
-    desc: "Launch the $97 Regional Landlord Pack and $297 Vendor Admin Control Bundle on direct Stripe/Gumroad. High AOV extracts maximum profit from professional buyers with zero marketplace fee cut.",
-    target: "$6,000",
-    timeline: "62 units @ $97 · 24-hr sprint",
+    title: "B2B Commercial Compliance & Vendor Packs ($0 Cost)",
+    desc: "Launch the $97 Regional Landlord Pack and $297 Vendor Admin Control Bundle on direct Stripe/Gumroad. $0 upfront listing fees, 100% gross margin, immediate buyer checkout.",
+    target: "$8,000",
+    timeline: "82 units @ $97 · 24-hr sprint · $0 spent",
     status: "ready",
-    unblocks: "Zero ad spend · direct B2B checkout",
-    category: "B2B Digital Products"
+    unblocks: "$0 upfront cost · direct Stripe payout",
+    category: "B2B Digital Products ($0 Cost)"
   },
   {
-    id: "website-builds",
-    agent: "Atlas + Rowan + Orion",
-    title: "Turnkey Websites & Flippa Digital Assets",
-    desc: "Atlas and Orion package high-demand turnkey niche websites and digital assets for Flippa / direct transfer. Pre-built with modern responsive templates and automated backends.",
-    target: "$6,000",
-    timeline: "2 builds @ $3,000 · ready to list",
+    id: "agency-creator-kits",
+    agent: "Atlas + Aria + Lyra",
+    title: "Agency & Creator Business Systems ($0 Cost)",
+    desc: "Atlas and Aria package 300 DPI vector client onboarding, contractor agreements, and SOP packs on direct Gumroad. 100% free hosting, $0 domain fee, instant delivery.",
+    target: "$4,000",
+    timeline: "80 units @ $49 · ready to sell · $0 spent",
     status: "ready",
-    unblocks: "Zero-cost local toolchain deployment",
-    category: "Digital Assets"
+    unblocks: "$0 listing fee · 100% free toolchain",
+    category: "Digital Assets ($0 Cost)"
   },
   {
     id: "etsy-pdf-scale",
     agent: "Ivy + Aria + Nova",
-    title: "Etsy PDF Shop — Zero-Cost SEO & Bundles",
+    title: "Etsy PDF Shop — Zero-Cost SEO & Bundles ($0 Cost)",
     desc: "Optimize existing 1,467 listings with 36 high-converting SEO titles, 13 tags, and 30 Pinterest Rich Pins. Scale $29.99 5-state lease packs with $0 in new listing fees and $0 in ad spend.",
     target: "$5,000",
-    timeline: "167 units @ $29.99 · ongoing",
+    timeline: "167 units @ $29.99 · ongoing · $0 spent",
     status: "ready",
-    unblocks: "Zero new listing fees · 100% organic",
-    category: "Marketplace"
+    unblocks: "$0 new listing fees · 100% organic",
+    category: "Marketplace ($0 Cost)"
   },
   {
     id: "local-automation",
     agent: "Nova + Ember + Lyra",
-    title: "High-Ticket Local Business Automation Kits",
-    desc: "Package custom intake, customer review routing, and invoice workflows for local contractors, home care agencies, and real estate offices. Fast $1,000 setup packages.",
+    title: "High-Ticket Local Business Automation ($0 Cost)",
+    desc: "Package custom intake, review routing, and invoice workflows for local contractors, home care agencies, and real estate offices. Fast $1,000 setup packages with direct Stripe invoices.",
     target: "$3,000",
-    timeline: "3 setups @ $1,000 · warm outreach",
+    timeline: "3 setups @ $1,000 · warm outreach · $0 spent",
     status: "ready",
-    unblocks: "Direct B2B invoicing via Stripe",
-    category: "High-Ticket Systems"
+    unblocks: "Direct B2B invoicing via Stripe · $0 cost",
+    category: "High-Ticket Systems ($0 Cost)"
   }
 ];
 
