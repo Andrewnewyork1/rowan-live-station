@@ -3242,3 +3242,10 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--ice); outli
   -webkit-user-select: none !important;
   touch-action: manipulation !important;
 }
+
+/* Completely hide legacy 2.5D CSS isometric world underneath 3D canvas */
+#cityWorld, .city-world, .city-lot, .city-plot, .city-hub, .city-road {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}

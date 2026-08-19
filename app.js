@@ -1212,8 +1212,11 @@ function renderCity() {
   const snapshot = snapshotEvidence(DATA.generated_at);
   citySnapshotWasFresh = snapshot.fresh;
   if (!team.some((item) => item.id === selectedCityAgentId)) selectedCityAgentId = team[0].id;
-  world.className = `city-world angle-${cityCameraAngle}`;
-  world.innerHTML = `<div class="city-road road-a" aria-hidden="true"></div><div class="city-road road-b" aria-hidden="true"></div>${team.map(cityLot).join("")}${revenueLanes.map(revenueHub).join("")}`;
+  if (world) {
+    world.className = `city-world hidden`;
+    world.innerHTML = ``;
+    world.style.display = "none";
+  }
   // ── Holo KPI display update ─────────────────────────────────────────────────
   const holoGoal = $("#cityHoloGoal");
   const holoBar = $("#cityHoloBar");
