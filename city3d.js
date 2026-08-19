@@ -77,7 +77,7 @@ export async function bootCity3D() {
     top: 14px;
     left: 14px;
     z-index: 30;
-    pointer-events: auto;
+    pointer-events: none;
     background: rgba(6,12,22,0.92);
     border: 1px solid rgba(34,201,122,0.4);
     border-radius: 20px;
@@ -97,6 +97,65 @@ export async function bootCity3D() {
     <span>CITY MOOD: HIGH REVENUE SPRINT · +70% MARGIN BOOM</span>
   `;
   overlayLayer.appendChild(moodBadge);
+
+  // 3D Camera Orbit & Rotation Control Panel
+  const navPanel = document.createElement('div');
+  navPanel.id = 'cityNavControls';
+  navPanel.style.cssText = `
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    pointer-events: auto;
+  `;
+  navPanel.innerHTML = `
+    <button type="button" id="btnOrbitLeft" style="background:rgba(6,12,22,0.9);border:1px solid rgba(109,183,255,0.4);color:#fff;border-radius:8px;padding:6px 10px;font-size:11px;font-weight:700;cursor:pointer;backdrop-filter:blur(8px);box-shadow:0 4px 12px rgba(0,0,0,0.6);">↺ Rotate Left</button>
+    <button type="button" id="btnOrbitRight" style="background:rgba(6,12,22,0.9);border:1px solid rgba(109,183,255,0.4);color:#fff;border-radius:8px;padding:6px 10px;font-size:11px;font-weight:700;cursor:pointer;backdrop-filter:blur(8px);box-shadow:0 4px 12px rgba(0,0,0,0.6);">↻ Rotate Right</button>
+    <button type="button" id="btnTopView" style="background:rgba(6,12,22,0.9);border:1px solid rgba(109,183,255,0.4);color:#fff;border-radius:8px;padding:6px 10px;font-size:11px;font-weight:700;cursor:pointer;backdrop-filter:blur(8px);box-shadow:0 4px 12px rgba(0,0,0,0.6);">🔭 Top View</button>
+    <button type="button" id="btnResetView" style="background:rgba(6,12,22,0.9);border:1px solid rgba(34,201,122,0.4);color:#22c97a;border-radius:8px;padding:6px 10px;font-size:11px;font-weight:700;cursor:pointer;backdrop-filter:blur(8px);box-shadow:0 4px 12px rgba(0,0,0,0.6);">⟲ Reset</button>
+  `;
+  overlayLayer.appendChild(navPanel);
+
+  let currentAngle = 0;
+  navPanel.querySelector('#btnOrbitLeft').addEventListener('click', (e) => {
+    e.stopPropagation();
+    currentAngle += Math.PI / 4;
+    const r = 85;
+    camera.position.x = Math.sin(currentAngle) * r;
+    camera.position.z = Math.cos(currentAngle) * r;
+    camera.position.y = 48;
+    controls.target.set(0, 2, 0);
+    controls.update();
+  });
+
+  navPanel.querySelector('#btnOrbitRight').addEventListener('click', (e) => {
+    e.stopPropagation();
+    currentAngle -= Math.PI / 4;
+    const r = 85;
+    camera.position.x = Math.sin(currentAngle) * r;
+    camera.position.z = Math.cos(currentAngle) * r;
+    camera.position.y = 48;
+    controls.target.set(0, 2, 0);
+    controls.update();
+  });
+
+  navPanel.querySelector('#btnTopView').addEventListener('click', (e) => {
+    e.stopPropagation();
+    camera.position.set(0, 95, 20);
+    controls.target.set(0, 0, 0);
+    controls.update();
+  });
+
+  navPanel.querySelector('#btnResetView').addEventListener('click', (e) => {
+    e.stopPropagation();
+    currentAngle = 0;
+    camera.position.set(0, 48, 76);
+    controls.target.set(0, 2, 0);
+    controls.update();
+  });
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -215,86 +274,26 @@ export async function bootCity3D() {
 
   scene.add(parkGroup);
 
-  // 2. Amenities (Cafe, Gym, Arcade, Lofts)
-  const gymGroup = new THREE.Group();
-  gymGroup.position.set(22, 0, 20);
-  const gymBase = new THREE.Mesh(new THREE.BoxGeometry(6.8, 4.2, 5.8), new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.7 }));
-  gymBase.position.y = 2.1;
-  gymGroup.add(gymBase);
-  scene.add(gymGroup);
-
-  const arcadeGroup = new THREE.Group();
-  arcadeGroup.position.set(-22, 0, 18);
-  const arcBase = new THREE.Mesh(new THREE.BoxGeometry(6.5, 5.8, 5.2), new THREE.MeshStandardMaterial({ color: 0x18181b, metalness: 0.8 }));
-  arcBase.position.y = 2.9;
-  arcadeGroup.add(arcBase);
-  const billboard = new THREE.Mesh(new THREE.BoxGeometry(5.2, 2.6, 0.06), new THREE.MeshStandardMaterial({ color: 0xd946ef, emissive: 0xd946ef, emissiveIntensity: 1.4 }));
-  billboard.position.set(0, 3.6, 2.63);
-  arcadeGroup.add(billboard);
-  arcadeGroup.billboard = billboard;
-  scene.add(arcadeGroup);
-
-  const cafeGroup = new THREE.Group();
-  cafeGroup.position.set(-22, 0, -22);
-  const cafeBase = new THREE.Mesh(new THREE.BoxGeometry(6.0, 4.6, 4.8), new THREE.MeshStandardMaterial({ color: 0x182430 }));
-  cafeBase.position.y = 2.3;
-  cafeGroup.add(cafeBase);
-  scene.add(cafeGroup);
-
-  const aptGroup = new THREE.Group();
-  aptGroup.position.set(0, 0, 26);
-  const aptBase = new THREE.Mesh(new THREE.BoxGeometry(10.5, 8.5, 6.2), new THREE.MeshStandardMaterial({ color: 0x1a2332, metalness: 0.6 }));
-  aptBase.position.y = 4.25;
-  aptGroup.add(aptBase);
-  scene.add(aptGroup);
-
-  // 3. R&D Quantum Campus Buildings
-  const rdCampus = new THREE.Group();
-  rdCampus.position.set(24, 0, -22);
-  const rdMain = new THREE.Mesh(new THREE.BoxGeometry(8.2, 6.4, 7.2), new THREE.MeshStandardMaterial({ color: 0x111c26, metalness: 0.85, roughness: 0.2 }));
-  rdMain.position.y = 3.2;
-  rdCampus.add(rdMain);
-
-  const ringMat = new THREE.MeshBasicMaterial({ color: 0xa855f7, transparent: true, opacity: 0.8, side: THREE.DoubleSide });
-  const rdRing1 = new THREE.Mesh(new THREE.RingGeometry(2.2, 2.6, 24), ringMat);
-  rdRing1.rotation.x = Math.PI / 2;
-  rdRing1.position.y = 6.8;
-  rdCampus.add(rdRing1);
-  rdCampus.ring1 = rdRing1;
-
-  const rdRing2 = new THREE.Mesh(new THREE.RingGeometry(1.2, 1.6, 24), new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.9, side: THREE.DoubleSide }));
-  rdRing2.rotation.x = Math.PI / 2;
-  rdRing2.position.y = 7.2;
-  rdCampus.add(rdRing2);
-  rdCampus.ring2 = rdRing2;
-
-  const rdLight = new THREE.PointLight(0xa855f7, 2.2, 18);
-  rdLight.position.set(0, 7.0, 0);
-  rdCampus.add(rdLight);
-  scene.add(rdCampus);
+  // Amenities removed: Clean 13-Agent Metropolis Only
 
   // ── ALL 13 AUTONOMOUS CITIZEN AGENTS ──────────────────────────────────────
   const CONTENDERS = [
-    // ── North-West District: Executive & Strategy ──
-    { id: 'rowan', name: 'Rowan', role: 'CEO', col: 0x6db7ff, skin: 0xf5d5a5, pos: [-28, -24], height: 9.0, floors: 6, rank: 1, profit: 'Founder', bIcon: '🏛️', bName: 'Rowan Executive Spire', district: 'North-West Quarter' },
-    { id: 'sage', name: 'Sage', role: 'Strategy & Intel', col: 0x8a9ba8, skin: 0xe5c298, pos: [-14, -34], height: 7.2, floors: 4, rank: 5, profit: '$0.00', bIcon: '🧠', bName: 'Sage Intelligence Wing', district: 'Strategy Plaza' },
-    { id: 'efficiency', name: 'Dept of Efficiency', role: 'Compute Guard', col: 0x22c97a, skin: 0xa3e635, pos: [-38, -8], height: 8.4, floors: 17, rank: 2, profit: '$99.78 saved', bIcon: '🛡️', bName: 'Compute Treasury Core', district: 'Treasury Sector' },
+    // ── Outer Ring: 8 Major Landmark Towers ──
+    { id: 'rowan', name: 'Rowan', role: 'CEO', col: 0x6db7ff, skin: 0xf5d5a5, pos: [-32, -24], height: 9.2, floors: 6, rank: 1, profit: 'Founder', bIcon: '🏛️', bName: 'Rowan Executive Spire', district: 'Apex Tower' },
+    { id: 'ivy', name: 'Ivy', role: 'Head of Commerce', col: 0x22c97a, skin: 0xf3caa0, pos: [0, -34], height: 9.8, floors: 8, rank: 1, profit: '$8.73', bIcon: '🛍️', bName: 'Ivy Commerce Plaza', district: 'Commerce Plaza' },
+    { id: 'efficiency', name: 'Dept of Efficiency', role: 'Compute Guard', col: 0x22c97a, skin: 0xa3e635, pos: [32, -24], height: 8.8, floors: 17, rank: 2, profit: '$99.78 saved', bIcon: '🛡️', bName: 'Compute Treasury Core', district: 'Treasury Core' },
+    { id: 'aria', name: 'Aria', role: 'Creative Director', col: 0xff6da0, skin: 0xfce2c8, pos: [-40, 0], height: 8.2, floors: 4, rank: 5, profit: '$0.00', bIcon: '🎨', bName: 'Aria Creative Spire', district: 'Deco Center' },
+    { id: 'atlas', name: 'Atlas', role: 'CTO', col: 0xff9900, skin: 0xdeb887, pos: [40, 0], height: 8.4, floors: 5, rank: 3, profit: '$0.00', bIcon: '⚙️', bName: 'Atlas Systems Foundry', district: 'Foundry Hub' },
+    { id: 'sage', name: 'Sage', role: 'Strategy & Intel', col: 0x8a9ba8, skin: 0xe5c298, pos: [-32, 24], height: 7.6, floors: 4, rank: 6, profit: '$0.00', bIcon: '🧠', bName: 'Sage Intelligence Wing', district: 'Intelligence Wing' },
+    { id: 'nova', name: 'Nova', role: 'Growth & Traffic', col: 0x22d3ee, skin: 0xf7d0b0, pos: [0, 36], height: 8.0, floors: 4, rank: 7, profit: '$0.00', bIcon: '🚀', bName: 'Nova Growth HQ', district: 'Broadcast Spire' },
+    { id: 'victor', name: 'Dr. Victor', role: 'Chief R&D Scientist', col: 0xa855f7, skin: 0xfde047, pos: [32, 24], height: 8.0, floors: 4, rank: 4, profit: '$0.00', bIcon: '🔬', bName: 'Victor Quantum R&D Lab', district: 'Quantum R&D' },
 
-    // ── North-East District: Commerce & Quantum Monetization ──
-    { id: 'ivy', name: 'Ivy', role: 'Head of Commerce', col: 0x22c97a, skin: 0xf3caa0, pos: [26, -24], height: 9.6, floors: 8, rank: 1, profit: '$8.73', bIcon: '🛍️', bName: 'Ivy Commerce Plaza', district: 'Commerce District' },
-    { id: 'cipher', name: 'Cipher', role: 'Pricing & Stripe Quant', col: 0x6366f1, skin: 0xd1d5db, pos: [38, -10], height: 6.8, floors: 3, rank: 7, profit: '$0.00', bIcon: '💳', bName: 'Cipher Fintech Quant Hub', district: 'Quant Promenade' },
-    { id: 'victor', name: 'Dr. Victor', role: 'Chief R&D Scientist', col: 0xa855f7, skin: 0xfde047, pos: [14, -34], height: 7.5, floors: 4, rank: 4, profit: '$0.00', bIcon: '🔬', bName: 'Victor Quantum R&D Lab', district: 'Skunkworks Sector' },
-
-    // ── South-West District: Growth & Creative Studio ──
-    { id: 'aria', name: 'Aria', role: 'Creative Director', col: 0xff6da0, skin: 0xfce2c8, pos: [-28, 20], height: 7.8, floors: 4, rank: 6, profit: '$0.00', bIcon: '🎨', bName: 'Aria Deco Creative Tower', district: 'Aesthetics Quarter' },
-    { id: 'nova', name: 'Nova', role: 'Growth & Traffic', col: 0x22d3ee, skin: 0xf7d0b0, pos: [-14, 32], height: 7.5, floors: 4, rank: 8, profit: '$0.00', bIcon: '🚀', bName: 'Nova Growth HQ', district: 'Broadcast Square' },
-    { id: 'ember', name: 'Ember', role: 'Viral Growth Hacker', col: 0xf97316, skin: 0xfbcfe8, pos: [-38, 28], height: 6.4, floors: 3, rank: 9, profit: '$0.00', bIcon: '🔥', bName: 'Ember Viral Studio', district: 'Viral District' },
-
-    // ── South-East District: Engineering, Cloud & Statutory Hall ──
-    { id: 'atlas', name: 'Atlas', role: 'CTO', col: 0xff9900, skin: 0xdeb887, pos: [28, 20], height: 8.2, floors: 5, rank: 3, profit: '$0.00', bIcon: '⚙️', bName: 'Atlas Systems Foundry', district: 'Foundry District' },
-    { id: 'lyra', name: 'Lyra', role: 'B2B Design Engineer', col: 0xec4899, skin: 0xfef08a, pos: [38, 28], height: 6.2, floors: 2, rank: 11, profit: '$0.00', bIcon: '✨', bName: 'Lyra B2B Design Atelier', district: 'Design Avenue' },
-    { id: 'orion', name: 'Orion', role: 'Cloud Engineer', col: 0x14b8a6, skin: 0xfcd34d, pos: [14, 32], height: 6.5, floors: 3, rank: 10, profit: '$0.00', bIcon: '☁️', bName: 'Orion Cloud Datacenter', district: 'Cloud Sector' },
-    { id: 'kira', name: 'Kira', role: 'Legal Auditor', col: 0x10b981, skin: 0xfed7aa, pos: [0, 34], height: 6.2, floors: 2, rank: 12, profit: '$0.00', bIcon: '⚖️', bName: 'Kira Statutory Hall', district: 'Civic Plaza' }
+    // ── Inner Ring: 5 Specialist High-Tech Towers ──
+    { id: 'ember', name: 'Ember', role: 'Viral Growth Hacker', col: 0xf97316, skin: 0xfbcfe8, pos: [-18, -14], height: 6.8, floors: 3, rank: 9, profit: '$0.00', bIcon: '🔥', bName: 'Ember Viral Studio', district: 'Viral Lab' },
+    { id: 'cipher', name: 'Cipher', role: 'Pricing & Stripe Quant', col: 0x6366f1, skin: 0xd1d5db, pos: [18, -14], height: 7.0, floors: 3, rank: 8, profit: '$0.00', bIcon: '💳', bName: 'Cipher Quant Hub', district: 'Fintech Quant' },
+    { id: 'lyra', name: 'Lyra', role: 'B2B Design Engineer', col: 0xec4899, skin: 0xfef08a, pos: [-18, 14], height: 6.6, floors: 2, rank: 11, profit: '$0.00', bIcon: '✨', bName: 'Lyra Design Atelier', district: 'Aesthetics Lab' },
+    { id: 'orion', name: 'Orion', role: 'Cloud Engineer', col: 0x14b8a6, skin: 0xfcd34d, pos: [18, 14], height: 6.8, floors: 3, rank: 10, profit: '$0.00', bIcon: '☁️', bName: 'Orion Cloud Foundry', district: 'Cloud Foundry' },
+    { id: 'kira', name: 'Kira', role: 'Legal Auditor', col: 0x10b981, skin: 0xfed7aa, pos: [0, -15], height: 6.6, floors: 2, rank: 12, profit: '$0.00', bIcon: '⚖️', bName: 'Kira Statutory Hall', district: 'Compliance Wing' }
   ];
 
   const buildings = [];
@@ -376,10 +375,8 @@ export async function bootCity3D() {
       position: absolute;
       display: none;
       transform: translate(-50%, -100%);
-      pointer-events: auto;
-      cursor: pointer;
+      pointer-events: none;
       z-index: 18;
-      transition: transform 0.2s ease;
     `;
     bTagEl.innerHTML = `
       <div style="background:rgba(6,12,22,0.92);border:1px solid ${hexCol}88;border-radius:10px;padding:4px 9px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:#fff;display:flex;align-items:center;gap:6px;box-shadow:0 6px 16px rgba(0,0,0,0.8),0 0 12px ${hexCol}33;white-space:nowrap;">
@@ -483,8 +480,7 @@ export async function bootCity3D() {
         position: absolute;
         display: none;
         transform: translate(-50%, -100%);
-        pointer-events: auto;
-        cursor: pointer;
+        pointer-events: none;
         z-index: 21;
       `;
       tagEl.innerHTML = `
@@ -775,42 +771,51 @@ export async function bootCity3D() {
   controls.rotateSpeed = 0.9;
   controls.zoomSpeed = 1.2;
 
-  // Separate Click Selection from Orbit Dragging
-  const raycaster = new THREE.Raycaster();
-  const mouse = new THREE.Vector2();
-  let pointerStartX = 0;
-  let pointerStartY = 0;
+  // Smooth Native Mouse & Touch Dragging Orbit Handlers
+  let isDragging = false;
+  let prevMouseX = 0;
+  let prevMouseY = 0;
+  let dragDist = 0;
 
-  canvas.addEventListener('pointerdown', (event) => {
-    pointerStartX = event.clientX;
-    pointerStartY = event.clientY;
-  });
+  function onPointerDown(e) {
+    if (e.target.closest('#cityNavControls')) return;
+    isDragging = true;
+    prevMouseX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+    prevMouseY = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
+    dragDist = 0;
+  }
 
-  canvas.addEventListener('pointerup', (event) => {
-    const dx = Math.abs(event.clientX - pointerStartX);
-    const dy = Math.abs(event.clientY - pointerStartY);
-    // Only treat as an agent selection click if pointer moved less than 5px (not a drag/orbit)
-    if (dx > 5 || dy > 5) return;
+  function onPointerMove(e) {
+    if (!isDragging) return;
+    const clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+    const clientY = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
+    const dx = clientX - prevMouseX;
+    const dy = clientY - prevMouseY;
+    dragDist += Math.abs(dx) + Math.abs(dy);
 
-    const rect = canvas.getBoundingClientRect();
-    mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-    mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+    const rotSpeed = 0.006;
+    const x = camera.position.x;
+    const z = camera.position.z;
+    camera.position.x = x * Math.cos(-dx * rotSpeed) - z * Math.sin(-dx * rotSpeed);
+    camera.position.z = x * Math.sin(-dx * rotSpeed) + z * Math.cos(-dx * rotSpeed);
+    camera.position.y = Math.max(12, Math.min(100, camera.position.y + dy * 0.15));
+    camera.lookAt(controls.target);
+    controls.update();
 
-    raycaster.setFromCamera(mouse, camera);
-    const intersects = raycaster.intersectObjects(scene.children, true);
+    prevMouseX = clientX;
+    prevMouseY = clientY;
+  }
 
-    for (let hit of intersects) {
-      let obj = hit.object;
-      while (obj.parent && obj.parent !== scene) {
-        if (obj.agent) {
-          const btn = document.querySelector(`[data-city-directory-agent="${obj.agent.id}"]`);
-          if (btn) btn.click();
-          return;
-        }
-        obj = obj.parent;
-      }
-    }
-  });
+  function onPointerUp(e) {
+    isDragging = false;
+  }
+
+  VIEWPORT.addEventListener('mousedown', onPointerDown, { passive: true });
+  window.addEventListener('mousemove', onPointerMove, { passive: true });
+  window.addEventListener('mouseup', onPointerUp, { passive: true });
+  VIEWPORT.addEventListener('touchstart', onPointerDown, { passive: true });
+  window.addEventListener('touchmove', onPointerMove, { passive: true });
+  window.addEventListener('touchend', onPointerUp, { passive: true });
 
   // Hook up Reset View button in city header
   function resetCityCamera() {
