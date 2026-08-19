@@ -461,29 +461,6 @@ function ventureMetric(label, value, note = "") {
 
 const REVENUE_PLAN = [
   {
-    id: "gumroad-ai-toolkit",
-    agent: "Ivy + Aria",
-    title: "AI Prompt Toolkit — Gumroad",
-    desc: "Package 3 curated prompt packs ($47 each) on Gumroad. Ivy sets up the product page, Aria writes the copy. Rowan DMs 50 targeted LinkedIn/X creators per day linking to it. Zero ad spend.",
-    target: "$4,700",
-    timeline: "Launch in 72 hrs · 100 sales needed",
-    status: "ready",
-    unblocks: "Ivy autonomy authorized; Gumroad delivery is fully automated",
-    category: "Digital Products"
-  },
-  {
-    id: "retainer-outreach",
-    agent: "Rowan + Nova",
-    title: "AI Retainer Clients — LinkedIn Warm Outreach",
-    desc: "Nova posts 1 value post/day on LinkedIn demonstrating AI automation ROI. Rowan sends 10 personalized warm DMs/day to small agency owners offering a $1,500/mo AI operations retainer. Goal: 4 clients.",
-    target: "$6,000+",
-    timeline: "First close possible in 7 days",
-    status: "ready",
-    unblocks: "Outbound guard cleared · email deliverability green · postal address confirmed",
-    category: "Services"
-  },
-const REVENUE_PLAN = [
-  {
     id: "b2b-compliance-kits",
     agent: "Sage + Cipher + Rowan",
     title: "B2B Commercial Compliance & Vendor Packs ($0 Cost)",
