@@ -14,11 +14,13 @@ let _cityCamera = null;
 let _cityControls = null;
 let _cityRunning = false;
 
+let _animFrameId = null;
+
 export async function bootCity3D() {
   const VIEWPORT = document.querySelector('.city-viewport');
   if (!VIEWPORT) return;
 
-  if (_cityRenderer && _cityCamera) {
+  if (_cityRunning && _cityRenderer && _cityCamera) {
     if (VIEWPORT.clientWidth > 10) {
       _cityCamera.aspect = VIEWPORT.clientWidth / 540;
       _cityCamera.updateProjectionMatrix();
@@ -28,17 +30,18 @@ export async function bootCity3D() {
   }
 
   if (VIEWPORT.clientWidth < 10) {
-    setTimeout(bootCity3D, 200);
+    setTimeout(bootCity3D, 150);
     return;
   }
 
-  // Clean old elements
-  const oldCanvas = VIEWPORT.querySelector('canvas');
-  if (oldCanvas) oldCanvas.remove();
-  const oldOverlay = document.getElementById('cityScreenOverlay');
-  if (oldOverlay) oldOverlay.remove();
-  const oldLabels = document.getElementById('city3dLabels');
-  if (oldLabels) oldLabels.remove();
+  _cityRunning = true;
+
+  // Clean ALL existing canvas, overlay, tags
+  if (_animFrameId) {
+    cancelAnimationFrame(_animFrameId);
+    _animFrameId = null;
+  }
+  VIEWPORT.querySelectorAll('canvas, #cityScreenOverlay, #city3dLabels, .agent-screen-tag, .building-screen-tag, .agent-screen-speech').forEach(el => el.remove());
 
   const world = document.getElementById('cityWorld');
   if (world) world.style.display = 'none';
@@ -98,6 +101,11 @@ export async function bootCity3D() {
   renderer.setSize(VIEWPORT.clientWidth, 540);
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+  _cityRenderer = renderer;
+  _cityScene = scene;
+  _cityCamera = camera;
+  _cityControls = controls;
 
   const scene = new THREE.Scene();
   scene.fog = new THREE.FogExp2(0x030914, 0.009);
@@ -616,7 +624,7 @@ export async function bootCity3D() {
   broadcastRadio("Rowan", "CEO", "#6db7ff", "All 13 agents active in Metropolis. Revenue velocity is compounding!");
 
   function animate() {
-    requestAnimationFrame(animate);
+    _animFrameId = requestAnimationFrame(animate);
     const dt = clock.getDelta();
     const elapsed = clock.getElapsedTime();
 
