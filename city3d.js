@@ -714,11 +714,33 @@ export async function bootCity3D() {
     renderer.render(scene, camera);
   }
 
-  // Click Raycasting
+  // Smooth Central Metropolis Orbiting & Zooming Controls
+  controls.target.set(0, 1.5, 0);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.06;
+  controls.maxPolarAngle = Math.PI / 2.05;
+  controls.minDistance = 6;
+  controls.maxDistance = 140;
+  controls.rotateSpeed = 0.9;
+  controls.zoomSpeed = 1.2;
+
+  // Separate Click Selection from Orbit Dragging
   const raycaster = new THREE.Raycaster();
   const mouse = new THREE.Vector2();
+  let pointerStartX = 0;
+  let pointerStartY = 0;
 
-  function onPointerDown(event) {
+  canvas.addEventListener('pointerdown', (event) => {
+    pointerStartX = event.clientX;
+    pointerStartY = event.clientY;
+  });
+
+  canvas.addEventListener('pointerup', (event) => {
+    const dx = Math.abs(event.clientX - pointerStartX);
+    const dy = Math.abs(event.clientY - pointerStartY);
+    // Only treat as an agent selection click if pointer moved less than 5px (not a drag/orbit)
+    if (dx > 5 || dy > 5) return;
+
     const rect = canvas.getBoundingClientRect();
     mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
     mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
@@ -732,14 +754,26 @@ export async function bootCity3D() {
         if (obj.agent) {
           const btn = document.querySelector(`[data-city-directory-agent="${obj.agent.id}"]`);
           if (btn) btn.click();
-          controls.target.set(obj.position.x, 0, obj.position.z);
           return;
         }
         obj = obj.parent;
       }
     }
+  });
+
+  // Hook up Reset View button in city header
+  function resetCityCamera() {
+    controls.target.set(0, 1.5, 0);
+    camera.position.set(0, 32, 54);
+    controls.update();
   }
-  canvas.addEventListener('pointerdown', onPointerDown);
+  const resetBtn = document.querySelector('.city-viewport-actions button, #cityResetView');
+  if (resetBtn) resetBtn.addEventListener('click', resetCityCamera);
+  document.querySelectorAll('button').forEach(b => {
+    if (b.textContent.trim().toLowerCase().includes('reset view')) {
+      b.addEventListener('click', resetCityCamera);
+    }
+  });
 
   window.addEventListener('resize', () => {
     if (!VIEWPORT || VIEWPORT.clientWidth < 10) return;
