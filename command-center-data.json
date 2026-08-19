@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T07:55:04-05:00",
+  "generated_at": "2026-08-19T07:55:28-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "Google",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-19T12:53:59Z",
+          "summary_generated_at": "2026-08-19T12:54:24Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-19T12:53:59Z",
+          "summary_generated_at": "2026-08-19T12:54:24Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-19T12:53:59Z",
+      "generated_at": "2026-08-19T12:54:24Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -2319,7 +2319,7 @@
       "external_actions_authorized": false,
       "model_call_required": false,
       "issue_codes": [
-        "ETSY_BROWSER_COMMAND_FAILED"
+        "ETSY_BROWSER_EXTENSION_SESSION_REQUIRED"
       ]
     },
     "etsy_browser_dispatch": {
@@ -3283,7 +3283,7 @@
         "presence_source": "Scheduler snapshot",
         "next_action": "Rowan 15-Minute Resource Circuit Breaker · Aug 19, 8:01 AM",
         "completed_24h": 82,
-        "failed_24h": 15,
+        "failed_24h": 14,
         "runs_7d": 446,
         "history": [
           {
