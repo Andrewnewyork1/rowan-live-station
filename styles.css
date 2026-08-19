@@ -3172,3 +3172,43 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--ice); outli
   color: #22c97a !important;
   border-color: rgba(34, 201, 122, 0.4) !important;
 }
+
+/* Interactive Andrew Action List */
+.andrew-complete-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(34, 201, 122, 0.15);
+  border: 1px solid rgba(34, 201, 122, 0.4);
+  color: #22c97a;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.andrew-complete-btn:hover {
+  background: rgba(34, 201, 122, 0.25);
+  border-color: rgba(34, 201, 122, 0.7);
+  box-shadow: 0 0 12px rgba(34, 201, 122, 0.25);
+}
+.andrew-complete-btn.btn-is-done {
+  background: rgba(109, 183, 255, 0.15);
+  border-color: rgba(109, 183, 255, 0.4);
+  color: #6db7ff;
+}
+.andrew-action.is-completed {
+  opacity: 0.75;
+  border-color: rgba(34, 201, 122, 0.35);
+  background: linear-gradient(145deg, rgba(34, 201, 122, 0.05), rgba(6, 12, 22, 0.8));
+}
+.badge-done {
+  background: rgba(34, 201, 122, 0.2) !important;
+  color: #22c97a !important;
+  border: 1px solid rgba(34, 201, 122, 0.5) !important;
+}
+.label-done {
+  text-decoration: line-through;
+  color: #8fa0b5 !important;
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T07:52:55-05:00",
+  "generated_at": "2026-08-19T07:55:04-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "Google",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-19T12:52:03Z",
+          "summary_generated_at": "2026-08-19T12:53:59Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-19T12:52:03Z",
+          "summary_generated_at": "2026-08-19T12:53:59Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-19T12:52:03Z",
+      "generated_at": "2026-08-19T12:53:59Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -2319,7 +2319,7 @@
       "external_actions_authorized": false,
       "model_call_required": false,
       "issue_codes": [
-        "ETSY_BROWSER_EXTENSION_SESSION_REQUIRED"
+        "ETSY_BROWSER_COMMAND_FAILED"
       ]
     },
     "etsy_browser_dispatch": {
@@ -2863,7 +2863,7 @@
         "next_action": "Rowan Autonomous Company Director · Aug 19, 8:18 AM",
         "completed_24h": 10,
         "failed_24h": 9,
-        "runs_7d": 786,
+        "runs_7d": 785,
         "history": [
           {
             "at": "Aug 19, 7:18 AM",
@@ -2978,14 +2978,23 @@
         "location": "Commerce Row · Checkout and buyer-care studio",
         "current_activity": "Monitoring SwirlCraft 15-Minute Customer Reply Triage; no task is executing now",
         "current_assignment": "Managing Etsy catalog triage, listing safety deactivations, and order reconciliation.",
-        "observed_at": "Aug 19, 7:38 AM",
-        "observed_at_iso": "2026-08-19T07:38:47-05:00",
+        "observed_at": "Aug 19, 7:53 AM",
+        "observed_at_iso": "2026-08-19T07:53:48-05:00",
         "presence_source": "Scheduler snapshot",
-        "next_action": "SwirlCraft 15-Minute Customer Reply Triage · Aug 19, 7:53 AM",
+        "next_action": "SwirlCraft 15-Minute Customer Reply Triage · Aug 19, 8:08 AM",
         "completed_24h": 63,
         "failed_24h": 1,
-        "runs_7d": 300,
+        "runs_7d": 301,
         "history": [
+          {
+            "at": "Aug 19, 7:53 AM",
+            "at_iso": "2026-08-19T07:53:52-05:00",
+            "at_ms": 1787144032416,
+            "title": "SwirlCraft 15-Minute Customer Reply Triage",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Commerce Row · Checkout and buyer-care studio"
+          },
           {
             "at": "Aug 19, 7:38 AM",
             "at_iso": "2026-08-19T07:38:50-05:00",
@@ -3044,15 +3053,6 @@
             "at": "Aug 19, 6:08 AM",
             "at_iso": "2026-08-19T06:08:50-05:00",
             "at_ms": 1787137730553,
-            "title": "SwirlCraft 15-Minute Customer Reply Triage",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Commerce Row · Checkout and buyer-care studio"
-          },
-          {
-            "at": "Aug 19, 5:53 AM",
-            "at_iso": "2026-08-19T05:53:51-05:00",
-            "at_ms": 1787136831223,
             "title": "SwirlCraft 15-Minute Customer Reply Triage",
             "detail": "Completed successfully",
             "status": "succeeded",
@@ -3276,16 +3276,25 @@
         "presence": "scheduled_watch",
         "activity_mode": "Scheduled watch",
         "location": "Systems Foundry · Reliability and delivery lab",
-        "current_activity": "Monitoring Rowan Netlify Decision Sync, Rowan 15-Minute Resource Circuit Breaker; no task is executing now",
+        "current_activity": "Monitoring Rowan 15-Minute Resource Circuit Breaker, Rowan Netlify Decision Sync; no task is executing now",
         "current_assignment": "Building state-specific real estate, landlord, and home care PDF template products.",
-        "observed_at": "Aug 19, 7:38 AM",
-        "observed_at_iso": "2026-08-19T07:38:54-05:00",
+        "observed_at": "Aug 19, 7:53 AM",
+        "observed_at_iso": "2026-08-19T07:53:54-05:00",
         "presence_source": "Scheduler snapshot",
-        "next_action": "Rowan Netlify Decision Sync · Aug 19, 7:53 AM",
-        "completed_24h": 81,
+        "next_action": "Rowan 15-Minute Resource Circuit Breaker · Aug 19, 8:01 AM",
+        "completed_24h": 82,
         "failed_24h": 15,
-        "runs_7d": 445,
+        "runs_7d": 446,
         "history": [
+          {
+            "at": "Aug 19, 7:53 AM",
+            "at_iso": "2026-08-19T07:53:59-05:00",
+            "at_ms": 1787144039365,
+            "title": "Rowan Netlify Decision Sync",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Systems Foundry · Reliability and delivery lab"
+          },
           {
             "at": "Aug 19, 7:38 AM",
             "at_iso": "2026-08-19T07:38:56-05:00",
@@ -3344,15 +3353,6 @@
             "at": "Aug 19, 6:23 AM",
             "at_iso": "2026-08-19T06:23:57-05:00",
             "at_ms": 1787138637098,
-            "title": "Rowan Netlify Decision Sync",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Systems Foundry · Reliability and delivery lab"
-          },
-          {
-            "at": "Aug 19, 6:08 AM",
-            "at_iso": "2026-08-19T06:08:57-05:00",
-            "at_ms": 1787137737452,
             "title": "Rowan Netlify Decision Sync",
             "detail": "Completed successfully",
             "status": "succeeded",
@@ -4007,40 +4007,6 @@
     ],
     "automations": [
       {
-        "name": "SwirlCraft 15-Minute Customer Reply Triage",
-        "owner": "ivy",
-        "cadence": "Every 15m",
-        "last_run": "Aug 19, 7:38 AM",
-        "last_run_at": "2026-08-19T07:38:47-05:00",
-        "last_run_ms": 1787143127886,
-        "next_run": "Aug 19, 7:53 AM",
-        "next_run_at": "2026-08-19T07:53:47-05:00",
-        "next_run_ms": 1787144027886,
-        "running": false,
-        "running_since": "Unavailable",
-        "running_since_at": null,
-        "status": "ok",
-        "error_streak": 0,
-        "duration_ms": 2618
-      },
-      {
-        "name": "Rowan Netlify Decision Sync",
-        "owner": "atlas",
-        "cadence": "Every 15m",
-        "last_run": "Aug 19, 7:38 AM",
-        "last_run_at": "2026-08-19T07:38:54-05:00",
-        "last_run_ms": 1787143134026,
-        "next_run": "Aug 19, 7:53 AM",
-        "next_run_at": "2026-08-19T07:53:54-05:00",
-        "next_run_ms": 1787144034026,
-        "running": false,
-        "running_since": "Unavailable",
-        "running_since_at": null,
-        "status": "ok",
-        "error_streak": 0,
-        "duration_ms": 2846
-      },
-      {
         "name": "Rowan 15-Minute Resource Circuit Breaker",
         "owner": "atlas",
         "cadence": "Every 15m",
@@ -4056,6 +4022,40 @@
         "status": "ok",
         "error_streak": 0,
         "duration_ms": 40472
+      },
+      {
+        "name": "SwirlCraft 15-Minute Customer Reply Triage",
+        "owner": "ivy",
+        "cadence": "Every 15m",
+        "last_run": "Aug 19, 7:53 AM",
+        "last_run_at": "2026-08-19T07:53:48-05:00",
+        "last_run_ms": 1787144028192,
+        "next_run": "Aug 19, 8:08 AM",
+        "next_run_at": "2026-08-19T08:08:48-05:00",
+        "next_run_ms": 1787144928192,
+        "running": false,
+        "running_since": "Unavailable",
+        "running_since_at": null,
+        "status": "ok",
+        "error_streak": 0,
+        "duration_ms": 4224
+      },
+      {
+        "name": "Rowan Netlify Decision Sync",
+        "owner": "atlas",
+        "cadence": "Every 15m",
+        "last_run": "Aug 19, 7:53 AM",
+        "last_run_at": "2026-08-19T07:53:54-05:00",
+        "last_run_ms": 1787144034081,
+        "next_run": "Aug 19, 8:08 AM",
+        "next_run_at": "2026-08-19T08:08:54-05:00",
+        "next_run_ms": 1787144934081,
+        "running": false,
+        "running_since": "Unavailable",
+        "running_since_at": null,
+        "status": "ok",
+        "error_streak": 0,
+        "duration_ms": 5284
       },
       {
         "name": "Rowan Autonomous Company Director",

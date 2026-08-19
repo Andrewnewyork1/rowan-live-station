@@ -747,21 +747,51 @@ function renderCritical() {
     `).join("") : `<p class="empty-state">No blockers found. System is clean.</p>`;
   }
 
+  function getCompletedAndrewActions() {
+    try {
+      const raw = localStorage.getItem("rowan_completed_andrew_actions");
+      return raw ? JSON.parse(raw) : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function toggleAndrewAction(id) {
+    let completed = getCompletedAndrewActions();
+    if (completed.includes(id)) {
+      completed = completed.filter(item => item !== id);
+    } else {
+      completed.push(id);
+      showToast("✅ Unblocked: " + id);
+    }
+    localStorage.setItem("rowan_completed_andrew_actions", JSON.stringify(completed));
+    renderCritical();
+  }
+  globalThis.toggleAndrewAction = toggleAndrewAction;
+
+  const completedActions = getCompletedAndrewActions();
+
   // -- Andrew-only actions
   const actionsList = $("#criticalActionsList");
   if (actionsList) {
-    actionsList.innerHTML = ANDREW_ACTIONS.map((a) => `
-      <div class="andrew-action andrew-action--${esc(a.urgency || 'attention')}">
-        <div class="andrew-action-num andrew-action-num--${esc(a.urgency || 'attention')}">${a.priority}</div>
+    actionsList.innerHTML = ANDREW_ACTIONS.map((a, idx) => {
+      const actionId = a.label;
+      const isDone = completedActions.includes(actionId);
+      return `
+      <div class="andrew-action andrew-action--${esc(a.urgency || 'attention')} ${isDone ? 'is-completed' : ''}" data-action-id="${esc(actionId)}">
+        <div class="andrew-action-num andrew-action-num--${esc(a.urgency || 'attention')}">${isDone ? '✓' : a.priority}</div>
         <div class="andrew-action-body">
           <div class="andrew-action-head">
-            <span class="andrew-urgency-badge andrew-urgency-badge--${esc(a.urgency || 'attention')}">${a.urgency === 'critical' ? '🔴 NEEDS YOU NOW' : '🟡 ACTION NEEDED'}</span>
-            <strong class="andrew-action-label">${esc(a.label)}</strong>
+            <span class="andrew-urgency-badge ${isDone ? 'badge-done' : `andrew-urgency-badge--${esc(a.urgency || 'attention')}`}">${isDone ? '✅ COMPLETED & UNBLOCKED' : (a.urgency === 'critical' ? '🔴 NEEDS YOU NOW' : '🟡 ACTION NEEDED')}</span>
+            <strong class="andrew-action-label ${isDone ? 'label-done' : ''}">${esc(a.label)}</strong>
           </div>
           <p class="andrew-action-why">${esc(a.why)}</p>
           <div class="andrew-action-how"><span class="andrew-how-label">How:</span> ${esc(a.how || '')}</div>
           <div class="andrew-action-links">
             ${(a.links || []).map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener" class="andrew-link-btn">${esc(l.label)} &rarr;</a>`).join('')}
+            <button type="button" class="andrew-complete-btn ${isDone ? 'btn-is-done' : ''}" onclick="toggleAndrewAction(${JSON.stringify(actionId)})">
+              ${isDone ? '✓ Completed (Click to Undo)' : '⚡ Mark as Completed'}
+            </button>
           </div>
           <div class="andrew-action-meta">
             <span class="tag tag--jade">💰 ${esc(a.revenue_impact)}</span>
@@ -769,9 +799,9 @@ function renderCritical() {
           </div>
         </div>
       </div>
-    `).join('');
+    `;
+    }).join('');
   }
-
 
   // ── Agent auto-fixes ─────────────────────────────────────────────────────
   const autoList = $("#criticalAutoList");
