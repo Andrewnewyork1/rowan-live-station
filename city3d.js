@@ -348,6 +348,47 @@ export async function bootCity3D() {
     roof.position.y = h + 0.12;
     group.add(roof);
 
+    // Rooftop Spire & Crown Beacon for high-earning agents
+    if (contender.floors >= 4 || contender.rank <= 3) {
+      const spire = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.22, 1.8, 8), new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 1.2 }));
+      spire.position.y = h + 1.0;
+      group.add(spire);
+      
+      const beacon = new THREE.PointLight(col, 1.5, 12);
+      beacon.position.y = h + 1.8;
+      group.add(beacon);
+    }
+
+    // Floating 3D Holographic Billboard Label above Building
+    const hexCol = '#' + col.toString(16).padStart(6, '0');
+    const bTagEl = document.createElement('div');
+    bTagEl.className = 'building-screen-tag';
+    bTagEl.style.cssText = `
+      position: absolute;
+      display: none;
+      transform: translate(-50%, -100%);
+      pointer-events: auto;
+      cursor: pointer;
+      z-index: 18;
+      transition: transform 0.2s ease;
+    `;
+    bTagEl.innerHTML = `
+      <div style="background:rgba(6,12,22,0.92);border:1px solid ${hexCol}88;border-radius:10px;padding:4px 9px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:#fff;display:flex;align-items:center;gap:6px;box-shadow:0 6px 16px rgba(0,0,0,0.8),0 0 12px ${hexCol}33;white-space:nowrap;">
+        <span style="font-size:12px;">${contender.bIcon || '🏛️'}</span>
+        <div style="display:flex;flex-direction:column;line-height:1.15;">
+          <strong style="font-size:9.5px;font-weight:700;color:#fff;letter-spacing:0.2px;">${contender.bName}</strong>
+          <span style="font-size:8px;font-weight:600;color:${hexCol};">${contender.name} (${contender.role}) · ${contender.floors}F · ${contender.profit}</span>
+        </div>
+      </div>
+    `;
+    bTagEl.addEventListener('click', () => {
+      const btn = document.querySelector(`[data-city-directory-agent="${contender.id}"]`);
+      if (btn) btn.click();
+    });
+    overlayLayer.appendChild(bTagEl);
+    group.bTagEl = bTagEl;
+    group.bTagPos = new THREE.Vector3(x, h + (contender.floors >= 4 ? 2.2 : 1.2), z);
+
     scene.add(group);
     buildings.push(group);
 

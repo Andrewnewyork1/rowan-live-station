@@ -484,47 +484,48 @@ const REVENUE_PLAN = [
   },
   {
     id: "swirlcraft-case-study",
-    agent: "Aria + Sage",
-    title: "SwirlCraft Case Study + Paid Portfolio",
-    desc: "Aria documents Pastalicious + Susie's Menu as a 2-page before/after case study PDF. Sage researches the 5 best-paying niches for web work this week. Rowan sends the case study as a proof asset in every outreach email.",
-    target: "$3,000",
-    timeline: "Case study ready in 24 hrs",
+    id: "b2b-compliance-kits",
+    agent: "Sage + Cipher + Rowan",
+    title: "B2B Commercial Compliance & Vendor Packs",
+    desc: "Launch the $97 Regional Landlord Pack and $297 Vendor Admin Control Bundle on direct Stripe/Gumroad. High AOV extracts maximum profit from professional buyers with zero marketplace fee cut.",
+    target: "$6,000",
+    timeline: "62 units @ $97 · 24-hr sprint",
     status: "ready",
-    unblocks: "No external gates — 100% internal work",
-    category: "Social Proof"
-  },
-  {
-    id: "youtube-scripts",
-    agent: "Nova + Aria",
-    title: "YouTube Script Library — Gumroad / Etsy",
-    desc: "Nova generates 20 proven YouTube script templates for creators (motivational + tech niches). Aria packages them as a $27 instant-download PDF. Ivy lists on both Gumroad and Etsy. Nova posts short Twitter threads as free previews to drive traffic.",
-    target: "$2,700",
-    timeline: "100 sales × $27 · ready in 48 hrs",
-    status: "ready",
-    unblocks: "Motivation channel copyright hold does NOT block selling script templates",
-    category: "Digital Products"
+    unblocks: "Zero ad spend · direct B2B checkout",
+    category: "B2B Digital Products"
   },
   {
     id: "website-builds",
-    agent: "Atlas + Rowan",
-    title: "AI Website Builds — Quick Turnaround",
-    desc: "Atlas builds a $1,500 starter website in 4 hrs using the existing SwirlCraft toolchain. Rowan targets restaurant owners, contractors, and local service businesses via Facebook Groups + Nextdoor. 1 referral = 1 sale.",
-    target: "$3,000",
-    timeline: "2 × $1,500 builds · 2 warm leads needed",
+    agent: "Atlas + Rowan + Orion",
+    title: "Turnkey Websites & Flippa Digital Assets",
+    desc: "Atlas and Orion package high-demand turnkey niche websites and digital assets for Flippa / direct transfer. Pre-built with modern responsive templates and automated backends.",
+    target: "$6,000",
+    timeline: "2 builds @ $3,000 · ready to list",
     status: "ready",
-    unblocks: "Atlas just needs Codex plugin fixed (see blockers)",
-    category: "Services"
+    unblocks: "Zero-cost local toolchain deployment",
+    category: "Digital Assets"
   },
   {
     id: "etsy-pdf-scale",
-    agent: "Ivy + Nova",
-    title: "Etsy PDF Shop — Organic Push",
-    desc: "Nova adds Pinterest boards and TikTok-style short reels for 10 top-performing PDFs. Ivy A/B tests $5.99 vs $7.99 on 5 listings. No ad spend. Current 1,467 listings are an untapped organic SEO asset.",
-    target: "$600",
-    timeline: "Ongoing · first results in 5-7 days",
-    status: "attention",
-    unblocks: "Resolve Etsy legal-form listing decision first (Andrew action needed)",
+    agent: "Ivy + Aria + Nova",
+    title: "Etsy PDF Shop — Zero-Cost SEO & Bundles",
+    desc: "Optimize existing 1,467 listings with 36 high-converting SEO titles, 13 tags, and 30 Pinterest Rich Pins. Scale $29.99 5-state lease packs with $0 in new listing fees and $0 in ad spend.",
+    target: "$5,000",
+    timeline: "167 units @ $29.99 · ongoing",
+    status: "ready",
+    unblocks: "Zero new listing fees · 100% organic",
     category: "Marketplace"
+  },
+  {
+    id: "local-automation",
+    agent: "Nova + Ember + Lyra",
+    title: "High-Ticket Local Business Automation Kits",
+    desc: "Package custom intake, customer review routing, and invoice workflows for local contractors, home care agencies, and real estate offices. Fast $1,000 setup packages.",
+    target: "$3,000",
+    timeline: "3 setups @ $1,000 · warm outreach",
+    status: "ready",
+    unblocks: "Direct B2B invoicing via Stripe",
+    category: "High-Ticket Systems"
   }
 ];
 
