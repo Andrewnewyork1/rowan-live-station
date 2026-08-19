@@ -663,11 +663,6 @@ export async function bootCity3D() {
 
     if (parkGroup.waterSpout) parkGroup.waterSpout.scale.y = 0.95 + Math.sin(elapsed * 6) * 0.15;
     if (parkGroup.dog) parkGroup.dog.position.x = -3.2 + Math.sin(elapsed * 2) * 0.4;
-    if (arcadeGroup.billboard) arcadeGroup.billboard.material.emissiveIntensity = 1.0 + Math.sin(elapsed * 3) * 0.35;
-    if (rdCampus.ring1) {
-      rdCampus.ring1.rotation.z = elapsed * 1.4;
-      rdCampus.ring2.rotation.z = -elapsed * 2.0;
-    }
 
     const activeList = getActiveDialogues();
     const activeConvo = activeList[currentConvoIndex % activeList.length];
