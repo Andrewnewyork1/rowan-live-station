@@ -604,8 +604,9 @@ export async function bootCity3D() {
           broadcastRadio(charB.agent.name, charB.agent.role, hexCol, convo.turnB);
         }
         convoPhase = 0;
-        currentConvoIndex = (currentConvoIndex + 1) % activeList.length;
-        convoTimer = 5.5;
+        // Spontaneous, non-linear unscripted rotation
+        currentConvoIndex = Math.floor(Math.random() * activeList.length);
+        convoTimer = 4.5 + Math.random() * 2.0;
       }
     }
 
