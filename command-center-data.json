@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T13:15:30-05:00",
+  "generated_at": "2026-08-19T13:30:44-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "Google",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-19T18:15:01Z",
+          "summary_generated_at": "2026-08-19T18:30:02Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-19T18:15:01Z",
+          "summary_generated_at": "2026-08-19T18:30:02Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-19T18:15:01Z",
+      "generated_at": "2026-08-19T18:30:02Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -452,48 +452,6 @@
   },
   "evolution_log": [
     {
-      "timestamp": "2026-08-19T11:30:00.709111-05:00",
-      "action": "PROFIT_WAR_ERROR",
-      "detail": "'building_name'",
-      "result": "error",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T11:30:00.709111-05:00",
-      "action": "EVOLVE_CYCLE_COMPLETE",
-      "detail": "Full cycle complete. Results: {\"model\": \"no_change\", \"seo\": \"complete\", \"dashboard\": \"ok\", \"watchdog\": {\"active\": [\"aria\", \"nova\", \"sage\", \"atlas\", \"ivy\", \"main\"], \"idle\": [], \"woken\": []}, \"cost\": \"ok\", \"profit_war\": \"error:'building_name'\"}",
-      "result": "success",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T12:00:00.657472-05:00",
-      "action": "SEO_COMPLETE",
-      "detail": "All 36 Etsy SEO titles batched from aria-seo-work-2026-08-18.md",
-      "result": "success",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T12:00:00.657472-05:00",
-      "action": "DASHBOARD_HEALED",
-      "detail": "Sync OK. Warnings: 0. Stale: 0.",
-      "result": "ok",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T12:00:00.657472-05:00",
-      "action": "AGENT_WATCHDOG",
-      "detail": "Active: ['aria', 'nova', 'sage', 'atlas', 'ivy', 'main']. Idle: []. Woken: [].",
-      "result": "success",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T12:00:00.657472-05:00",
-      "action": "COST_GUARD_RUN",
-      "detail": "Daily $0.0000/$3.33. Monthly 0.2%. Alerts: []. Actions: [].",
-      "result": "ok",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
       "timestamp": "2026-08-19T12:00:00.657472-05:00",
       "action": "PROFIT_WAR_ERROR",
       "detail": "'building_name'",
@@ -586,6 +544,48 @@
     },
     {
       "timestamp": "2026-08-19T13:00:01.199170-05:00",
+      "action": "EVOLVE_CYCLE_COMPLETE",
+      "detail": "Full cycle complete. Results: {\"model\": \"no_change\", \"seo\": \"complete\", \"dashboard\": \"ok\", \"watchdog\": {\"active\": [\"aria\", \"nova\", \"sage\", \"atlas\", \"ivy\", \"main\"], \"idle\": [], \"woken\": []}, \"cost\": \"ok\", \"profit_war\": \"error:'building_name'\"}",
+      "result": "success",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T13:30:01.502582-05:00",
+      "action": "SEO_COMPLETE",
+      "detail": "All 36 Etsy SEO titles batched from aria-seo-work-2026-08-18.md",
+      "result": "success",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T13:30:01.502582-05:00",
+      "action": "DASHBOARD_HEALED",
+      "detail": "Sync OK. Warnings: 0. Stale: 0.",
+      "result": "ok",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T13:30:01.502582-05:00",
+      "action": "AGENT_WATCHDOG",
+      "detail": "Active: ['aria', 'nova', 'sage', 'atlas', 'ivy', 'main']. Idle: []. Woken: [].",
+      "result": "success",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T13:30:01.502582-05:00",
+      "action": "COST_GUARD_RUN",
+      "detail": "Daily $0.0000/$3.33. Monthly 0.2%. Alerts: []. Actions: [].",
+      "result": "ok",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T13:30:01.502582-05:00",
+      "action": "PROFIT_WAR_ERROR",
+      "detail": "'building_name'",
+      "result": "error",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T13:30:01.502582-05:00",
       "action": "EVOLVE_CYCLE_COMPLETE",
       "detail": "Full cycle complete. Results: {\"model\": \"no_change\", \"seo\": \"complete\", \"dashboard\": \"ok\", \"watchdog\": {\"active\": [\"aria\", \"nova\", \"sage\", \"atlas\", \"ivy\", \"main\"], \"idle\": [], \"woken\": []}, \"cost\": \"ok\", \"profit_war\": \"error:'building_name'\"}",
       "result": "success",
@@ -780,7 +780,7 @@
         "height_m": 4.0
       }
     ],
-    "last_updated": "2026-08-19T13:00:01.199170-05:00"
+    "last_updated": "2026-08-19T13:30:01.502582-05:00"
   },
   "agent_requests": {
     "generated_at": "2026-08-18T23:38:00-05:00",
@@ -1207,32 +1207,34 @@
     "automation_policy_status": "unavailable"
   },
   "netlify_usage": {
-    "checked_at": "2026-08-19T18:08:32Z",
-    "mode": "warning",
+    "checked_at": "2026-08-19T18:15:31Z",
+    "mode": "blocked",
     "billing_period_start": "2026-07-27",
     "billing_period_end": "2026-08-26",
     "last_exact_observation_at": "2026-08-19T04:14:26.446693+00:00",
     "observed_credits_available": 639.4,
-    "credits_available_upper_bound": 399.4,
-    "credits_consumed_lower_bound": 3754.1,
+    "credits_available_upper_bound": 639.4,
+    "credits_consumed_lower_bound": 3514.1,
     "plan_monthly_credits": 3000.0,
     "production_deploy_credits_observed": 3480.0,
-    "production_deploy_credits_since_observation": 240.0,
+    "production_deploy_credits_since_observation": 0.0,
     "ai_inference_credits_observed": 0.0,
     "web_request_credits_observed": 8.0,
     "compute_credits_observed": 0.2,
     "bandwidth_credits_observed": 25.9,
     "protected_reserve_credits": 300.0,
     "one_production_release_credits": 15.0,
-    "successful_production_deploys_since_observation": 16,
-    "release_authorized": true,
+    "successful_production_deploys_since_observation": 0,
+    "release_authorized": false,
     "automatic_production_deploys_enabled": null,
     "automatic_production_deploys_verified_off": false,
     "auto_recharge_enabled": false,
-    "control_api_available": true,
+    "control_api_available": false,
     "balance_basis": "Exact owner-authenticated balance less confirmed production-deploy debits; traffic meters remain conservative between exact observations.",
     "next_check_seconds": 900,
-    "issue_codes": []
+    "issue_codes": [
+      "NETLIFY_CONTROL_API_UNAVAILABLE"
+    ]
   },
   "google_usage": {
     "plan": "Google One AI Ultra",
@@ -1517,7 +1519,7 @@
     "channels": [
       {
         "label": "Existing Etsy shop",
-        "value": "1,467 public items · 1,688 local PDFs audited · 155 visits, 2 orders, $8.73 Etsy-reported revenue, and -$5.12 Etsy-reported net for 2026-08-01–2026-08-16 · account balance -$305.61, with $291.58 due · onsite ads paused; former daily budget $1.00; final observed spend $7.39 for 0 orders in 30 days · 442 title opportunities · 12 one-photo listings · 3 policy-removed products quarantined · payment statement: $8.73 sales, $13.85 total platform costs, -$5.12 partial net · 1 future minimalist bundle private-ready · seller exports 4/4 · settled cash and reconciled profit unavailable"
+        "value": "1,467 public items · 1,688 local PDFs audited · 155 visits, 2 orders, $8.73 Etsy-reported revenue, and -$5.12 Etsy-reported net for 2026-08-01–2026-08-16 · account balance -$305.61, with $291.58 due · onsite ads paused; former daily budget $1.00; final observed spend $7.39 for 0 orders in 30 days · 442 title opportunities · 12 one-photo listings · 3 policy-removed products quarantined · payment statement: $8.73 sales, $13.85 total platform costs, -$5.12 partial net · 1 future minimalist bundle private-ready · seller exports 0/4 · settled cash and reconciled profit unavailable"
       },
       {
         "label": "SwirlCraftDigital.com",
@@ -1650,21 +1652,26 @@
     ],
     "etsy_export_intake": {
       "available": true,
-      "status": "already_imported",
+      "status": "waiting_for_exports",
       "fresh_export_counts": {
-        "active_listings": 1,
-        "orders": 1,
-        "order_items": 1,
-        "payment_account": 1
+        "active_listings": 0,
+        "orders": 0,
+        "order_items": 0,
+        "payment_account": 0
       },
-      "complete_source_count": 4,
+      "complete_source_count": 0,
       "required_source_count": 4,
-      "batch_ready": true,
-      "batch_imported": true,
+      "batch_ready": false,
+      "batch_imported": false,
       "changed": false,
       "coverage_attested": false,
       "financial_reconciliation_ready": false,
-      "issue_codes": []
+      "issue_codes": [
+        "MISSING_FRESH_EXPORT:active_listings",
+        "MISSING_FRESH_EXPORT:order_items",
+        "MISSING_FRESH_EXPORT:orders",
+        "MISSING_FRESH_EXPORT:payment_account"
+      ]
     },
     "etsy_partial_payment_statement": {
       "available": true,
@@ -2685,7 +2692,7 @@
         "current_assignment": "Maintain the four-export closed-day reconciliation, resolve the exact legal-form risk gate, and review one provenance-clean private product before changing any growth listing.",
         "next_gate": "Approve or decline the exact reversible two-listing legal-risk action; then close payout/company-cost evidence before any one-listing price, fee, delivery, or publication test.",
         "status": "authenticated shop active; loss controls and seller exports pending",
-        "evidence": "155 visits · 2 orders · $8.73 Etsy-reported revenue this month · $-5.12 Etsy-reported net · $7.39 onsite-ad spend / 0 ad orders in 30 days · $-305.61 total account balance · caregiver candidate: 2 PDFs, 3 pages each, 3 previews, $5.99 proposed but not selected, $0 authorized · seller exports 4/4 · profit unreconciled",
+        "evidence": "155 visits · 2 orders · $8.73 Etsy-reported revenue this month · $-5.12 Etsy-reported net · $7.39 onsite-ad spend / 0 ad orders in 30 days · $-305.61 total account balance · caregiver candidate: 2 PDFs, 3 pages each, 3 previews, $5.99 proposed but not selected, $0 authorized · seller exports 0/4 · profit unreconciled",
         "verified_sales": null,
         "verified_revenue_cents": null,
         "external_actions_authorized": false,
@@ -2726,7 +2733,7 @@
         "verified_revenue": null
       }
     ],
-    "truth_note": "The private 2026-08 payment statement is observed through 2026-08-16: $8.73 seller sales, $3.13 direct sale costs, $5.60 after direct sale costs, $10.72 Etsy Ads plus Etsy Plus, and -$5.12 statement net. This is partial evidence, not settled cash or company profit; seller exports are 4/4. Etsy is a real active channel, not a hypothetical one: the authenticated owner view currently shows 2 orders and $8.73 platform-reported revenue for the observed August period. That is not reconciled profit. Etsy also reports $-5.12 net, a $-305.61 total account balance, and $7.39 of onsite-ad spend with 0 attributed orders in 30 days. Official seller CSVs are still required, paid ads should not continue without owner approval, three removed-product families remain quarantined, and the legal-template sale is not a signal to scale legal content. The evidence-led non-medical Caregiver Daily Organization Log is now an original, visually verified private candidate with two three-page PDFs and three previews; its $5.99 draft is not a selected price and nothing is published. The generic daily-planner experiment is deprioritized by current Marketplace Insights. SwirlCraftDigital.com's production source is recovered and its protected cleanup preview is ready, while checkout, DNS, and production remain unchanged. Routine Foundry is a complete private Flippa asset with fixed-SKU ordering, a claims-safe listing candidate, and a deterministic buyer-handoff archive; three official sold statuses are now verified, but no explicit matched sale prices were published, so the asset remains unpriced and the owner-controlled domain, live checkout acceptance, complete economics, listing, and settled transfer remain gated. Etsy validates low-ticket demand, the owned site becomes the clean higher-margin brand hub, and Flippa receives only separate transferable assets. Zero-cash internal preparation may continue across all three lanes; only one external change runs at a time."
+    "truth_note": "The private 2026-08 payment statement is observed through 2026-08-16: $8.73 seller sales, $3.13 direct sale costs, $5.60 after direct sale costs, $10.72 Etsy Ads plus Etsy Plus, and -$5.12 statement net. This is partial evidence, not settled cash or company profit; seller exports are 0/4. Etsy is a real active channel, not a hypothetical one: the authenticated owner view currently shows 2 orders and $8.73 platform-reported revenue for the observed August period. That is not reconciled profit. Etsy also reports $-5.12 net, a $-305.61 total account balance, and $7.39 of onsite-ad spend with 0 attributed orders in 30 days. Official seller CSVs are still required, paid ads should not continue without owner approval, three removed-product families remain quarantined, and the legal-template sale is not a signal to scale legal content. The evidence-led non-medical Caregiver Daily Organization Log is now an original, visually verified private candidate with two three-page PDFs and three previews; its $5.99 draft is not a selected price and nothing is published. The generic daily-planner experiment is deprioritized by current Marketplace Insights. SwirlCraftDigital.com's production source is recovered and its protected cleanup preview is ready, while checkout, DNS, and production remain unchanged. Routine Foundry is a complete private Flippa asset with fixed-SKU ordering, a claims-safe listing candidate, and a deterministic buyer-handoff archive; three official sold statuses are now verified, but no explicit matched sale prices were published, so the asset remains unpriced and the owner-controlled domain, live checkout acceptance, complete economics, listing, and settled transfer remain gated. Etsy validates low-ticket demand, the owned site becomes the clean higher-margin brand hub, and Flippa receives only separate transferable assets. Zero-cash internal preparation may continue across all three lanes; only one external change runs at a time."
   },
   "fulfillment": {
     "steps": [
@@ -2825,8 +2832,8 @@
       "status": "working",
       "automation": "2 enabled",
       "last_outcome": "Recent run ok",
-      "last_activity": "Aug 19, 1:10 PM",
-      "last_activity_at": "2026-08-19T13:10:16-05:00",
+      "last_activity": "Aug 19, 1:30 PM",
+      "last_activity_at": "2026-08-19T13:30:25-05:00",
       "model": "OpenAI GEMINI-3.5-FLASH",
       "sessions_24h": 8,
       "sessions_7d": 286,
@@ -2858,11 +2865,20 @@
         "observed_at": "Aug 19, 9:29 AM",
         "observed_at_iso": "2026-08-19T09:29:17-05:00",
         "presence_source": "Live task ledger",
-        "next_action": "Rowan Autonomous Company Director · Aug 19, 1:18 PM",
-        "completed_24h": 8,
+        "next_action": "Rowan Autonomous Company Director · Aug 19, 2:18 PM",
+        "completed_24h": 9,
         "failed_24h": 8,
-        "runs_7d": 596,
+        "runs_7d": 589,
         "history": [
+          {
+            "at": "Aug 19, 1:18 PM",
+            "at_iso": "2026-08-19T13:18:20-05:00",
+            "at_ms": 1787163500475,
+            "title": "Rowan Autonomous Company Director",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Founder Tower · Executive command desk"
+          },
           {
             "at": "Aug 19, 12:18 PM",
             "at_iso": "2026-08-19T12:18:21-05:00",
@@ -2925,15 +2941,6 @@
             "detail": "Ended with an exception",
             "status": "failed",
             "location": "Founder Tower · incident room"
-          },
-          {
-            "at": "Aug 19, 5:18 AM",
-            "at_iso": "2026-08-19T05:18:11-05:00",
-            "at_ms": 1787134691006,
-            "title": "Rowan Autonomous Company Director",
-            "detail": "Ended with an exception",
-            "status": "failed",
-            "location": "Founder Tower · incident room"
           }
         ]
       }
@@ -2976,14 +2983,23 @@
         "location": "Commerce Row · Checkout and buyer-care studio",
         "current_activity": "Monitoring SwirlCraft 15-Minute Customer Reply Triage; no task is executing now",
         "current_assignment": "Managing Etsy catalog triage, listing safety deactivations, and order reconciliation.",
-        "observed_at": "Aug 19, 1:02 PM",
-        "observed_at_iso": "2026-08-19T13:02:59-05:00",
+        "observed_at": "Aug 19, 1:17 PM",
+        "observed_at_iso": "2026-08-19T13:17:59-05:00",
         "presence_source": "Scheduler snapshot",
-        "next_action": "SwirlCraft 15-Minute Customer Reply Triage · Aug 19, 1:17 PM",
-        "completed_24h": 62,
+        "next_action": "SwirlCraft 15-Minute Customer Reply Triage · Aug 19, 1:32 PM",
+        "completed_24h": 63,
         "failed_24h": 3,
-        "runs_7d": 322,
+        "runs_7d": 323,
         "history": [
+          {
+            "at": "Aug 19, 1:18 PM",
+            "at_iso": "2026-08-19T13:18:01-05:00",
+            "at_ms": 1787163481853,
+            "title": "SwirlCraft 15-Minute Customer Reply Triage",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Commerce Row · Checkout and buyer-care studio"
+          },
           {
             "at": "Aug 19, 1:03 PM",
             "at_iso": "2026-08-19T13:03:01-05:00",
@@ -3042,15 +3058,6 @@
             "at": "Aug 19, 11:33 AM",
             "at_iso": "2026-08-19T11:33:02-05:00",
             "at_ms": 1787157182596,
-            "title": "SwirlCraft 15-Minute Customer Reply Triage",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Commerce Row · Checkout and buyer-care studio"
-          },
-          {
-            "at": "Aug 19, 11:18 AM",
-            "at_iso": "2026-08-19T11:18:01-05:00",
-            "at_ms": 1787156281681,
             "title": "SwirlCraft 15-Minute Customer Reply Triage",
             "detail": "Completed successfully",
             "status": "succeeded",
@@ -3279,11 +3286,20 @@
         "observed_at": "Aug 19, 10:07 AM",
         "observed_at_iso": "2026-08-19T10:07:02-05:00",
         "presence_source": "Live task ledger",
-        "next_action": "Rowan Netlify Decision Sync · Aug 19, 1:18 PM",
-        "completed_24h": 62,
+        "next_action": "Rowan Netlify Decision Sync · Aug 19, 1:33 PM",
+        "completed_24h": 63,
         "failed_24h": 22,
-        "runs_7d": 475,
+        "runs_7d": 476,
         "history": [
+          {
+            "at": "Aug 19, 1:18 PM",
+            "at_iso": "2026-08-19T13:18:26-05:00",
+            "at_ms": 1787163506501,
+            "title": "Rowan Netlify Decision Sync",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Systems Foundry · Reliability and delivery lab"
+          },
           {
             "at": "Aug 19, 1:09 PM",
             "at_iso": "2026-08-19T13:09:07-05:00",
@@ -3342,15 +3358,6 @@
             "at": "Aug 19, 12:03 PM",
             "at_iso": "2026-08-19T12:03:06-05:00",
             "at_ms": 1787158986474,
-            "title": "Rowan Netlify Decision Sync",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Systems Foundry · Reliability and delivery lab"
-          },
-          {
-            "at": "Aug 19, 11:48 AM",
-            "at_iso": "2026-08-19T11:48:06-05:00",
-            "at_ms": 1787158086405,
             "title": "Rowan Netlify Decision Sync",
             "detail": "Completed successfully",
             "status": "succeeded",
@@ -3921,8 +3928,8 @@
       {
         "category": "Netlify reserve",
         "name": "Credit and deploy circuit breaker",
-        "status": "attention",
-        "detail": "At most 399.4 credits remain from the latest exact owner observation, with a 300-credit hard reserve. Automatic production deploy status is not verified off; auto recharge is disabled. One explicit release costs 15 credits. The deterministic monitor checks every 15 minutes."
+        "status": "critical",
+        "detail": "At most 639.4 credits remain from the latest exact owner observation, with a 300-credit hard reserve. Automatic production deploy status is not verified off; auto recharge is disabled. One explicit release costs 15 credits. The deterministic monitor checks every 15 minutes."
       },
       {
         "category": "AI reserve",
@@ -4008,52 +4015,35 @@
         "name": "SwirlCraft 15-Minute Customer Reply Triage",
         "owner": "ivy",
         "cadence": "Every 15m",
-        "last_run": "Aug 19, 1:02 PM",
-        "last_run_at": "2026-08-19T13:02:59-05:00",
-        "last_run_ms": 1787162579585,
-        "next_run": "Aug 19, 1:17 PM",
-        "next_run_at": "2026-08-19T13:17:59-05:00",
-        "next_run_ms": 1787163479585,
+        "last_run": "Aug 19, 1:17 PM",
+        "last_run_at": "2026-08-19T13:17:59-05:00",
+        "last_run_ms": 1787163479628,
+        "next_run": "Aug 19, 1:32 PM",
+        "next_run_at": "2026-08-19T13:32:59-05:00",
+        "next_run_ms": 1787164379628,
         "running": false,
         "running_since": "Unavailable",
         "running_since_at": null,
         "status": "ok",
         "error_streak": 0,
-        "duration_ms": 2402
-      },
-      {
-        "name": "Rowan Autonomous Company Director",
-        "owner": "main",
-        "cadence": "Every 1h",
-        "last_run": "Aug 19, 12:18 PM",
-        "last_run_at": "2026-08-19T12:18:03-05:00",
-        "last_run_ms": 1787159883795,
-        "next_run": "Aug 19, 1:18 PM",
-        "next_run_at": "2026-08-19T13:18:03-05:00",
-        "next_run_ms": 1787163483795,
-        "running": false,
-        "running_since": "Unavailable",
-        "running_since_at": null,
-        "status": "ok",
-        "error_streak": 0,
-        "duration_ms": 17844
+        "duration_ms": 2225
       },
       {
         "name": "Rowan Netlify Decision Sync",
         "owner": "atlas",
         "cadence": "Every 15m",
-        "last_run": "Aug 19, 1:03 PM",
-        "last_run_at": "2026-08-19T13:03:23-05:00",
-        "last_run_ms": 1787162603818,
-        "next_run": "Aug 19, 1:18 PM",
-        "next_run_at": "2026-08-19T13:18:23-05:00",
-        "next_run_ms": 1787163503818,
+        "last_run": "Aug 19, 1:18 PM",
+        "last_run_at": "2026-08-19T13:18:23-05:00",
+        "last_run_ms": 1787163503857,
+        "next_run": "Aug 19, 1:33 PM",
+        "next_run_at": "2026-08-19T13:33:23-05:00",
+        "next_run_ms": 1787164403857,
         "running": false,
         "running_since": "Unavailable",
         "running_since_at": null,
         "status": "ok",
         "error_streak": 0,
-        "duration_ms": 2439
+        "duration_ms": 2644
       },
       {
         "name": "Rowan 15-Minute Resource Circuit Breaker",
@@ -4071,6 +4061,23 @@
         "status": "error",
         "error_streak": 9,
         "duration_ms": 41523
+      },
+      {
+        "name": "Rowan Autonomous Company Director",
+        "owner": "main",
+        "cadence": "Every 1h",
+        "last_run": "Aug 19, 1:18 PM",
+        "last_run_at": "2026-08-19T13:18:03-05:00",
+        "last_run_ms": 1787163483831,
+        "next_run": "Aug 19, 2:18 PM",
+        "next_run_at": "2026-08-19T14:18:03-05:00",
+        "next_run_ms": 1787167083831,
+        "running": false,
+        "running_since": "Unavailable",
+        "running_since_at": null,
+        "status": "ok",
+        "error_streak": 0,
+        "duration_ms": 16644
       },
       {
         "name": "Rowan Daily Etsy Finance Close",
@@ -4169,7 +4176,7 @@
       "severity": "critical",
       "category": "Etsy",
       "title": "Etsy payment account needs reconciliation",
-      "detail": "The private 2026-08 payment statement is observed through 2026-08-16: $8.73 seller sales, $3.13 direct sale costs, $5.60 after direct sale costs, $10.72 Etsy Ads plus Etsy Plus, and -$5.12 statement net. This is partial evidence, not settled cash or company profit; seller exports are 4/4. One immutable reconciliation request is ready for the exact 2026-08-01–2026-08-17 boundary. It records 1/4 current sources and requests the 0 missing exports, then requires a fresh four-export owner-session batch, exact opening and ending balances, complete coverage, and payout reconciliation. The authenticated account also shows a -$305.61 total balance and $291.58 due on 2026-08-15.",
+      "detail": "The private 2026-08 payment statement is observed through 2026-08-16: $8.73 seller sales, $3.13 direct sale costs, $5.60 after direct sale costs, $10.72 Etsy Ads plus Etsy Plus, and -$5.12 statement net. This is partial evidence, not settled cash or company profit; seller exports are 0/4. One immutable reconciliation request is ready for the exact 2026-08-01–2026-08-17 boundary. It records 1/4 current sources and requests the 0 missing exports, then requires a fresh four-export owner-session batch, exact opening and ending balances, complete coverage, and payout reconciliation. The authenticated account also shows a -$305.61 total balance and $291.58 due on 2026-08-15.",
       "owner": "Ivy + Andrew",
       "impact": "Cash liability and profit truth"
     },
@@ -4318,7 +4325,7 @@
     {
       "time": "Now",
       "title": "Private Etsy payment statement observed",
-      "detail": "The private 2026-08 payment statement is observed through 2026-08-16: $8.73 seller sales, $3.13 direct sale costs, $5.60 after direct sale costs, $10.72 Etsy Ads plus Etsy Plus, and -$5.12 statement net. This is partial evidence, not settled cash or company profit; seller exports are 4/4. The dashboard receives only validated aggregate cents and counts; private order IDs, product names, paths, and download links are excluded. No Etsy setting was changed."
+      "detail": "The private 2026-08 payment statement is observed through 2026-08-16: $8.73 seller sales, $3.13 direct sale costs, $5.60 after direct sale costs, $10.72 Etsy Ads plus Etsy Plus, and -$5.12 statement net. This is partial evidence, not settled cash or company profit; seller exports are 0/4. The dashboard receives only validated aggregate cents and counts; private order IDs, product names, paths, and download links are excluded. No Etsy setting was changed."
     },
     {
       "time": "Now",
@@ -4434,8 +4441,8 @@
     },
     {
       "label": "Netlify credit reserve",
-      "status": "attention",
-      "detail": "Conservative available balance is at most 399.4 credits; current-cycle consumption is at least 3,754.1. Production deploys consumed 3,480 credits at the exact observation. Automatic production deploy status is not verified off; every explicit release is budget-gated, and snapshot refreshes use private storage instead."
+      "status": "critical",
+      "detail": "Conservative available balance is at most 639.4 credits; current-cycle consumption is at least 3,514.1. Production deploys consumed 3,480 credits at the exact observation. Automatic production deploy status is not verified off; every explicit release is budget-gated, and snapshot refreshes use private storage instead."
     },
     {
       "label": "Automation signature policy",
@@ -4470,7 +4477,7 @@
     {
       "label": "Etsy partial payment statement",
       "status": "attention",
-      "detail": "The private 2026-08 payment statement is observed through 2026-08-16: $8.73 seller sales, $3.13 direct sale costs, $5.60 after direct sale costs, $10.72 Etsy Ads plus Etsy Plus, and -$5.12 statement net. This is partial evidence, not settled cash or company profit; seller exports are 4/4. The statement observer validates all cent equations and fails closed on unknown row types, period drift, or any authority claim."
+      "detail": "The private 2026-08 payment statement is observed through 2026-08-16: $8.73 seller sales, $3.13 direct sale costs, $5.60 after direct sale costs, $10.72 Etsy Ads plus Etsy Plus, and -$5.12 statement net. This is partial evidence, not settled cash or company profit; seller exports are 0/4. The statement observer validates all cent equations and fails closed on unknown row types, period drift, or any authority claim."
     },
     {
       "label": "Etsy reconciliation request",
@@ -4495,7 +4502,7 @@
     {
       "label": "Authenticated Etsy operating evidence",
       "status": "attention",
-      "detail": "PII-free owner aggregates are current through 2026-08-16: 2 orders, $8.73 platform-reported revenue, $-5.12 platform-reported net, and $-305.61 total balance. These values are operating evidence, not reconciled company profit; seller export intake is 4/4."
+      "detail": "PII-free owner aggregates are current through 2026-08-16: 2 orders, $8.73 platform-reported revenue, $-5.12 platform-reported net, and $-305.61 total balance. These values are operating evidence, not reconciled company profit; seller export intake is 0/4."
     },
     {
       "label": "Etsy archive review",
