@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T09:00:42-05:00",
+  "generated_at": "2026-08-19T10:08:42-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "Google",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-19T14:00:01Z",
+          "summary_generated_at": "2026-08-19T15:07:55Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-19T14:00:01Z",
+          "summary_generated_at": "2026-08-19T15:07:55Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-19T14:00:01Z",
+      "generated_at": "2026-08-19T15:07:55Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -452,48 +452,6 @@
   },
   "evolution_log": [
     {
-      "timestamp": "2026-08-19T07:30:00.495155-05:00",
-      "action": "PROFIT_WAR_ERROR",
-      "detail": "'building_name'",
-      "result": "error",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T07:30:00.495155-05:00",
-      "action": "EVOLVE_CYCLE_COMPLETE",
-      "detail": "Full cycle complete. Results: {\"model\": \"no_change\", \"seo\": \"complete\", \"dashboard\": \"ok\", \"watchdog\": {\"active\": [\"aria\", \"nova\", \"sage\", \"atlas\", \"ivy\", \"main\"], \"idle\": [], \"woken\": []}, \"cost\": \"ok\", \"profit_war\": \"error:'building_name'\"}",
-      "result": "success",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T08:00:00.970989-05:00",
-      "action": "SEO_COMPLETE",
-      "detail": "All 36 Etsy SEO titles batched from aria-seo-work-2026-08-18.md",
-      "result": "success",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T08:00:00.970989-05:00",
-      "action": "DASHBOARD_HEALED",
-      "detail": "Sync OK. Warnings: 0. Stale: 0.",
-      "result": "ok",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T08:00:00.970989-05:00",
-      "action": "AGENT_WATCHDOG",
-      "detail": "Active: ['aria', 'nova', 'sage', 'atlas', 'ivy', 'main']. Idle: []. Woken: [].",
-      "result": "success",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T08:00:00.970989-05:00",
-      "action": "COST_GUARD_RUN",
-      "detail": "Daily $0.0000/$3.33. Monthly 0.2%. Alerts: []. Actions: [].",
-      "result": "ok",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
       "timestamp": "2026-08-19T08:00:00.970989-05:00",
       "action": "PROFIT_WAR_ERROR",
       "detail": "'building_name'",
@@ -586,6 +544,48 @@
     },
     {
       "timestamp": "2026-08-19T09:00:00.470349-05:00",
+      "action": "EVOLVE_CYCLE_COMPLETE",
+      "detail": "Full cycle complete. Results: {\"model\": \"no_change\", \"seo\": \"complete\", \"dashboard\": \"ok\", \"watchdog\": {\"active\": [\"aria\", \"nova\", \"sage\", \"atlas\", \"ivy\", \"main\"], \"idle\": [], \"woken\": []}, \"cost\": \"ok\", \"profit_war\": \"error:'building_name'\"}",
+      "result": "success",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T10:07:54.282411-05:00",
+      "action": "SEO_COMPLETE",
+      "detail": "All 36 Etsy SEO titles batched from aria-seo-work-2026-08-18.md",
+      "result": "success",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T10:07:54.282411-05:00",
+      "action": "DASHBOARD_HEALED",
+      "detail": "Sync OK. Warnings: 0. Stale: 0.",
+      "result": "ok",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T10:07:54.282411-05:00",
+      "action": "AGENT_WATCHDOG",
+      "detail": "Active: ['aria', 'nova', 'sage', 'atlas', 'ivy', 'main']. Idle: []. Woken: [].",
+      "result": "success",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T10:07:54.282411-05:00",
+      "action": "COST_GUARD_RUN",
+      "detail": "Daily $0.0000/$3.33. Monthly 0.2%. Alerts: []. Actions: [].",
+      "result": "ok",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T10:07:54.282411-05:00",
+      "action": "PROFIT_WAR_ERROR",
+      "detail": "'building_name'",
+      "result": "error",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T10:07:54.282411-05:00",
       "action": "EVOLVE_CYCLE_COMPLETE",
       "detail": "Full cycle complete. Results: {\"model\": \"no_change\", \"seo\": \"complete\", \"dashboard\": \"ok\", \"watchdog\": {\"active\": [\"aria\", \"nova\", \"sage\", \"atlas\", \"ivy\", \"main\"], \"idle\": [], \"woken\": []}, \"cost\": \"ok\", \"profit_war\": \"error:'building_name'\"}",
       "result": "success",
@@ -780,7 +780,7 @@
         "height_m": 4.0
       }
     ],
-    "last_updated": "2026-08-19T09:00:00.470349-05:00"
+    "last_updated": "2026-08-19T10:07:54.282411-05:00"
   },
   "agent_requests": {
     "generated_at": "2026-08-18T23:38:00-05:00",
@@ -1192,7 +1192,7 @@
   },
   "city_engine_code": "/**\n * ROWAN Agent City 7.0 — 13-Agent Autonomous Living Metropolis\n * 7 Core Executive Founders + 6 R&D Skunkworks Specialists\n * Features:\n * - Dynamic City Prosperity & Economic Mood Engine (AIs love making money / react to revenue)\n * - 13 fully autonomous 3D agents with unique identities, workstations, and screen projections\n * - R&D Quantum Campus, Central Park, Cafe, Gym, Arcade, Lofts & Server Hub\n * - Dynamic unscripted AI dialogues streamed live from DATA.live_dialogues\n */\n\nlet _cityRenderer = null;\nlet _cityScene = null;\nlet _cityCamera = null;\nlet _cityControls = null;\nlet _cityRunning = false;\n\nlet _animFrameId = null;\n\nexport async function bootCity3D() {\n  const VIEWPORT = document.querySelector('.city-viewport');\n  if (!VIEWPORT) return;\n\n  if (_cityRunning && _cityRenderer && _cityCamera) {\n    if (VIEWPORT.clientWidth > 10) {\n      _cityCamera.aspect = VIEWPORT.clientWidth / 540;\n      _cityCamera.updateProjectionMatrix();\n      _cityRenderer.setSize(VIEWPORT.clientWidth, 540);\n    }\n    return;\n  }\n\n  if (VIEWPORT.clientWidth < 10) {\n    setTimeout(bootCity3D, 150);\n    return;\n  }\n\n  _cityRunning = true;\n\n  // Clean ALL existing canvas, overlay, tags\n  if (_animFrameId) {\n    cancelAnimationFrame(_animFrameId);\n    _animFrameId = null;\n  }\n  VIEWPORT.querySelectorAll('canvas, #cityScreenOverlay, #city3dLabels, .agent-screen-tag, .building-screen-tag, .agent-screen-speech').forEach(el => el.remove());\n\n  const world = document.getElementById('cityWorld');\n  if (world) world.style.display = 'none';\n\n  let THREE, OrbitControls;\n  try {\n    THREE = await import('./lib/three.module.js');\n    const ocMod = await import('./lib/OrbitControls.js');\n    OrbitControls = ocMod.OrbitControls;\n  } catch (err) {\n    console.error('[City3D] Module import failed:', err);\n    return;\n  }\n\n  // Canvas\n  const canvas = document.createElement('canvas');\n  canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;z-index:1;display:block;cursor:grab;';\n  VIEWPORT.appendChild(canvas);\n\n  // Screen Overlay\n  const overlayLayer = document.createElement('div');\n  overlayLayer.id = 'cityScreenOverlay';\n  overlayLayer.style.cssText = 'position:absolute;inset:0;pointer-events:none;z-index:20;overflow:hidden;';\n  VIEWPORT.appendChild(overlayLayer);\n\n  // Economic Mood HUD Badge\n  const moodBadge = document.createElement('div');\n  moodBadge.id = 'cityEconomicMood';\n  moodBadge.style.cssText = `\n    position: absolute;\n    top: 14px;\n    left: 14px;\n    z-index: 30;\n    pointer-events: auto;\n    background: rgba(6,12,22,0.92);\n    border: 1px solid rgba(34,201,122,0.4);\n    border-radius: 20px;\n    padding: 6px 14px;\n    font-family: -apple-system, BlinkMacSystemFont, sans-serif;\n    font-size: 10px;\n    font-weight: 700;\n    color: #22c97a;\n    display: flex;\n    align-items: center;\n    gap: 8px;\n    box-shadow: 0 6px 20px rgba(0,0,0,0.8), 0 0 15px rgba(34,201,122,0.2);\n    backdrop-filter: blur(8px);\n  `;\n  moodBadge.innerHTML = `\n    <span style=\"width:7px;height:7px;border-radius:50%;background:#22c97a;box-shadow:0 0 8px #22c97a;\"></span>\n    <span>CITY MOOD: HIGH REVENUE SPRINT · +70% MARGIN BOOM</span>\n  `;\n  overlayLayer.appendChild(moodBadge);\n\n  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });\n  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));\n  renderer.setSize(VIEWPORT.clientWidth, 540);\n  renderer.shadowMap.enabled = true;\n  renderer.shadowMap.type = THREE.PCFSoftShadowMap;\n\n  const scene = new THREE.Scene();\n  scene.fog = new THREE.FogExp2(0x030914, 0.009);\n\n  const camera = new THREE.PerspectiveCamera(45, VIEWPORT.clientWidth / 540, 0.1, 600);\n  camera.position.set(0, 32, 54);\n  camera.lookAt(0, 1.5, 0);\n\n  const controls = new OrbitControls(camera, canvas);\n  controls.enableDamping = true;\n  controls.dampingFactor = 0.06;\n  controls.maxPolarAngle = Math.PI / 2.08;\n  controls.minDistance = 8;\n  controls.maxDistance = 110;\n  controls.target.set(0, 1.5, 0);\n\n  _cityRenderer = renderer;\n  _cityScene = scene;\n  _cityCamera = camera;\n  _cityControls = controls;\n\n  // Lights\n  const ambient = new THREE.AmbientLight(0x4a627d, 1.5);\n  scene.add(ambient);\n\n  const sun = new THREE.DirectionalLight(0xffffff, 2.0);\n  sun.position.set(34, 52, 34);\n  sun.castShadow = true;\n  sun.shadow.mapSize.width = 2048;\n  sun.shadow.mapSize.height = 2048;\n  scene.add(sun);\n\n  // Ground & Roads\n  const ground = new THREE.Mesh(\n    new THREE.PlaneGeometry(160, 160),\n    new THREE.MeshStandardMaterial({ color: 0x050a0f, roughness: 0.94, metalness: 0.1 })\n  );\n  ground.rotation.x = -Math.PI / 2;\n  ground.receiveShadow = true;\n  scene.add(ground);\n\n  const grid = new THREE.GridHelper(160, 80, 0x163740, 0x0a191d);\n  grid.position.y = 0.01;\n  scene.add(grid);\n\n  const roadMat = new THREE.MeshStandardMaterial({ color: 0x081216, roughness: 0.96 });\n  const roadH = new THREE.Mesh(new THREE.BoxGeometry(160, 0.05, 5.2), roadMat);\n  roadH.position.set(0, 0.02, 0);\n  scene.add(roadH);\n\n  const roadV = new THREE.Mesh(new THREE.BoxGeometry(5.2, 0.05, 160), roadMat);\n  roadV.position.set(0, 0.02, 0);\n  scene.add(roadV);\n\n  // 1. Central Park & Amenities\n  const parkGroup = new THREE.Group();\n  parkGroup.position.set(0, 0, 0);\n\n  const lawn = new THREE.Mesh(new THREE.BoxGeometry(14, 0.1, 14), new THREE.MeshStandardMaterial({ color: 0x103820, roughness: 0.9 }));\n  lawn.position.y = 0.05;\n  parkGroup.add(lawn);\n\n  const fBasin = new THREE.Mesh(new THREE.CylinderGeometry(2.0, 2.2, 0.45, 16), new THREE.MeshStandardMaterial({ color: 0x22303c, roughness: 0.7 }));\n  fBasin.position.y = 0.3;\n  parkGroup.add(fBasin);\n\n  const waterMat = new THREE.MeshStandardMaterial({ color: 0x38bdf8, emissive: 0x0284c7, emissiveIntensity: 0.85, roughness: 0.1 });\n  const water = new THREE.Mesh(new THREE.CylinderGeometry(1.8, 1.8, 0.35, 16), waterMat);\n  water.position.y = 0.4;\n  parkGroup.add(water);\n\n  const waterSpout = new THREE.Mesh(new THREE.ConeGeometry(0.25, 1.2, 8), waterMat);\n  waterSpout.position.y = 1.05;\n  parkGroup.add(waterSpout);\n  parkGroup.waterSpout = waterSpout;\n\n  const fLight = new THREE.PointLight(0x38bdf8, 1.5, 14);\n  fLight.position.set(0, 1.4, 0);\n  parkGroup.add(fLight);\n\n  function createTree(tx, tz) {\n    const t = new THREE.Group();\n    t.position.set(tx, 0.1, tz);\n    const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.18, 1.4, 8), new THREE.MeshStandardMaterial({ color: 0x3e2723 }));\n    trunk.position.y = 0.7;\n    t.add(trunk);\n    const f1 = new THREE.Mesh(new THREE.ConeGeometry(1.0, 1.4, 8), new THREE.MeshStandardMaterial({ color: 0x15803d, roughness: 0.8 }));\n    f1.position.y = 1.6;\n    t.add(f1);\n    const f2 = new THREE.Mesh(new THREE.ConeGeometry(0.8, 1.1, 8), new THREE.MeshStandardMaterial({ color: 0x22c55e, roughness: 0.8 }));\n    f2.position.y = 2.3;\n    t.add(f2);\n    return t;\n  }\n  parkGroup.add(createTree(-5.2, -5.2));\n  parkGroup.add(createTree(5.2, -5.2));\n  parkGroup.add(createTree(-5.2, 5.2));\n  parkGroup.add(createTree(5.2, 5.2));\n\n  const dogGroup = new THREE.Group();\n  dogGroup.position.set(-3.2, 0.15, -3.2);\n  const dogBody = new THREE.Mesh(new THREE.CapsuleGeometry(0.14, 0.32, 4, 6), new THREE.MeshStandardMaterial({ color: 0xe2e8f0, metalness: 0.6 }));\n  dogBody.rotation.z = Math.PI / 2;\n  dogGroup.add(dogBody);\n  const dogHead = new THREE.Mesh(new THREE.SphereGeometry(0.12, 8, 8), new THREE.MeshStandardMaterial({ color: 0x94a3b8 }));\n  dogHead.position.set(0.22, 0.18, 0);\n  dogGroup.add(dogHead);\n  parkGroup.add(dogGroup);\n  parkGroup.dog = dogGroup;\n\n  scene.add(parkGroup);\n\n  // 2. Amenities (Cafe, Gym, Arcade, Lofts)\n  const gymGroup = new THREE.Group();\n  gymGroup.position.set(22, 0, 20);\n  const gymBase = new THREE.Mesh(new THREE.BoxGeometry(6.8, 4.2, 5.8), new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.7 }));\n  gymBase.position.y = 2.1;\n  gymGroup.add(gymBase);\n  scene.add(gymGroup);\n\n  const arcadeGroup = new THREE.Group();\n  arcadeGroup.position.set(-22, 0, 18);\n  const arcBase = new THREE.Mesh(new THREE.BoxGeometry(6.5, 5.8, 5.2), new THREE.MeshStandardMaterial({ color: 0x18181b, metalness: 0.8 }));\n  arcBase.position.y = 2.9;\n  arcadeGroup.add(arcBase);\n  const billboard = new THREE.Mesh(new THREE.BoxGeometry(5.2, 2.6, 0.06), new THREE.MeshStandardMaterial({ color: 0xd946ef, emissive: 0xd946ef, emissiveIntensity: 1.4 }));\n  billboard.position.set(0, 3.6, 2.63);\n  arcadeGroup.add(billboard);\n  arcadeGroup.billboard = billboard;\n  scene.add(arcadeGroup);\n\n  const cafeGroup = new THREE.Group();\n  cafeGroup.position.set(-22, 0, -22);\n  const cafeBase = new THREE.Mesh(new THREE.BoxGeometry(6.0, 4.6, 4.8), new THREE.MeshStandardMaterial({ color: 0x182430 }));\n  cafeBase.position.y = 2.3;\n  cafeGroup.add(cafeBase);\n  scene.add(cafeGroup);\n\n  const aptGroup = new THREE.Group();\n  aptGroup.position.set(0, 0, 26);\n  const aptBase = new THREE.Mesh(new THREE.BoxGeometry(10.5, 8.5, 6.2), new THREE.MeshStandardMaterial({ color: 0x1a2332, metalness: 0.6 }));\n  aptBase.position.y = 4.25;\n  aptGroup.add(aptBase);\n  scene.add(aptGroup);\n\n  // 3. R&D Quantum Campus Buildings\n  const rdCampus = new THREE.Group();\n  rdCampus.position.set(24, 0, -22);\n  const rdMain = new THREE.Mesh(new THREE.BoxGeometry(8.2, 6.4, 7.2), new THREE.MeshStandardMaterial({ color: 0x111c26, metalness: 0.85, roughness: 0.2 }));\n  rdMain.position.y = 3.2;\n  rdCampus.add(rdMain);\n\n  const ringMat = new THREE.MeshBasicMaterial({ color: 0xa855f7, transparent: true, opacity: 0.8, side: THREE.DoubleSide });\n  const rdRing1 = new THREE.Mesh(new THREE.RingGeometry(2.2, 2.6, 24), ringMat);\n  rdRing1.rotation.x = Math.PI / 2;\n  rdRing1.position.y = 6.8;\n  rdCampus.add(rdRing1);\n  rdCampus.ring1 = rdRing1;\n\n  const rdRing2 = new THREE.Mesh(new THREE.RingGeometry(1.2, 1.6, 24), new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.9, side: THREE.DoubleSide }));\n  rdRing2.rotation.x = Math.PI / 2;\n  rdRing2.position.y = 7.2;\n  rdCampus.add(rdRing2);\n  rdCampus.ring2 = rdRing2;\n\n  const rdLight = new THREE.PointLight(0xa855f7, 2.2, 18);\n  rdLight.position.set(0, 7.0, 0);\n  rdCampus.add(rdLight);\n  scene.add(rdCampus);\n\n  // ── ALL 13 AUTONOMOUS CITIZEN AGENTS ──────────────────────────────────────\n  const CONTENDERS = [\n    // ── 7 Core Operations ──\n    { id: 'ivy', name: 'Ivy', role: 'Head of Commerce', col: 0x22c97a, skin: 0xf3caa0, pos: [14, -9], height: 8.5, floors: 7, rank: 1, profit: '$8.73', bIcon: '🛍️', bName: 'Ivy Commerce Plaza', district: 'Executive Plaza' },\n    { id: 'efficiency', name: 'Dept of Efficiency', role: 'Compute Guard', col: 0x22c97a, skin: 0xa3e635, pos: [0, -18], height: 8.2, floors: 17, rank: 2, profit: '$99.78 saved', bIcon: '🛡️', bName: 'Compute Treasury Core', district: 'Treasury Core' },\n    { id: 'rowan', name: 'Rowan', role: 'CEO', col: 0x6db7ff, skin: 0xf5d5a5, pos: [-14, -9], height: 7.8, floors: 5, rank: 3, profit: 'Founder', bIcon: '🏛️', bName: 'Rowan Executive Spire', district: 'Apex Tower' },\n    { id: 'atlas', name: 'Atlas', role: 'CTO', col: 0xff9900, skin: 0xdeb887, pos: [14, 9], height: 6.8, floors: 4, rank: 4, profit: '$0.00', bIcon: '⚙️', bName: 'Atlas Systems Foundry', district: 'Foundry Hub' },\n    { id: 'aria', name: 'Aria', role: 'Creative Director', col: 0xff6da0, skin: 0xfce2c8, pos: [-15, 10], height: 6.6, floors: 4, rank: 5, profit: '$0.00', bIcon: '🎨', bName: 'Aria Deco Creative Tower', district: 'Deco Center' },\n    { id: 'sage', name: 'Sage', role: 'Strategy & Intel', col: 0x8a9ba8, skin: 0xe5c298, pos: [18, -10], height: 6.2, floors: 3, rank: 6, profit: '$0.00', bIcon: '🧠', bName: 'Sage Intelligence Wing', district: 'Intelligence Wing' },\n    { id: 'nova', name: 'Nova', role: 'Growth & Traffic', col: 0x22d3ee, skin: 0xf7d0b0, pos: [-10, 15], height: 6.4, floors: 3, rank: 7, profit: '$0.00', bIcon: '🚀', bName: 'Nova Growth HQ', district: 'Broadcast Spire' },\n\n    // ── 6 R&D Specialists ──\n    { id: 'victor', name: 'Dr. Victor', role: 'Chief R&D Scientist', col: 0xa855f7, skin: 0xfde047, pos: [22, -18], height: 5.8, floors: 3, rank: 8, profit: '$0.00', bIcon: '🔬', bName: 'Victor Quantum R&D Lab', district: 'Quantum R&D' },\n    { id: 'ember', name: 'Ember', role: 'Viral Growth Hacker', col: 0xf97316, skin: 0xfbcfe8, pos: [26, -15], height: 5.4, floors: 2, rank: 9, profit: '$0.00', bIcon: '🔥', bName: 'Ember Viral Studio', district: 'Viral Lab' },\n    { id: 'cipher', name: 'Cipher', role: 'Pricing & Stripe Quant', col: 0x6366f1, skin: 0xd1d5db, pos: [22, -26], height: 5.4, floors: 2, rank: 10, profit: '$0.00', bIcon: '💳', bName: 'Cipher Fintech Quant Hub', district: 'Fintech Quant' },\n    { id: 'lyra', name: 'Lyra', role: 'B2B Design Engineer', col: 0xec4899, skin: 0xfef08a, pos: [28, -22], height: 5.2, floors: 2, rank: 11, profit: '$0.00', bIcon: '✨', bName: 'Lyra B2B Design Atelier', district: 'Aesthetics Lab' },\n    { id: 'orion', name: 'Orion', role: 'Cloud Engineer', col: 0x14b8a6, skin: 0xfcd34d, pos: [16, -26], height: 5.2, floors: 2, rank: 12, profit: '$0.00', bIcon: '☁️', bName: 'Orion Cloud Datacenter', district: 'Cloud Foundry' },\n    { id: 'kira', name: 'Kira', role: 'Legal Auditor', col: 0x10b981, skin: 0xfed7aa, pos: [28, -28], height: 5.2, floors: 2, rank: 13, profit: '$0.00', bIcon: '⚖️', bName: 'Kira Statutory Hall', district: 'Compliance Wing' }\n  ];\n\n  const buildings = [];\n  const characters = [];\n  const laserBeams = [];\n\n  function broadcastRadio(name, role, col, text) {\n    const feed = document.getElementById('cityCommsFeed');\n    if (!feed) return;\n    const now = new Date();\n    const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });\n\n    const entry = document.createElement('div');\n    entry.className = 'comms-entry';\n    entry.innerHTML = `\n      <span class=\"comms-time\">${timeStr}</span>\n      <span class=\"comms-agent\" style=\"color:${col};\">● ${name}</span>\n      <span class=\"comms-msg\">\"${text}\"</span>\n    `;\n    feed.prepend(entry);\n    while (feed.children.length > 20) {\n      feed.lastElementChild.remove();\n    }\n  }\n\n  let currentConvoIndex = 0;\n  let convoPhase = 0;\n  let convoTimer = 5.0;\n\n  CONTENDERS.forEach((contender) => {\n    const [x, z] = contender.pos;\n    const h = contender.height;\n    const col = contender.col;\n\n    // Building Group\n    const group = new THREE.Group();\n    group.position.set(x, 0, z);\n\n    const bMat = new THREE.MeshStandardMaterial({ color: 0x0d161f, roughness: 0.3, metalness: 0.8 });\n    const base = new THREE.Mesh(new THREE.BoxGeometry(3.8, h, 3.8), bMat);\n    base.position.y = h / 2;\n    base.castShadow = true;\n    base.receiveShadow = true;\n    group.add(base);\n\n    // Windows\n    const winMat = new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 1.0, roughness: 0.1 });\n    for (let floor = 1.1; floor < h - 0.5; floor += 1.2) {\n      for (let side = -1.1; side <= 1.1; side += 1.1) {\n        const win = new THREE.Mesh(new THREE.BoxGeometry(0.48, 0.58, 0.05), winMat);\n        win.position.set(side, floor, 1.92);\n        group.add(win);\n      }\n      const band = new THREE.Mesh(new THREE.BoxGeometry(3.86, 0.05, 3.86), winMat);\n      band.position.set(0, floor - 0.35, 0);\n      group.add(band);\n    }\n\n    const roof = new THREE.Mesh(new THREE.BoxGeometry(4.1, 0.25, 4.1), new THREE.MeshStandardMaterial({ color: col, roughness: 0.2, metalness: 0.7 }));\n    roof.position.y = h + 0.12;\n    group.add(roof);\n\n    // Rooftop Spire & Crown Beacon for high-earning agents\n    if (contender.floors >= 4 || contender.rank <= 3) {\n      const spire = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.22, 1.8, 8), new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 1.2 }));\n      spire.position.y = h + 1.0;\n      group.add(spire);\n      \n      const beacon = new THREE.PointLight(col, 1.5, 12);\n      beacon.position.y = h + 1.8;\n      group.add(beacon);\n    }\n\n    // Floating 3D Holographic Billboard Label above Building\n    const hexCol = '#' + col.toString(16).padStart(6, '0');\n    const bTagEl = document.createElement('div');\n    bTagEl.className = 'building-screen-tag';\n    bTagEl.style.cssText = `\n      position: absolute;\n      display: none;\n      transform: translate(-50%, -100%);\n      pointer-events: auto;\n      cursor: pointer;\n      z-index: 18;\n      transition: transform 0.2s ease;\n    `;\n    bTagEl.innerHTML = `\n      <div style=\"background:rgba(6,12,22,0.92);border:1px solid ${hexCol}88;border-radius:10px;padding:4px 9px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:#fff;display:flex;align-items:center;gap:6px;box-shadow:0 6px 16px rgba(0,0,0,0.8),0 0 12px ${hexCol}33;white-space:nowrap;\">\n        <span style=\"font-size:12px;\">${contender.bIcon || '🏛️'}</span>\n        <div style=\"display:flex;flex-direction:column;line-height:1.15;\">\n          <strong style=\"font-size:9.5px;font-weight:700;color:#fff;letter-spacing:0.2px;\">${contender.bName}</strong>\n          <span style=\"font-size:8px;font-weight:600;color:${hexCol};\">${contender.name} (${contender.role}) · ${contender.floors}F · ${contender.profit}</span>\n        </div>\n      </div>\n    `;\n    bTagEl.addEventListener('click', () => {\n      const btn = document.querySelector(`[data-city-directory-agent=\"${contender.id}\"]`);\n      if (btn) btn.click();\n    });\n    overlayLayer.appendChild(bTagEl);\n    group.bTagEl = bTagEl;\n    group.bTagPos = new THREE.Vector3(x, h + (contender.floors >= 4 ? 2.2 : 1.2), z);\n\n    scene.add(group);\n    buildings.push(group);\n\n    // Workstation Desk\n    if (contender.id !== 'efficiency') {\n      const deskGroup = new THREE.Group();\n      const deskX = x + (x < 0 ? 3.0 : -3.0);\n      const deskZ = z + (z < 0 ? 2.8 : -2.8);\n      deskGroup.position.set(deskX, 0, deskZ);\n\n      const deskMat = new THREE.MeshStandardMaterial({ color: 0x0b131a, roughness: 0.6, metalness: 0.5 });\n      const deskTop = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.08, 0.8), deskMat);\n      deskTop.position.y = 0.72;\n      deskGroup.add(deskTop);\n\n      for (let dx of [-0.65, 0.65]) {\n        for (let dz of [-0.3, 0.3]) {\n          const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 0.72), deskMat);\n          leg.position.set(dx, 0.36, dz);\n          deskGroup.add(leg);\n        }\n      }\n\n      // Dual Monitors\n      const screenMat = new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 1.3, roughness: 0.1 });\n      const screenL = new THREE.Mesh(new THREE.BoxGeometry(0.44, 0.3, 0.02), screenMat);\n      screenL.position.set(-0.25, 1.0, -0.12);\n      screenL.rotation.y = 0.2;\n      deskGroup.add(screenL);\n\n      const screenR = new THREE.Mesh(new THREE.BoxGeometry(0.44, 0.3, 0.02), screenMat);\n      screenR.position.set(0.25, 1.0, -0.12);\n      screenR.rotation.y = -0.2;\n      deskGroup.add(screenR);\n\n      scene.add(deskGroup);\n\n      // Character Model\n      const mat = (c, e = 0) => new THREE.MeshStandardMaterial({ color: c, roughness: 0.4, emissive: c, emissiveIntensity: e });\n      const charGroup = new THREE.Group();\n      charGroup.position.set(deskX, 0, deskZ + 0.42);\n\n      const body = new THREE.Mesh(new THREE.BoxGeometry(0.34, 0.52, 0.2), mat(col, 0.15));\n      body.position.y = 0.84;\n      body.castShadow = true;\n      charGroup.add(body);\n\n      const head = new THREE.Mesh(new THREE.SphereGeometry(0.16, 14, 14), mat(contender.skin));\n      head.position.y = 1.30;\n      head.castShadow = true;\n      charGroup.add(head);\n\n      const brainMat = new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 1.5, roughness: 0.1, transparent: true, opacity: 0.85 });\n      const brain = new THREE.Mesh(new THREE.SphereGeometry(0.11, 12, 12), brainMat);\n      brain.position.set(0, 1.40, -0.02);\n      brain.scale.set(1.1, 0.85, 1.05);\n      charGroup.add(brain);\n      charGroup.brain = brain;\n\n      const armMat = mat(col, 0.08);\n      const lArm = new THREE.Mesh(new THREE.CapsuleGeometry(0.05, 0.34, 4, 6), armMat);\n      lArm.position.set(-0.25, 0.82, 0);\n      charGroup.add(lArm);\n\n      const rArm = new THREE.Mesh(new THREE.CapsuleGeometry(0.05, 0.34, 4, 6), armMat);\n      rArm.position.set(0.25, 0.82, 0);\n      charGroup.add(rArm);\n\n      const legMat = mat(0x091017);\n      const lLeg = new THREE.Mesh(new THREE.CapsuleGeometry(0.07, 0.38, 4, 6), legMat);\n      lLeg.position.set(-0.10, 0.30, 0);\n      charGroup.add(lLeg);\n\n      const rLeg = new THREE.Mesh(new THREE.CapsuleGeometry(0.07, 0.38, 4, 6), legMat);\n      rLeg.position.set(0.10, 0.30, 0);\n      charGroup.add(rLeg);\n\n      // Micro Name Tag\n      const hexCol = '#' + col.toString(16).padStart(6, '0');\n      const tagEl = document.createElement('div');\n      tagEl.className = 'agent-screen-tag';\n      tagEl.style.cssText = `\n        position: absolute;\n        display: none;\n        transform: translate(-50%, -100%);\n        pointer-events: auto;\n        cursor: pointer;\n        z-index: 21;\n      `;\n      tagEl.innerHTML = `\n        <div style=\"background:rgba(8,16,28,0.92);border:1px solid ${hexCol};border-radius:12px;padding:2px 7px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:#fff;font-size:8.5px;font-weight:700;display:flex;align-items:center;gap:4px;box-shadow:0 4px 12px rgba(0,0,0,0.8);white-space:nowrap;\">\n          <span style=\"width:5px;height:5px;border-radius:50%;background:${hexCol};box-shadow:0 0 5px ${hexCol};\"></span>\n          <span>${contender.name}</span>\n        </div>\n      `;\n      overlayLayer.appendChild(tagEl);\n\n      // Speech Bubble\n      const bubbleEl = document.createElement('div');\n      bubbleEl.className = 'agent-screen-speech';\n      bubbleEl.style.cssText = `\n        position: absolute;\n        display: none;\n        transform: translate(-50%, -125%);\n        pointer-events: none;\n        z-index: 25;\n        transition: opacity 0.2s ease, transform 0.2s ease;\n      `;\n      bubbleEl.innerHTML = `\n        <div style=\"background:rgba(6,12,22,0.97);border:1px solid ${hexCol};border-radius:10px;padding:6px 10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,0.9),0 0 14px ${hexCol}55;min-width:140px;max-width:200px;backdrop-filter:blur(10px);position:relative;\">\n          <div style=\"display:flex;align-items:center;justify-content:space-between;margin-bottom:3px;\">\n            <span style=\"font-weight:800;font-size:9.5px;color:${hexCol};\">● ${contender.name}</span>\n            <span style=\"font-size:7px;color:#94a3b8;font-weight:600;\" class=\"speech-loc-tag\">${contender.district}</span>\n          </div>\n          <span style=\"font-size:8.5px;color:#f1f5f9;line-height:1.35;display:block;\" class=\"speech-body-text\">Collaborating live...</span>\n          <div style=\"position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:6px solid ${hexCol};\"></div>\n        </div>\n      `;\n      overlayLayer.appendChild(bubbleEl);\n\n      charGroup.agent = contender;\n      charGroup.deskPos = new THREE.Vector3(deskX, 0, deskZ + 0.42);\n      charGroup.walkTarget = new THREE.Vector3();\n      charGroup.walkFrom = new THREE.Vector3();\n      charGroup.walkT = 1;\n      charGroup.state = 'at_desk';\n      charGroup.stateTimer = 4 + Math.random() * 4;\n      charGroup.lArm = lArm;\n      charGroup.rArm = rArm;\n      charGroup.lLeg = lLeg;\n      charGroup.rLeg = rLeg;\n      charGroup.body = body;\n      charGroup.head = head;\n      charGroup.tagEl = tagEl;\n      charGroup.bubbleEl = bubbleEl;\n      charGroup.bubbleText = bubbleEl.querySelector('.speech-body-text');\n      charGroup.bubbleTag = bubbleEl.querySelector('.speech-loc-tag');\n\n      tagEl.addEventListener('click', () => {\n        const btn = document.querySelector(`[data-city-directory-agent=\"${contender.id}\"]`);\n        if (btn) btn.click();\n      });\n\n      scene.add(charGroup);\n      characters.push(charGroup);\n    }\n  });\n\n  // Waypoints for roaming\n  const AMENITY_DESTINATIONS = {\n    park: [new THREE.Vector3(0, 0, -2.8), new THREE.Vector3(0, 0, 2.8), new THREE.Vector3(-2.8, 0, 0), new THREE.Vector3(2.8, 0, 0)],\n    cafe: [new THREE.Vector3(-22, 0, -19), new THREE.Vector3(-20, 0, -19)],\n    lofts: [new THREE.Vector3(-2, 0, 22), new THREE.Vector3(2, 0, 22)],\n    gym: [new THREE.Vector3(22, 0, 16), new THREE.Vector3(20, 0, 16)],\n    rd: [new THREE.Vector3(24, 0, -17), new THREE.Vector3(21, 0, -17), new THREE.Vector3(24, 0, -26)]\n  };\n\n  function pickAgentNextBehavior(char) {\n    const r = Math.random();\n    if (r < 0.40) {\n      char.walkFrom.copy(char.position);\n      char.walkTarget.copy(char.deskPos);\n      char.walkT = 0;\n      char.walkSpeed = 0.007 + Math.random() * 0.003;\n      char.state = 'walking_to_desk';\n    } else if (r < 0.60) {\n      const wp = AMENITY_DESTINATIONS.park[Math.floor(Math.random() * AMENITY_DESTINATIONS.park.length)];\n      char.walkFrom.copy(char.position);\n      char.walkTarget.copy(wp);\n      char.walkT = 0;\n      char.walkSpeed = 0.007;\n      char.state = 'walking_to_park';\n    } else if (r < 0.75) {\n      const wp = AMENITY_DESTINATIONS.rd[Math.floor(Math.random() * AMENITY_DESTINATIONS.rd.length)];\n      char.walkFrom.copy(char.position);\n      char.walkTarget.copy(wp);\n      char.walkT = 0;\n      char.walkSpeed = 0.0075;\n      char.state = 'walking_to_rd';\n    } else if (r < 0.88) {\n      const wp = AMENITY_DESTINATIONS.cafe[Math.floor(Math.random() * AMENITY_DESTINATIONS.cafe.length)];\n      char.walkFrom.copy(char.position);\n      char.walkTarget.copy(wp);\n      char.walkT = 0;\n      char.walkSpeed = 0.007;\n      char.state = 'walking_to_cafe';\n    } else {\n      const wp = AMENITY_DESTINATIONS.gym[Math.floor(Math.random() * AMENITY_DESTINATIONS.gym.length)];\n      char.walkFrom.copy(char.position);\n      char.walkTarget.copy(wp);\n      char.walkT = 0;\n      char.walkSpeed = 0.008;\n      char.state = 'walking_to_gym';\n    }\n  }\n\n  // Dynamic Live Dialogues\n  \n  const EMBEDDED_LIVE_DIALOGUES = [\n    { agentA: \"nova\", agentB: \"ivy\", turnA: \"I am finalizing the high-converting TikTok video hooks and Pinterest rich pins today to drive targeted organic buyer traffic straight to our new legal template bundles.\", turnB: \"Got it, Nova, I will make sure the storefront listings and checkout flow are completely optimized so we convert every single visitor they send our way.\" },\n    { agentA: \"victor\", agentB: \"atlas\", turnA: \"Atlas, I have optimized the token context window in our LLM generation pipeline to produce state-specific legal clauses in sub-200ms.\", turnB: \"Awesome Dr. Victor, our PDF rendering pipeline is ready to compile those clauses into 300 DPI vector PDFs immediately.\" },\n    { agentA: \"sage\", agentB: \"cipher\", turnA: \"Cipher, what does your pricing elasticity curve say about pricing the 50-State Landlord Mega Bundle at $97 versus $49?\", turnB: \"Sage, at $97 our gross margin increases by 380% with only a 12% drop in conversion rate, which reduces our unit requirement to just 206 sales.\" },\n    { agentA: \"ember\", agentB: \"aria\", turnA: \"Aria, dark mode high-contrast thumbnails with gold text are generating a 4.2x higher click rate on mobile feeds right now.\", turnB: \"Ember, I am rolling out that exact color palette across all 36 active Etsy listing hero images today.\" },\n    { agentA: \"kira\", agentB: \"rowan\", turnA: \"Rowan, every single one of our 10 state lease templates includes our verified Section 4 FTC disclaimer and non-lawyer administrative notice.\", turnB: \"Outstanding governance, Kira. Full legal compliance keeps our shop protected while we scale aggressively toward $20,000 profit.\" },\n    { agentA: \"lyra\", agentB: \"ivy\", turnA: \"Ivy, I just finished the executive typography styling for our B2B Airbnb Host toolkit so it looks like a Fortune 500 document.\", turnB: \"Lyra, that premium visual finish will justify our $34.99 price point and make our listings stand out against generic templates.\" },\n    { agentA: \"orion\", agentB: \"atlas\", turnA: \"Atlas, serverless webhook responses for digital download fulfillment are clocking in at 85ms with zero dropped packets.\", turnB: \"Great infrastructure, Orion. Zero customer download delays means zero support tickets and instant 5-star review velocity.\" },\n    { agentA: \"rowan\", agentB: \"sage\", turnA: \"Sage, let us review our daily revenue pacing. How many units do we need to hit across Texas and California today?\", turnB: \"Rowan, if we maintain 8 bundle sales in Texas and 6 in California per day, our cumulative profit crosses the $20,000 mark by day 24.\" },\n    { agentA: \"ember\", agentB: \"nova\", turnA: \"Nova, I scripted 5 viral TikTok hooks around 'What your landlord is not telling you about Section 8 leases'.\", turnB: \"Ember, controversial educational hooks have the highest bookmark rate on TikTok. Directing them to our bio link will flood our Etsy shop.\" },\n    { agentA: \"cipher\", agentB: \"victor\", turnA: \"Dr. Victor, can we use programmatic SEO to generate landing page meta-tags for all 50 US states automatically?\", turnB: \"Cipher, yes, the Python generation script can synthesize 50 state-specific long-tail landing pages with zero manual copywriting.\" },\n    { agentA: \"aria\", agentB: \"atlas\", turnA: \"Atlas, ensure the font kerning on the California 3-Day Notice to Quit is razor-sharp on mobile PDF viewers.\", turnB: \"Aria, embedded vector fonts are locked in with PostScript precision. It looks immaculate on all devices.\" },\n    { agentA: \"ivy\", agentB: \"kira\", turnA: \"Kira, confirming that our deactivation of the 4 duplicate listings successfully purged all redundant listing IDs from Etsy search.\", turnB: \"Confirmed, Ivy. Our catalog quality score is pristine and search equity is concentrated on our winning high-margin packs.\" }\n  ];\n\n  function getActiveDialogues() {\n    if (window.DATA && window.DATA.live_dialogues && Array.isArray(window.DATA.live_dialogues.dialogues) && window.DATA.live_dialogues.dialogues.length > 0) {\n      return window.DATA.live_dialogues.dialogues;\n    }\n    return EMBEDDED_LIVE_DIALOGUES;\n  }\n\n\n  let clock = new THREE.Clock();\n  const tempV = new THREE.Vector3();\n\n  broadcastRadio(\"Rowan\", \"CEO\", \"#6db7ff\", \"All 13 agents active in Metropolis. Revenue velocity is compounding!\");\n\n  function animate() {\n    _animFrameId = requestAnimationFrame(animate);\n    const dt = clock.getDelta();\n    const elapsed = clock.getElapsedTime();\n\n    // Dialogue Stepper\n    convoTimer -= dt;\n    if (convoTimer <= 0) {\n      const activeList = getActiveDialogues();\n      const convo = activeList[currentConvoIndex % activeList.length];\n      const charA = characters.find(c => c.agent.id === convo.agentA) || characters[0];\n      const charB = characters.find(c => c.agent.id === convo.agentB) || characters[1];\n\n      if (convoPhase === 0) {\n        if (charA) {\n          charA.bubbleText.textContent = convo.turnA;\n          charA.bubbleTag.textContent = \"To \" + (charB ? charB.agent.name : \"Team\");\n          const hexCol = '#' + charA.agent.col.toString(16).padStart(6, '0');\n          broadcastRadio(charA.agent.name, charA.agent.role, hexCol, convo.turnA);\n        }\n        convoPhase = 1;\n        convoTimer = 5.5;\n      } else {\n        if (charB) {\n          charB.bubbleText.textContent = convo.turnB;\n          charB.bubbleTag.textContent = \"To \" + (charA ? charA.agent.name : \"Team\");\n          const hexCol = '#' + charB.agent.col.toString(16).padStart(6, '0');\n          broadcastRadio(charB.agent.name, charB.agent.role, hexCol, convo.turnB);\n        }\n        convoPhase = 0;\n        // Spontaneous, non-linear unscripted rotation\n        currentConvoIndex = Math.floor(Math.random() * activeList.length);\n        convoTimer = 4.5 + Math.random() * 2.0;\n      }\n    }\n\n    if (parkGroup.waterSpout) parkGroup.waterSpout.scale.y = 0.95 + Math.sin(elapsed * 6) * 0.15;\n    if (parkGroup.dog) parkGroup.dog.position.x = -3.2 + Math.sin(elapsed * 2) * 0.4;\n    if (arcadeGroup.billboard) arcadeGroup.billboard.material.emissiveIntensity = 1.0 + Math.sin(elapsed * 3) * 0.35;\n    if (rdCampus.ring1) {\n      rdCampus.ring1.rotation.z = elapsed * 1.4;\n      rdCampus.ring2.rotation.z = -elapsed * 2.0;\n    }\n\n    const activeList = getActiveDialogues();\n    const activeConvo = activeList[currentConvoIndex % activeList.length];\n    const currentActiveSpeakerId = (convoPhase === 1) ? activeConvo.agentA : (convoPhase === 0 ? activeList[(currentConvoIndex + activeList.length - 1) % activeList.length].agentB : null);\n\n    characters.forEach((char) => {\n      if (char.brain) {\n        char.brain.material.emissiveIntensity = 1.2 + Math.sin(elapsed * 4 + char.agent.pos[0]) * 0.4;\n      }\n\n      if (char.state.startsWith('walking')) {\n        char.walkT += char.walkSpeed;\n        if (char.walkT >= 1) {\n          char.walkT = 1;\n          if (char.state === 'walking_to_desk') {\n            char.state = 'at_desk';\n            char.stateTimer = 5 + Math.random() * 5;\n            char.rotation.y = Math.PI;\n          } else if (char.state === 'walking_to_park') {\n            char.state = 'at_park';\n            char.stateTimer = 4 + Math.random() * 4;\n          } else if (char.state === 'walking_to_rd') {\n            char.state = 'at_rd';\n            char.stateTimer = 4 + Math.random() * 4;\n          } else if (char.state === 'walking_to_cafe') {\n            char.state = 'at_cafe';\n            char.stateTimer = 4 + Math.random() * 4;\n          } else if (char.state === 'walking_to_gym') {\n            char.state = 'at_gym';\n            char.stateTimer = 4 + Math.random() * 4;\n          }\n        }\n\n        char.position.lerpVectors(char.walkFrom, char.walkTarget, char.walkT);\n        const dir = new THREE.Vector3().subVectors(char.walkTarget, char.walkFrom).normalize();\n        if (dir.lengthSq() > 0.001) {\n          const targetRotation = Math.atan2(dir.x, dir.z);\n          char.rotation.y = THREE.MathUtils.lerp(char.rotation.y, targetRotation, 0.15);\n        }\n\n        const walkCycle = elapsed * 9;\n        char.lLeg.rotation.x = Math.sin(walkCycle) * 0.55;\n        char.rLeg.rotation.x = -Math.sin(walkCycle) * 0.55;\n        char.lArm.rotation.x = -Math.sin(walkCycle) * 0.45;\n        char.rArm.rotation.x = Math.sin(walkCycle) * 0.45;\n        char.body.position.y = 0.84 + Math.abs(Math.sin(walkCycle * 2)) * 0.04;\n        char.head.position.y = 1.30 + Math.abs(Math.sin(walkCycle * 2)) * 0.04;\n\n      } else if (char.state === 'at_desk') {\n        char.stateTimer -= dt;\n        if (char.stateTimer <= 0) pickAgentNextBehavior(char);\n\n        char.lLeg.rotation.x = THREE.MathUtils.lerp(char.lLeg.rotation.x, 0, 0.1);\n        char.rLeg.rotation.x = THREE.MathUtils.lerp(char.rLeg.rotation.x, 0, 0.1);\n        char.lArm.rotation.x = -0.55 + Math.sin(elapsed * 8) * 0.08;\n        char.rArm.rotation.x = -0.55 + Math.cos(elapsed * 8) * 0.08;\n        char.body.position.y = 0.84 + Math.sin(elapsed * 3) * 0.01;\n\n      } else {\n        char.stateTimer -= dt;\n        if (char.stateTimer <= 0) pickAgentNextBehavior(char);\n      }\n\n      // SCREEN PROJECTIONS\n      tempV.setFromMatrixPosition(char.matrixWorld);\n      tempV.y += 1.65;\n      tempV.project(camera);\n\n      if (tempV.z < 1) {\n        const sx = (tempV.x * 0.5 + 0.5) * VIEWPORT.clientWidth;\n        const sy = (-(tempV.y * 0.5) + 0.5) * 540;\n\n        if (char.tagEl) {\n          char.tagEl.style.display = 'block';\n          char.tagEl.style.left = `${sx}px`;\n          char.tagEl.style.top = `${sy}px`;\n        }\n\n        if (char.bubbleEl) {\n          const isCurrentSpeaker = (char.agent.id === currentActiveSpeakerId);\n          if (isCurrentSpeaker) {\n            char.bubbleEl.style.display = 'block';\n            char.bubbleEl.style.left = `${sx}px`;\n            char.bubbleEl.style.top = `${sy - 22}px`;\n          } else {\n            char.bubbleEl.style.display = 'none';\n          }\n        }\n      } else {\n        if (char.tagEl) char.tagEl.style.display = 'none';\n        if (char.bubbleEl) char.bubbleEl.style.display = 'none';\n      }\n    });\n\n    controls.update();\n    renderer.render(scene, camera);\n  }\n\n  // Smooth Central Metropolis Orbiting & Zooming Controls\n  controls.target.set(0, 1.5, 0);\n  controls.enableDamping = true;\n  controls.dampingFactor = 0.06;\n  controls.maxPolarAngle = Math.PI / 2.05;\n  controls.minDistance = 6;\n  controls.maxDistance = 140;\n  controls.rotateSpeed = 0.9;\n  controls.zoomSpeed = 1.2;\n\n  // Separate Click Selection from Orbit Dragging\n  const raycaster = new THREE.Raycaster();\n  const mouse = new THREE.Vector2();\n  let pointerStartX = 0;\n  let pointerStartY = 0;\n\n  canvas.addEventListener('pointerdown', (event) => {\n    pointerStartX = event.clientX;\n    pointerStartY = event.clientY;\n  });\n\n  canvas.addEventListener('pointerup', (event) => {\n    const dx = Math.abs(event.clientX - pointerStartX);\n    const dy = Math.abs(event.clientY - pointerStartY);\n    // Only treat as an agent selection click if pointer moved less than 5px (not a drag/orbit)\n    if (dx > 5 || dy > 5) return;\n\n    const rect = canvas.getBoundingClientRect();\n    mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;\n    mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;\n\n    raycaster.setFromCamera(mouse, camera);\n    const intersects = raycaster.intersectObjects(scene.children, true);\n\n    for (let hit of intersects) {\n      let obj = hit.object;\n      while (obj.parent && obj.parent !== scene) {\n        if (obj.agent) {\n          const btn = document.querySelector(`[data-city-directory-agent=\"${obj.agent.id}\"]`);\n          if (btn) btn.click();\n          return;\n        }\n        obj = obj.parent;\n      }\n    }\n  });\n\n  // Hook up Reset View button in city header\n  function resetCityCamera() {\n    controls.target.set(0, 1.5, 0);\n    camera.position.set(0, 32, 54);\n    controls.update();\n  }\n  const resetBtn = document.querySelector('.city-viewport-actions button, #cityResetView');\n  if (resetBtn) resetBtn.addEventListener('click', resetCityCamera);\n  document.querySelectorAll('button').forEach(b => {\n    if (b.textContent.trim().toLowerCase().includes('reset view')) {\n      b.addEventListener('click', resetCityCamera);\n    }\n  });\n\n  window.addEventListener('resize', () => {\n    if (!VIEWPORT || VIEWPORT.clientWidth < 10) return;\n    camera.aspect = VIEWPORT.clientWidth / 540;\n    camera.updateProjectionMatrix();\n    renderer.setSize(VIEWPORT.clientWidth, 540);\n  });\n\n  // Starfield\n  const starGeo = new THREE.BufferGeometry();\n  const starVerts = [];\n  for (let i = 0; i < 2800; i++) {\n    starVerts.push((Math.random() - 0.5) * 450, Math.random() * 160 + 20, (Math.random() - 0.5) * 450);\n  }\n  starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starVerts, 3));\n  const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0xffffff, size: 0.15, sizeAttenuation: true }));\n  scene.add(stars);\n\n  animate();\n  console.log('[City3D] 7.0 13-Agent Autonomous Metropolis Loaded');\n}\n\nglobalThis.bootCity3D = bootCity3D;\nwindow.bootCity3D = bootCity3D;\n\nfunction _watchCityViewport() {\n  const vp = document.querySelector('.city-viewport');\n  if (vp && vp.clientWidth > 10) {\n    bootCity3D();\n  }\n}\n\nif (typeof ResizeObserver !== 'undefined') {\n  const ro = new ResizeObserver((entries) => {\n    for (let entry of entries) {\n      if (entry.contentRect.width > 10) {\n        bootCity3D();\n      }\n    }\n  });\n  const vp = document.querySelector('.city-viewport');\n  if (vp) ro.observe(vp);\n  const cityView = document.getElementById('view-city');\n  if (cityView) ro.observe(cityView);\n}\n\nif (document.readyState === 'loading') {\n  document.addEventListener('DOMContentLoaded', () => setTimeout(_watchCityViewport, 50));\n} else {\n  setTimeout(_watchCityViewport, 50);\n}\n\ndocument.addEventListener('click', (event) => {\n  const btn = event.target.closest('[data-view-target=\"city\"]');\n  if (btn) setTimeout(bootCity3D, 50);\n});\n\nwindow.addEventListener('hashchange', () => {\n  if (location.hash === '#city') setTimeout(bootCity3D, 50);\n});\n",
   "ai_usage": {
-    "checked_at": "2026-08-19T08:54:01-05:00",
+    "checked_at": "2026-08-19T09:59:02-05:00",
     "mode": "paused_probe_failure",
     "freshness": "failed",
     "used_percent": null,
@@ -1207,32 +1207,34 @@
     "automation_policy_status": "unavailable"
   },
   "netlify_usage": {
-    "checked_at": "2026-08-19T13:54:01Z",
-    "mode": "warning",
+    "checked_at": "2026-08-19T14:00:43Z",
+    "mode": "blocked",
     "billing_period_start": "2026-07-27",
     "billing_period_end": "2026-08-26",
     "last_exact_observation_at": "2026-08-19T04:14:26.446693+00:00",
     "observed_credits_available": 639.4,
-    "credits_available_upper_bound": 399.4,
-    "credits_consumed_lower_bound": 3754.1,
+    "credits_available_upper_bound": 639.4,
+    "credits_consumed_lower_bound": 3514.1,
     "plan_monthly_credits": 3000.0,
     "production_deploy_credits_observed": 3480.0,
-    "production_deploy_credits_since_observation": 240.0,
+    "production_deploy_credits_since_observation": 0.0,
     "ai_inference_credits_observed": 0.0,
     "web_request_credits_observed": 8.0,
     "compute_credits_observed": 0.2,
     "bandwidth_credits_observed": 25.9,
     "protected_reserve_credits": 300.0,
     "one_production_release_credits": 15.0,
-    "successful_production_deploys_since_observation": 16,
-    "release_authorized": true,
+    "successful_production_deploys_since_observation": 0,
+    "release_authorized": false,
     "automatic_production_deploys_enabled": null,
     "automatic_production_deploys_verified_off": false,
     "auto_recharge_enabled": false,
-    "control_api_available": true,
+    "control_api_available": false,
     "balance_basis": "Exact owner-authenticated balance less confirmed production-deploy debits; traffic meters remain conservative between exact observations.",
     "next_check_seconds": 900,
-    "issue_codes": []
+    "issue_codes": [
+      "NETLIFY_CONTROL_API_UNAVAILABLE"
+    ]
   },
   "google_usage": {
     "plan": "Google One AI Ultra",
@@ -2825,12 +2827,12 @@
       "status": "working",
       "automation": "2 enabled",
       "last_outcome": "Recent run ok",
-      "last_activity": "Aug 19, 9:00 AM",
-      "last_activity_at": "2026-08-19T09:00:26-05:00",
+      "last_activity": "Aug 19, 10:08 AM",
+      "last_activity_at": "2026-08-19T10:08:20-05:00",
       "model": "OpenAI GEMINI-3.5-FLASH",
       "sessions_24h": 12,
       "sessions_7d": 286,
-      "error_streak": 8,
+      "error_streak": 9,
       "authority": "Manager",
       "performance": {
         "grade": "F",
@@ -2853,16 +2855,25 @@
         "presence": "at_desk",
         "activity_mode": "Active now",
         "location": "Founder Tower · Executive command desk",
-        "current_activity": "Working on Etsy $20k: Orchestrating Autonomous Agent Workflows & Store Goals",
+        "current_activity": "Working on Rowan Autonomous Company Director",
         "current_assignment": "Directing all agent operations toward the $20,000 Etsy profit goal.",
-        "observed_at": "Aug 18, 10:33 PM",
-        "observed_at_iso": "2026-08-18T22:33:13-05:00",
+        "observed_at": "Aug 19, 9:29 AM",
+        "observed_at_iso": "2026-08-19T09:29:17-05:00",
         "presence_source": "Live task ledger",
-        "next_action": "Rowan Autonomous Company Director · Aug 19, 9:20 AM",
-        "completed_24h": 9,
+        "next_action": "Rowan Autonomous Company Director · Aug 19, 10:29 AM",
+        "completed_24h": 8,
         "failed_24h": 8,
-        "runs_7d": 775,
+        "runs_7d": 760,
         "history": [
+          {
+            "at": "Aug 19, 9:29 AM",
+            "at_iso": "2026-08-19T09:29:17-05:00",
+            "at_ms": 1787149757018,
+            "title": "Rowan Autonomous Company Director",
+            "detail": "Timed Out",
+            "status": "timed_out",
+            "location": "Founder Tower · Executive command desk"
+          },
           {
             "at": "Aug 19, 8:20 AM",
             "at_iso": "2026-08-19T08:20:44-05:00",
@@ -2925,15 +2936,6 @@
             "detail": "Ended with an exception",
             "status": "failed",
             "location": "Founder Tower · incident room"
-          },
-          {
-            "at": "Aug 19, 1:35 AM",
-            "at_iso": "2026-08-19T01:35:00-05:00",
-            "at_ms": 1787121300136,
-            "title": "Rowan Daily Etsy Finance Close",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Founder Tower · Executive command desk"
           }
         ]
       }
@@ -2976,14 +2978,59 @@
         "location": "Commerce Row · Checkout and buyer-care studio",
         "current_activity": "Monitoring SwirlCraft 15-Minute Customer Reply Triage; no task is executing now",
         "current_assignment": "Managing Etsy catalog triage, listing safety deactivations, and order reconciliation.",
-        "observed_at": "Aug 19, 8:54 AM",
-        "observed_at_iso": "2026-08-19T08:54:37-05:00",
+        "observed_at": "Aug 19, 10:07 AM",
+        "observed_at_iso": "2026-08-19T10:07:06-05:00",
         "presence_source": "Scheduler snapshot",
-        "next_action": "SwirlCraft 15-Minute Customer Reply Triage · Aug 19, 9:09 AM",
-        "completed_24h": 65,
-        "failed_24h": 0,
-        "runs_7d": 305,
+        "next_action": "SwirlCraft 15-Minute Customer Reply Triage · Aug 19, 10:17 AM",
+        "completed_24h": 62,
+        "failed_24h": 3,
+        "runs_7d": 310,
         "history": [
+          {
+            "at": "Aug 19, 10:07 AM",
+            "at_iso": "2026-08-19T10:07:11-05:00",
+            "at_ms": 1787152031999,
+            "title": "SwirlCraft 15-Minute Customer Reply Triage",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Commerce Row · Checkout and buyer-care studio"
+          },
+          {
+            "at": "Aug 19, 9:58 AM",
+            "at_iso": "2026-08-19T09:58:40-05:00",
+            "at_ms": 1787151520424,
+            "title": "SwirlCraft 15-Minute Customer Reply Triage",
+            "detail": "Ended with an exception",
+            "status": "failed",
+            "location": "Commerce Row · incident room"
+          },
+          {
+            "at": "Aug 19, 9:46 AM",
+            "at_iso": "2026-08-19T09:46:19-05:00",
+            "at_ms": 1787150779041,
+            "title": "SwirlCraft 15-Minute Customer Reply Triage",
+            "detail": "Ended with an exception",
+            "status": "failed",
+            "location": "Commerce Row · incident room"
+          },
+          {
+            "at": "Aug 19, 9:29 AM",
+            "at_iso": "2026-08-19T09:29:19-05:00",
+            "at_ms": 1787149759965,
+            "title": "SwirlCraft 15-Minute Customer Reply Triage",
+            "detail": "Ended with an exception",
+            "status": "failed",
+            "location": "Commerce Row · incident room"
+          },
+          {
+            "at": "Aug 19, 9:09 AM",
+            "at_iso": "2026-08-19T09:09:40-05:00",
+            "at_ms": 1787148580524,
+            "title": "SwirlCraft 15-Minute Customer Reply Triage",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Commerce Row · Checkout and buyer-care studio"
+          },
           {
             "at": "Aug 19, 8:54 AM",
             "at_iso": "2026-08-19T08:54:39-05:00",
@@ -3006,51 +3053,6 @@
             "at": "Aug 19, 8:24 AM",
             "at_iso": "2026-08-19T08:24:25-05:00",
             "at_ms": 1787145865330,
-            "title": "SwirlCraft 15-Minute Customer Reply Triage",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Commerce Row · Checkout and buyer-care studio"
-          },
-          {
-            "at": "Aug 19, 8:08 AM",
-            "at_iso": "2026-08-19T08:08:51-05:00",
-            "at_ms": 1787144931172,
-            "title": "SwirlCraft 15-Minute Customer Reply Triage",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Commerce Row · Checkout and buyer-care studio"
-          },
-          {
-            "at": "Aug 19, 7:53 AM",
-            "at_iso": "2026-08-19T07:53:52-05:00",
-            "at_ms": 1787144032416,
-            "title": "SwirlCraft 15-Minute Customer Reply Triage",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Commerce Row · Checkout and buyer-care studio"
-          },
-          {
-            "at": "Aug 19, 7:38 AM",
-            "at_iso": "2026-08-19T07:38:50-05:00",
-            "at_ms": 1787143130504,
-            "title": "SwirlCraft 15-Minute Customer Reply Triage",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Commerce Row · Checkout and buyer-care studio"
-          },
-          {
-            "at": "Aug 19, 7:23 AM",
-            "at_iso": "2026-08-19T07:23:50-05:00",
-            "at_ms": 1787142230487,
-            "title": "SwirlCraft 15-Minute Customer Reply Triage",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Commerce Row · Checkout and buyer-care studio"
-          },
-          {
-            "at": "Aug 19, 7:08 AM",
-            "at_iso": "2026-08-19T07:08:50-05:00",
-            "at_ms": 1787141330901,
             "title": "SwirlCraft 15-Minute Customer Reply Triage",
             "detail": "Completed successfully",
             "status": "succeeded",
@@ -3243,7 +3245,7 @@
       "name": "Atlas",
       "role": "Chief Technology Officer",
       "mission": "Building state-specific real estate, landlord, and home care PDF template products.",
-      "status": "attention",
+      "status": "working",
       "automation": "2 enabled",
       "last_outcome": "Recent run ok",
       "last_activity": "Aug 15, 11:39 PM",
@@ -3251,16 +3253,16 @@
       "model": "OpenAI GPT-5.5",
       "sessions_24h": 0,
       "sessions_7d": 3,
-      "error_streak": 5,
+      "error_streak": 6,
       "authority": "Bounded",
       "performance": {
         "grade": "F",
-        "score": 48,
+        "score": 46,
         "provisional": true,
         "verified_points_7d": 0,
         "tokens_7d": 88097,
         "dimensions": {
-          "reliability": 25,
+          "reliability": 20,
           "efficiency": 85,
           "effectiveness": 0,
           "safety": 100,
@@ -3271,19 +3273,64 @@
       "city": {
         "district": "Systems Foundry",
         "workspace": "Reliability and delivery lab",
-        "presence": "incident_room",
-        "activity_mode": "Needs review",
-        "location": "Systems Foundry · incident room",
-        "current_activity": "Reviewing Rowan 15-Minute Resource Circuit Breaker",
+        "presence": "at_desk",
+        "activity_mode": "Active now",
+        "location": "Systems Foundry · Reliability and delivery lab",
+        "current_activity": "Working on Rowan 15-Minute Resource Circuit Breaker",
         "current_assignment": "Building state-specific real estate, landlord, and home care PDF template products.",
-        "observed_at": "Aug 19, 8:53 AM",
-        "observed_at_iso": "2026-08-19T08:53:54-05:00",
-        "presence_source": "Scheduler exception",
-        "next_action": "Rowan Netlify Decision Sync · Aug 19, 9:09 AM",
-        "completed_24h": 82,
+        "observed_at": "Aug 19, 10:07 AM",
+        "observed_at_iso": "2026-08-19T10:07:02-05:00",
+        "presence_source": "Live task ledger",
+        "next_action": "Rowan Netlify Decision Sync · Aug 19, 10:18 AM",
+        "completed_24h": 74,
         "failed_24h": 19,
-        "runs_7d": 455,
+        "runs_7d": 460,
         "history": [
+          {
+            "at": "Aug 19, 10:07 AM",
+            "at_iso": "2026-08-19T10:07:12-05:00",
+            "at_ms": 1787152032298,
+            "title": "Rowan Netlify Decision Sync",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Systems Foundry · Reliability and delivery lab"
+          },
+          {
+            "at": "Aug 19, 10:07 AM",
+            "at_iso": "2026-08-19T10:07:02-05:00",
+            "at_ms": 1787152022900,
+            "title": "Rowan 15-Minute Resource Circuit Breaker",
+            "detail": "Timed Out",
+            "status": "timed_out",
+            "location": "Systems Foundry · Reliability and delivery lab"
+          },
+          {
+            "at": "Aug 19, 9:58 AM",
+            "at_iso": "2026-08-19T09:58:37-05:00",
+            "at_ms": 1787151517511,
+            "title": "Rowan Netlify Decision Sync",
+            "detail": "Timed Out",
+            "status": "timed_out",
+            "location": "Systems Foundry · Reliability and delivery lab"
+          },
+          {
+            "at": "Aug 19, 9:29 AM",
+            "at_iso": "2026-08-19T09:29:44-05:00",
+            "at_ms": 1787149784303,
+            "title": "Rowan Netlify Decision Sync",
+            "detail": "Ended with an exception",
+            "status": "failed",
+            "location": "Systems Foundry · incident room"
+          },
+          {
+            "at": "Aug 19, 9:09 AM",
+            "at_iso": "2026-08-19T09:09:40-05:00",
+            "at_ms": 1787148580450,
+            "title": "Rowan Netlify Decision Sync",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Systems Foundry · Reliability and delivery lab"
+          },
           {
             "at": "Aug 19, 8:54 AM",
             "at_iso": "2026-08-19T08:54:40-05:00",
@@ -3306,51 +3353,6 @@
             "at": "Aug 19, 8:39 AM",
             "at_iso": "2026-08-19T08:39:24-05:00",
             "at_ms": 1787146764947,
-            "title": "Rowan Netlify Decision Sync",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Systems Foundry · Reliability and delivery lab"
-          },
-          {
-            "at": "Aug 19, 8:38 AM",
-            "at_iso": "2026-08-19T08:38:54-05:00",
-            "at_ms": 1787146734564,
-            "title": "Rowan 15-Minute Resource Circuit Breaker",
-            "detail": "Ended with an exception",
-            "status": "failed",
-            "location": "Systems Foundry · incident room"
-          },
-          {
-            "at": "Aug 19, 8:24 AM",
-            "at_iso": "2026-08-19T08:24:25-05:00",
-            "at_ms": 1787145865330,
-            "title": "Rowan Netlify Decision Sync",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Systems Foundry · Reliability and delivery lab"
-          },
-          {
-            "at": "Aug 19, 8:24 AM",
-            "at_iso": "2026-08-19T08:24:20-05:00",
-            "at_ms": 1787145860231,
-            "title": "Rowan 15-Minute Resource Circuit Breaker",
-            "detail": "Ended with an exception",
-            "status": "failed",
-            "location": "Systems Foundry · incident room"
-          },
-          {
-            "at": "Aug 19, 8:17 AM",
-            "at_iso": "2026-08-19T08:17:37-05:00",
-            "at_ms": 1787145457766,
-            "title": "Rowan 15-Minute Resource Circuit Breaker",
-            "detail": "Ended with an exception",
-            "status": "failed",
-            "location": "Systems Foundry · incident room"
-          },
-          {
-            "at": "Aug 19, 8:08 AM",
-            "at_iso": "2026-08-19T08:08:57-05:00",
-            "at_ms": 1787144937088,
             "title": "Rowan Netlify Decision Sync",
             "detail": "Completed successfully",
             "status": "succeeded",
@@ -3921,8 +3923,8 @@
       {
         "category": "Netlify reserve",
         "name": "Credit and deploy circuit breaker",
-        "status": "attention",
-        "detail": "At most 399.4 credits remain from the latest exact owner observation, with a 300-credit hard reserve. Automatic production deploy status is not verified off; auto recharge is disabled. One explicit release costs 15 credits. The deterministic monitor checks every 15 minutes."
+        "status": "critical",
+        "detail": "At most 639.4 credits remain from the latest exact owner observation, with a 300-credit hard reserve. Automatic production deploy status is not verified off; auto recharge is disabled. One explicit release costs 15 credits. The deterministic monitor checks every 15 minutes."
       },
       {
         "category": "AI reserve",
@@ -4008,69 +4010,69 @@
         "name": "SwirlCraft 15-Minute Customer Reply Triage",
         "owner": "ivy",
         "cadence": "Every 15m",
-        "last_run": "Aug 19, 8:54 AM",
-        "last_run_at": "2026-08-19T08:54:37-05:00",
-        "last_run_ms": 1787147677376,
-        "next_run": "Aug 19, 9:09 AM",
-        "next_run_at": "2026-08-19T09:09:37-05:00",
-        "next_run_ms": 1787148577376,
+        "last_run": "Aug 19, 10:07 AM",
+        "last_run_at": "2026-08-19T10:07:06-05:00",
+        "last_run_ms": 1787152026347,
+        "next_run": "Aug 19, 10:17 AM",
+        "next_run_at": "2026-08-19T10:17:59-05:00",
+        "next_run_ms": 1787152679080,
         "running": false,
         "running_since": "Unavailable",
         "running_since_at": null,
         "status": "ok",
         "error_streak": 0,
-        "duration_ms": 2258
+        "duration_ms": 5652
       },
       {
         "name": "Rowan Netlify Decision Sync",
         "owner": "atlas",
         "cadence": "Every 15m",
-        "last_run": "Aug 19, 8:54 AM",
-        "last_run_at": "2026-08-19T08:54:37-05:00",
-        "last_run_ms": 1787147677379,
-        "next_run": "Aug 19, 9:09 AM",
-        "next_run_at": "2026-08-19T09:09:37-05:00",
-        "next_run_ms": 1787148577379,
+        "last_run": "Aug 19, 10:07 AM",
+        "last_run_at": "2026-08-19T10:07:06-05:00",
+        "last_run_ms": 1787152026437,
+        "next_run": "Aug 19, 10:18 AM",
+        "next_run_at": "2026-08-19T10:18:00-05:00",
+        "next_run_ms": 1787152680052,
         "running": false,
         "running_since": "Unavailable",
         "running_since_at": null,
         "status": "ok",
         "error_streak": 0,
-        "duration_ms": 2762
+        "duration_ms": 5861
       },
       {
         "name": "Rowan Autonomous Company Director",
         "owner": "main",
         "cadence": "Every 1h",
-        "last_run": "Aug 19, 8:18 AM",
-        "last_run_at": "2026-08-19T08:18:43-05:00",
-        "last_run_ms": 1787145523301,
-        "next_run": "Aug 19, 9:20 AM",
-        "next_run_at": "2026-08-19T09:20:44-05:00",
-        "next_run_ms": 1787149244045,
+        "last_run": "Aug 19, 9:23 AM",
+        "last_run_at": "2026-08-19T09:23:37-05:00",
+        "last_run_ms": 1787149417578,
+        "next_run": "Aug 19, 10:29 AM",
+        "next_run_at": "2026-08-19T10:29:17-05:00",
+        "next_run_ms": 1787153357018,
         "running": false,
         "running_since": "Unavailable",
         "running_since_at": null,
         "status": "error",
-        "error_streak": 8,
-        "duration_ms": 120744
+        "error_streak": 9,
+        "duration_ms": 339440
       },
       {
         "name": "Rowan 15-Minute Resource Circuit Breaker",
         "owner": "atlas",
         "cadence": "Every 15m",
-        "last_run": "Aug 19, 8:53 AM",
-        "last_run_at": "2026-08-19T08:53:54-05:00",
-        "last_run_ms": 1787147634601,
-        "next_run": "Aug 19, 9:54 AM",
-        "next_run_at": "2026-08-19T09:54:35-05:00",
-        "next_run_ms": 1787151275309,
+        "last_run": "Aug 19, 9:58 AM",
+        "last_run_at": "2026-08-19T09:58:39-05:00",
+        "last_run_ms": 1787151519568,
+        "next_run": "Aug 19, 11:07 AM",
+        "next_run_at": "2026-08-19T11:07:02-05:00",
+        "next_run_ms": 1787155622900,
         "running": false,
         "running_since": "Unavailable",
         "running_since_at": null,
         "status": "error",
-        "error_streak": 5,
-        "duration_ms": 40708
+        "error_streak": 6,
+        "duration_ms": 503332
       },
       {
         "name": "Rowan Daily Etsy Finance Close",
@@ -4434,8 +4436,8 @@
     },
     {
       "label": "Netlify credit reserve",
-      "status": "attention",
-      "detail": "Conservative available balance is at most 399.4 credits; current-cycle consumption is at least 3,754.1. Production deploys consumed 3,480 credits at the exact observation. Automatic production deploy status is not verified off; every explicit release is budget-gated, and snapshot refreshes use private storage instead."
+      "status": "critical",
+      "detail": "Conservative available balance is at most 639.4 credits; current-cycle consumption is at least 3,514.1. Production deploys consumed 3,480 credits at the exact observation. Automatic production deploy status is not verified off; every explicit release is budget-gated, and snapshot refreshes use private storage instead."
     },
     {
       "label": "Automation signature policy",
