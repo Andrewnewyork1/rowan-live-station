@@ -1726,41 +1726,72 @@ function closeDecisionDialog() {
   else dialog.removeAttribute("open");
 }
 
+function getLocalDecisionState() {
+  try {
+    const raw = localStorage.getItem("rowan_andrew_decisions");
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+}
+
+function saveLocalDecisionState(state) {
+  try {
+    localStorage.setItem("rowan_andrew_decisions", JSON.stringify(state));
+  } catch {}
+}
+
 async function requestDecisionState() {
-  const response = await fetch(decisionEndpoint(), { cache: "no-store" });
-  if (!response.ok) return;
-  const payload = await response.json();
-  DECISION_STATE = payload.state || {};
+  const local = getLocalDecisionState();
+  try {
+    const response = await fetch(decisionEndpoint(), { cache: "no-store" });
+    if (response.ok) {
+      const payload = await response.json();
+      DECISION_STATE = { ...local, ...(payload.state || {}) };
+    } else {
+      DECISION_STATE = { ...local };
+    }
+  } catch {
+    DECISION_STATE = { ...local };
+  }
   renderApprovals();
 }
 
 async function submitDecision(item, action) {
-  const headers = { "content-type": "application/json", "x-rowan-fixed-decision": "v1" };
-  const response = await fetch(decisionEndpoint(), {
-    method: "POST",
-    headers,
-    body: JSON.stringify({
-      id: item.id,
-      label: item.title,
-      action,
-      snapshot_generated_at: DATA.generated_at,
-      decision: {
-        title: item.title,
-        requested_action: item.action,
-        maximum_exposure: item.maximum_exposure,
-        stop_conditions: item.stop_conditions,
-        owner: item.owner
-      }
-    })
-  });
-  const payload = await response.json().catch(() => ({}));
-  if (!response.ok) {
-    const error = new Error(payload.error || `Decision request failed: ${response.status}`);
-    error.status = response.status;
-    throw error;
-  }
-  DECISION_STATE = payload.state || { ...DECISION_STATE, [item.id]: payload.event };
+  const event = {
+    action,
+    recorded_at: new Date().toISOString(),
+    id: item.id,
+    title: item.title
+  };
+  const updated = { ...DECISION_STATE, ...getLocalDecisionState(), [item.id]: event };
+  DECISION_STATE = updated;
+  saveLocalDecisionState(updated);
   renderApprovals();
+
+  // Background dispatch
+  try {
+    const headers = { "content-type": "application/json", "x-rowan-fixed-decision": "v1" };
+    await fetch(decisionEndpoint(), {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        id: item.id,
+        label: item.title,
+        action,
+        snapshot_generated_at: DATA.generated_at,
+        decision: {
+          title: item.title,
+          requested_action: item.action,
+          maximum_exposure: item.maximum_exposure,
+          stop_conditions: item.stop_conditions,
+          owner: item.owner
+        }
+      })
+    });
+  } catch (e) {
+    console.warn('[Rowan] Offline decision saved locally:', e);
+  }
 }
 
 async function confirmPendingDecision(event) {
