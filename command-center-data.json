@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T06:18:50-05:00",
+  "generated_at": "2026-08-19T06:20:37-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "Google",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-19T11:18:38Z",
+          "summary_generated_at": "2026-08-19T11:20:27Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-19T11:18:38Z",
+          "summary_generated_at": "2026-08-19T11:20:27Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-19T11:18:38Z",
+      "generated_at": "2026-08-19T11:20:27Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -2827,9 +2827,9 @@
       "status": "working",
       "automation": "2 enabled",
       "last_outcome": "Recent run ok",
-      "last_activity": "Aug 19, 6:11 AM",
-      "last_activity_at": "2026-08-19T06:11:00-05:00",
-      "model": "OpenAI GPT-5.5",
+      "last_activity": "Aug 19, 6:20 AM",
+      "last_activity_at": "2026-08-19T06:20:15-05:00",
+      "model": "OpenAI GEMINI-3.5-FLASH",
       "sessions_24h": 12,
       "sessions_7d": 286,
       "error_streak": 6,
@@ -2861,7 +2861,7 @@
         "observed_at_iso": "2026-08-18T22:33:13-05:00",
         "presence_source": "Live task ledger",
         "next_action": "Rowan Autonomous Company Director · Aug 19, 7:18 AM",
-        "completed_24h": 11,
+        "completed_24h": 10,
         "failed_24h": 8,
         "runs_7d": 792,
         "history": [
@@ -2982,7 +2982,7 @@
         "observed_at_iso": "2026-08-19T06:08:47-05:00",
         "presence_source": "Scheduler snapshot",
         "next_action": "SwirlCraft 15-Minute Customer Reply Triage · Aug 19, 6:23 AM",
-        "completed_24h": 62,
+        "completed_24h": 61,
         "failed_24h": 1,
         "runs_7d": 294,
         "history": [
@@ -3282,7 +3282,7 @@
         "observed_at_iso": "2026-08-19T06:00:34-05:00",
         "presence_source": "Scheduler exception",
         "next_action": "Rowan Netlify Decision Sync · Aug 19, 6:23 AM",
-        "completed_24h": 78,
+        "completed_24h": 77,
         "failed_24h": 16,
         "runs_7d": 438,
         "history": [

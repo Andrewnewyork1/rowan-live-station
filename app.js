@@ -1213,7 +1213,7 @@ function renderCity() {
   const revenue = DATA.money?.total_revenue || 0;
   const goalPct = Math.min(100, (revenue / 20000) * 100).toFixed(1);
   const activeCount = team.filter((a) => (a.city?.completed_24h || 0) > 0 || a.city?.last_completed_at).length;
-  if (holoGoal) holoGoal.textContent = `${fmtCurrency(revenue)} / $20,000`;
+  if (holoGoal) holoGoal.textContent = `${fmtMoney(revenue)} / $20,000`;
   if (holoBar) holoBar.style.width = goalPct + "%";
   if (holoAgents) holoAgents.textContent = `${activeCount || team.length} AGENTS ACTIVE`;
   const counts = team.reduce((total, item) => {
