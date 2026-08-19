@@ -322,6 +322,8 @@ export async function bootCity3D() {
     while (feed.children.length > 20) {
       feed.lastElementChild.remove();
     }
+  }
+
   // ── Real-Time Status & Evolution Log Helpers (No Simulation) ──────────────
   function getRealAgentStatus(agentId) {
     if (!window.DATA) return "Standing by.";
@@ -404,8 +406,6 @@ export async function bootCity3D() {
       `;
       feed.appendChild(entry);
     });
-  }
-
   }
 
   let currentConvoIndex = 0;
