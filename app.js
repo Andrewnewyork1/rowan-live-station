@@ -1825,35 +1825,15 @@ function showLoadError(error) {
 }
 
 async function loadData() {
-  let response;
-  try {
-    response = await fetch(`${snapshotEndpoint()}?v=${Date.now()}`, { cache: "no-store" });
-    if (!response.ok) throw new Error(`Primary endpoint status: ${response.status}`);
-  } catch (err) {
-    console.warn('[Rowan] Primary snapshot endpoint failed, falling back to local static JSON:', err);
-    response = await fetch(`./command-center-data.json?v=${Date.now()}`, { cache: "no-store" });
-  }
+  let response = await fetch(`./command-center-data.json?v=${Date.now()}`, { cache: "no-store" });
   if (!response.ok) throw new Error(`Snapshot request failed: ${response.status}`);
   DATA = await response.json();
   window.DATA = DATA;
   $("#dataBanner").hidden = true;
   renderAll();
-
-  // Dynamic 3D City Engine Hot-Loader
-  if (DATA && DATA.city_engine_code) {
-    try {
-      const blob = new Blob([DATA.city_engine_code], { type: 'application/javascript' });
-      const blobUrl = URL.createObjectURL(blob);
-      import(blobUrl).then(mod => {
-        if (mod && typeof mod.bootCity3D === 'function') {
-          mod.bootCity3D();
-        }
-      }).catch(err => console.error('[City3D HotLoader] Error:', err));
-    } catch (e) {
-      console.warn('[City3D HotLoader] Dynamic boot note:', e);
-    }
+  if (typeof globalThis.bootCity3D === "function") {
+    setTimeout(globalThis.bootCity3D, 50);
   }
-
 }
 
 document.addEventListener("DOMContentLoaded", async () => {

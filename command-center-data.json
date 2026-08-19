@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T06:16:46-05:00",
+  "generated_at": "2026-08-19T06:18:50-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "Google",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-19T11:16:30Z",
+          "summary_generated_at": "2026-08-19T11:18:38Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-19T11:16:30Z",
+          "summary_generated_at": "2026-08-19T11:18:38Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-19T11:16:30Z",
+      "generated_at": "2026-08-19T11:18:38Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -2832,16 +2832,16 @@
       "model": "OpenAI GPT-5.5",
       "sessions_24h": 12,
       "sessions_7d": 286,
-      "error_streak": 5,
+      "error_streak": 6,
       "authority": "Manager",
       "performance": {
         "grade": "F",
-        "score": 31,
+        "score": 30,
         "provisional": true,
         "verified_points_7d": 0,
         "tokens_7d": 9036066,
         "dimensions": {
-          "reliability": 25,
+          "reliability": 20,
           "efficiency": 20,
           "effectiveness": 0,
           "safety": 100,
@@ -2860,11 +2860,20 @@
         "observed_at": "Aug 18, 10:33 PM",
         "observed_at_iso": "2026-08-18T22:33:13-05:00",
         "presence_source": "Live task ledger",
-        "next_action": "Rowan Autonomous Company Director · Aug 19, 6:18 AM",
+        "next_action": "Rowan Autonomous Company Director · Aug 19, 7:18 AM",
         "completed_24h": 11,
-        "failed_24h": 7,
-        "runs_7d": 791,
+        "failed_24h": 8,
+        "runs_7d": 792,
         "history": [
+          {
+            "at": "Aug 19, 6:18 AM",
+            "at_iso": "2026-08-19T06:18:32-05:00",
+            "at_ms": 1787138312737,
+            "title": "Rowan Autonomous Company Director",
+            "detail": "Ended with an exception",
+            "status": "failed",
+            "location": "Founder Tower · incident room"
+          },
           {
             "at": "Aug 19, 5:18 AM",
             "at_iso": "2026-08-19T05:18:11-05:00",
@@ -2923,15 +2932,6 @@
             "at": "Aug 19, 12:18 AM",
             "at_iso": "2026-08-19T00:18:15-05:00",
             "at_ms": 1787116695806,
-            "title": "Rowan Autonomous Company Director",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Founder Tower · Executive command desk"
-          },
-          {
-            "at": "Aug 18, 11:18 PM",
-            "at_iso": "2026-08-18T23:18:13-05:00",
-            "at_ms": 1787113093526,
             "title": "Rowan Autonomous Company Director",
             "detail": "Completed successfully",
             "status": "succeeded",
@@ -4007,23 +4007,6 @@
     ],
     "automations": [
       {
-        "name": "Rowan Autonomous Company Director",
-        "owner": "main",
-        "cadence": "Every 1h",
-        "last_run": "Aug 19, 5:18 AM",
-        "last_run_at": "2026-08-19T05:18:01-05:00",
-        "last_run_ms": 1787134681109,
-        "next_run": "Aug 19, 6:18 AM",
-        "next_run_at": "2026-08-19T06:18:11-05:00",
-        "next_run_ms": 1787138291006,
-        "running": false,
-        "running_since": "Unavailable",
-        "running_since_at": null,
-        "status": "error",
-        "error_streak": 5,
-        "duration_ms": 9897
-      },
-      {
         "name": "SwirlCraft 15-Minute Customer Reply Triage",
         "owner": "ivy",
         "cadence": "Every 15m",
@@ -4073,6 +4056,23 @@
         "status": "error",
         "error_streak": 13,
         "duration_ms": 40151
+      },
+      {
+        "name": "Rowan Autonomous Company Director",
+        "owner": "main",
+        "cadence": "Every 1h",
+        "last_run": "Aug 19, 6:18 AM",
+        "last_run_at": "2026-08-19T06:18:11-05:00",
+        "last_run_ms": 1787138291041,
+        "next_run": "Aug 19, 7:18 AM",
+        "next_run_at": "2026-08-19T07:18:32-05:00",
+        "next_run_ms": 1787141912737,
+        "running": false,
+        "running_since": "Unavailable",
+        "running_since_at": null,
+        "status": "error",
+        "error_streak": 6,
+        "duration_ms": 21696
       },
       {
         "name": "Rowan Daily Etsy Finance Close",
