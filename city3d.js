@@ -102,11 +102,6 @@ export async function bootCity3D() {
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-  _cityRenderer = renderer;
-  _cityScene = scene;
-  _cityCamera = camera;
-  _cityControls = controls;
-
   const scene = new THREE.Scene();
   scene.fog = new THREE.FogExp2(0x030914, 0.009);
 
