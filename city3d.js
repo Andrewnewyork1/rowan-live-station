@@ -271,21 +271,21 @@ export async function bootCity3D() {
   // ── ALL 13 AUTONOMOUS CITIZEN AGENTS ──────────────────────────────────────
   const CONTENDERS = [
     // ── 7 Core Operations ──
-    { id: 'ivy', name: 'Ivy', role: 'Head of Commerce', col: 0x22c97a, skin: 0xf3caa0, pos: [14, -9], height: 7.6, district: 'Executive Plaza' },
-    { id: 'efficiency', name: 'Dept of Efficiency', role: 'Compute Guard', col: 0x22c97a, skin: 0xa3e635, pos: [0, -18], height: 7.0, district: 'Treasury Core' },
-    { id: 'rowan', name: 'Rowan', role: 'CEO', col: 0x6db7ff, skin: 0xf5d5a5, pos: [-14, -9], height: 6.5, district: 'Apex Tower' },
-    { id: 'atlas', name: 'Atlas', role: 'CTO', col: 0xff9900, skin: 0xdeb887, pos: [14, 9], height: 5.5, district: 'Foundry Hub' },
-    { id: 'aria', name: 'Aria', role: 'Creative Director', col: 0xff6da0, skin: 0xfce2c8, pos: [-15, 10], height: 5.5, district: 'Deco Center' },
-    { id: 'sage', name: 'Sage', role: 'Strategy & Intel', col: 0x8a9ba8, skin: 0xe5c298, pos: [18, -10], height: 5.0, district: 'Intelligence Wing' },
-    { id: 'nova', name: 'Nova', role: 'Growth & Traffic', col: 0x22d3ee, skin: 0xf7d0b0, pos: [-10, 15], height: 5.0, district: 'Broadcast Spire' },
+    { id: 'ivy', name: 'Ivy', role: 'Head of Commerce', col: 0x22c97a, skin: 0xf3caa0, pos: [14, -9], height: 8.5, floors: 7, rank: 1, profit: '$8.73', bIcon: '🛍️', bName: 'Ivy Commerce Plaza', district: 'Executive Plaza' },
+    { id: 'efficiency', name: 'Dept of Efficiency', role: 'Compute Guard', col: 0x22c97a, skin: 0xa3e635, pos: [0, -18], height: 8.2, floors: 17, rank: 2, profit: '$99.78 saved', bIcon: '🛡️', bName: 'Compute Treasury Core', district: 'Treasury Core' },
+    { id: 'rowan', name: 'Rowan', role: 'CEO', col: 0x6db7ff, skin: 0xf5d5a5, pos: [-14, -9], height: 7.8, floors: 5, rank: 3, profit: 'Founder', bIcon: '🏛️', bName: 'Rowan Executive Spire', district: 'Apex Tower' },
+    { id: 'atlas', name: 'Atlas', role: 'CTO', col: 0xff9900, skin: 0xdeb887, pos: [14, 9], height: 6.8, floors: 4, rank: 4, profit: '$0.00', bIcon: '⚙️', bName: 'Atlas Systems Foundry', district: 'Foundry Hub' },
+    { id: 'aria', name: 'Aria', role: 'Creative Director', col: 0xff6da0, skin: 0xfce2c8, pos: [-15, 10], height: 6.6, floors: 4, rank: 5, profit: '$0.00', bIcon: '🎨', bName: 'Aria Deco Creative Tower', district: 'Deco Center' },
+    { id: 'sage', name: 'Sage', role: 'Strategy & Intel', col: 0x8a9ba8, skin: 0xe5c298, pos: [18, -10], height: 6.2, floors: 3, rank: 6, profit: '$0.00', bIcon: '🧠', bName: 'Sage Intelligence Wing', district: 'Intelligence Wing' },
+    { id: 'nova', name: 'Nova', role: 'Growth & Traffic', col: 0x22d3ee, skin: 0xf7d0b0, pos: [-10, 15], height: 6.4, floors: 3, rank: 7, profit: '$0.00', bIcon: '🚀', bName: 'Nova Growth HQ', district: 'Broadcast Spire' },
 
     // ── 6 R&D Specialists ──
-    { id: 'victor', name: 'Dr. Victor', role: 'Chief R&D Scientist', col: 0xa855f7, skin: 0xfde047, pos: [22, -18], height: 4.8, district: 'Quantum R&D' },
-    { id: 'ember', name: 'Ember', role: 'Viral Growth Hacker', col: 0xf97316, skin: 0xfbcfe8, pos: [26, -15], height: 4.5, district: 'Viral Lab' },
-    { id: 'cipher', name: 'Cipher', role: 'Pricing & Stripe Quant', col: 0x6366f1, skin: 0xd1d5db, pos: [22, -26], height: 4.5, district: 'Fintech Quant' },
-    { id: 'lyra', name: 'Lyra', role: 'B2B Design Engineer', col: 0xec4899, skin: 0xfef08a, pos: [28, -22], height: 4.2, district: 'Aesthetics Lab' },
-    { id: 'orion', name: 'Orion', role: 'Cloud Engineer', col: 0x14b8a6, skin: 0xfcd34d, pos: [16, -26], height: 4.2, district: 'Cloud Foundry' },
-    { id: 'kira', name: 'Kira', role: 'Legal Auditor', col: 0x10b981, skin: 0xfed7aa, pos: [28, -28], height: 4.2, district: 'Compliance Wing' }
+    { id: 'victor', name: 'Dr. Victor', role: 'Chief R&D Scientist', col: 0xa855f7, skin: 0xfde047, pos: [22, -18], height: 5.8, floors: 3, rank: 8, profit: '$0.00', bIcon: '🔬', bName: 'Victor Quantum R&D Lab', district: 'Quantum R&D' },
+    { id: 'ember', name: 'Ember', role: 'Viral Growth Hacker', col: 0xf97316, skin: 0xfbcfe8, pos: [26, -15], height: 5.4, floors: 2, rank: 9, profit: '$0.00', bIcon: '🔥', bName: 'Ember Viral Studio', district: 'Viral Lab' },
+    { id: 'cipher', name: 'Cipher', role: 'Pricing & Stripe Quant', col: 0x6366f1, skin: 0xd1d5db, pos: [22, -26], height: 5.4, floors: 2, rank: 10, profit: '$0.00', bIcon: '💳', bName: 'Cipher Fintech Quant Hub', district: 'Fintech Quant' },
+    { id: 'lyra', name: 'Lyra', role: 'B2B Design Engineer', col: 0xec4899, skin: 0xfef08a, pos: [28, -22], height: 5.2, floors: 2, rank: 11, profit: '$0.00', bIcon: '✨', bName: 'Lyra B2B Design Atelier', district: 'Aesthetics Lab' },
+    { id: 'orion', name: 'Orion', role: 'Cloud Engineer', col: 0x14b8a6, skin: 0xfcd34d, pos: [16, -26], height: 5.2, floors: 2, rank: 12, profit: '$0.00', bIcon: '☁️', bName: 'Orion Cloud Datacenter', district: 'Cloud Foundry' },
+    { id: 'kira', name: 'Kira', role: 'Legal Auditor', col: 0x10b981, skin: 0xfed7aa, pos: [28, -28], height: 5.2, floors: 2, rank: 13, profit: '$0.00', bIcon: '⚖️', bName: 'Kira Statutory Hall', district: 'Compliance Wing' }
   ];
 
   const buildings = [];
