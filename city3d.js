@@ -119,41 +119,46 @@ export async function bootCity3D() {
   `;
   overlayLayer.appendChild(navPanel);
 
-  let currentAngle = 0;
+  function orbitBy(deltaTheta) {
+    const offset = camera.position.clone().sub(controls.target);
+    const radius = offset.length();
+    let theta = Math.atan2(offset.x, offset.z);
+    let phi = Math.acos(Math.max(-1, Math.min(1, offset.y / Math.max(0.001, radius))));
+    
+    theta += deltaTheta;
+    
+    offset.x = radius * Math.sin(phi) * Math.sin(theta);
+    offset.y = radius * Math.cos(phi);
+    offset.z = radius * Math.sin(phi) * Math.cos(theta);
+    
+    camera.position.copy(controls.target).add(offset);
+    camera.lookAt(controls.target);
+    controls.update();
+  }
+
   navPanel.querySelector('#btnOrbitLeft').addEventListener('click', (e) => {
     e.stopPropagation();
-    currentAngle += Math.PI / 4;
-    const r = 85;
-    camera.position.x = Math.sin(currentAngle) * r;
-    camera.position.z = Math.cos(currentAngle) * r;
-    camera.position.y = 48;
-    controls.target.set(0, 2, 0);
-    controls.update();
+    orbitBy(Math.PI / 8);
   });
 
   navPanel.querySelector('#btnOrbitRight').addEventListener('click', (e) => {
     e.stopPropagation();
-    currentAngle -= Math.PI / 4;
-    const r = 85;
-    camera.position.x = Math.sin(currentAngle) * r;
-    camera.position.z = Math.cos(currentAngle) * r;
-    camera.position.y = 48;
-    controls.target.set(0, 2, 0);
-    controls.update();
+    orbitBy(-Math.PI / 8);
   });
 
   navPanel.querySelector('#btnTopView').addEventListener('click', (e) => {
     e.stopPropagation();
-    camera.position.set(0, 95, 20);
+    camera.position.set(0, 42, 65);
     controls.target.set(0, 0, 0);
+    camera.lookAt(0, 0, 0);
     controls.update();
   });
 
   navPanel.querySelector('#btnResetView').addEventListener('click', (e) => {
     e.stopPropagation();
-    currentAngle = 0;
-    camera.position.set(0, 48, 76);
-    controls.target.set(0, 2, 0);
+    controls.target.set(0, 0, 0);
+    camera.position.set(0, 42, 65);
+    camera.lookAt(0, 0, 0);
     controls.update();
   });
 
@@ -167,7 +172,7 @@ export async function bootCity3D() {
   scene.fog = new THREE.FogExp2(0x030914, 0.009);
 
   const camera = new THREE.PerspectiveCamera(45, VIEWPORT.clientWidth / 540, 0.1, 600);
-  camera.position.set(0, 46, 70);
+  camera.position.set(0, 42, 65);
   camera.lookAt(0, 1.5, 0);
 
   const controls = new OrbitControls(camera, canvas);
@@ -176,7 +181,7 @@ export async function bootCity3D() {
   controls.maxPolarAngle = Math.PI / 2.08;
   controls.minDistance = 8;
   controls.maxDistance = 110;
-  controls.target.set(0, 1.5, 0);
+  controls.target.set(0, 0, 0);
 
   _cityRenderer = renderer;
   _cityScene = scene;
@@ -762,7 +767,7 @@ export async function bootCity3D() {
   }
 
   // Smooth Central Metropolis Orbiting & Zooming Controls
-  controls.target.set(0, 1.5, 0);
+  controls.target.set(0, 0, 0);
   controls.enableDamping = true;
   controls.dampingFactor = 0.06;
   controls.maxPolarAngle = Math.PI / 2.05;
@@ -819,8 +824,8 @@ export async function bootCity3D() {
 
   // Hook up Reset View button in city header
   function resetCityCamera() {
-    controls.target.set(0, 2, 0);
-    camera.position.set(0, 46, 70);
+    controls.target.set(0, 0, 0);
+    camera.position.set(0, 42, 65);
     controls.update();
   }
   const resetBtn = document.querySelector('.city-viewport-actions button, #cityResetView');
