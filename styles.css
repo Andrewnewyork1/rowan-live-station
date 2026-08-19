@@ -3249,3 +3249,29 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--ice); outli
   visibility: hidden !important;
   pointer-events: none !important;
 }
+
+/* 3D Viewport Interaction & Rotation Unblock */
+.city-viewport {
+  touch-action: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  cursor: grab !important;
+  min-height: 640px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+.city-viewport:active {
+  cursor: grabbing !important;
+}
+.city-viewport canvas {
+  pointer-events: auto !important;
+  touch-action: none !important;
+  z-index: 2 !important;
+}
+#cityScreenOverlay {
+  pointer-events: none !important;
+  z-index: 20 !important;
+}
+#cityScreenOverlay * {
+  pointer-events: auto;
+}
