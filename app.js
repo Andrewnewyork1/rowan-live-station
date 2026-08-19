@@ -2082,11 +2082,26 @@ function renderAgentNeeds() {
 }
 
 
+const MEMORY_STORAGE = {};
+function safeGetItem(key) {
+  try {
+    return window.localStorage ? window.localStorage.getItem(key) : (MEMORY_STORAGE[key] || null);
+  } catch {
+    return MEMORY_STORAGE[key] || null;
+  }
+}
+function safeSetItem(key, val) {
+  try {
+    if (window.localStorage) window.localStorage.setItem(key, val);
+  } catch {}
+  MEMORY_STORAGE[key] = val;
+}
+
 const FAST_TRACKED_RD = new Set();
 
 function getLocalFastTrackedRd() {
   try {
-    const raw = localStorage.getItem("rowan_fast_tracked_rd");
+    const raw = safeGetItem("rowan_fast_tracked_rd");
     return raw ? JSON.parse(raw) : [];
   } catch {
     return [];
@@ -2094,10 +2109,36 @@ function getLocalFastTrackedRd() {
 }
 
 function saveLocalFastTrackedRd(arr) {
-  try {
-    localStorage.setItem("rowan_fast_tracked_rd", JSON.stringify(arr));
-  } catch {}
+  safeSetItem("rowan_fast_tracked_rd", JSON.stringify(arr));
 }
+
+function handleFastTrack(event, rdKey) {
+  if (event) {
+    if (typeof event.preventDefault === "function") event.preventDefault();
+    if (typeof event.stopPropagation === "function") event.stopPropagation();
+  }
+  FAST_TRACKED_RD.add(rdKey);
+  saveLocalFastTrackedRd(Array.from(FAST_TRACKED_RD));
+
+  const card = document.querySelector(`[data-rd-id="${rdKey}"]`);
+  if (card) {
+    card.classList.add("fast-tracked");
+    const btn = card.querySelector(".btn-launch-rd");
+    if (btn) {
+      btn.classList.add("is-fast-tracked");
+      btn.textContent = "🚀 Fast-Tracked & Executing";
+      btn.disabled = true;
+    }
+    const badgeEl = card.querySelector(".rd-badge");
+    if (badgeEl) {
+      badgeEl.textContent = "⚡ IN PRODUCTION";
+      badgeEl.classList.add("badge-production");
+    }
+    const title = card.querySelector("h4")?.textContent || "R&D Initiative";
+    showToast(`🚀 Fast-Tracked: ${title} · Dispatched to R&D Team`);
+  }
+}
+globalThis.handleFastTrack = handleFastTrack;
 
 function renderRdDepartment() {
   const container = $("#rdInitiativesGrid");
@@ -2147,38 +2188,17 @@ function renderRdDepartment() {
 
       <div class="rd-legal-chip">⚖️ ${esc(item.legal_status)}</div>
 
-      <button type="button" class="btn-launch-rd ${isFastTracked ? "is-fast-tracked" : ""}" data-action-fast-track="${esc(rdKey)}" ${isFastTracked ? "disabled" : ""}>
+      <button type="button" class="btn-launch-rd ${isFastTracked ? "is-fast-tracked" : ""}" data-action-fast-track="${esc(rdKey)}" onclick="globalThis.handleFastTrack(event, '${esc(rdKey)}')" ${isFastTracked ? "disabled" : ""}>
         ${isFastTracked ? "🚀 Fast-Tracked & Executing" : "⚡ Fast-Track Prototype"}
       </button>
     </div>`;
   }).join("");
 
-  // Attach robust click listeners
+  // Attach click listeners
   container.querySelectorAll("[data-action-fast-track]").forEach(btn => {
     btn.addEventListener("click", (e) => {
-      e.stopPropagation();
       const rdId = btn.dataset.actionFastTrack;
-      FAST_TRACKED_RD.add(rdId);
-      saveLocalFastTrackedRd(Array.from(FAST_TRACKED_RD));
-
-      const card = btn.closest(".rd-card");
-      const title = card ? card.querySelector("h4")?.textContent : "R&D Initiative";
-      const lead = card ? card.querySelector(".rd-meta-box div:nth-child(3) strong")?.textContent : "R&D Team";
-
-      btn.classList.add("is-fast-tracked");
-      btn.disabled = true;
-      btn.textContent = "🚀 Fast-Tracked & Executing";
-
-      if (card) {
-        card.classList.add("fast-tracked");
-        const badgeEl = card.querySelector(".rd-badge");
-        if (badgeEl) {
-          badgeEl.textContent = "⚡ IN PRODUCTION";
-          badgeEl.classList.add("badge-production");
-        }
-      }
-
-      showToast(`🚀 Fast-Tracked: ${title} · Assigned to ${lead}`);
+      handleFastTrack(e, rdId);
     });
   });
 }

@@ -3231,3 +3231,14 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--ice); outli
   color: #c084fc !important;
   border-color: rgba(168, 85, 247, 0.6) !important;
 }
+
+/* Explicit Fast Track Button Interaction Fix */
+.btn-launch-rd {
+  position: relative !important;
+  z-index: 25 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  touch-action: manipulation !important;
+}
