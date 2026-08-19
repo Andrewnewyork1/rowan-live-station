@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T15:42:11-05:00",
+  "generated_at": "2026-08-19T15:44:08-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "Google",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-19T20:42:02Z",
+          "summary_generated_at": "2026-08-19T20:44:00Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-19T20:42:02Z",
+          "summary_generated_at": "2026-08-19T20:44:00Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-19T20:42:02Z",
+      "generated_at": "2026-08-19T20:44:00Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -2870,7 +2870,7 @@
         "next_action": "Rowan Autonomous Company Director · Aug 19, 4:18 PM",
         "completed_24h": 11,
         "failed_24h": 8,
-        "runs_7d": 484,
+        "runs_7d": 481,
         "history": [
           {
             "at": "Aug 19, 3:18 PM",
