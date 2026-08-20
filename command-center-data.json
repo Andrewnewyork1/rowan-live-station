@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T21:20:20-05:00",
+  "generated_at": "2026-08-19T21:25:17-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "OpenAI",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T02:20:00Z",
+          "summary_generated_at": "2026-08-20T02:25:00Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T02:20:00Z",
+          "summary_generated_at": "2026-08-20T02:25:00Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-20T02:20:00Z",
+      "generated_at": "2026-08-20T02:25:00Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -3035,10 +3035,19 @@
         "observed_at_iso": "2026-08-19T20:41:58-05:00",
         "presence_source": "Session metadata",
         "next_action": "On demand within the protected weekly reserve",
-        "completed_24h": 91,
+        "completed_24h": 92,
         "failed_24h": 5,
-        "runs_7d": 355,
+        "runs_7d": 356,
         "history": [
+          {
+            "at": "Aug 19, 9:21 PM",
+            "at_iso": "2026-08-19T21:21:58-05:00",
+            "at_ms": 1787192518103,
+            "title": "SwirlCraft 15-Minute Customer Reply Triage",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Commerce Row · Checkout and buyer-care studio"
+          },
           {
             "at": "Aug 19, 9:06 PM",
             "at_iso": "2026-08-19T21:06:58-05:00",
@@ -3098,15 +3107,6 @@
             "at_iso": "2026-08-19T20:21:59-05:00",
             "at_ms": 1787188919471,
             "title": "SwirlCraft 15-Minute Customer Reply Triage",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Commerce Row · Checkout and buyer-care studio"
-          },
-          {
-            "at": "Aug 19, 8:21 PM",
-            "at_iso": "2026-08-19T20:21:25-05:00",
-            "at_ms": 1787188885105,
-            "title": "Etsy $20k Goal Sprint",
             "detail": "Completed successfully",
             "status": "succeeded",
             "location": "Commerce Row · Checkout and buyer-care studio"
@@ -3389,10 +3389,19 @@
         "observed_at_iso": "2026-08-19T18:55:57-05:00",
         "presence_source": "Live task ledger",
         "next_action": "On demand within the protected weekly reserve",
-        "completed_24h": 90,
-        "failed_24h": 27,
-        "runs_7d": 512,
+        "completed_24h": 91,
+        "failed_24h": 26,
+        "runs_7d": 513,
         "history": [
+          {
+            "at": "Aug 19, 9:22 PM",
+            "at_iso": "2026-08-19T21:22:02-05:00",
+            "at_ms": 1787192522475,
+            "title": "Rowan Netlify Decision Sync",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Systems Foundry · Reliability and delivery lab"
+          },
           {
             "at": "Aug 19, 9:07 PM",
             "at_iso": "2026-08-19T21:07:03-05:00",
@@ -3451,15 +3460,6 @@
             "at": "Aug 19, 8:22 PM",
             "at_iso": "2026-08-19T20:22:02-05:00",
             "at_ms": 1787188922577,
-            "title": "Rowan Netlify Decision Sync",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Systems Foundry · Reliability and delivery lab"
-          },
-          {
-            "at": "Aug 19, 8:06 PM",
-            "at_iso": "2026-08-19T20:06:58-05:00",
-            "at_ms": 1787188018353,
             "title": "Rowan Netlify Decision Sync",
             "detail": "Completed successfully",
             "status": "succeeded",
