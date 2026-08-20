@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T21:05:17-05:00",
+  "generated_at": "2026-08-19T21:10:21-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "OpenAI",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T02:05:01Z",
+          "summary_generated_at": "2026-08-20T02:10:01Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T02:05:01Z",
+          "summary_generated_at": "2026-08-20T02:10:01Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-20T02:05:01Z",
+      "generated_at": "2026-08-20T02:10:01Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -3037,8 +3037,17 @@
         "next_action": "On demand within the protected weekly reserve",
         "completed_24h": 92,
         "failed_24h": 5,
-        "runs_7d": 354,
+        "runs_7d": 355,
         "history": [
+          {
+            "at": "Aug 19, 9:06 PM",
+            "at_iso": "2026-08-19T21:06:58-05:00",
+            "at_ms": 1787191618044,
+            "title": "SwirlCraft 15-Minute Customer Reply Triage",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Commerce Row · Checkout and buyer-care studio"
+          },
           {
             "at": "Aug 19, 8:51 PM",
             "at_iso": "2026-08-19T20:51:58-05:00",
@@ -3097,15 +3106,6 @@
             "at": "Aug 19, 8:21 PM",
             "at_iso": "2026-08-19T20:21:25-05:00",
             "at_ms": 1787188885105,
-            "title": "Etsy $20k Goal Sprint",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Commerce Row · Checkout and buyer-care studio"
-          },
-          {
-            "at": "Aug 19, 8:17 PM",
-            "at_iso": "2026-08-19T20:17:36-05:00",
-            "at_ms": 1787188656893,
             "title": "Etsy $20k Goal Sprint",
             "detail": "Completed successfully",
             "status": "succeeded",
@@ -3391,8 +3391,17 @@
         "next_action": "On demand within the protected weekly reserve",
         "completed_24h": 91,
         "failed_24h": 28,
-        "runs_7d": 511,
+        "runs_7d": 512,
         "history": [
+          {
+            "at": "Aug 19, 9:07 PM",
+            "at_iso": "2026-08-19T21:07:03-05:00",
+            "at_ms": 1787191623113,
+            "title": "Rowan Netlify Decision Sync",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Systems Foundry · Reliability and delivery lab"
+          },
           {
             "at": "Aug 19, 8:57 PM",
             "at_iso": "2026-08-19T20:57:29-05:00",
@@ -3455,15 +3464,6 @@
             "detail": "Completed successfully",
             "status": "succeeded",
             "location": "Systems Foundry · Reliability and delivery lab"
-          },
-          {
-            "at": "Aug 19, 7:56 PM",
-            "at_iso": "2026-08-19T19:56:45-05:00",
-            "at_ms": 1787187405882,
-            "title": "Rowan 15-Minute Resource Circuit Breaker",
-            "detail": "Ended with an exception",
-            "status": "failed",
-            "location": "Systems Foundry · incident room"
           }
         ]
       }
