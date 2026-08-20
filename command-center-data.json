@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T20:17:55-05:00",
+  "generated_at": "2026-08-19T20:20:29-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "Google-Gemini-Cli",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T01:17:45Z",
+          "summary_generated_at": "2026-08-20T01:20:19Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T01:17:45Z",
+          "summary_generated_at": "2026-08-20T01:20:19Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-20T01:17:45Z",
+      "generated_at": "2026-08-20T01:20:19Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -2336,7 +2336,7 @@
       "external_actions_authorized": false,
       "model_call_required": false,
       "issue_codes": [
-        "ETSY_BROWSER_EXTENSION_SESSION_REQUIRED"
+        "ETSY_BROWSER_COMMAND_FAILED"
       ]
     },
     "etsy_browser_dispatch": {
@@ -2844,8 +2844,8 @@
       "status": "working",
       "automation": "2 enabled",
       "last_outcome": "Recent run ok",
-      "last_activity": "Aug 19, 8:11 PM",
-      "last_activity_at": "2026-08-19T20:11:23-05:00",
+      "last_activity": "Aug 19, 8:20 PM",
+      "last_activity_at": "2026-08-19T20:20:14-05:00",
       "model": "OpenAI GEMINI-3-FLASH-PREVIEW",
       "sessions_24h": 8,
       "sessions_7d": 286,
@@ -3171,8 +3171,8 @@
       "status": "working",
       "automation": "On demand",
       "last_outcome": "Recent run ok",
-      "last_activity": "Aug 19, 8:05 PM",
-      "last_activity_at": "2026-08-19T20:05:51-05:00",
+      "last_activity": "Aug 19, 8:20 PM",
+      "last_activity_at": "2026-08-19T20:20:28-05:00",
       "model": "OpenAI GEMINI-3.5-FLASH",
       "sessions_24h": 1,
       "sessions_7d": 3,
@@ -3201,14 +3201,23 @@
         "location": "Creative Quarter · Listing and product studio",
         "current_activity": "Working on Etsy $20k Goal Sprint",
         "current_assignment": "Writing high-converting SEO titles & descriptions for 50-state leases and agency packs.",
-        "observed_at": "Aug 19, 8:00 PM",
-        "observed_at_iso": "2026-08-19T20:00:28-05:00",
+        "observed_at": "Aug 19, 8:20 PM",
+        "observed_at_iso": "2026-08-19T20:20:27-05:00",
         "presence_source": "Live task ledger",
         "next_action": "On demand within the protected weekly reserve",
         "completed_24h": 1,
         "failed_24h": 12,
-        "runs_7d": 19,
+        "runs_7d": 20,
         "history": [
+          {
+            "at": "Aug 19, 8:20 PM",
+            "at_iso": "2026-08-19T20:20:27-05:00",
+            "at_ms": 1787188827939,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "In progress",
+            "status": "running",
+            "location": "Creative Quarter · Listing and product studio"
+          },
           {
             "at": "Aug 19, 8:05 PM",
             "at_iso": "2026-08-19T20:05:51-05:00",
@@ -3267,15 +3276,6 @@
             "at": "Aug 19, 7:58 PM",
             "at_iso": "2026-08-19T19:58:40-05:00",
             "at_ms": 1787187520804,
-            "title": "Etsy $20k Goal Sprint",
-            "detail": "Ended with an exception",
-            "status": "failed",
-            "location": "Creative Quarter · incident room"
-          },
-          {
-            "at": "Aug 19, 3:55 PM",
-            "at_iso": "2026-08-19T15:55:27-05:00",
-            "at_ms": 1787172927429,
             "title": "Etsy $20k Goal Sprint",
             "detail": "Ended with an exception",
             "status": "failed",
@@ -3949,8 +3949,8 @@
       {
         "category": "Control plane",
         "name": "OpenClaw gateway",
-        "status": "healthy",
-        "detail": "Healthy event loop and plugin state."
+        "status": "attention",
+        "detail": "Gateway health needs review."
       },
       {
         "category": "Model",
@@ -4027,8 +4027,8 @@
       {
         "category": "Channel",
         "name": "Slack",
-        "status": "healthy",
-        "detail": "Connected to the OpenClaw gateway."
+        "status": "attention",
+        "detail": "Connection not confirmed."
       },
       {
         "category": "Reputation",
