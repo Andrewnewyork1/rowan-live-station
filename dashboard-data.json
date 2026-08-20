@@ -1,5 +1,5 @@
 {
-  "snapshot_at": "2026-08-20T07:40:00.337634-05:00",
+  "snapshot_at": "2026-08-20T07:41:11.927607-05:00",
   "schema_version": 3,
   "source": "rowan_realtime_sync",
   "city_status": {
@@ -871,12 +871,6 @@
   },
   "evolution_log": [
     {
-      "timestamp": "2026-08-20T04:20:00.835729+00:00",
-      "action": "PERPETUAL_ENGINE",
-      "detail": "Dispatched 2 idle agents. Active: ['aria', 'atlas', 'axiom', 'blake', 'builder', 'chase', 'cipher', 'efficiency', 'finn', 'kira', 'lyra', 'max', 'nova', 'orion', 'rea', 'rio', 'sage', 'scout', 'seo', 'val', 'victor', 'zara']. Goal: $20k/month",
-      "result": "success"
-    },
-    {
       "timestamp": "2026-08-20T04:30:01.042296+00:00",
       "action": "PERPETUAL_ENGINE",
       "detail": "Dispatched 4 idle agents. Active: ['aria', 'atlas', 'axiom', 'blake', 'builder', 'chase', 'cipher', 'efficiency', 'finn', 'lyra', 'max', 'orion', 'rea', 'rio', 'scout', 'seo', 'val', 'victor', 'zara']. Goal: $20k/month",
@@ -1003,6 +997,13 @@
       "action": "PERPETUAL_ENGINE",
       "detail": "Dispatched 4 idle agents. Active: ['aria', 'atlas', 'axiom', 'builder', 'chase', 'cipher', 'efficiency', 'lyra', 'max', 'orion', 'rea', 'scout', 'seo', 'val', 'victor']. Goal: $20k/month",
       "result": "success"
+    },
+    {
+      "timestamp": "2026-08-20T07:30:01.492695-05:00",
+      "action": "AGENT_SPAWNED",
+      "detail": "\ud83e\udd16 Luna (Night Operations AI) spawned for 24/7 coverage",
+      "result": "success",
+      "triggered_by": "axiom"
     }
   ],
   "agent_activity": {
