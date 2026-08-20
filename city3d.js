@@ -169,7 +169,8 @@ export async function bootCity3D() {
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x030914, 0.009);
+  scene.background = new THREE.Color(0x020712);
+  scene.fog = new THREE.FogExp2(0x020712, 0.005);
 
   const camera = new THREE.PerspectiveCamera(45, VIEWPORT.clientWidth / 540, 0.1, 600);
   camera.position.set(0, 42, 65);
@@ -201,25 +202,35 @@ export async function bootCity3D() {
 
   // Ground & Roads
   const ground = new THREE.Mesh(
-    new THREE.PlaneGeometry(160, 160),
-    new THREE.MeshStandardMaterial({ color: 0x050a0f, roughness: 0.94, metalness: 0.1 })
+    new THREE.PlaneGeometry(320, 320),
+    new THREE.MeshStandardMaterial({ color: 0x030609, roughness: 0.97, metalness: 0.06 })
   );
   ground.rotation.x = -Math.PI / 2;
   ground.receiveShadow = true;
   scene.add(ground);
 
-  const grid = new THREE.GridHelper(160, 80, 0x163740, 0x0a191d);
+  const grid = new THREE.GridHelper(320, 128, 0x0d2030, 0x060d12);
   grid.position.y = 0.01;
   scene.add(grid);
 
   const roadMat = new THREE.MeshStandardMaterial({ color: 0x081216, roughness: 0.96 });
-  const roadH = new THREE.Mesh(new THREE.BoxGeometry(160, 0.05, 5.2), roadMat);
+  const roadH = new THREE.Mesh(new THREE.BoxGeometry(320, 0.05, 6.5), roadMat);
   roadH.position.set(0, 0.02, 0);
   scene.add(roadH);
 
-  const roadV = new THREE.Mesh(new THREE.BoxGeometry(5.2, 0.05, 160), roadMat);
+  const roadV = new THREE.Mesh(new THREE.BoxGeometry(6.5, 0.05, 320), roadMat);
   roadV.position.set(0, 0.02, 0);
   scene.add(roadV);
+
+  // Cross-streets for city block feel
+  for (const offset of [-40, 40]) {
+    const cH = new THREE.Mesh(new THREE.BoxGeometry(320, 0.04, 4.5), roadMat);
+    cH.position.set(0, 0.02, offset);
+    scene.add(cH);
+    const cV = new THREE.Mesh(new THREE.BoxGeometry(4.5, 0.04, 320), roadMat);
+    cV.position.set(offset, 0.02, 0);
+    scene.add(cV);
+  }
 
   // 1. Central Park & Amenities
   const parkGroup = new THREE.Group();
@@ -283,22 +294,22 @@ export async function bootCity3D() {
 
   // ── ALL 13 AUTONOMOUS CITIZEN AGENTS ──────────────────────────────────────
   const CONTENDERS = [
-    // ── Outer Ring: 8 Major Landmark Towers ──
-    { id: 'rowan', name: 'Rowan', role: 'CEO', col: 0x6db7ff, skin: 0xf5d5a5, pos: [-32, -24], height: 9.2, floors: 6, rank: 1, profit: 'Founder', bIcon: '🏛️', bName: 'Rowan Executive Spire', district: 'Apex Tower' },
-    { id: 'ivy', name: 'Ivy', role: 'Head of Commerce', col: 0x22c97a, skin: 0xf3caa0, pos: [0, -34], height: 9.8, floors: 8, rank: 1, profit: '$8.73', bIcon: '🛍️', bName: 'Ivy Commerce Plaza', district: 'Commerce Plaza' },
-    { id: 'efficiency', name: 'Dept of Efficiency', role: 'Compute Guard', col: 0x22c97a, skin: 0xa3e635, pos: [32, -24], height: 8.8, floors: 17, rank: 2, profit: '$99.78 saved', bIcon: '🛡️', bName: 'Compute Treasury Core', district: 'Treasury Core' },
-    { id: 'aria', name: 'Aria', role: 'Creative Director', col: 0xff6da0, skin: 0xfce2c8, pos: [-40, 0], height: 8.2, floors: 4, rank: 5, profit: '$0.00', bIcon: '🎨', bName: 'Aria Creative Spire', district: 'Deco Center' },
-    { id: 'atlas', name: 'Atlas', role: 'CTO', col: 0xff9900, skin: 0xdeb887, pos: [40, 0], height: 8.4, floors: 5, rank: 3, profit: '$0.00', bIcon: '⚙️', bName: 'Atlas Systems Foundry', district: 'Foundry Hub' },
-    { id: 'sage', name: 'Sage', role: 'Strategy & Intel', col: 0x8a9ba8, skin: 0xe5c298, pos: [-32, 24], height: 7.6, floors: 4, rank: 6, profit: '$0.00', bIcon: '🧠', bName: 'Sage Intelligence Wing', district: 'Intelligence Wing' },
-    { id: 'nova', name: 'Nova', role: 'Growth & Traffic', col: 0x22d3ee, skin: 0xf7d0b0, pos: [0, 36], height: 8.0, floors: 4, rank: 7, profit: '$0.00', bIcon: '🚀', bName: 'Nova Growth HQ', district: 'Broadcast Spire' },
-    { id: 'victor', name: 'Dr. Victor', role: 'Chief R&D Scientist', col: 0xa855f7, skin: 0xfde047, pos: [32, 24], height: 8.0, floors: 4, rank: 4, profit: '$0.00', bIcon: '🔬', bName: 'Victor Quantum R&D Lab', district: 'Quantum R&D' },
+    // ── Outer Ring: 8 Major Landmark Towers — wide city blocks ──
+    { id: 'rowan',      name: 'Rowan',              role: 'CEO',                   col: 0x6db7ff, skin: 0xf5d5a5, pos: [-52, -38], height: 22, floors: 14, rank: 1, profit: 'Founder',    bIcon: '🏛️', bName: 'Rowan Executive Spire',   district: 'Apex Tower' },
+    { id: 'ivy',        name: 'Ivy',                role: 'Head of Commerce',      col: 0x22c97a, skin: 0xf3caa0, pos: [ 0,  -56], height: 26, floors: 18, rank: 1, profit: '$8.73',     bIcon: '🛍️', bName: 'Ivy Commerce Plaza',       district: 'Commerce Plaza' },
+    { id: 'efficiency', name: 'Dept of Efficiency', role: 'Compute Guard',         col: 0x22c97a, skin: 0xa3e635, pos: [ 52, -38], height: 20, floors: 13, rank: 2, profit: '$99.78 saved', bIcon: '🛡️', bName: 'Compute Treasury Core',   district: 'Treasury Core' },
+    { id: 'aria',       name: 'Aria',               role: 'Creative Director',     col: 0xff6da0, skin: 0xfce2c8, pos: [-58,   0], height: 18, floors: 12, rank: 5, profit: '$0.00',     bIcon: '🎨', bName: 'Aria Creative Spire',      district: 'Deco Center' },
+    { id: 'atlas',      name: 'Atlas',              role: 'CTO',                   col: 0xff9900, skin: 0xdeb887, pos: [ 58,   0], height: 19, floors: 12, rank: 3, profit: '$0.00',     bIcon: '⚙️', bName: 'Atlas Systems Foundry',    district: 'Foundry Hub' },
+    { id: 'sage',       name: 'Sage',               role: 'Strategy & Intel',      col: 0x8a9ba8, skin: 0xe5c298, pos: [-52,  38], height: 17, floors: 11, rank: 6, profit: '$0.00',     bIcon: '🧠', bName: 'Sage Intelligence Wing',   district: 'Intelligence Wing' },
+    { id: 'nova',       name: 'Nova',               role: 'Growth & Traffic',      col: 0x22d3ee, skin: 0xf7d0b0, pos: [  0,  58], height: 21, floors: 14, rank: 7, profit: '$0.00',     bIcon: '🚀', bName: 'Nova Growth HQ',           district: 'Broadcast Spire' },
+    { id: 'victor',     name: 'Dr. Victor',         role: 'Chief R&D Scientist',   col: 0xa855f7, skin: 0xfde047, pos: [ 52,  38], height: 19, floors: 13, rank: 4, profit: '$0.00',     bIcon: '🔬', bName: 'Victor Quantum R&D Lab',   district: 'Quantum R&D' },
 
-    // ── Inner Ring: 5 Specialist High-Tech Towers ──
-    { id: 'ember', name: 'Ember', role: 'Viral Growth Hacker', col: 0xf97316, skin: 0xfbcfe8, pos: [-18, -14], height: 6.8, floors: 3, rank: 9, profit: '$0.00', bIcon: '🔥', bName: 'Ember Viral Studio', district: 'Viral Lab' },
-    { id: 'cipher', name: 'Cipher', role: 'Pricing & Stripe Quant', col: 0x6366f1, skin: 0xd1d5db, pos: [18, -14], height: 7.0, floors: 3, rank: 8, profit: '$0.00', bIcon: '💳', bName: 'Cipher Quant Hub', district: 'Fintech Quant' },
-    { id: 'lyra', name: 'Lyra', role: 'B2B Design Engineer', col: 0xec4899, skin: 0xfef08a, pos: [-18, 14], height: 6.6, floors: 2, rank: 11, profit: '$0.00', bIcon: '✨', bName: 'Lyra Design Atelier', district: 'Aesthetics Lab' },
-    { id: 'orion', name: 'Orion', role: 'Cloud Engineer', col: 0x14b8a6, skin: 0xfcd34d, pos: [18, 14], height: 6.8, floors: 3, rank: 10, profit: '$0.00', bIcon: '☁️', bName: 'Orion Cloud Foundry', district: 'Cloud Foundry' },
-    { id: 'kira', name: 'Kira', role: 'Legal Auditor', col: 0x10b981, skin: 0xfed7aa, pos: [0, -15], height: 6.6, floors: 2, rank: 12, profit: '$0.00', bIcon: '⚖️', bName: 'Kira Statutory Hall', district: 'Compliance Wing' }
+    // ── Inner Ring: 5 Specialist High-Tech Towers — mid-city blocks ──
+    { id: 'ember',  name: 'Ember',   role: 'Viral Growth Hacker',      col: 0xf97316, skin: 0xfbcfe8, pos: [-28, -20], height: 13, floors: 9,  rank: 9,  profit: '$0.00', bIcon: '🔥', bName: 'Ember Viral Studio',     district: 'Viral Lab' },
+    { id: 'cipher', name: 'Cipher',  role: 'Pricing & Stripe Quant',   col: 0x6366f1, skin: 0xd1d5db, pos: [ 28, -20], height: 14, floors: 10, rank: 8,  profit: '$0.00', bIcon: '💳', bName: 'Cipher Quant Hub',        district: 'Fintech Quant' },
+    { id: 'lyra',   name: 'Lyra',    role: 'B2B Design Engineer',       col: 0xec4899, skin: 0xfef08a, pos: [-28,  20], height: 12, floors: 8,  rank: 11, profit: '$0.00', bIcon: '✨', bName: 'Lyra Design Atelier',     district: 'Aesthetics Lab' },
+    { id: 'orion',  name: 'Orion',   role: 'Cloud Engineer',            col: 0x14b8a6, skin: 0xfcd34d, pos: [ 28,  20], height: 13, floors: 9,  rank: 10, profit: '$0.00', bIcon: '☁️', bName: 'Orion Cloud Foundry',     district: 'Cloud Foundry' },
+    { id: 'kira',   name: 'Kira',    role: 'Legal Auditor',             col: 0x10b981, skin: 0xfed7aa, pos: [  0, -24], height: 11, floors: 7,  rank: 12, profit: '$0.00', bIcon: '⚖️', bName: 'Kira Statutory Hall',     district: 'Compliance Wing' }
   ];
 
   const buildings = [];
@@ -421,38 +432,108 @@ export async function bootCity3D() {
     const group = new THREE.Group();
     group.position.set(x, 0, z);
 
-    const bMat = new THREE.MeshStandardMaterial({ color: 0x0d161f, roughness: 0.3, metalness: 0.8 });
-    const base = new THREE.Mesh(new THREE.BoxGeometry(3.8, h, 3.8), bMat);
-    base.position.y = h / 2;
-    base.castShadow = true;
-    base.receiveShadow = true;
-    group.add(base);
+    // Wide base podium
+    const podiumW = 5.5 + Math.random() * 2.5;
+    const podiumD = 5.5 + Math.random() * 2.5;
+    const podiumH = h * 0.18;
+    const podMat = new THREE.MeshStandardMaterial({ color: 0x0f1d2a, roughness: 0.45, metalness: 0.7 });
+    const podium = new THREE.Mesh(new THREE.BoxGeometry(podiumW, podiumH, podiumD), podMat);
+    podium.position.y = podiumH / 2;
+    podium.castShadow = true;
+    podium.receiveShadow = true;
+    group.add(podium);
 
-    // Windows
-    const winMat = new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 1.0, roughness: 0.1 });
-    for (let floor = 1.1; floor < h - 0.5; floor += 1.2) {
-      for (let side = -1.1; side <= 1.1; side += 1.1) {
-        const win = new THREE.Mesh(new THREE.BoxGeometry(0.48, 0.58, 0.05), winMat);
-        win.position.set(side, floor, 1.92);
-        group.add(win);
+    // Main tower shaft (setback from podium)
+    const twW = podiumW * 0.68;
+    const twD = podiumD * 0.68;
+    const bMat = new THREE.MeshStandardMaterial({ color: 0x0a161f, roughness: 0.22, metalness: 0.88 });
+    const tower = new THREE.Mesh(new THREE.BoxGeometry(twW, h - podiumH, twD), bMat);
+    tower.position.y = podiumH + (h - podiumH) / 2;
+    tower.castShadow = true;
+    tower.receiveShadow = true;
+    group.add(tower);
+
+    // Glass curtain wall panels
+    const glassMat = new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 0.12, roughness: 0.05, metalness: 0.95, transparent: true, opacity: 0.72 });
+    const glassF = new THREE.Mesh(new THREE.PlaneGeometry(twW - 0.1, h - podiumH - 0.2), glassMat);
+    glassF.position.set(0, podiumH + (h - podiumH) / 2, twD / 2 + 0.01);
+    group.add(glassF);
+    const glassB = glassF.clone();
+    glassB.position.z = -(twD / 2 + 0.01);
+    glassB.rotation.y = Math.PI;
+    group.add(glassB);
+    const glassL = new THREE.Mesh(new THREE.PlaneGeometry(twD - 0.1, h - podiumH - 0.2), glassMat);
+    glassL.position.set(-twW / 2 - 0.01, podiumH + (h - podiumH) / 2, 0);
+    glassL.rotation.y = -Math.PI / 2;
+    group.add(glassL);
+    const glassR = glassL.clone();
+    glassR.position.x = twW / 2 + 0.01;
+    glassR.rotation.y = Math.PI / 2;
+    group.add(glassR);
+
+    // Window rows on all faces
+    const winMat = new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 1.1, roughness: 0.05 });
+    const floorStep = 1.3;
+    const winW = 0.38, winH2 = 0.55;
+    const colsX = Math.max(1, Math.floor((twW - 0.6) / 0.7));
+    const colsZ = Math.max(1, Math.floor((twD - 0.6) / 0.7));
+    for (let fy = podiumH + 0.9; fy < h - 0.5; fy += floorStep) {
+      for (let c = 0; c < colsX; c++) {
+        if (Math.random() > 0.15) {
+          const win = new THREE.Mesh(new THREE.BoxGeometry(winW, winH2, 0.05), winMat);
+          win.position.set(-twW/2 + 0.45 + c * 0.7, fy, twD/2 + 0.04);
+          group.add(win);
+        }
       }
-      const band = new THREE.Mesh(new THREE.BoxGeometry(3.86, 0.05, 3.86), winMat);
-      band.position.set(0, floor - 0.35, 0);
+      for (let c = 0; c < colsZ; c++) {
+        if (Math.random() > 0.15) {
+          const win = new THREE.Mesh(new THREE.BoxGeometry(0.05, winH2, winW), winMat);
+          win.position.set(twW/2 + 0.04, fy, -twD/2 + 0.45 + c * 0.7);
+          group.add(win);
+        }
+      }
+      for (let c = 0; c < colsX; c++) {
+        if (Math.random() > 0.15) {
+          const win = new THREE.Mesh(new THREE.BoxGeometry(winW, winH2, 0.05), winMat);
+          win.position.set(-twW/2 + 0.45 + c * 0.7, fy, -twD/2 - 0.04);
+          group.add(win);
+        }
+      }
+      const band = new THREE.Mesh(new THREE.BoxGeometry(twW + 0.1, 0.07, twD + 0.1), new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 0.3, roughness: 0.2 }));
+      band.position.set(0, fy - 0.4, 0);
       group.add(band);
     }
 
-    const roof = new THREE.Mesh(new THREE.BoxGeometry(4.1, 0.25, 4.1), new THREE.MeshStandardMaterial({ color: col, roughness: 0.2, metalness: 0.7 }));
-    roof.position.y = h + 0.12;
+    // Roof slab
+    const roof = new THREE.Mesh(new THREE.BoxGeometry(twW + 0.3, 0.4, twD + 0.3), new THREE.MeshStandardMaterial({ color: col, roughness: 0.15, metalness: 0.85 }));
+    roof.position.y = h + 0.2;
     group.add(roof);
 
-    // Rooftop Spire & Crown Beacon for high-earning agents
-    if (contender.floors >= 4 || contender.rank <= 3) {
-      const spire = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.22, 1.8, 8), new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 1.2 }));
-      spire.position.y = h + 1.0;
+    // Neon entrance strip
+    const neonStrip = new THREE.Mesh(new THREE.BoxGeometry(podiumW + 0.1, 0.12, 0.08), new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 3.5, roughness: 0.0 }));
+    neonStrip.position.set(0, podiumH + 0.06, podiumD / 2 + 0.01);
+    group.add(neonStrip);
+
+    // Street-level base accent light
+    const baseLight = new THREE.PointLight(col, 0.8, 10);
+    baseLight.position.set(0, 1.5, podiumD / 2 + 1);
+    group.add(baseLight);
+
+    // Rooftop Spire & Crown Beacon
+    if (contender.floors >= 8 || contender.rank <= 3) {
+      const spire = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.28, h * 0.18, 6), new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 1.8, metalness: 0.9 }));
+      spire.position.y = h + h * 0.09;
       group.add(spire);
-      
-      const beacon = new THREE.PointLight(col, 1.5, 12);
-      beacon.position.y = h + 1.8;
+      const obsRing = new THREE.Mesh(new THREE.TorusGeometry(0.7, 0.08, 8, 24), new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 2.0 }));
+      obsRing.rotation.x = Math.PI / 2;
+      obsRing.position.y = h + 0.6;
+      group.add(obsRing);
+      const beacon = new THREE.PointLight(col, 3.0, 30);
+      beacon.position.y = h + h * 0.18;
+      group.add(beacon);
+    } else {
+      const beacon = new THREE.PointLight(col, 1.8, 18);
+      beacon.position.y = h + 1.2;
       group.add(beacon);
     }
 
@@ -822,7 +903,7 @@ export async function bootCity3D() {
             }
           }
           
-          if (hasAlert || isSelected) {
+          if (isSelected) {
             char.bubbleEl.style.display = 'block';
             char.bubbleEl.style.left = `${sx}px`;
             char.bubbleEl.style.top = `${sy - 22}px`;
@@ -898,8 +979,8 @@ export async function bootCity3D() {
 
   // Hook up Reset View button in city header
   function resetCityCamera() {
-    controls.target.set(0, 0, 0);
-    camera.position.set(0, 42, 65);
+    controls.target.set(0, 4, 0);
+    camera.position.set(0, 60, 110);
     controls.update();
   }
   const resetBtn = document.querySelector('.city-viewport-actions button, #cityResetView');
