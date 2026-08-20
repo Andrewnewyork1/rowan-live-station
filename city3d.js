@@ -48,19 +48,18 @@ export async function bootCity3D() {
   VIEWPORT.appendChild(overlay);
 
   // Renderer
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  const isMobile = window.innerWidth < 768;
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: !isMobile, alpha: false, powerPreference: 'high-performance' });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 1.5));
   renderer.setSize(W, H);
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.1;
+  renderer.shadowMap.enabled = false;
+  renderer.toneMapping = THREE.NoToneMapping;
   _cityRenderer = renderer;
 
   // Scene
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x010510);
-  scene.fog = new THREE.FogExp2(scene.background, 0.006);
+  scene.fog = new THREE.Fog(0x010510, 120, 280);
 
   // Camera
   const camera = new THREE.PerspectiveCamera(46, W / H, 0.5, 1400);
@@ -78,26 +77,18 @@ export async function bootCity3D() {
   controls.zoomSpeed = 1.1;
   controls.update();
 
-  // ── Lighting ────────────────────────────────────────────────────────────
-  scene.add(new THREE.AmbientLight(0x0a1628, 3.5));
-
-  const moon = new THREE.DirectionalLight(0x4466aa, 1.2);
+  // ── Lighting (optimized: no shadows) ────────────────────────────────────
+  scene.add(new THREE.AmbientLight(0x1a3050, 5.0));
+  const moon = new THREE.DirectionalLight(0x6699cc, 1.8);
   moon.position.set(-30, 80, -50);
-  moon.castShadow = true;
-  moon.shadow.mapSize.set(2048, 2048);
-  moon.shadow.camera.near = 0.5;
-  moon.shadow.camera.far = 400;
-  moon.shadow.camera.left = -160;
-  moon.shadow.camera.right = 160;
-  moon.shadow.camera.top = 160;
-  moon.shadow.camera.bottom = -160;
+  moon.castShadow = false;
   scene.add(moon);
+  scene.add(new THREE.HemisphereLight(0x0a1628, 0x020408, 1.2));
 
   // ── Ground & Roads ──────────────────────────────────────────────────────
-  const groundMat = new THREE.MeshStandardMaterial({ color: 0x030609, roughness: 0.98, metalness: 0.02 });
+  const groundMat = new THREE.MeshBasicMaterial({ color: 0x030609 });
   const ground = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), groundMat);
   ground.rotation.x = -Math.PI / 2;
-  ground.receiveShadow = true;
   scene.add(ground);
 
   // Grid
@@ -119,10 +110,7 @@ export async function bootCity3D() {
 
   DISTRICT_ZONES.forEach(z => {
     // Glowing floor tile
-    const mat = new THREE.MeshStandardMaterial({
-      color: z.col, emissive: z.col, emissiveIntensity: 0.04,
-      roughness: 0.9, transparent: true, opacity: 0.18,
-    });
+    const mat = new THREE.MeshBasicMaterial({ color: z.col, transparent: true, opacity: 0.12 });
     const mesh = new THREE.Mesh(new THREE.PlaneGeometry(z.w, z.d), mat);
     mesh.rotation.x = -Math.PI / 2;
     mesh.position.set(z.cx, 0.04, z.cz);
@@ -148,7 +136,7 @@ export async function bootCity3D() {
   });
 
   // Main roads
-  const roadMat = new THREE.MeshStandardMaterial({ color: 0x050c12, roughness: 0.97 });
+  const roadMat = new THREE.MeshBasicMaterial({ color: 0x050c12 });
   function addRoad(x, z, w, d) {
     const r = new THREE.Mesh(new THREE.BoxGeometry(w, 0.06, d), roadMat);
     r.position.set(x, 0.03, z);
@@ -161,28 +149,20 @@ export async function bootCity3D() {
   addRoad( 42, 0, 4.5, 400);
   addRoad(-42, 0, 4.5, 400);
 
-  // Street lights
-  function streetLight(x, z, col = 0xffe5aa) {
-    const post = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 5.5, 5), new THREE.MeshStandardMaterial({ color: 0x1a2535 }));
-    post.position.set(x, 2.75, z);
-    scene.add(post);
-    const pl = new THREE.PointLight(col, 1.0, 22);
-    pl.position.set(x + 1.5, 5.5, z);
-    scene.add(pl);
-  }
-  for (const p of [-70,-50,-28,-14,0,14,28,50,70]) {
-    streetLight(p, 5.5);
-    streetLight(p, -5.5);
-    streetLight(5.5, p);
-    streetLight(-5.5, p);
-  }
+  // Street accent lights (2 instead of 36 PointLights)
+  const warmAccent = new THREE.PointLight(0xffe5aa, 3.5, 90);
+  warmAccent.position.set(0, 8, 0);
+  scene.add(warmAccent);
+  const blueAccent = new THREE.PointLight(0x4499ff, 2.5, 110);
+  blueAccent.position.set(50, 15, 50);
+  scene.add(blueAccent);
 
   // ── Park at center ──────────────────────────────────────────────────────
-  const park = new THREE.Mesh(new THREE.CylinderGeometry(7, 7, 0.12, 32), new THREE.MeshStandardMaterial({ color: 0x0d2b18, roughness: 0.9 }));
+  const park = new THREE.Mesh(new THREE.CylinderGeometry(7, 7, 0.12, 16), new THREE.MeshBasicMaterial({ color: 0x0d2b18 }));
   park.position.y = 0.06;
   scene.add(park);
 
-  const poolMat = new THREE.MeshStandardMaterial({ color: 0x38bdf8, emissive: 0x0ea5e9, emissiveIntensity: 0.9, roughness: 0.05 });
+  const poolMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
   const pool = new THREE.Mesh(new THREE.CylinderGeometry(2.5, 2.5, 0.3, 24), poolMat);
   pool.position.y = 0.22;
   scene.add(pool);
@@ -190,22 +170,7 @@ export async function bootCity3D() {
   poolLight.position.set(0, 1.5, 0);
   scene.add(poolLight);
 
-  // Park trees
-  function tree(x, z) {
-    const g = new THREE.Group();
-    g.position.set(x, 0, z);
-    const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.2, 1.6, 6), new THREE.MeshStandardMaterial({ color: 0x3d1f0a }));
-    trunk.position.y = 0.8;
-    g.add(trunk);
-    const c1 = new THREE.Mesh(new THREE.ConeGeometry(1.2, 1.8, 7), new THREE.MeshStandardMaterial({ color: 0x15652e, roughness: 0.8 }));
-    c1.position.y = 2.2;
-    g.add(c1);
-    const c2 = new THREE.Mesh(new THREE.ConeGeometry(0.9, 1.4, 7), new THREE.MeshStandardMaterial({ color: 0x1a8040, roughness: 0.8 }));
-    c2.position.y = 3.1;
-    g.add(c2);
-    scene.add(g);
-  }
-  [[-5.5,-5.5],[-5.5,5.5],[5.5,-5.5],[5.5,5.5],[-7.5,0],[7.5,0],[0,-7.5],[0,7.5]].forEach(([x,z]) => tree(x,z));
+  // Trees removed for performance
 
   // ── Building factory ─────────────────────────────────────────────────────
   // Types: 'box','stepped','taper','needle','wide'
@@ -229,8 +194,7 @@ export async function bootCity3D() {
     // Podium
     const podium = new THREE.Mesh(new THREE.BoxGeometry(w + 1.8, pH, d + 1.8), podMat);
     podium.position.y = pH / 2;
-    podium.castShadow = true;
-    podium.receiveShadow = true;
+    // shadows disabled
     grp.add(podium);
 
     // Neon base strip
@@ -242,7 +206,7 @@ export async function bootCity3D() {
       // Clean modernist glass box
       const tower = new THREE.Mesh(new THREE.BoxGeometry(tW, h - pH, tD), shellMat);
       tower.position.y = pH + (h - pH) / 2;
-      tower.castShadow = true;
+      // castShadow disabled
       grp.add(tower);
       // Glass faces
       [[0, 0, tD/2+0.01, 0],[0, 0, -(tD/2+0.01), Math.PI],[-(tW/2+0.01), 0, 0, -Math.PI/2],[tW/2+0.01, 0, 0, Math.PI/2]].forEach(([fx,_,fz,ry]) => {
@@ -279,7 +243,7 @@ export async function bootCity3D() {
         const sh = (h-pH) / steps;
         const stepMesh = new THREE.Mesh(new THREE.BoxGeometry(tW*sf, sh, tD*sf), shellMat);
         stepMesh.position.y = pH + sh*s + sh/2;
-        stepMesh.castShadow = true;
+        // castShadow disabled
         grp.add(stepMesh);
         // Windows on each step
         const sc = Math.max(1, Math.floor((tW*sf-0.5)/0.75));
@@ -515,32 +479,24 @@ export async function bootCity3D() {
   overlay.appendChild(infoPanel);
 
   let selectedId = null;
+  populateComms();
+
+  // ── Demand-driven render (only re-renders when camera moves) ──────────────
+  let _needsRender = true;
+  let _labelTimer = 0;
   let syncTimer = 5.0;
   const clock = new THREE.Clock();
   const tmpV = new THREE.Vector3();
 
-  populateComms();
+  controls.addEventListener('change', () => { _needsRender = true; });
 
-  // ── Animate ───────────────────────────────────────────────────────────────
-  function animate() {
-    _animFrameId = requestAnimationFrame(animate);
-    const dt = clock.getDelta();
-    const elapsed = clock.getElapsedTime();
-
-    syncTimer -= dt;
-    if (syncTimer <= 0) { populateComms(); syncTimer = 6.0; }
-
-    // Animate pool
-    if (poolLight) poolLight.intensity = 2.2 + Math.sin(elapsed*3)*0.5;
-
-    // Project all building labels
+  function updateLabels() {
     allBuildings.forEach(b => {
       if (!b.labelEl || !b.labelWorldPos) return;
       tmpV.copy(b.labelWorldPos).project(camera);
       if (tmpV.z >= 1) { b.labelEl.style.display='none'; return; }
       const sx = (tmpV.x*0.5+0.5)*VIEWPORT.clientWidth;
       const sy = (-(tmpV.y*0.5)+0.5)*H;
-      // Distance-based: only show label if close enough
       const dist = camera.position.distanceTo(b.labelWorldPos);
       if (dist < 95 || b.cfg.id === selectedId) {
         b.labelEl.style.display='block';
@@ -551,8 +507,6 @@ export async function bootCity3D() {
         b.labelEl.style.display='none';
       }
     });
-
-    // Project district plates
     overlay.querySelectorAll('.city-district-plate').forEach(el => {
       const wx=parseFloat(el.dataset.wx), wz=parseFloat(el.dataset.wz);
       tmpV.set(wx, 1, wz).project(camera);
@@ -563,9 +517,27 @@ export async function bootCity3D() {
       el.style.left=`${sx}px`;
       el.style.top=`${sy}px`;
     });
+  }
+
+  function animate() {
+    _animFrameId = requestAnimationFrame(animate);
+    const dt = clock.getDelta();
+    const elapsed = clock.getElapsedTime();
+
+    syncTimer -= dt;
+    if (syncTimer <= 0) { populateComms(); syncTimer = 8.0; }
+
+    // Pool light pulse (always animate)
+    if (poolLight) { poolLight.intensity = 2.2 + Math.sin(elapsed*2.5)*0.6; _needsRender = true; }
 
     controls.update();
-    renderer.render(scene, camera);
+
+    if (_needsRender) {
+      _labelTimer += dt;
+      if (_labelTimer > 0.05) { updateLabels(); _labelTimer = 0; }
+      renderer.render(scene, camera);
+      _needsRender = false;
+    }
   }
 
   // ── Click to select building ──────────────────────────────────────────────
@@ -580,9 +552,7 @@ export async function bootCity3D() {
     mouse.x = ((e.clientX-rect.left)/VIEWPORT.clientWidth)*2-1;
     mouse.y = -((e.clientY-rect.top)/H)*2+1;
     raycaster.setFromCamera(mouse, camera);
-    const meshes = [];
-    scene.traverse(obj => { if (obj.isMesh) meshes.push(obj); });
-    const hits = raycaster.intersectObjects(meshes, false);
+    const hits = raycaster.intersectObjects(allBuildings.map(b => b.grp), true);
     if (hits.length) {
       // Find which building was hit
       let hit = hits[0].object;

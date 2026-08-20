@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T21:35:23-05:00",
+  "generated_at": "2026-08-19T21:39:55-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "Google-Gemini-Cli",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T02:35:00Z",
+          "summary_generated_at": "2026-08-20T02:39:48Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T02:35:00Z",
+          "summary_generated_at": "2026-08-20T02:39:48Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-20T02:35:00Z",
+      "generated_at": "2026-08-20T02:39:48Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -2920,14 +2920,23 @@
         "location": "Founder Tower · Executive command desk",
         "current_activity": "Working on Rowan Autonomous Company Director",
         "current_assignment": "Directing all agent operations toward the $20,000 Etsy profit goal.",
-        "observed_at": "Aug 19, 9:29 AM",
-        "observed_at_iso": "2026-08-19T09:29:17-05:00",
+        "observed_at": "Aug 19, 9:39 PM",
+        "observed_at_iso": "2026-08-19T21:39:37-05:00",
         "presence_source": "Live task ledger",
         "next_action": "Rowan Autonomous Company Director · Aug 19, 9:39 PM",
         "completed_24h": 16,
         "failed_24h": 8,
-        "runs_7d": 373,
+        "runs_7d": 374,
         "history": [
+          {
+            "at": "Aug 19, 9:39 PM",
+            "at_iso": "2026-08-19T21:39:37-05:00",
+            "at_ms": 1787193577094,
+            "title": "Rowan Autonomous Company Director",
+            "detail": "In progress",
+            "status": "running",
+            "location": "Founder Tower · Executive command desk"
+          },
           {
             "at": "Aug 19, 8:39 PM",
             "at_iso": "2026-08-19T20:39:57-05:00",
@@ -2990,15 +2999,6 @@
             "detail": "Completed successfully",
             "status": "succeeded",
             "location": "Founder Tower · Executive command desk"
-          },
-          {
-            "at": "Aug 19, 1:18 PM",
-            "at_iso": "2026-08-19T13:18:20-05:00",
-            "at_ms": 1787163500475,
-            "title": "Rowan Autonomous Company Director",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Founder Tower · Executive command desk"
           }
         ]
       }
@@ -3041,14 +3041,23 @@
         "location": "Commerce Row · Checkout and buyer-care studio",
         "current_activity": "Monitoring SwirlCraft 15-Minute Customer Reply Triage; no task is executing now",
         "current_assignment": "Managing Etsy catalog triage, listing safety deactivations, and order reconciliation.",
-        "observed_at": "Aug 19, 9:21 PM",
-        "observed_at_iso": "2026-08-19T21:21:55-05:00",
+        "observed_at": "Aug 19, 9:36 PM",
+        "observed_at_iso": "2026-08-19T21:36:55-05:00",
         "presence_source": "Scheduler snapshot",
-        "next_action": "SwirlCraft 15-Minute Customer Reply Triage · Aug 19, 9:36 PM",
+        "next_action": "SwirlCraft 15-Minute Customer Reply Triage · Aug 19, 9:51 PM",
         "completed_24h": 93,
         "failed_24h": 5,
-        "runs_7d": 357,
+        "runs_7d": 358,
         "history": [
+          {
+            "at": "Aug 19, 9:36 PM",
+            "at_iso": "2026-08-19T21:36:57-05:00",
+            "at_ms": 1787193417793,
+            "title": "SwirlCraft 15-Minute Customer Reply Triage",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Commerce Row · Checkout and buyer-care studio"
+          },
           {
             "at": "Aug 19, 9:31 PM",
             "at_iso": "2026-08-19T21:31:21-05:00",
@@ -3107,15 +3116,6 @@
             "at": "Aug 19, 8:31 PM",
             "at_iso": "2026-08-19T20:31:13-05:00",
             "at_ms": 1787189473261,
-            "title": "Etsy $20k Goal Sprint",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Commerce Row · Checkout and buyer-care studio"
-          },
-          {
-            "at": "Aug 19, 8:30 PM",
-            "at_iso": "2026-08-19T20:30:19-05:00",
-            "at_ms": 1787189419709,
             "title": "Etsy $20k Goal Sprint",
             "detail": "Completed successfully",
             "status": "succeeded",
@@ -3398,11 +3398,20 @@
         "observed_at": "Aug 19, 6:55 PM",
         "observed_at_iso": "2026-08-19T18:55:57-05:00",
         "presence_source": "Live task ledger",
-        "next_action": "Rowan Netlify Decision Sync · Aug 19, 9:36 PM",
+        "next_action": "Rowan Netlify Decision Sync · Aug 19, 9:51 PM",
         "completed_24h": 91,
-        "failed_24h": 26,
-        "runs_7d": 513,
+        "failed_24h": 25,
+        "runs_7d": 514,
         "history": [
+          {
+            "at": "Aug 19, 9:37 PM",
+            "at_iso": "2026-08-19T21:37:02-05:00",
+            "at_ms": 1787193422344,
+            "title": "Rowan Netlify Decision Sync",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Systems Foundry · Reliability and delivery lab"
+          },
           {
             "at": "Aug 19, 9:22 PM",
             "at_iso": "2026-08-19T21:22:02-05:00",
@@ -3462,15 +3471,6 @@
             "at_iso": "2026-08-19T20:29:53-05:00",
             "at_ms": 1787189393650,
             "title": "Etsy $20k Goal Sprint",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Systems Foundry · Reliability and delivery lab"
-          },
-          {
-            "at": "Aug 19, 8:22 PM",
-            "at_iso": "2026-08-19T20:22:02-05:00",
-            "at_ms": 1787188922577,
-            "title": "Rowan Netlify Decision Sync",
             "detail": "Completed successfully",
             "status": "succeeded",
             "location": "Systems Foundry · Reliability and delivery lab"
@@ -4142,40 +4142,6 @@
     ],
     "automations": [
       {
-        "name": "SwirlCraft 15-Minute Customer Reply Triage",
-        "owner": "ivy",
-        "cadence": "Every 15m",
-        "last_run": "Aug 19, 9:21 PM",
-        "last_run_at": "2026-08-19T21:21:55-05:00",
-        "last_run_ms": 1787192515408,
-        "next_run": "Aug 19, 9:36 PM",
-        "next_run_at": "2026-08-19T21:36:55-05:00",
-        "next_run_ms": 1787193415408,
-        "running": false,
-        "running_since": "Unavailable",
-        "running_since_at": null,
-        "status": "ok",
-        "error_streak": 0,
-        "duration_ms": 2695
-      },
-      {
-        "name": "Rowan Netlify Decision Sync",
-        "owner": "atlas",
-        "cadence": "Every 15m",
-        "last_run": "Aug 19, 9:21 PM",
-        "last_run_at": "2026-08-19T21:21:59-05:00",
-        "last_run_ms": 1787192519609,
-        "next_run": "Aug 19, 9:36 PM",
-        "next_run_at": "2026-08-19T21:36:59-05:00",
-        "next_run_ms": 1787193419609,
-        "running": false,
-        "running_since": "Unavailable",
-        "running_since_at": null,
-        "status": "ok",
-        "error_streak": 0,
-        "duration_ms": 2866
-      },
-      {
         "name": "Rowan Autonomous Company Director",
         "owner": "main",
         "cadence": "Every 1h",
@@ -4185,12 +4151,46 @@
         "next_run": "Aug 19, 9:39 PM",
         "next_run_at": "2026-08-19T21:39:37-05:00",
         "next_run_ms": 1787193577063,
+        "running": true,
+        "running_since": "Aug 19, 9:39 PM",
+        "running_since_at": "2026-08-19T21:39:37-05:00",
+        "status": "ok",
+        "error_streak": 0,
+        "duration_ms": 20393
+      },
+      {
+        "name": "SwirlCraft 15-Minute Customer Reply Triage",
+        "owner": "ivy",
+        "cadence": "Every 15m",
+        "last_run": "Aug 19, 9:36 PM",
+        "last_run_at": "2026-08-19T21:36:55-05:00",
+        "last_run_ms": 1787193415441,
+        "next_run": "Aug 19, 9:51 PM",
+        "next_run_at": "2026-08-19T21:51:55-05:00",
+        "next_run_ms": 1787194315441,
         "running": false,
         "running_since": "Unavailable",
         "running_since_at": null,
         "status": "ok",
         "error_streak": 0,
-        "duration_ms": 20393
+        "duration_ms": 2352
+      },
+      {
+        "name": "Rowan Netlify Decision Sync",
+        "owner": "atlas",
+        "cadence": "Every 15m",
+        "last_run": "Aug 19, 9:36 PM",
+        "last_run_at": "2026-08-19T21:36:59-05:00",
+        "last_run_ms": 1787193419636,
+        "next_run": "Aug 19, 9:51 PM",
+        "next_run_at": "2026-08-19T21:51:59-05:00",
+        "next_run_ms": 1787194319636,
+        "running": false,
+        "running_since": "Unavailable",
+        "running_since_at": null,
+        "status": "ok",
+        "error_streak": 0,
+        "duration_ms": 2708
       },
       {
         "name": "Rowan 15-Minute Resource Circuit Breaker",
