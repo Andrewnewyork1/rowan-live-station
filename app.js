@@ -2288,7 +2288,7 @@ function renderRdDepartment() {
       const lm = res.headers.get("last-modified") || res.headers.get("etag") || "";
       const fresh = await res.json();
       const oldTeam = (window.DATA && window.DATA.team) || [];
-      window.DATA = fresh;
+      window.DATA = { ...window.DATA, ...fresh };
 
       // Flash agents whose status changed
       (fresh.team || []).forEach(a => {
