@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T21:15:27-05:00",
+  "generated_at": "2026-08-19T21:20:20-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "OpenAI",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T02:15:01Z",
+          "summary_generated_at": "2026-08-20T02:20:00Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T02:15:01Z",
+          "summary_generated_at": "2026-08-20T02:20:00Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-20T02:15:01Z",
+      "generated_at": "2026-08-20T02:20:00Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -1253,7 +1253,7 @@
     "automation_policy_status": "unavailable"
   },
   "netlify_usage": {
-    "checked_at": "2026-08-20T02:00:47Z",
+    "checked_at": "2026-08-20T02:15:27Z",
     "mode": "blocked",
     "billing_period_start": "2026-07-27",
     "billing_period_end": "2026-08-26",
@@ -3035,7 +3035,7 @@
         "observed_at_iso": "2026-08-19T20:41:58-05:00",
         "presence_source": "Session metadata",
         "next_action": "On demand within the protected weekly reserve",
-        "completed_24h": 92,
+        "completed_24h": 91,
         "failed_24h": 5,
         "runs_7d": 355,
         "history": [
@@ -3389,7 +3389,7 @@
         "observed_at_iso": "2026-08-19T18:55:57-05:00",
         "presence_source": "Live task ledger",
         "next_action": "On demand within the protected weekly reserve",
-        "completed_24h": 91,
+        "completed_24h": 90,
         "failed_24h": 27,
         "runs_7d": 512,
         "history": [
