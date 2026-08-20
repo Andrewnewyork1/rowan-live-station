@@ -360,13 +360,11 @@ export async function bootCity3D() {
       }
     }
     
-    // Check global Google API block / quota limits
+    // Only show API block if it's actually confirmed in data
     if (agentId !== 'main' && agentId !== 'efficiency') {
       if (isGoogleBlocked) {
-        return `⚠️ Blocked: Gemini 3.5 API 429 Quota Exceeded`;
+        return `⚠️ Blocked: API quota exceeded`;
       }
-      // If we know there is a 429 rate limit block on the system currently
-      return `⚠️ Rate Limited: Gemini 3.5 Quota Exceeded (429)`;
     }
     
     if (member && member.city && member.city.current_activity) {
