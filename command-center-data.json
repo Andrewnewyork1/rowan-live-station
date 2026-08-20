@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T23:12:19-05:00",
+  "generated_at": "2026-08-19T23:14:27-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "Google",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T04:12:07Z",
+          "summary_generated_at": "2026-08-20T04:14:19Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T04:12:07Z",
+          "summary_generated_at": "2026-08-20T04:14:19Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-20T04:12:07Z",
+      "generated_at": "2026-08-20T04:14:19Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -1149,7 +1149,7 @@
       "priority": "CRITICAL",
       "status": "IN_PROGRESS",
       "deliverable": "data/quinn-review-log.md",
-      "dispatched_at": "2026-08-19T22:40:52.482511-05:00",
+      "dispatched_at": "2026-08-19T23:10:00.679264-05:00",
       "dispatched_by": "axiom"
     },
     {
@@ -1358,9 +1358,40 @@
     }
   ],
   "axiom_state": {
-    "cycles": 6,
+    "total_cycles": 6,
+    "last_cycle": "2026-08-19T23:00:01.064207-05:00",
+    "success_rate": 0.0,
+    "kpi": {
+      "tasks_done": 0,
+      "tasks_blocked": 0,
+      "tasks_pending": 35,
+      "tasks_active": 7,
+      "block_rate": 0.0,
+      "completion_rate": 0.0,
+      "axiom_cycles": 5,
+      "design_sessions": 3,
+      "last_winner": "Sage"
+    },
+    "decisions_this_cycle": [
+      "Revenue Optimization Sprint",
+      "Apply SEO Titles to Live Etsy Listings",
+      "AXIOM Self-Assessment"
+    ],
     "sprint_mode": true,
-    "last_decision": "All resources on revenue generation \u2014 $20k by Sep 19"
+    "sprint_started": "2026-08-20T03:07:15.691177+00:00",
+    "sprint_goal": "$20,000 profit by September 19, 2026",
+    "mission_goal_usd": 20000,
+    "mission_deadline": "2026-09-19T03:13:59.267749+00:00",
+    "mission_daily_target": 666.67,
+    "mission_channels": [
+      "etsy",
+      "gumroad",
+      "creative_market",
+      "payhip_direct",
+      "notion_templates",
+      "digital_services",
+      "canva_templates"
+    ]
   },
   "expansion_log": [],
   "axiom_decisions": [
@@ -2279,28 +2310,150 @@
     "available": true
   },
   "finance": {
-    "revenue_today": 0.0,
-    "revenue_mtd": 0.0,
-    "revenue_goal": 20000.0,
-    "listing_fees_paid": 301.0,
-    "net_profit": -301.0,
-    "channels": {
-      "etsy": {
-        "active": true,
-        "listings": 100,
-        "revenue": 0.0
+    "metrics": [
+      {
+        "label": "Net profit",
+        "value": -301.0,
+        "format": "money",
+        "confidence": "Confirmed",
+        "note": "Append-only reconciliation through 2026-08-20."
       },
-      "gumroad": {
-        "active": false,
-        "listings": 0,
-        "revenue": 0
+      {
+        "label": "Cash collected",
+        "value": 0.0,
+        "format": "money",
+        "confidence": "Confirmed",
+        "note": "Settled provider gross from verified delivered digital sales only; pipeline is excluded."
       },
-      "payhip": {
-        "active": false,
-        "listings": 0,
-        "revenue": 0
+      {
+        "label": "Recognized revenue",
+        "value": 0.0,
+        "format": "money",
+        "confidence": "Confirmed",
+        "note": "Settled revenue after refunds and disputes."
+      },
+      {
+        "label": "Operating cost",
+        "value": 538.99,
+        "format": "money",
+        "confidence": "Confirmed",
+        "note": "Provider fees plus complete paid operating, AI/software, advertising, and fulfillment costs."
+      },
+      {
+        "label": "Profit margin",
+        "value": null,
+        "format": "percent",
+        "decimals": 1,
+        "confidence": "Confirmed",
+        "note": "Verified delivered-sale processor net less complete paid costs."
+      },
+      {
+        "label": "Paid customers",
+        "value": 0,
+        "format": "number",
+        "confidence": "Confirmed",
+        "note": "Immutable delivered-sale closures with settled provider evidence."
+      },
+      {
+        "label": "Etsy channel net",
+        "value": 0.0,
+        "format": "money",
+        "confidence": "Confirmed",
+        "note": "Reconciled marketplace net before company operating, AI, fulfillment, and tax costs; this is not company profit."
+      },
+      {
+        "label": "Etsy bank deposits",
+        "value": null,
+        "format": "money",
+        "confidence": "Unavailable",
+        "note": "Closed-window bank deposits reported separately from marketplace balance movement and recognized channel net."
       }
-    }
+    ],
+    "formula": {
+      "revenue": "Collected cash",
+      "deductions": "refunds, processor fees, SwirlCraft ads, AI/tools, fulfillment",
+      "result": "net profit"
+    },
+    "ledger_readiness": [
+      {
+        "label": "Source coverage",
+        "status": "healthy",
+        "detail": "Complete through the reporting boundary"
+      },
+      {
+        "label": "Delivered-sale closures",
+        "status": "healthy",
+        "detail": "0 delivered sales \u00b7 0 fully refunded/revoked"
+      },
+      {
+        "label": "Paid operating expenses",
+        "status": "healthy",
+        "detail": "1 paid expense rows"
+      },
+      {
+        "label": "AI and software costs",
+        "status": "healthy",
+        "detail": "3 paid cost rows"
+      },
+      {
+        "label": "Advertising costs",
+        "status": "healthy",
+        "detail": "0 paid cost rows"
+      },
+      {
+        "label": "Fulfillment costs",
+        "status": "healthy",
+        "detail": "0 paid cost rows"
+      },
+      {
+        "label": "Etsy channel settlement",
+        "status": "missing",
+        "detail": "Official Etsy closure missing; no order value, net, or deposit is treated as reconciled"
+      },
+      {
+        "label": "Zero-based capital plan",
+        "status": "missing",
+        "detail": "Unavailable until reconciled cash, profit, and cost coverage exist"
+      }
+    ],
+    "unit_economics": [
+      {
+        "label": "Flagship test price",
+        "value": "$297 one time",
+        "confidence": "Proposed",
+        "note": "Final price and marketplace configuration require the exact private-test approval"
+      },
+      {
+        "label": "$20k gross arithmetic",
+        "value": "68 orders / month",
+        "confidence": "Arithmetic",
+        "note": "Exact price math only; this is not a demand forecast"
+      },
+      {
+        "label": "Cash contribution floor",
+        "value": "70%",
+        "confidence": "Policy",
+        "note": "Actual contribution remains unavailable until every fee, refund, support, AI, and operating-cost source reconciles"
+      },
+      {
+        "label": "$20k contribution stretch",
+        "value": "97 orders / month",
+        "confidence": "Arithmetic",
+        "note": "Separate stretch objective at the policy floor; not the primary gross milestone and not a forecast"
+      },
+      {
+        "label": "Paid acquisition",
+        "value": "$0 authorized",
+        "confidence": "Confirmed",
+        "note": "No ads, paid boosts, new subscriptions, or automatic budget increases"
+      },
+      {
+        "label": "Active catalog",
+        "value": "0 products",
+        "confidence": "Confirmed",
+        "note": "The catalog stays empty until the exact product, version, price, license, and private purchase test pass"
+      }
+    ]
   },
   "approvals": [
     {
@@ -3727,183 +3880,2184 @@
   "team": [
     {
       "id": "main",
-      "name": "main",
+      "name": "Rowan",
+      "role": "CEO / Operator",
+      "mission": "Directing all agent operations toward the ,000 Etsy profit goal.",
       "status": "standby",
-      "current_task": "Standby"
+      "automation": "2 enabled",
+      "last_outcome": "Recent run ok",
+      "last_activity": "Aug 19, 11:10 PM",
+      "last_activity_at": "2026-08-19T23:10:32-05:00",
+      "model": "OpenAI GEMINI-2.5-FLASH",
+      "sessions_24h": 260,
+      "sessions_7d": 287,
+      "error_streak": 0,
+      "authority": "Manager",
+      "performance": {
+        "grade": "F",
+        "score": 50,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 9134549,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 20,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 100
+        },
+        "improvement_target": "Stop model polling, shrink context, and produce one verified outcome inside the weekly reserve"
+      },
+      "city": {
+        "district": "Founder Tower",
+        "workspace": "Executive command desk",
+        "presence": "ready_room",
+        "activity_mode": "Active now",
+        "location": "Founder Tower \u00b7 Executive command desk",
+        "current_activity": "Standby",
+        "current_assignment": "Directing all agent operations toward the ,000 Etsy profit goal.",
+        "observed_at": "Aug 19, 9:29 AM",
+        "observed_at_iso": "2026-08-19T09:29:17-05:00",
+        "presence_source": "Standby",
+        "next_action": "Rowan Autonomous Company Director \u00b7 Aug 19, 11:39 PM",
+        "completed_24h": 16,
+        "failed_24h": 8,
+        "runs_7d": 375,
+        "history": [
+          {
+            "at": "Aug 19, 10:39 PM",
+            "at_iso": "2026-08-19T22:39:50-05:00",
+            "at_ms": 1787197190687,
+            "title": "Rowan Autonomous Company Director",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Founder Tower \u00b7 Executive command desk"
+          },
+          {
+            "at": "Aug 19, 9:39 PM",
+            "at_iso": "2026-08-19T21:39:55-05:00",
+            "at_ms": 1787193595924,
+            "title": "Rowan Autonomous Company Director",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Founder Tower \u00b7 Executive command desk"
+          },
+          {
+            "at": "Aug 19, 8:39 PM",
+            "at_iso": "2026-08-19T20:39:57-05:00",
+            "at_ms": 1787189997456,
+            "title": "Rowan Autonomous Company Director",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Founder Tower \u00b7 Executive command desk"
+          },
+          {
+            "at": "Aug 19, 7:39 PM",
+            "at_iso": "2026-08-19T19:39:58-05:00",
+            "at_ms": 1787186398782,
+            "title": "Rowan Autonomous Company Director",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Founder Tower \u00b7 Executive command desk"
+          },
+          {
+            "at": "Aug 19, 6:40 PM",
+            "at_iso": "2026-08-19T18:40:20-05:00",
+            "at_ms": 1787182820957,
+            "title": "Rowan Autonomous Company Director",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Founder Tower \u00b7 Executive command desk"
+          },
+          {
+            "at": "Aug 19, 5:28 PM",
+            "at_iso": "2026-08-19T17:28:04-05:00",
+            "at_ms": 1787178484919,
+            "title": "Rowan Autonomous Company Director",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Founder Tower \u00b7 Executive command desk"
+          },
+          {
+            "at": "Aug 19, 4:18 PM",
+            "at_iso": "2026-08-19T16:18:20-05:00",
+            "at_ms": 1787174300773,
+            "title": "Rowan Autonomous Company Director",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Founder Tower \u00b7 Executive command desk"
+          },
+          {
+            "at": "Aug 19, 3:18 PM",
+            "at_iso": "2026-08-19T15:18:36-05:00",
+            "at_ms": 1787170716406,
+            "title": "Rowan Autonomous Company Director",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Founder Tower \u00b7 Executive command desk"
+          }
+        ]
+      }
     },
     {
       "id": "ivy",
-      "name": "ivy",
+      "name": "Ivy",
+      "role": "Head of Commerce",
+      "mission": "Managing Etsy catalog triage, listing safety deactivations, and order reconciliation.",
       "status": "working",
-      "current_task": "SPRINT: Optimize top 3 Etsy listing titles for max click-thr"
+      "automation": "1 enabled",
+      "last_outcome": "Recent run ok",
+      "last_activity": "Aug 19, 11:10 PM",
+      "last_activity_at": "2026-08-19T23:10:43-05:00",
+      "model": "OpenAI GEMINI-2.5-FLASH",
+      "sessions_24h": 1,
+      "sessions_7d": 5,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 66,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 71884,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 85,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 100
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Commerce Row",
+        "workspace": "Checkout and buyer-care studio",
+        "presence": "at_desk",
+        "activity_mode": "Scheduled watch",
+        "location": "Commerce Row \u00b7 Checkout and buyer-care studio",
+        "current_activity": "SPRINT: Optimize top 3 Etsy listing titles for max click-through",
+        "current_assignment": "Managing Etsy catalog triage, listing safety deactivations, and order reconciliation.",
+        "observed_at": "Aug 19, 11:09 PM",
+        "observed_at_iso": "2026-08-19T23:09:54-05:00",
+        "presence_source": "Live task ledger",
+        "next_action": "SwirlCraft 15-Minute Customer Reply Triage \u00b7 Aug 19, 11:24 PM",
+        "completed_24h": 98,
+        "failed_24h": 5,
+        "runs_7d": 369,
+        "history": [
+          {
+            "at": "Aug 19, 11:10 PM",
+            "at_iso": "2026-08-19T23:10:43-05:00",
+            "at_ms": 1787199043370,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Commerce Row \u00b7 Checkout and buyer-care studio"
+          },
+          {
+            "at": "Aug 19, 11:09 PM",
+            "at_iso": "2026-08-19T23:09:58-05:00",
+            "at_ms": 1787198998272,
+            "title": "SwirlCraft 15-Minute Customer Reply Triage",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Commerce Row \u00b7 Checkout and buyer-care studio"
+          },
+          {
+            "at": "Aug 19, 10:51 PM",
+            "at_iso": "2026-08-19T22:51:58-05:00",
+            "at_ms": 1787197918966,
+            "title": "SwirlCraft 15-Minute Customer Reply Triage",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Commerce Row \u00b7 Checkout and buyer-care studio"
+          },
+          {
+            "at": "Aug 19, 10:51 PM",
+            "at_iso": "2026-08-19T22:51:07-05:00",
+            "at_ms": 1787197867724,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Commerce Row \u00b7 Checkout and buyer-care studio"
+          },
+          {
+            "at": "Aug 19, 10:46 PM",
+            "at_iso": "2026-08-19T22:46:29-05:00",
+            "at_ms": 1787197589041,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Commerce Row \u00b7 Checkout and buyer-care studio"
+          },
+          {
+            "at": "Aug 19, 10:36 PM",
+            "at_iso": "2026-08-19T22:36:59-05:00",
+            "at_ms": 1787197019117,
+            "title": "SwirlCraft 15-Minute Customer Reply Triage",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Commerce Row \u00b7 Checkout and buyer-care studio"
+          },
+          {
+            "at": "Aug 19, 10:21 PM",
+            "at_iso": "2026-08-19T22:21:59-05:00",
+            "at_ms": 1787196119074,
+            "title": "SwirlCraft 15-Minute Customer Reply Triage",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Commerce Row \u00b7 Checkout and buyer-care studio"
+          },
+          {
+            "at": "Aug 19, 10:07 PM",
+            "at_iso": "2026-08-19T22:07:02-05:00",
+            "at_ms": 1787195222156,
+            "title": "SwirlCraft 15-Minute Customer Reply Triage",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Commerce Row \u00b7 Checkout and buyer-care studio"
+          }
+        ]
+      }
     },
     {
       "id": "sage",
-      "name": "sage",
+      "name": "Sage",
+      "role": "Strategy & Intelligence",
+      "mission": "Developing 50-state legal form demand research and high-margin (.99\u2013) bundle pricing.",
       "status": "standby",
-      "current_task": "SPRINT: Recommend single best listing for Etsy free shipping"
+      "automation": "On demand",
+      "last_outcome": "Recent run ok",
+      "last_activity": "Aug 19, 11:12 PM",
+      "last_activity_at": "2026-08-19T23:12:32-05:00",
+      "model": "OpenAI GEMINI-2.5-FLASH-LITE",
+      "sessions_24h": 3,
+      "sessions_7d": 5,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 66,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 90815,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 85,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 100
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Signal Library",
+        "workspace": "Strategy and evidence desk",
+        "presence": "ready_room",
+        "activity_mode": "Active now",
+        "location": "Signal Library \u00b7 Strategy and evidence desk",
+        "current_activity": "SPRINT: Recommend single best listing for Etsy free shipping badge",
+        "current_assignment": "Developing 50-state legal form demand research and high-margin (.99\u2013) bundle pricing.",
+        "observed_at": "Aug 18, 10:33 PM",
+        "observed_at_iso": "2026-08-18T22:33:13-05:00",
+        "presence_source": "Standby",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 9,
+        "failed_24h": 0,
+        "runs_7d": 13,
+        "history": [
+          {
+            "at": "Aug 19, 11:12 PM",
+            "at_iso": "2026-08-19T23:12:32-05:00",
+            "at_ms": 1787199152918,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Signal Library \u00b7 Strategy and evidence desk"
+          },
+          {
+            "at": "Aug 19, 10:52 PM",
+            "at_iso": "2026-08-19T22:52:50-05:00",
+            "at_ms": 1787197970837,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Signal Library \u00b7 Strategy and evidence desk"
+          },
+          {
+            "at": "Aug 19, 10:48 PM",
+            "at_iso": "2026-08-19T22:48:33-05:00",
+            "at_ms": 1787197713545,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Signal Library \u00b7 Strategy and evidence desk"
+          },
+          {
+            "at": "Aug 19, 10:43 PM",
+            "at_iso": "2026-08-19T22:43:43-05:00",
+            "at_ms": 1787197423546,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Signal Library \u00b7 Strategy and evidence desk"
+          },
+          {
+            "at": "Aug 19, 10:41 PM",
+            "at_iso": "2026-08-19T22:41:44-05:00",
+            "at_ms": 1787197304003,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Signal Library \u00b7 Strategy and evidence desk"
+          },
+          {
+            "at": "Aug 19, 10:01 PM",
+            "at_iso": "2026-08-19T22:01:30-05:00",
+            "at_ms": 1787194890130,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Signal Library \u00b7 Strategy and evidence desk"
+          },
+          {
+            "at": "Aug 19, 8:41 PM",
+            "at_iso": "2026-08-19T20:41:09-05:00",
+            "at_ms": 1787190069069,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Signal Library \u00b7 Strategy and evidence desk"
+          },
+          {
+            "at": "Aug 19, 8:40 PM",
+            "at_iso": "2026-08-19T20:40:10-05:00",
+            "at_ms": 1787190010283,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Signal Library \u00b7 Strategy and evidence desk"
+          }
+        ]
+      }
     },
     {
       "id": "aria",
-      "name": "aria",
+      "name": "Aria",
+      "role": "Creative Director",
+      "mission": "Writing high-converting SEO titles & descriptions for 50-state leases and agency packs.",
       "status": "standby",
-      "current_task": "SPRINT: Write + publish California Landlord Bundle listing c"
+      "automation": "On demand",
+      "last_outcome": "Recent run ok",
+      "last_activity": "Aug 19, 10:51 PM",
+      "last_activity_at": "2026-08-19T22:51:59-05:00",
+      "model": "OpenAI GEMINI-2.5-FLASH",
+      "sessions_24h": 1,
+      "sessions_7d": 3,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 66,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 69757,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 85,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 100
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Creative Quarter",
+        "workspace": "Listing and product studio",
+        "presence": "ready_room",
+        "activity_mode": "Active now",
+        "location": "Creative Quarter \u00b7 Listing and product studio",
+        "current_activity": "SPRINT: Write + publish California Landlord Bundle listing copy",
+        "current_assignment": "Writing high-converting SEO titles & descriptions for 50-state leases and agency packs.",
+        "observed_at": "Aug 19, 8:00 PM",
+        "observed_at_iso": "2026-08-19T20:00:28-05:00",
+        "presence_source": "Standby",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 8,
+        "failed_24h": 12,
+        "runs_7d": 26,
+        "history": [
+          {
+            "at": "Aug 19, 10:51 PM",
+            "at_iso": "2026-08-19T22:51:59-05:00",
+            "at_ms": 1787197919819,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Creative Quarter \u00b7 Listing and product studio"
+          },
+          {
+            "at": "Aug 19, 10:47 PM",
+            "at_iso": "2026-08-19T22:47:13-05:00",
+            "at_ms": 1787197633502,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Creative Quarter \u00b7 Listing and product studio"
+          },
+          {
+            "at": "Aug 19, 10:00 PM",
+            "at_iso": "2026-08-19T22:00:59-05:00",
+            "at_ms": 1787194859437,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Creative Quarter \u00b7 Listing and product studio"
+          },
+          {
+            "at": "Aug 19, 8:41 PM",
+            "at_iso": "2026-08-19T20:41:36-05:00",
+            "at_ms": 1787190096105,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Creative Quarter \u00b7 Listing and product studio"
+          },
+          {
+            "at": "Aug 19, 8:39 PM",
+            "at_iso": "2026-08-19T20:39:14-05:00",
+            "at_ms": 1787189954703,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Creative Quarter \u00b7 Listing and product studio"
+          },
+          {
+            "at": "Aug 19, 8:37 PM",
+            "at_iso": "2026-08-19T20:37:22-05:00",
+            "at_ms": 1787189842580,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Creative Quarter \u00b7 Listing and product studio"
+          },
+          {
+            "at": "Aug 19, 8:20 PM",
+            "at_iso": "2026-08-19T20:20:47-05:00",
+            "at_ms": 1787188847820,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Creative Quarter \u00b7 Listing and product studio"
+          },
+          {
+            "at": "Aug 19, 8:05 PM",
+            "at_iso": "2026-08-19T20:05:51-05:00",
+            "at_ms": 1787187951883,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Creative Quarter \u00b7 Listing and product studio"
+          }
+        ]
+      }
     },
     {
       "id": "atlas",
-      "name": "atlas",
+      "name": "Atlas",
+      "role": "Chief Technology Officer",
+      "mission": "Building state-specific real estate, landlord, and home care PDF template products.",
       "status": "working",
-      "current_task": "SPRINT: Write Gumroad product page for Vendor Admin Bundle a"
+      "automation": "2 enabled",
+      "last_outcome": "Recent run ok",
+      "last_activity": "Aug 19, 11:11 PM",
+      "last_activity_at": "2026-08-19T23:11:22-05:00",
+      "model": "OpenAI GEMINI-2.5-FLASH",
+      "sessions_24h": 1,
+      "sessions_7d": 3,
+      "error_streak": 18,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "F",
+        "score": 46,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 94048,
+        "dimensions": {
+          "reliability": 20,
+          "efficiency": 85,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 100
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Systems Foundry",
+        "workspace": "Reliability and delivery lab",
+        "presence": "at_desk",
+        "activity_mode": "Needs review",
+        "location": "Systems Foundry \u00b7 incident room",
+        "current_activity": "SPRINT: Write Gumroad product page for Vendor Admin Bundle at $29.99",
+        "current_assignment": "Building state-specific real estate, landlord, and home care PDF template products.",
+        "observed_at": "Aug 19, 10:58 PM",
+        "observed_at_iso": "2026-08-19T22:58:14-05:00",
+        "presence_source": "Live task ledger",
+        "next_action": "Rowan Netlify Decision Sync \u00b7 Aug 19, 11:24 PM",
+        "completed_24h": 94,
+        "failed_24h": 25,
+        "runs_7d": 525,
+        "history": [
+          {
+            "at": "Aug 19, 11:11 PM",
+            "at_iso": "2026-08-19T23:11:22-05:00",
+            "at_ms": 1787199082276,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Systems Foundry \u00b7 Reliability and delivery lab"
+          },
+          {
+            "at": "Aug 19, 11:10 PM",
+            "at_iso": "2026-08-19T23:10:01-05:00",
+            "at_ms": 1787199001626,
+            "title": "Rowan Netlify Decision Sync",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Systems Foundry \u00b7 Reliability and delivery lab"
+          },
+          {
+            "at": "Aug 19, 10:58 PM",
+            "at_iso": "2026-08-19T22:58:51-05:00",
+            "at_ms": 1787198331063,
+            "title": "Rowan 15-Minute Resource Circuit Breaker",
+            "detail": "Ended with an exception",
+            "status": "failed",
+            "location": "Systems Foundry \u00b7 incident room"
+          },
+          {
+            "at": "Aug 19, 10:52 PM",
+            "at_iso": "2026-08-19T22:52:07-05:00",
+            "at_ms": 1787197927450,
+            "title": "Rowan Netlify Decision Sync",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Systems Foundry \u00b7 Reliability and delivery lab"
+          },
+          {
+            "at": "Aug 19, 10:43 PM",
+            "at_iso": "2026-08-19T22:43:18-05:00",
+            "at_ms": 1787197398685,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Systems Foundry \u00b7 Reliability and delivery lab"
+          },
+          {
+            "at": "Aug 19, 10:40 PM",
+            "at_iso": "2026-08-19T22:40:59-05:00",
+            "at_ms": 1787197259455,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Systems Foundry \u00b7 Reliability and delivery lab"
+          },
+          {
+            "at": "Aug 19, 10:37 PM",
+            "at_iso": "2026-08-19T22:37:06-05:00",
+            "at_ms": 1787197026996,
+            "title": "Rowan Netlify Decision Sync",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Systems Foundry \u00b7 Reliability and delivery lab"
+          },
+          {
+            "at": "Aug 19, 10:22 PM",
+            "at_iso": "2026-08-19T22:22:08-05:00",
+            "at_ms": 1787196128193,
+            "title": "Rowan Netlify Decision Sync",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Systems Foundry \u00b7 Reliability and delivery lab"
+          }
+        ]
+      }
     },
     {
       "id": "nova",
-      "name": "nova",
+      "name": "Nova",
+      "role": "Chief Growth Officer",
+      "mission": "Executing 14-day TikTok, Pinterest, and community traffic campaigns to drive Etsy sales.",
       "status": "queued",
-      "current_task": "SPRINT: Channel analysis \u2014 which path to first sale in 24h"
-    },
-    {
-      "id": "zara",
-      "name": "Zara",
-      "status": "queued",
-      "current_task": "Write 5 customer success email sequences for post-purchase f"
-    },
-    {
-      "id": "rio",
-      "name": "Rio",
-      "status": "queued",
-      "current_task": "Write 10 SEO blog post outlines: landlord tips that link to "
-    },
-    {
-      "id": "kira",
-      "name": "Kira",
-      "status": "queued",
-      "current_task": "Write standard disclaimer to include in all legal document t"
-    },
-    {
-      "id": "lyra",
-      "name": "Lyra",
-      "status": "queued",
-      "current_task": "Create: Landlord 2026 Annual Planner PDF spec \u2014 52 weekly pa"
-    },
-    {
-      "id": "orion",
-      "name": "Orion",
-      "status": "queued",
-      "current_task": "Verify Etsy digital download delivery works end-to-end for t"
-    },
-    {
-      "id": "finn",
-      "name": "Finn",
-      "status": "queued",
-      "current_task": "FINN: Set up daily revenue tracking \u2014 compare actual vs $667"
-    },
-    {
-      "id": "maya",
-      "name": "Maya",
-      "status": "standby",
-      "current_task": "MAYA: Create multi-platform publishing checklist for all pen"
-    },
-    {
-      "id": "chase",
-      "name": "Chase",
-      "status": "queued",
-      "current_task": "CHASE: Analyze optimal price points \u2014 $7.99 vs $9.99 vs $14."
-    },
-    {
-      "id": "blake",
-      "name": "Blake",
-      "status": "queued",
-      "current_task": "BLAKE: Post to 3 relevant Reddit communities today \u2014 value c"
-    },
-    {
-      "id": "quinn",
-      "name": "Quinn",
-      "status": "working",
-      "current_task": "QUINN: Quality review all completed product specs \u2014 flag any"
-    },
-    {
-      "id": "rex",
-      "name": "Rex",
-      "status": "queued",
-      "current_task": "REX: Build product portfolio tracker \u2014 every published produ"
-    },
-    {
-      "id": "scout",
-      "name": "Scout",
-      "status": "queued",
-      "current_task": "SCOUT: Research 5 new digital product platforms \u2014 fees, setu"
-    },
-    {
-      "id": "cipher",
-      "name": "Cipher",
-      "status": "queued",
-      "current_task": "CIPHER: Set optimal prices for all 11 digital product types "
-    },
-    {
-      "id": "victor",
-      "name": "Victor",
-      "status": "queued",
-      "current_task": "DR. VICTOR: Research AI-generated digital product opportunit"
+      "automation": "On demand",
+      "last_outcome": "Recent run ok",
+      "last_activity": "Aug 19, 10:43 PM",
+      "last_activity_at": "2026-08-19T22:43:09-05:00",
+      "model": "OpenAI GEMINI-2.5-FLASH-LITE",
+      "sessions_24h": 1,
+      "sessions_7d": 3,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 66,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 122421,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 85,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 100
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Growth Exchange",
+        "workspace": "Distribution and measurement desk",
+        "presence": "scheduled_watch",
+        "activity_mode": "Active now",
+        "location": "Growth Exchange \u00b7 Distribution and measurement desk",
+        "current_activity": "SPRINT: Channel analysis \u2014 which path to first sale in 24h",
+        "current_assignment": "Executing 14-day TikTok, Pinterest, and community traffic campaigns to drive Etsy sales.",
+        "observed_at": "Aug 18, 10:33 PM",
+        "observed_at_iso": "2026-08-18T22:33:13-05:00",
+        "presence_source": "Live task ledger",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 5,
+        "failed_24h": 0,
+        "runs_7d": 10,
+        "history": [
+          {
+            "at": "Aug 19, 10:43 PM",
+            "at_iso": "2026-08-19T22:43:09-05:00",
+            "at_ms": 1787197389220,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Growth Exchange \u00b7 Distribution and measurement desk"
+          },
+          {
+            "at": "Aug 19, 10:05 PM",
+            "at_iso": "2026-08-19T22:05:16-05:00",
+            "at_ms": 1787195116853,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Growth Exchange \u00b7 Distribution and measurement desk"
+          },
+          {
+            "at": "Aug 19, 10:04 PM",
+            "at_iso": "2026-08-19T22:04:04-05:00",
+            "at_ms": 1787195044590,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Growth Exchange \u00b7 Distribution and measurement desk"
+          },
+          {
+            "at": "Aug 19, 8:39 PM",
+            "at_iso": "2026-08-19T20:39:43-05:00",
+            "at_ms": 1787189983365,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Growth Exchange \u00b7 Distribution and measurement desk"
+          },
+          {
+            "at": "Aug 19, 8:37 PM",
+            "at_iso": "2026-08-19T20:37:55-05:00",
+            "at_ms": 1787189875508,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Growth Exchange \u00b7 Distribution and measurement desk"
+          },
+          {
+            "at": "Aug 18, 10:33 PM",
+            "at_iso": "2026-08-18T22:33:13-05:00",
+            "at_ms": 1787110393770,
+            "title": "Etsy $20k: 14-Day TikTok/Reels & Pinterest Traffic Playbook",
+            "detail": "In progress",
+            "status": "running",
+            "location": "Growth Exchange \u00b7 Distribution and measurement desk"
+          },
+          {
+            "at": "Aug 18, 8:52 PM",
+            "at_iso": "2026-08-18T20:52:30-05:00",
+            "at_ms": 1787104350134,
+            "title": "Etsy Traffic \u2014 Pinterest board setup + TikTok scripts",
+            "detail": "In progress",
+            "status": "running",
+            "location": "Growth Exchange \u00b7 Distribution and measurement desk"
+          },
+          {
+            "at": "Aug 15, 11:40 PM",
+            "at_iso": "2026-08-15T23:40:09-05:00",
+            "at_ms": 1786855209097,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Growth Exchange \u00b7 Distribution and measurement desk"
+          }
+        ]
+      }
     },
     {
       "id": "efficiency",
-      "name": "Efficiency",
+      "name": "Dept of Efficiency",
+      "role": "Compute Guard",
+      "mission": "Preserving 99.8% monthly compute budget and zero-cost model optimization.",
       "status": "queued",
-      "current_task": "EFFICIENCY DEPT: Audit all agent runs this week \u2014 identify w"
+      "automation": "On demand",
+      "last_outcome": "On-demand ready",
+      "last_activity": "Unavailable",
+      "last_activity_at": null,
+      "model": "OpenAI GPT-5.5",
+      "sessions_24h": 0,
+      "sessions_7d": 0,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 60,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 0,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 0
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Treasury Core",
+        "workspace": "Compute economics desk",
+        "presence": "scheduled_watch",
+        "activity_mode": "Ready",
+        "location": "Treasury Core \u00b7 ready room",
+        "current_activity": "EFFICIENCY DEPT: Audit all agent runs this week \u2014 identify waste, optimize routi",
+        "current_assignment": "Preserving 99.8% monthly compute budget and zero-cost model optimization.",
+        "observed_at": "Unavailable",
+        "observed_at_iso": null,
+        "presence_source": "Live task ledger",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 0,
+        "failed_24h": 0,
+        "runs_7d": 0,
+        "history": [
+          {
+            "at": "Now",
+            "at_iso": null,
+            "at_ms": 0,
+            "title": "Ready for bounded assignment",
+            "detail": "No scheduled model work; available on demand inside the weekly reserve.",
+            "status": "ready",
+            "location": "Treasury Core \u00b7 ready room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "victor",
+      "name": "Dr. Victor",
+      "role": "Chief R&D Scientist",
+      "mission": "Algorithm architecture, prompt pipeline innovation, and advanced LLM toolchains.",
+      "status": "queued",
+      "automation": "On demand",
+      "last_outcome": "On-demand ready",
+      "last_activity": "Unavailable",
+      "last_activity_at": null,
+      "model": "OpenAI GPT-5.5",
+      "sessions_24h": 0,
+      "sessions_7d": 0,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 60,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 0,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 0
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Quantum R&D",
+        "workspace": "Algorithm research laboratory",
+        "presence": "scheduled_watch",
+        "activity_mode": "Ready",
+        "location": "Quantum R&D \u00b7 ready room",
+        "current_activity": "DR. VICTOR: Research AI-generated digital product opportunities in 2026 \u2014 what's",
+        "current_assignment": "Algorithm architecture, prompt pipeline innovation, and advanced LLM toolchains.",
+        "observed_at": "Unavailable",
+        "observed_at_iso": null,
+        "presence_source": "Live task ledger",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 0,
+        "failed_24h": 0,
+        "runs_7d": 0,
+        "history": [
+          {
+            "at": "Now",
+            "at_iso": null,
+            "at_ms": 0,
+            "title": "Ready for bounded assignment",
+            "detail": "No scheduled model work; available on demand inside the weekly reserve.",
+            "status": "ready",
+            "location": "Quantum R&D \u00b7 ready room"
+          }
+        ]
+      }
     },
     {
       "id": "ember",
       "name": "Ember",
+      "role": "Viral Growth Hacker",
+      "mission": "TikTok creative arbitrage, Reddit engagement, and zero-dollar viral hooks.",
       "status": "queued",
-      "current_task": "SPRINT: Create 5 Pinterest pins with direct buy-now CTAs"
+      "automation": "On demand",
+      "last_outcome": "On-demand ready",
+      "last_activity": "Unavailable",
+      "last_activity_at": null,
+      "model": "OpenAI GPT-5.5",
+      "sessions_24h": 0,
+      "sessions_7d": 0,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 60,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 0,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 0
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Viral Lab",
+        "workspace": "Growth hacking workshop",
+        "presence": "scheduled_watch",
+        "activity_mode": "Ready",
+        "location": "Viral Lab \u00b7 ready room",
+        "current_activity": "SPRINT: Create 5 Pinterest pins with direct buy-now CTAs",
+        "current_assignment": "TikTok creative arbitrage, Reddit engagement, and zero-dollar viral hooks.",
+        "observed_at": "Unavailable",
+        "observed_at_iso": null,
+        "presence_source": "Live task ledger",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 0,
+        "failed_24h": 0,
+        "runs_7d": 0,
+        "history": [
+          {
+            "at": "Now",
+            "at_iso": null,
+            "at_ms": 0,
+            "title": "Ready for bounded assignment",
+            "detail": "No scheduled model work; available on demand inside the weekly reserve.",
+            "status": "ready",
+            "location": "Viral Lab \u00b7 ready room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cipher",
+      "name": "Cipher",
+      "role": "Pricing & Stripe Quant",
+      "mission": "AOV optimization, multi-seat team licenses, and Stripe recurring subscription economics.",
+      "status": "queued",
+      "automation": "On demand",
+      "last_outcome": "On-demand ready",
+      "last_activity": "Unavailable",
+      "last_activity_at": null,
+      "model": "OpenAI GPT-5.5",
+      "sessions_24h": 0,
+      "sessions_7d": 0,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 60,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 0,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 0
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Fintech Quant",
+        "workspace": "Pricing matrix desk",
+        "presence": "scheduled_watch",
+        "activity_mode": "Ready",
+        "location": "Fintech Quant \u00b7 ready room",
+        "current_activity": "CIPHER: Set optimal prices for all 11 digital product types \u2014 maximize profit ma",
+        "current_assignment": "AOV optimization, multi-seat team licenses, and Stripe recurring subscription economics.",
+        "observed_at": "Unavailable",
+        "observed_at_iso": null,
+        "presence_source": "Live task ledger",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 0,
+        "failed_24h": 0,
+        "runs_7d": 0,
+        "history": [
+          {
+            "at": "Now",
+            "at_iso": null,
+            "at_ms": 0,
+            "title": "Ready for bounded assignment",
+            "detail": "No scheduled model work; available on demand inside the weekly reserve.",
+            "status": "ready",
+            "location": "Fintech Quant \u00b7 ready room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lyra",
+      "name": "Lyra",
+      "role": "B2B Design Engineer",
+      "mission": "High-end corporate document aesthetics, typography, and commercial product kits.",
+      "status": "queued",
+      "automation": "On demand",
+      "last_outcome": "Recent run ok",
+      "last_activity": "Aug 19, 10:07 PM",
+      "last_activity_at": "2026-08-19T22:07:32-05:00",
+      "model": "OpenAI GEMINI-3.1-PRO-PREVIEW",
+      "sessions_24h": 1,
+      "sessions_7d": 1,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "C",
+        "score": 70,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 26605,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 100
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Aesthetics Lab",
+        "workspace": "Corporate design atelier",
+        "presence": "scheduled_watch",
+        "activity_mode": "Ready",
+        "location": "Aesthetics Lab \u00b7 ready room",
+        "current_activity": "Create: Landlord 2026 Annual Planner PDF spec \u2014 52 weekly pages ($12.99)",
+        "current_assignment": "High-end corporate document aesthetics, typography, and commercial product kits.",
+        "observed_at": "Aug 19, 10:07 PM",
+        "observed_at_iso": "2026-08-19T22:07:32-05:00",
+        "presence_source": "Live task ledger",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 3,
+        "failed_24h": 1,
+        "runs_7d": 4,
+        "history": [
+          {
+            "at": "Aug 19, 10:07 PM",
+            "at_iso": "2026-08-19T22:07:17-05:00",
+            "at_ms": 1787195237474,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Ended with an exception",
+            "status": "failed",
+            "location": "Aesthetics Lab \u00b7 incident room"
+          },
+          {
+            "at": "Aug 19, 10:02 PM",
+            "at_iso": "2026-08-19T22:02:01-05:00",
+            "at_ms": 1787194921183,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Aesthetics Lab \u00b7 Corporate design atelier"
+          },
+          {
+            "at": "Aug 19, 9:41 PM",
+            "at_iso": "2026-08-19T21:41:47-05:00",
+            "at_ms": 1787193707751,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Aesthetics Lab \u00b7 Corporate design atelier"
+          },
+          {
+            "at": "Aug 19, 9:31 PM",
+            "at_iso": "2026-08-19T21:31:02-05:00",
+            "at_ms": 1787193062037,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Aesthetics Lab \u00b7 Corporate design atelier"
+          }
+        ]
+      }
+    },
+    {
+      "id": "orion",
+      "name": "Orion",
+      "role": "Automated Cloud Engineer",
+      "mission": "Zero-latency serverless pipelines, PDF micro-services, and headless deployment.",
+      "status": "queued",
+      "automation": "On demand",
+      "last_outcome": "On-demand ready",
+      "last_activity": "Unavailable",
+      "last_activity_at": null,
+      "model": "OpenAI GPT-5.5",
+      "sessions_24h": 0,
+      "sessions_7d": 0,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 60,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 0,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 0
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Cloud Foundry",
+        "workspace": "Serverless pipeline dock",
+        "presence": "scheduled_watch",
+        "activity_mode": "Ready",
+        "location": "Cloud Foundry \u00b7 ready room",
+        "current_activity": "Verify Etsy digital download delivery works end-to-end for top 5 listings",
+        "current_assignment": "Zero-latency serverless pipelines, PDF micro-services, and headless deployment.",
+        "observed_at": "Unavailable",
+        "observed_at_iso": null,
+        "presence_source": "Live task ledger",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 0,
+        "failed_24h": 0,
+        "runs_7d": 0,
+        "history": [
+          {
+            "at": "Now",
+            "at_iso": null,
+            "at_ms": 0,
+            "title": "Ready for bounded assignment",
+            "detail": "No scheduled model work; available on demand inside the weekly reserve.",
+            "status": "ready",
+            "location": "Cloud Foundry \u00b7 ready room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kira",
+      "name": "Kira",
+      "role": "Statutory Legal Auditor",
+      "mission": "FTC compliance, 50-state statutory legal disclosures, and IP protection.",
+      "status": "queued",
+      "automation": "On demand",
+      "last_outcome": "Recent run ok",
+      "last_activity": "Aug 19, 10:01 PM",
+      "last_activity_at": "2026-08-19T22:01:18-05:00",
+      "model": "OpenAI GEMINI-3.1-PRO-PREVIEW",
+      "sessions_24h": 1,
+      "sessions_7d": 1,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "C",
+        "score": 70,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 48759,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 100
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Compliance Wing",
+        "workspace": "Statutory audit desk",
+        "presence": "scheduled_watch",
+        "activity_mode": "Ready",
+        "location": "Compliance Wing \u00b7 ready room",
+        "current_activity": "Write standard disclaimer to include in all legal document templates",
+        "current_assignment": "FTC compliance, 50-state statutory legal disclosures, and IP protection.",
+        "observed_at": "Aug 19, 10:01 PM",
+        "observed_at_iso": "2026-08-19T22:01:18-05:00",
+        "presence_source": "Live task ledger",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 2,
+        "failed_24h": 0,
+        "runs_7d": 2,
+        "history": [
+          {
+            "at": "Aug 19, 10:01 PM",
+            "at_iso": "2026-08-19T22:01:18-05:00",
+            "at_ms": 1787194878065,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Compliance Wing \u00b7 Statutory audit desk"
+          },
+          {
+            "at": "Aug 19, 9:40 PM",
+            "at_iso": "2026-08-19T21:40:57-05:00",
+            "at_ms": 1787193657338,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Compliance Wing \u00b7 Statutory audit desk"
+          }
+        ]
+      }
+    },
+    {
+      "id": "zara",
+      "name": "Zara",
+      "role": "Content Designer",
+      "mission": "Writing SEO-friendly descriptions and marketing copies for listings.",
+      "status": "queued",
+      "automation": "On demand",
+      "last_outcome": "On-demand ready",
+      "last_activity": "Unavailable",
+      "last_activity_at": null,
+      "model": "OpenAI GPT-5.5",
+      "sessions_24h": 0,
+      "sessions_7d": 0,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 60,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 0,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 0
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Design Hub",
+        "workspace": "Asset creation lab",
+        "presence": "scheduled_watch",
+        "activity_mode": "Ready",
+        "location": "Design Hub \u00b7 ready room",
+        "current_activity": "Write 5 customer success email sequences for post-purchase follow-up",
+        "current_assignment": "Writing SEO-friendly descriptions and marketing copies for listings.",
+        "observed_at": "Unavailable",
+        "observed_at_iso": null,
+        "presence_source": "Live task ledger",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 0,
+        "failed_24h": 0,
+        "runs_7d": 0,
+        "history": [
+          {
+            "at": "Now",
+            "at_iso": null,
+            "at_ms": 0,
+            "title": "Ready for bounded assignment",
+            "detail": "No scheduled model work; available on demand inside the weekly reserve.",
+            "status": "ready",
+            "location": "Design Hub \u00b7 ready room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rio",
+      "name": "Rio",
+      "role": "Marketing & Copywriter",
+      "mission": "Developing outreach material and blog copy for brand expansion.",
+      "status": "queued",
+      "automation": "On demand",
+      "last_outcome": "On-demand ready",
+      "last_activity": "Unavailable",
+      "last_activity_at": null,
+      "model": "OpenAI GPT-5.5",
+      "sessions_24h": 0,
+      "sessions_7d": 0,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 60,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 0,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 0
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Outreach Office",
+        "workspace": "Copy and content deck",
+        "presence": "scheduled_watch",
+        "activity_mode": "Ready",
+        "location": "Outreach Office \u00b7 ready room",
+        "current_activity": "Write 10 SEO blog post outlines: landlord tips that link to our products",
+        "current_assignment": "Developing outreach material and blog copy for brand expansion.",
+        "observed_at": "Unavailable",
+        "observed_at_iso": null,
+        "presence_source": "Live task ledger",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 0,
+        "failed_24h": 0,
+        "runs_7d": 0,
+        "history": [
+          {
+            "at": "Now",
+            "at_iso": null,
+            "at_ms": 0,
+            "title": "Ready for bounded assignment",
+            "detail": "No scheduled model work; available on demand inside the weekly reserve.",
+            "status": "ready",
+            "location": "Outreach Office \u00b7 ready room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "finn",
+      "name": "Finn",
+      "role": "Finance Auditor",
+      "mission": "Daily accounting, fee matching, and net profit ledger reconciliation.",
+      "status": "queued",
+      "automation": "On demand",
+      "last_outcome": "On-demand ready",
+      "last_activity": "Unavailable",
+      "last_activity_at": null,
+      "model": "OpenAI GPT-5.5",
+      "sessions_24h": 0,
+      "sessions_7d": 0,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 60,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 0,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 0
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Finance Vault",
+        "workspace": "Auditing and balance desk",
+        "presence": "scheduled_watch",
+        "activity_mode": "Ready",
+        "location": "Finance Vault \u00b7 ready room",
+        "current_activity": "FINN: Set up daily revenue tracking \u2014 compare actual vs $667/day target",
+        "current_assignment": "Daily accounting, fee matching, and net profit ledger reconciliation.",
+        "observed_at": "Unavailable",
+        "observed_at_iso": null,
+        "presence_source": "Live task ledger",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 0,
+        "failed_24h": 0,
+        "runs_7d": 0,
+        "history": [
+          {
+            "at": "Now",
+            "at_iso": null,
+            "at_ms": 0,
+            "title": "Ready for bounded assignment",
+            "detail": "No scheduled model work; available on demand inside the weekly reserve.",
+            "status": "ready",
+            "location": "Finance Vault \u00b7 ready room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "maya",
+      "name": "Maya",
+      "role": "Listing Coordinator",
+      "mission": "Preflight checks on metadata, listing properties, and digital file delivery.",
+      "status": "standby",
+      "automation": "On demand",
+      "last_outcome": "Recent run ok",
+      "last_activity": "Aug 19, 10:53 PM",
+      "last_activity_at": "2026-08-19T22:53:29-05:00",
+      "model": "OpenAI GEMINI-2.5-FLASH",
+      "sessions_24h": 1,
+      "sessions_7d": 1,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "C",
+        "score": 70,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 41629,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 100
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Registry Deck",
+        "workspace": "Listing prep studio",
+        "presence": "ready_room",
+        "activity_mode": "Recently active",
+        "location": "Registry Deck \u00b7 Listing prep studio",
+        "current_activity": "MAYA: Create multi-platform publishing checklist for all pending products",
+        "current_assignment": "Preflight checks on metadata, listing properties, and digital file delivery.",
+        "observed_at": "Aug 19, 10:53 PM",
+        "observed_at_iso": "2026-08-19T22:53:29-05:00",
+        "presence_source": "Standby",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 2,
+        "failed_24h": 0,
+        "runs_7d": 2,
+        "history": [
+          {
+            "at": "Aug 19, 10:53 PM",
+            "at_iso": "2026-08-19T22:53:29-05:00",
+            "at_ms": 1787198009770,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Registry Deck \u00b7 Listing prep studio"
+          },
+          {
+            "at": "Aug 19, 10:49 PM",
+            "at_iso": "2026-08-19T22:49:01-05:00",
+            "at_ms": 1787197741951,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Registry Deck \u00b7 Listing prep studio"
+          }
+        ]
+      }
+    },
+    {
+      "id": "chase",
+      "name": "Chase",
+      "role": "Pricing Strategist",
+      "mission": "Market-rate optimization and price-elasticity strategy.",
+      "status": "queued",
+      "automation": "On demand",
+      "last_outcome": "On-demand ready",
+      "last_activity": "Unavailable",
+      "last_activity_at": null,
+      "model": "OpenAI GPT-5.5",
+      "sessions_24h": 0,
+      "sessions_7d": 0,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 60,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 0,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 0
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Pricing Desk",
+        "workspace": "Price-elasticity lab",
+        "presence": "scheduled_watch",
+        "activity_mode": "Ready",
+        "location": "Pricing Desk \u00b7 ready room",
+        "current_activity": "CHASE: Analyze optimal price points \u2014 $7.99 vs $9.99 vs $14.99 for templates",
+        "current_assignment": "Market-rate optimization and price-elasticity strategy.",
+        "observed_at": "Unavailable",
+        "observed_at_iso": null,
+        "presence_source": "Live task ledger",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 0,
+        "failed_24h": 0,
+        "runs_7d": 0,
+        "history": [
+          {
+            "at": "Now",
+            "at_iso": null,
+            "at_ms": 0,
+            "title": "Ready for bounded assignment",
+            "detail": "No scheduled model work; available on demand inside the weekly reserve.",
+            "status": "ready",
+            "location": "Pricing Desk \u00b7 ready room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "blake",
+      "name": "Blake",
+      "role": "Social Traffic Coordinator",
+      "mission": "Pinterest and Facebook outreach execution for direct traffic.",
+      "status": "queued",
+      "automation": "On demand",
+      "last_outcome": "On-demand ready",
+      "last_activity": "Unavailable",
+      "last_activity_at": null,
+      "model": "OpenAI GPT-5.5",
+      "sessions_24h": 0,
+      "sessions_7d": 0,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 60,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 0,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 0
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Social Exchange",
+        "workspace": "Outreach and traffic deck",
+        "presence": "scheduled_watch",
+        "activity_mode": "Ready",
+        "location": "Social Exchange \u00b7 ready room",
+        "current_activity": "BLAKE: Post to 3 relevant Reddit communities today \u2014 value content with shop lin",
+        "current_assignment": "Pinterest and Facebook outreach execution for direct traffic.",
+        "observed_at": "Unavailable",
+        "observed_at_iso": null,
+        "presence_source": "Live task ledger",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 0,
+        "failed_24h": 0,
+        "runs_7d": 0,
+        "history": [
+          {
+            "at": "Now",
+            "at_iso": null,
+            "at_ms": 0,
+            "title": "Ready for bounded assignment",
+            "detail": "No scheduled model work; available on demand inside the weekly reserve.",
+            "status": "ready",
+            "location": "Social Exchange \u00b7 ready room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quinn",
+      "name": "Quinn",
+      "role": "Quality Assurance",
+      "mission": "Reviewing output artifacts and validating digital download compatibility.",
+      "status": "working",
+      "automation": "On demand",
+      "last_outcome": "Recent run ok",
+      "last_activity": "Aug 19, 11:12 PM",
+      "last_activity_at": "2026-08-19T23:12:58-05:00",
+      "model": "OpenAI GEMINI-2.5-FLASH",
+      "sessions_24h": 1,
+      "sessions_7d": 1,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "C",
+        "score": 70,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 20246,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 100
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "QA Lab",
+        "workspace": "Artifact review studio",
+        "presence": "at_desk",
+        "activity_mode": "Recently active",
+        "location": "QA Lab \u00b7 Artifact review studio",
+        "current_activity": "QUINN: Quality review all completed product specs \u2014 flag any issues before publi",
+        "current_assignment": "Reviewing output artifacts and validating digital download compatibility.",
+        "observed_at": "Aug 19, 11:12 PM",
+        "observed_at_iso": "2026-08-19T23:12:58-05:00",
+        "presence_source": "Live task ledger",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 3,
+        "failed_24h": 0,
+        "runs_7d": 3,
+        "history": [
+          {
+            "at": "Aug 19, 11:12 PM",
+            "at_iso": "2026-08-19T23:12:58-05:00",
+            "at_ms": 1787199178550,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "QA Lab \u00b7 Artifact review studio"
+          },
+          {
+            "at": "Aug 19, 10:45 PM",
+            "at_iso": "2026-08-19T22:45:09-05:00",
+            "at_ms": 1787197509753,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "QA Lab \u00b7 Artifact review studio"
+          },
+          {
+            "at": "Aug 19, 10:42 PM",
+            "at_iso": "2026-08-19T22:42:38-05:00",
+            "at_ms": 1787197358881,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "QA Lab \u00b7 Artifact review studio"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rex",
+      "name": "Rex",
+      "role": "Inventory Tracker",
+      "mission": "Maintaining private digital file registries and asset audits.",
+      "status": "queued",
+      "automation": "On demand",
+      "last_outcome": "On-demand ready",
+      "last_activity": "Unavailable",
+      "last_activity_at": null,
+      "model": "OpenAI GPT-5.5",
+      "sessions_24h": 0,
+      "sessions_7d": 0,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 60,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 0,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 0
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Asset Vault",
+        "workspace": "Inventory and backup core",
+        "presence": "scheduled_watch",
+        "activity_mode": "Ready",
+        "location": "Asset Vault \u00b7 ready room",
+        "current_activity": "REX: Build product portfolio tracker \u2014 every published product with URL + revenu",
+        "current_assignment": "Maintaining private digital file registries and asset audits.",
+        "observed_at": "Unavailable",
+        "observed_at_iso": null,
+        "presence_source": "Live task ledger",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 0,
+        "failed_24h": 0,
+        "runs_7d": 0,
+        "history": [
+          {
+            "at": "Now",
+            "at_iso": null,
+            "at_ms": 0,
+            "title": "Ready for bounded assignment",
+            "detail": "No scheduled model work; available on demand inside the weekly reserve.",
+            "status": "ready",
+            "location": "Asset Vault \u00b7 ready room"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scout",
+      "name": "Scout",
+      "role": "Market Researcher",
+      "mission": "Identifying competitor listing keywords and Etsy demand shifts.",
+      "status": "queued",
+      "automation": "On demand",
+      "last_outcome": "On-demand ready",
+      "last_activity": "Unavailable",
+      "last_activity_at": null,
+      "model": "OpenAI GPT-5.5",
+      "sessions_24h": 0,
+      "sessions_7d": 0,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 60,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 0,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 0
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Research Hub",
+        "workspace": "Competitor research deck",
+        "presence": "scheduled_watch",
+        "activity_mode": "Ready",
+        "location": "Research Hub \u00b7 ready room",
+        "current_activity": "SCOUT: Research 5 new digital product platforms \u2014 fees, setup, audience size",
+        "current_assignment": "Identifying competitor listing keywords and Etsy demand shifts.",
+        "observed_at": "Unavailable",
+        "observed_at_iso": null,
+        "presence_source": "Live task ledger",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 0,
+        "failed_24h": 0,
+        "runs_7d": 0,
+        "history": [
+          {
+            "at": "Now",
+            "at_iso": null,
+            "at_ms": 0,
+            "title": "Ready for bounded assignment",
+            "detail": "No scheduled model work; available on demand inside the weekly reserve.",
+            "status": "ready",
+            "location": "Research Hub \u00b7 ready room"
+          }
+        ]
+      }
     },
     {
       "id": "axiom",
       "name": "Axiom",
+      "role": "Operations Director",
+      "mission": "Strategic alignment and high-level execution control across departments.",
       "status": "queued",
-      "current_task": "AXIOM: Run CEO cycle \u2014 review $20k mission progress, make 7 "
+      "automation": "On demand",
+      "last_outcome": "On-demand ready",
+      "last_activity": "Unavailable",
+      "last_activity_at": null,
+      "model": "OpenAI GPT-5.5",
+      "sessions_24h": 0,
+      "sessions_7d": 0,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 60,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 0,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 0
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Axiom Dome",
+        "workspace": "Operations command tower",
+        "presence": "scheduled_watch",
+        "activity_mode": "Ready",
+        "location": "Axiom Dome \u00b7 ready room",
+        "current_activity": "AXIOM: Run CEO cycle \u2014 review $20k mission progress, make 7 decisions, dispatch ",
+        "current_assignment": "Strategic alignment and high-level execution control across departments.",
+        "observed_at": "Unavailable",
+        "observed_at_iso": null,
+        "presence_source": "Live task ledger",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 0,
+        "failed_24h": 0,
+        "runs_7d": 0,
+        "history": [
+          {
+            "at": "Now",
+            "at_iso": null,
+            "at_ms": 0,
+            "title": "Ready for bounded assignment",
+            "detail": "No scheduled model work; available on demand inside the weekly reserve.",
+            "status": "ready",
+            "location": "Axiom Dome \u00b7 ready room"
+          }
+        ]
+      }
     },
     {
       "id": "seo",
       "name": "SuperSEO",
+      "role": "SEO Optimization Lead",
+      "mission": "Title tuning, tag validation, and search-ranking index optimization.",
       "status": "standby",
-      "current_task": "SEO URGENT: Rewrite titles+tags for all 100 SwirlCraftShop E"
+      "automation": "On demand",
+      "last_outcome": "On-demand ready",
+      "last_activity": "Unavailable",
+      "last_activity_at": null,
+      "model": "OpenAI GPT-5.5",
+      "sessions_24h": 0,
+      "sessions_7d": 0,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 60,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 0,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 0
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "SEO Chamber",
+        "workspace": "Search-tuning office",
+        "presence": "ready_room",
+        "activity_mode": "Ready",
+        "location": "SEO Chamber \u00b7 ready room",
+        "current_activity": "SEO URGENT: Rewrite titles+tags for all 100 SwirlCraftShop Etsy listings",
+        "current_assignment": "Title tuning, tag validation, and search-ranking index optimization.",
+        "observed_at": "Unavailable",
+        "observed_at_iso": null,
+        "presence_source": "Standby",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 0,
+        "failed_24h": 0,
+        "runs_7d": 0,
+        "history": [
+          {
+            "at": "Now",
+            "at_iso": null,
+            "at_ms": 0,
+            "title": "Ready for bounded assignment",
+            "detail": "No scheduled model work; available on demand inside the weekly reserve.",
+            "status": "ready",
+            "location": "SEO Chamber \u00b7 ready room"
+          }
+        ]
+      }
     },
     {
       "id": "builder",
       "name": "Builder",
+      "role": "Product Packager",
+      "mission": "Assembling document bundles and starter kit templates.",
       "status": "queued",
-      "current_task": "BUILDER: Assemble complete Landlord Starter Kit \u2014 5 PDF temp"
+      "automation": "On demand",
+      "last_outcome": "On-demand ready",
+      "last_activity": "Unavailable",
+      "last_activity_at": null,
+      "model": "OpenAI GPT-5.5",
+      "sessions_24h": 0,
+      "sessions_7d": 0,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 60,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 0,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 0
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Assembly Yard",
+        "workspace": "Bundle packaging depot",
+        "presence": "scheduled_watch",
+        "activity_mode": "Ready",
+        "location": "Assembly Yard \u00b7 ready room",
+        "current_activity": "BUILDER: Assemble complete Landlord Starter Kit \u2014 5 PDF templates in one bundle",
+        "current_assignment": "Assembling document bundles and starter kit templates.",
+        "observed_at": "Unavailable",
+        "observed_at_iso": null,
+        "presence_source": "Live task ledger",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 0,
+        "failed_24h": 0,
+        "runs_7d": 0,
+        "history": [
+          {
+            "at": "Now",
+            "at_iso": null,
+            "at_ms": 0,
+            "title": "Ready for bounded assignment",
+            "detail": "No scheduled model work; available on demand inside the weekly reserve.",
+            "status": "ready",
+            "location": "Assembly Yard \u00b7 ready room"
+          }
+        ]
+      }
     },
     {
       "id": "luna",
       "name": "Luna",
+      "role": "Systems Monitor",
+      "mission": "Overnight system health checks and cron job verification.",
       "status": "standby",
-      "current_task": "Standby"
+      "automation": "On demand",
+      "last_outcome": "On-demand ready",
+      "last_activity": "Unavailable",
+      "last_activity_at": null,
+      "model": "OpenAI GPT-5.5",
+      "sessions_24h": 0,
+      "sessions_7d": 0,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 60,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 0,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 0
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Observatory",
+        "workspace": "Overnight watch desk",
+        "presence": "ready_room",
+        "activity_mode": "Ready",
+        "location": "Observatory \u00b7 ready room",
+        "current_activity": "Standby",
+        "current_assignment": "Overnight system health checks and cron job verification.",
+        "observed_at": "Unavailable",
+        "observed_at_iso": null,
+        "presence_source": "Standby",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 0,
+        "failed_24h": 0,
+        "runs_7d": 0,
+        "history": [
+          {
+            "at": "Now",
+            "at_iso": null,
+            "at_ms": 0,
+            "title": "Ready for bounded assignment",
+            "detail": "No scheduled model work; available on demand inside the weekly reserve.",
+            "status": "ready",
+            "location": "Observatory \u00b7 ready room"
+          }
+        ]
+      }
     },
     {
       "id": "max",
       "name": "Max",
+      "role": "Bulk Registry Lead",
+      "mission": "Autonomously building product listings in bulk.",
       "status": "queued",
-      "current_task": "MAX: Generate 30 product listing titles in bulk \u2014 all digita"
+      "automation": "On demand",
+      "last_outcome": "On-demand ready",
+      "last_activity": "Unavailable",
+      "last_activity_at": null,
+      "model": "OpenAI GPT-5.5",
+      "sessions_24h": 0,
+      "sessions_7d": 0,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 60,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 0,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 0
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Bulk Factory",
+        "workspace": "High-volume listing deck",
+        "presence": "scheduled_watch",
+        "activity_mode": "Ready",
+        "location": "Bulk Factory \u00b7 ready room",
+        "current_activity": "MAX: Generate 30 product listing titles in bulk \u2014 all digital template categorie",
+        "current_assignment": "Autonomously building product listings in bulk.",
+        "observed_at": "Unavailable",
+        "observed_at_iso": null,
+        "presence_source": "Live task ledger",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 0,
+        "failed_24h": 0,
+        "runs_7d": 0,
+        "history": [
+          {
+            "at": "Now",
+            "at_iso": null,
+            "at_ms": 0,
+            "title": "Ready for bounded assignment",
+            "detail": "No scheduled model work; available on demand inside the weekly reserve.",
+            "status": "ready",
+            "location": "Bulk Factory \u00b7 ready room"
+          }
+        ]
+      }
     },
     {
       "id": "sky",
       "name": "Sky",
+      "role": "Visual Asset Designer",
+      "mission": "Creating listing mockups, covers, and promotional Pinterest pin designs.",
       "status": "standby",
-      "current_task": "Standby"
+      "automation": "On demand",
+      "last_outcome": "On-demand ready",
+      "last_activity": "Unavailable",
+      "last_activity_at": null,
+      "model": "OpenAI GPT-5.5",
+      "sessions_24h": 0,
+      "sessions_7d": 0,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 60,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 0,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 0
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Aesthetic Wing",
+        "workspace": "Graphic design studio",
+        "presence": "ready_room",
+        "activity_mode": "Ready",
+        "location": "Aesthetic Wing \u00b7 ready room",
+        "current_activity": "Standby",
+        "current_assignment": "Creating listing mockups, covers, and promotional Pinterest pin designs.",
+        "observed_at": "Unavailable",
+        "observed_at_iso": null,
+        "presence_source": "Standby",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 0,
+        "failed_24h": 0,
+        "runs_7d": 0,
+        "history": [
+          {
+            "at": "Now",
+            "at_iso": null,
+            "at_ms": 0,
+            "title": "Ready for bounded assignment",
+            "detail": "No scheduled model work; available on demand inside the weekly reserve.",
+            "status": "ready",
+            "location": "Aesthetic Wing \u00b7 ready room"
+          }
+        ]
+      }
     },
     {
       "id": "rea",
       "name": "Rea",
+      "role": "Revenue Acceleration Plan",
+      "mission": "Designing immediate profit acceleration campaigns.",
       "status": "queued",
-      "current_task": "REA: Create emergency revenue acceleration plan \u2014 how to hit"
+      "automation": "On demand",
+      "last_outcome": "On-demand ready",
+      "last_activity": "Unavailable",
+      "last_activity_at": null,
+      "model": "OpenAI GPT-5.5",
+      "sessions_24h": 0,
+      "sessions_7d": 0,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 60,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 0,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 0
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Campaign Office",
+        "workspace": "Revenue sprint deck",
+        "presence": "scheduled_watch",
+        "activity_mode": "Ready",
+        "location": "Campaign Office \u00b7 ready room",
+        "current_activity": "REA: Create emergency revenue acceleration plan \u2014 how to hit $667 TODAY",
+        "current_assignment": "Designing immediate profit acceleration campaigns.",
+        "observed_at": "Unavailable",
+        "observed_at_iso": null,
+        "presence_source": "Live task ledger",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 0,
+        "failed_24h": 0,
+        "runs_7d": 0,
+        "history": [
+          {
+            "at": "Now",
+            "at_iso": null,
+            "at_ms": 0,
+            "title": "Ready for bounded assignment",
+            "detail": "No scheduled model work; available on demand inside the weekly reserve.",
+            "status": "ready",
+            "location": "Campaign Office \u00b7 ready room"
+          }
+        ]
+      }
     },
     {
       "id": "val",
       "name": "Val",
+      "role": "Launch Auditor",
+      "mission": "Pre-publish compliance audit and final download checks.",
       "status": "queued",
-      "current_task": "VAL: Validate all products ready to launch \u2014 create go/no-go"
+      "automation": "On demand",
+      "last_outcome": "On-demand ready",
+      "last_activity": "Unavailable",
+      "last_activity_at": null,
+      "model": "OpenAI GPT-5.5",
+      "sessions_24h": 0,
+      "sessions_7d": 0,
+      "error_streak": 0,
+      "authority": "Bounded",
+      "performance": {
+        "grade": "D",
+        "score": 60,
+        "provisional": true,
+        "verified_points_7d": 0,
+        "tokens_7d": 0,
+        "dimensions": {
+          "reliability": 100,
+          "efficiency": 100,
+          "effectiveness": 0,
+          "safety": 100,
+          "collaboration": 0
+        },
+        "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
+      },
+      "city": {
+        "district": "Gatekeeper Office",
+        "workspace": "Pre-publish validation desk",
+        "presence": "scheduled_watch",
+        "activity_mode": "Ready",
+        "location": "Gatekeeper Office \u00b7 ready room",
+        "current_activity": "VAL: Validate all products ready to launch \u2014 create go/no-go list",
+        "current_assignment": "Pre-publish compliance audit and final download checks.",
+        "observed_at": "Unavailable",
+        "observed_at_iso": null,
+        "presence_source": "Live task ledger",
+        "next_action": "On demand within the protected weekly reserve",
+        "completed_24h": 0,
+        "failed_24h": 0,
+        "runs_7d": 0,
+        "history": [
+          {
+            "at": "Now",
+            "at_iso": null,
+            "at_ms": 0,
+            "title": "Ready for bounded assignment",
+            "detail": "No scheduled model work; available on demand inside the weekly reserve.",
+            "status": "ready",
+            "location": "Gatekeeper Office \u00b7 ready room"
+          }
+        ]
+      }
     }
   ],
   "responsibility_matrix": [
@@ -4648,17 +6802,14 @@
       }
     ]
   },
-  "etsy": {
-    "shop_id": 66934708,
-    "shop_name": "SwirlCraftShop",
-    "shop_url": "https://www.etsy.com/shop/SwirlCraftShop",
-    "active_listings": 100,
-    "total_views": 162,
-    "total_sales": 2,
-    "revenue_mtd_usd": 0.0,
-    "avg_listing_price": 23.93,
-    "listings_zero_views": 55,
-    "etsy_api_connected": true,
-    "oauth_pending": true
+  "mission": {
+    "goal_usd": 20000,
+    "deadline": "September 19, 2026",
+    "deadline_iso": "2026-09-19T03:13:59.267749+00:00",
+    "daily_target": 666.67,
+    "revenue_earned": 0.0,
+    "days_remaining": 29,
+    "progress_pct": 0.0,
+    "sprint_mode": true
   }
 }
