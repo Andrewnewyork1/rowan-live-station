@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T23:14:49-05:00",
+  "generated_at": "2026-08-19T23:19:16-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "Google",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T04:14:41Z",
+          "summary_generated_at": "2026-08-20T04:19:05Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T04:14:41Z",
+          "summary_generated_at": "2026-08-20T04:19:05Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-20T04:14:41Z",
+      "generated_at": "2026-08-20T04:19:05Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -915,13 +915,14 @@
       "description": "Add 'INSTANT DOWNLOAD' and 'EDITABLE' to top 3 lease template listing titles. Rewrite to front-load the state name and document type. Output to data/sprint-ctr-titles.md",
       "assigned_to": "ivy",
       "priority": "CRITICAL",
-      "status": "IN_PROGRESS",
+      "status": "DONE",
       "deliverable": "data/sprint-ctr-titles.md",
       "deadline": "2026-08-21T03:07:15.691177+00:00",
       "revenue_impact": "2-3x CTR lift",
-      "dispatched_at": "2026-08-19T23:10:00.679264-05:00",
+      "dispatched_at": "2026-08-19T23:14:59.041762-05:00",
       "dispatched_by": "nova",
-      "blocked_reason": "OpenClaw config is invalid\nFile: ~/[config]son\nProblem:\n  - agents: Invalid input\n\nFix: openclaw doctor --fix\nInspect: openclaw config validate\nAudit, status, health, logs, tasks list/audit, and doctor commands still run with invalid config.\n"
+      "blocked_reason": "OpenClaw config is invalid\nFile: ~/[config]son\nProblem:\n  - agents: Invalid input\n\nFix: openclaw doctor --fix\nInspect: openclaw config validate\nAudit, status, health, logs, tasks list/audit, and doctor commands still run with invalid config.\n",
+      "completed_at": "2026-08-19T23:16:58.848217-05:00"
     },
     {
       "id": "sprint-003",
@@ -929,13 +930,14 @@
       "description": "Write 5 Pinterest pin descriptions for top lease templates. Each 500 chars, include price, 'shop now on Etsy', state-specific keywords. Output to data/sprint-pinterest-pins.md",
       "assigned_to": "ember",
       "priority": "CRITICAL",
-      "status": "PENDING",
+      "status": "DONE",
       "deliverable": "data/sprint-pinterest-pins.md",
       "deadline": "2026-08-21T03:07:15.691177+00:00",
       "revenue_impact": "Pinterest drives Etsy traffic within hours",
-      "dispatched_at": "2026-08-19T22:40:00.765318-05:00",
+      "dispatched_at": "2026-08-19T23:17:27.905545-05:00",
       "dispatched_by": "nova",
-      "blocked_reason": "[plugins] plugins.allow is empty; discovered non-bundled plugins may auto-load: codex ([path]s/openclaw-codex-8902d781d4__openclaw-generation__g-49fd4dbfde2c5057/node_modules/@openclaw/codex/dist/index.js), slack ([path]s/openclaw-s"
+      "blocked_reason": "[plugins] plugins.allow is empty; discovered non-bundled plugins may auto-load: codex ([path]s/openclaw-codex-8902d781d4__openclaw-generation__g-49fd4dbfde2c5057/node_modules/@openclaw/codex/dist/index.js), slack ([path]s/openclaw-s",
+      "completed_at": "2026-08-19T23:17:27.905545-05:00"
     },
     {
       "id": "sprint-004",
@@ -943,12 +945,13 @@
       "description": "Write full Gumroad product description. Price $29.99 (intro price). What's included, who it's for, why buy now. Output to data/sprint-gumroad-copy.md",
       "assigned_to": "atlas",
       "priority": "CRITICAL",
-      "status": "IN_PROGRESS",
+      "status": "DONE",
       "deliverable": "data/sprint-gumroad-copy.md",
       "deadline": "2026-08-21T03:07:15.691177+00:00",
       "revenue_impact": "$29.99 first sale",
-      "dispatched_at": "2026-08-19T23:10:00.679264-05:00",
-      "dispatched_by": "atlas"
+      "dispatched_at": "2026-08-19T23:14:59.041762-05:00",
+      "dispatched_by": "atlas",
+      "completed_at": "2026-08-19T23:16:58.848217-05:00"
     },
     {
       "id": "sprint-005",
@@ -984,12 +987,13 @@
       "description": "Write 100 genuinely useful ChatGPT prompts for landlords and real estate agents. Organize into sections: tenant communication, lease drafting, maintenance requests, marketing. Format as clean PDF. Output to data/products/ai-prompts-landlord.md",
       "assigned_to": "sage",
       "priority": "CRITICAL",
-      "status": "IN_PROGRESS",
+      "status": "DONE",
       "deliverable": "data/products/ai-prompts-landlord.md",
       "channel": "Etsy+Gumroad",
       "price": "$9.99",
-      "dispatched_at": "2026-08-19T23:10:00.679264-05:00",
-      "dispatched_by": "sage"
+      "dispatched_at": "2026-08-19T23:14:59.041762-05:00",
+      "dispatched_by": "sage",
+      "completed_at": "2026-08-19T23:16:58.848217-05:00"
     },
     {
       "id": "disc-sheets-001",
@@ -997,11 +1001,13 @@
       "description": "Design a complete Google Sheets template for landlords: rent roll, expense tracker, P&L summary, tenant list, maintenance log. Write all column headers, formulas, and instructions. Output full template spec to data/products/sheets-landlord-tracker.md",
       "assigned_to": "atlas",
       "priority": "CRITICAL",
-      "status": "PENDING",
+      "status": "DONE",
       "deliverable": "data/products/sheets-landlord-tracker.md",
       "channel": "Etsy+Gumroad",
       "price": "$14.99",
-      "dispatched_at": "2026-08-20T03:36:00.988372+00:00"
+      "dispatched_at": "2026-08-19T23:17:27.905545-05:00",
+      "dispatched_by": "atlas",
+      "completed_at": "2026-08-19T23:17:27.905545-05:00"
     },
     {
       "id": "disc-resume-001",
@@ -1081,11 +1087,12 @@
       "description": "Research Payhip.com platform. Compare fees vs Etsy/Gumroad. Write a step-by-step guide to set up a Payhip store for ROWAN's digital products. List which products should launch there first and at what price. Output to data/research/payhip-strategy.md",
       "assigned_to": "sage",
       "priority": "HIGH",
-      "status": "PENDING",
+      "status": "IN_PROGRESS",
       "deliverable": "data/research/payhip-strategy.md",
       "channel": "Payhip",
       "price": "strategy",
-      "dispatched_at": "2026-08-20T03:36:00.988372+00:00"
+      "dispatched_at": "2026-08-19T23:17:27.905545-05:00",
+      "dispatched_by": "sage"
     },
     {
       "id": "disc-nft-001",
@@ -1147,10 +1154,11 @@
       "description": "Review all .md files in data/products/. For each: check professional tone, no legal claims, accurate pricing, complete content, ready to publish. Mark as APPROVED or FLAG WITH NOTES. Output review to data/quinn-review-log.md",
       "assigned_to": "quinn",
       "priority": "CRITICAL",
-      "status": "IN_PROGRESS",
+      "status": "DONE",
       "deliverable": "data/quinn-review-log.md",
-      "dispatched_at": "2026-08-19T23:10:00.679264-05:00",
-      "dispatched_by": "axiom"
+      "dispatched_at": "2026-08-19T23:14:59.041762-05:00",
+      "dispatched_by": "axiom",
+      "completed_at": "2026-08-19T23:16:58.848217-05:00"
     },
     {
       "id": "rex-001",
@@ -2261,32 +2269,35 @@
     "automation_policy_status": "unavailable"
   },
   "netlify_usage": {
-    "checked_at": "2026-08-20T03:58:19Z",
-    "mode": "warning",
+    "checked_at": "2026-08-20T04:15:45Z",
+    "mode": "blocked",
     "billing_period_start": "2026-07-27",
     "billing_period_end": "2026-08-26",
     "last_exact_observation_at": "2026-08-19T04:14:26.446693+00:00",
     "observed_credits_available": 639.4,
-    "credits_available_upper_bound": 399.4,
-    "credits_consumed_lower_bound": 3754.1,
+    "credits_available_upper_bound": 639.4,
+    "credits_consumed_lower_bound": 3514.1,
     "plan_monthly_credits": 3000.0,
     "production_deploy_credits_observed": 3480.0,
-    "production_deploy_credits_since_observation": 240.0,
+    "production_deploy_credits_since_observation": 0.0,
     "ai_inference_credits_observed": 0.0,
     "web_request_credits_observed": 8.0,
     "compute_credits_observed": 0.2,
     "bandwidth_credits_observed": 25.9,
     "protected_reserve_credits": 300.0,
     "one_production_release_credits": 15.0,
-    "successful_production_deploys_since_observation": 16,
-    "release_authorized": true,
+    "successful_production_deploys_since_observation": 0,
+    "release_authorized": false,
     "automatic_production_deploys_enabled": null,
     "automatic_production_deploys_verified_off": false,
     "auto_recharge_enabled": false,
-    "control_api_available": true,
+    "control_api_available": false,
     "balance_basis": "Exact owner-authenticated balance less confirmed production-deploy debits; traffic meters remain conservative between exact observations.",
     "next_check_seconds": 900,
-    "issue_codes": []
+    "issue_codes": [
+      "EXACT_BALANCE_OBSERVATION_STALE",
+      "NETLIFY_CONTROL_API_UNAVAILABLE"
+    ]
   },
   "google_usage": {
     "plan": "Google One AI Ultra",
@@ -3920,7 +3931,7 @@
         "observed_at_iso": "2026-08-19T09:29:17-05:00",
         "presence_source": "Standby",
         "next_action": "Rowan Autonomous Company Director \u00b7 Aug 19, 11:39 PM",
-        "completed_24h": 16,
+        "completed_24h": 15,
         "failed_24h": 8,
         "runs_7d": 375,
         "history": [
@@ -4004,11 +4015,11 @@
       "name": "Ivy",
       "role": "Head of Commerce",
       "mission": "Managing Etsy catalog triage, listing safety deactivations, and order reconciliation.",
-      "status": "working",
+      "status": "standby",
       "automation": "1 enabled",
       "last_outcome": "Recent run ok",
-      "last_activity": "Aug 19, 11:10 PM",
-      "last_activity_at": "2026-08-19T23:10:43-05:00",
+      "last_activity": "Aug 19, 11:15 PM",
+      "last_activity_at": "2026-08-19T23:15:13-05:00",
       "model": "OpenAI GEMINI-2.5-FLASH",
       "sessions_24h": 1,
       "sessions_7d": 5,
@@ -4019,7 +4030,7 @@
         "score": 66,
         "provisional": true,
         "verified_points_7d": 0,
-        "tokens_7d": 71884,
+        "tokens_7d": 76125,
         "dimensions": {
           "reliability": 100,
           "efficiency": 85,
@@ -4032,19 +4043,28 @@
       "city": {
         "district": "Commerce Row",
         "workspace": "Checkout and buyer-care studio",
-        "presence": "at_desk",
+        "presence": "ready_room",
         "activity_mode": "Scheduled watch",
         "location": "Commerce Row \u00b7 Checkout and buyer-care studio",
         "current_activity": "SPRINT: Optimize top 3 Etsy listing titles for max click-through",
         "current_assignment": "Managing Etsy catalog triage, listing safety deactivations, and order reconciliation.",
         "observed_at": "Aug 19, 11:09 PM",
         "observed_at_iso": "2026-08-19T23:09:54-05:00",
-        "presence_source": "Live task ledger",
+        "presence_source": "Standby",
         "next_action": "SwirlCraft 15-Minute Customer Reply Triage \u00b7 Aug 19, 11:24 PM",
-        "completed_24h": 98,
+        "completed_24h": 99,
         "failed_24h": 5,
-        "runs_7d": 369,
+        "runs_7d": 370,
         "history": [
+          {
+            "at": "Aug 19, 11:15 PM",
+            "at_iso": "2026-08-19T23:15:13-05:00",
+            "at_ms": 1787199313390,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Commerce Row \u00b7 Checkout and buyer-care studio"
+          },
           {
             "at": "Aug 19, 11:10 PM",
             "at_iso": "2026-08-19T23:10:43-05:00",
@@ -4107,15 +4127,6 @@
             "detail": "Completed successfully",
             "status": "succeeded",
             "location": "Commerce Row \u00b7 Checkout and buyer-care studio"
-          },
-          {
-            "at": "Aug 19, 10:07 PM",
-            "at_iso": "2026-08-19T22:07:02-05:00",
-            "at_ms": 1787195222156,
-            "title": "SwirlCraft 15-Minute Customer Reply Triage",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Commerce Row \u00b7 Checkout and buyer-care studio"
           }
         ]
       }
@@ -4128,8 +4139,8 @@
       "status": "standby",
       "automation": "On demand",
       "last_outcome": "Recent run ok",
-      "last_activity": "Aug 19, 11:12 PM",
-      "last_activity_at": "2026-08-19T23:12:32-05:00",
+      "last_activity": "Aug 19, 11:18 PM",
+      "last_activity_at": "2026-08-19T23:18:29-05:00",
       "model": "OpenAI GEMINI-2.5-FLASH-LITE",
       "sessions_24h": 3,
       "sessions_7d": 5,
@@ -4140,7 +4151,7 @@
         "score": 66,
         "provisional": true,
         "verified_points_7d": 0,
-        "tokens_7d": 90815,
+        "tokens_7d": 114567,
         "dimensions": {
           "reliability": 100,
           "efficiency": 85,
@@ -4158,14 +4169,32 @@
         "location": "Signal Library \u00b7 Strategy and evidence desk",
         "current_activity": "SPRINT: Recommend single best listing for Etsy free shipping badge",
         "current_assignment": "Developing 50-state legal form demand research and high-margin ($24.99\u2013$97) bundle pricing.",
-        "observed_at": "Aug 18, 10:33 PM",
-        "observed_at_iso": "2026-08-18T22:33:13-05:00",
+        "observed_at": "Aug 19, 11:19 PM",
+        "observed_at_iso": "2026-08-19T23:19:11-05:00",
         "presence_source": "Standby",
         "next_action": "On demand within the protected weekly reserve",
-        "completed_24h": 9,
+        "completed_24h": 10,
         "failed_24h": 0,
-        "runs_7d": 13,
+        "runs_7d": 15,
         "history": [
+          {
+            "at": "Aug 19, 11:19 PM",
+            "at_iso": "2026-08-19T23:19:11-05:00",
+            "at_ms": 1787199551471,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "In progress",
+            "status": "running",
+            "location": "Signal Library \u00b7 Strategy and evidence desk"
+          },
+          {
+            "at": "Aug 19, 11:16 PM",
+            "at_iso": "2026-08-19T23:16:15-05:00",
+            "at_ms": 1787199375529,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Signal Library \u00b7 Strategy and evidence desk"
+          },
           {
             "at": "Aug 19, 11:12 PM",
             "at_iso": "2026-08-19T23:12:32-05:00",
@@ -4215,24 +4244,6 @@
             "at": "Aug 19, 10:01 PM",
             "at_iso": "2026-08-19T22:01:30-05:00",
             "at_ms": 1787194890130,
-            "title": "Etsy $20k Goal Sprint",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Signal Library \u00b7 Strategy and evidence desk"
-          },
-          {
-            "at": "Aug 19, 8:41 PM",
-            "at_iso": "2026-08-19T20:41:09-05:00",
-            "at_ms": 1787190069069,
-            "title": "Etsy $20k Goal Sprint",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Signal Library \u00b7 Strategy and evidence desk"
-          },
-          {
-            "at": "Aug 19, 8:40 PM",
-            "at_iso": "2026-08-19T20:40:10-05:00",
-            "at_ms": 1787190010283,
             "title": "Etsy $20k Goal Sprint",
             "detail": "Completed successfully",
             "status": "succeeded",
@@ -4367,11 +4378,11 @@
       "name": "Atlas",
       "role": "Chief Technology Officer",
       "mission": "Building state-specific real estate, landlord, and home care PDF template products.",
-      "status": "working",
+      "status": "standby",
       "automation": "2 enabled",
       "last_outcome": "Recent run ok",
-      "last_activity": "Aug 19, 11:11 PM",
-      "last_activity_at": "2026-08-19T23:11:22-05:00",
+      "last_activity": "Aug 19, 11:18 PM",
+      "last_activity_at": "2026-08-19T23:18:21-05:00",
       "model": "OpenAI GEMINI-2.5-FLASH",
       "sessions_24h": 1,
       "sessions_7d": 3,
@@ -4382,7 +4393,7 @@
         "score": 46,
         "provisional": true,
         "verified_points_7d": 0,
-        "tokens_7d": 94048,
+        "tokens_7d": 128228,
         "dimensions": {
           "reliability": 20,
           "efficiency": 85,
@@ -4395,19 +4406,46 @@
       "city": {
         "district": "Systems Foundry",
         "workspace": "Reliability and delivery lab",
-        "presence": "at_desk",
+        "presence": "ready_room",
         "activity_mode": "Needs review",
         "location": "Systems Foundry \u00b7 incident room",
         "current_activity": "SPRINT: Write Gumroad product page for Vendor Admin Bundle at $29.99",
         "current_assignment": "Building state-specific real estate, landlord, and home care PDF template products.",
         "observed_at": "Aug 19, 10:58 PM",
         "observed_at_iso": "2026-08-19T22:58:14-05:00",
-        "presence_source": "Live task ledger",
+        "presence_source": "Standby",
         "next_action": "Rowan Netlify Decision Sync \u00b7 Aug 19, 11:24 PM",
-        "completed_24h": 94,
+        "completed_24h": 97,
         "failed_24h": 25,
-        "runs_7d": 525,
+        "runs_7d": 528,
         "history": [
+          {
+            "at": "Aug 19, 11:18 PM",
+            "at_iso": "2026-08-19T23:18:21-05:00",
+            "at_ms": 1787199501909,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Systems Foundry \u00b7 Reliability and delivery lab"
+          },
+          {
+            "at": "Aug 19, 11:16 PM",
+            "at_iso": "2026-08-19T23:16:28-05:00",
+            "at_ms": 1787199388184,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Systems Foundry \u00b7 Reliability and delivery lab"
+          },
+          {
+            "at": "Aug 19, 11:15 PM",
+            "at_iso": "2026-08-19T23:15:32-05:00",
+            "at_ms": 1787199332244,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Systems Foundry \u00b7 Reliability and delivery lab"
+          },
           {
             "at": "Aug 19, 11:11 PM",
             "at_iso": "2026-08-19T23:11:22-05:00",
@@ -4449,33 +4487,6 @@
             "at_iso": "2026-08-19T22:43:18-05:00",
             "at_ms": 1787197398685,
             "title": "Etsy $20k Goal Sprint",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Systems Foundry \u00b7 Reliability and delivery lab"
-          },
-          {
-            "at": "Aug 19, 10:40 PM",
-            "at_iso": "2026-08-19T22:40:59-05:00",
-            "at_ms": 1787197259455,
-            "title": "Etsy $20k Goal Sprint",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Systems Foundry \u00b7 Reliability and delivery lab"
-          },
-          {
-            "at": "Aug 19, 10:37 PM",
-            "at_iso": "2026-08-19T22:37:06-05:00",
-            "at_ms": 1787197026996,
-            "title": "Rowan Netlify Decision Sync",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Systems Foundry \u00b7 Reliability and delivery lab"
-          },
-          {
-            "at": "Aug 19, 10:22 PM",
-            "at_iso": "2026-08-19T22:22:08-05:00",
-            "at_ms": 1787196128193,
-            "title": "Rowan Netlify Decision Sync",
             "detail": "Completed successfully",
             "status": "succeeded",
             "location": "Systems Foundry \u00b7 Reliability and delivery lab"
@@ -4725,55 +4736,55 @@
       "name": "Ember",
       "role": "Viral Growth Hacker",
       "mission": "TikTok creative arbitrage, Reddit engagement, and zero-dollar viral hooks.",
-      "status": "queued",
+      "status": "standby",
       "automation": "On demand",
-      "last_outcome": "On-demand ready",
-      "last_activity": "Unavailable",
-      "last_activity_at": null,
-      "model": "OpenAI GPT-5.5",
-      "sessions_24h": 0,
-      "sessions_7d": 0,
+      "last_outcome": "Recent run ok",
+      "last_activity": "Aug 19, 11:17 PM",
+      "last_activity_at": "2026-08-19T23:17:54-05:00",
+      "model": "OpenAI GEMINI-2.5-FLASH",
+      "sessions_24h": 1,
+      "sessions_7d": 1,
       "error_streak": 0,
       "authority": "Bounded",
       "performance": {
-        "grade": "D",
-        "score": 60,
+        "grade": "C",
+        "score": 70,
         "provisional": true,
         "verified_points_7d": 0,
-        "tokens_7d": 0,
+        "tokens_7d": 41736,
         "dimensions": {
           "reliability": 100,
           "efficiency": 100,
           "effectiveness": 0,
           "safety": 100,
-          "collaboration": 0
+          "collaboration": 100
         },
         "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
       },
       "city": {
         "district": "Viral Lab",
         "workspace": "Growth hacking workshop",
-        "presence": "scheduled_watch",
-        "activity_mode": "Ready",
-        "location": "Viral Lab \u00b7 ready room",
+        "presence": "ready_room",
+        "activity_mode": "Recently active",
+        "location": "Viral Lab \u00b7 Growth hacking workshop",
         "current_activity": "SPRINT: Create 5 Pinterest pins with direct buy-now CTAs",
         "current_assignment": "TikTok creative arbitrage, Reddit engagement, and zero-dollar viral hooks.",
-        "observed_at": "Unavailable",
-        "observed_at_iso": null,
-        "presence_source": "Live task ledger",
+        "observed_at": "Aug 19, 11:17 PM",
+        "observed_at_iso": "2026-08-19T23:17:54-05:00",
+        "presence_source": "Standby",
         "next_action": "On demand within the protected weekly reserve",
-        "completed_24h": 0,
+        "completed_24h": 1,
         "failed_24h": 0,
-        "runs_7d": 0,
+        "runs_7d": 1,
         "history": [
           {
-            "at": "Now",
-            "at_iso": null,
-            "at_ms": 0,
-            "title": "Ready for bounded assignment",
-            "detail": "No scheduled model work; available on demand inside the weekly reserve.",
-            "status": "ready",
-            "location": "Viral Lab \u00b7 ready room"
+            "at": "Aug 19, 11:17 PM",
+            "at_iso": "2026-08-19T23:17:54-05:00",
+            "at_ms": 1787199474151,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Viral Lab \u00b7 Growth hacking workshop"
           }
         ]
       }
@@ -5408,11 +5419,11 @@
       "name": "Quinn",
       "role": "Quality Assurance",
       "mission": "Reviewing output artifacts and validating digital download compatibility.",
-      "status": "working",
+      "status": "standby",
       "automation": "On demand",
       "last_outcome": "Recent run ok",
-      "last_activity": "Aug 19, 11:12 PM",
-      "last_activity_at": "2026-08-19T23:12:58-05:00",
+      "last_activity": "Aug 19, 11:16 PM",
+      "last_activity_at": "2026-08-19T23:16:37-05:00",
       "model": "OpenAI GEMINI-2.5-FLASH",
       "sessions_24h": 1,
       "sessions_7d": 1,
@@ -5423,7 +5434,7 @@
         "score": 70,
         "provisional": true,
         "verified_points_7d": 0,
-        "tokens_7d": 20246,
+        "tokens_7d": 20361,
         "dimensions": {
           "reliability": 100,
           "efficiency": 100,
@@ -5436,19 +5447,28 @@
       "city": {
         "district": "QA Lab",
         "workspace": "Artifact review studio",
-        "presence": "at_desk",
+        "presence": "ready_room",
         "activity_mode": "Recently active",
         "location": "QA Lab \u00b7 Artifact review studio",
         "current_activity": "QUINN: Quality review all completed product specs \u2014 flag any issues before publi",
         "current_assignment": "Reviewing output artifacts and validating digital download compatibility.",
-        "observed_at": "Aug 19, 11:12 PM",
-        "observed_at_iso": "2026-08-19T23:12:58-05:00",
-        "presence_source": "Live task ledger",
+        "observed_at": "Aug 19, 11:16 PM",
+        "observed_at_iso": "2026-08-19T23:16:37-05:00",
+        "presence_source": "Standby",
         "next_action": "On demand within the protected weekly reserve",
-        "completed_24h": 3,
+        "completed_24h": 4,
         "failed_24h": 0,
-        "runs_7d": 3,
+        "runs_7d": 4,
         "history": [
+          {
+            "at": "Aug 19, 11:16 PM",
+            "at_iso": "2026-08-19T23:16:37-05:00",
+            "at_ms": 1787199397254,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "QA Lab \u00b7 Artifact review studio"
+          },
           {
             "at": "Aug 19, 11:12 PM",
             "at_iso": "2026-08-19T23:12:58-05:00",
@@ -6121,8 +6141,8 @@
       {
         "category": "Netlify reserve",
         "name": "Credit and deploy circuit breaker",
-        "status": "attention",
-        "detail": "At most 399.4 credits remain from the latest exact owner observation, with a 300-credit hard reserve. Automatic production deploy status is not verified off; auto recharge is disabled. One explicit release costs 15 credits. The deterministic monitor checks every 15 minutes."
+        "status": "critical",
+        "detail": "At most 639.4 credits remain from the latest exact owner observation, with a 300-credit hard reserve. Automatic production deploy status is not verified off; auto recharge is disabled. One explicit release costs 15 credits. The deterministic monitor checks every 15 minutes."
       },
       {
         "category": "AI reserve",
@@ -6634,8 +6654,8 @@
     },
     {
       "label": "Netlify credit reserve",
-      "status": "attention",
-      "detail": "Conservative available balance is at most 399.4 credits; current-cycle consumption is at least 3,754.1. Production deploys consumed 3,480 credits at the exact observation. Automatic production deploy status is not verified off; every explicit release is budget-gated, and snapshot refreshes use private storage instead."
+      "status": "critical",
+      "detail": "Conservative available balance is at most 639.4 credits; current-cycle consumption is at least 3,514.1. Production deploys consumed 3,480 credits at the exact observation. Automatic production deploy status is not verified off; every explicit release is budget-gated, and snapshot refreshes use private storage instead."
     },
     {
       "label": "Automation signature policy",
@@ -6774,31 +6794,16 @@
     }
   ],
   "tasks": {
-    "in_progress": 4,
-    "pending": 34,
-    "done": 0,
+    "in_progress": 1,
+    "pending": 31,
+    "done": 6,
     "blocked": 4,
     "total": 42,
     "active_list": [
       {
-        "id": "sprint-002",
-        "title": "SPRINT: Optimize top 3 Etsy listing titles for max clic",
-        "agent": "ivy"
-      },
-      {
-        "id": "sprint-004",
-        "title": "SPRINT: Write Gumroad product page for Vendor Admin Bun",
-        "agent": "atlas"
-      },
-      {
-        "id": "disc-ai-prompts-001",
-        "title": "Create: 100 ChatGPT prompts for landlords + real estate",
+        "id": "disc-payhip-001",
+        "title": "Research + write Payhip store setup guide for all exist",
         "agent": "sage"
-      },
-      {
-        "id": "quinn-001",
-        "title": "QUINN: Quality review all completed product specs \u2014 fla",
-        "agent": "quinn"
       }
     ]
   },
