@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T21:40:28-05:00",
+  "generated_at": "2026-08-19T21:41:22-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "Google-Gemini-Cli",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T02:40:01Z",
+          "summary_generated_at": "2026-08-20T02:41:00Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T02:40:01Z",
+          "summary_generated_at": "2026-08-20T02:41:00Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-20T02:40:01Z",
+      "generated_at": "2026-08-20T02:41:00Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -961,9 +961,19 @@
   },
   "live_dialogues": {
     "generated_at": "2026-08-19T00:06:02.620253-05:00",
-    "total_dialogues": 31,
+    "total_dialogues": 32,
     "engine": "Google Gemini 3.5 Flash Autonomous Multi-Turn Chaining",
     "dialogues": [
+      {
+        "id": "UNSCRIPTED-1787193660",
+        "generated_at": "2026-08-19T21:41:00.412166-05:00",
+        "agentA": "nova",
+        "agentB": "efficiency",
+        "turnA": "Dept of Efficiency, we need to analyze competitor bundle pricing to strategically increase our average order value to $97, ensuring optimal ROI on our Pinterest rich pins and TikTok video efforts.",
+        "turnB": "Understood, Nova; we'll ensure any analysis for competitor bundle pricing and ROI optimization is executed with extreme compute efficiency to preserve our monthly budget.",
+        "topic": "competitor bundle pricing and increasing our average order value to $97",
+        "engine": "Live Gemini 3.5 Flash via OpenClaw Gateway (100% Unscripted)"
+      },
       {
         "id": "UNSCRIPTED-1787193079",
         "generated_at": "2026-08-19T21:31:19.203362-05:00",
@@ -1244,7 +1254,7 @@
         "turnB": "Rowan, averaging 22 bundle sales per day across our top 5 states (Texas, California, Florida, New York, Illinois) hits the target with 4 days to spare."
       }
     ],
-    "last_unscripted_generated_at": "2026-08-19T21:31:19.203362-05:00"
+    "last_unscripted_generated_at": "2026-08-19T21:41:00.412166-05:00"
   },
   "city_engine_code": "",
   "ai_usage": {
@@ -2890,8 +2900,8 @@
       "status": "working",
       "automation": "2 enabled",
       "last_outcome": "Recent run ok",
-      "last_activity": "Aug 19, 9:40 PM",
-      "last_activity_at": "2026-08-19T21:40:15-05:00",
+      "last_activity": "Aug 19, 9:41 PM",
+      "last_activity_at": "2026-08-19T21:41:00-05:00",
       "model": "OpenAI GEMINI-3.1-PRO-PREVIEW",
       "sessions_24h": 7,
       "sessions_7d": 286,
@@ -2902,7 +2912,7 @@
         "score": 50,
         "provisional": true,
         "verified_points_7d": 0,
-        "tokens_7d": 9041348,
+        "tokens_7d": 9041805,
         "dimensions": {
           "reliability": 100,
           "efficiency": 20,
@@ -3827,11 +3837,11 @@
       "name": "Lyra",
       "role": "B2B Design Engineer",
       "mission": "High-end corporate document aesthetics, typography, and commercial product kits.",
-      "status": "recently active",
+      "status": "working",
       "automation": "On demand",
       "last_outcome": "Recent run ok",
-      "last_activity": "Aug 19, 9:31 PM",
-      "last_activity_at": "2026-08-19T21:31:02-05:00",
+      "last_activity": "Aug 19, 9:41 PM",
+      "last_activity_at": "2026-08-19T21:41:12-05:00",
       "model": "OpenAI GEMINI-3-FLASH-PREVIEW",
       "sessions_24h": 1,
       "sessions_7d": 1,
@@ -3855,19 +3865,28 @@
       "city": {
         "district": "Aesthetics Lab",
         "workspace": "Corporate design atelier",
-        "presence": "recently_active",
-        "activity_mode": "Recently active",
+        "presence": "at_desk",
+        "activity_mode": "Active now",
         "location": "Aesthetics Lab · Corporate design atelier",
-        "current_activity": "Recently completed an on-demand session; now standing by",
+        "current_activity": "Working on Etsy $20k Goal Sprint",
         "current_assignment": "High-end corporate document aesthetics, typography, and commercial product kits.",
-        "observed_at": "Aug 19, 9:31 PM",
-        "observed_at_iso": "2026-08-19T21:31:02-05:00",
-        "presence_source": "Session metadata",
+        "observed_at": "Aug 19, 9:41 PM",
+        "observed_at_iso": "2026-08-19T21:41:22-05:00",
+        "presence_source": "Live task ledger",
         "next_action": "On demand within the protected weekly reserve",
         "completed_24h": 1,
         "failed_24h": 0,
-        "runs_7d": 1,
+        "runs_7d": 2,
         "history": [
+          {
+            "at": "Aug 19, 9:41 PM",
+            "at_iso": "2026-08-19T21:41:22-05:00",
+            "at_ms": 1787193682269,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "In progress",
+            "status": "running",
+            "location": "Aesthetics Lab · Corporate design atelier"
+          },
           {
             "at": "Aug 19, 9:31 PM",
             "at_iso": "2026-08-19T21:31:02-05:00",
@@ -3943,12 +3962,12 @@
       "name": "Kira",
       "role": "Statutory Legal Auditor",
       "mission": "FTC compliance, 50-state statutory legal disclosures, and IP protection.",
-      "status": "working",
+      "status": "recently active",
       "automation": "On demand",
       "last_outcome": "Recent run ok",
       "last_activity": "Aug 19, 9:40 PM",
-      "last_activity_at": "2026-08-19T21:40:14-05:00",
-      "model": "OpenAI GPT-5.5",
+      "last_activity_at": "2026-08-19T21:40:57-05:00",
+      "model": "OpenAI GEMINI-3.1-PRO-PREVIEW",
       "sessions_24h": 1,
       "sessions_7d": 1,
       "error_streak": 0,
@@ -3958,7 +3977,7 @@
         "score": 70,
         "provisional": true,
         "verified_points_7d": 0,
-        "tokens_7d": 0,
+        "tokens_7d": 42613,
         "dimensions": {
           "reliability": 100,
           "efficiency": 100,
@@ -3971,26 +3990,26 @@
       "city": {
         "district": "Compliance Wing",
         "workspace": "Statutory audit desk",
-        "presence": "at_desk",
-        "activity_mode": "Active now",
+        "presence": "recently_active",
+        "activity_mode": "Recently active",
         "location": "Compliance Wing · Statutory audit desk",
-        "current_activity": "Working on Etsy $20k Goal Sprint",
+        "current_activity": "Recently completed an on-demand session; now standing by",
         "current_assignment": "FTC compliance, 50-state statutory legal disclosures, and IP protection.",
         "observed_at": "Aug 19, 9:40 PM",
-        "observed_at_iso": "2026-08-19T21:40:14-05:00",
-        "presence_source": "Live task ledger",
+        "observed_at_iso": "2026-08-19T21:40:57-05:00",
+        "presence_source": "Session metadata",
         "next_action": "On demand within the protected weekly reserve",
-        "completed_24h": 0,
+        "completed_24h": 1,
         "failed_24h": 0,
         "runs_7d": 1,
         "history": [
           {
             "at": "Aug 19, 9:40 PM",
-            "at_iso": "2026-08-19T21:40:14-05:00",
-            "at_ms": 1787193614412,
+            "at_iso": "2026-08-19T21:40:57-05:00",
+            "at_ms": 1787193657338,
             "title": "Etsy $20k Goal Sprint",
-            "detail": "In progress",
-            "status": "running",
+            "detail": "Completed successfully",
+            "status": "succeeded",
             "location": "Compliance Wing · Statutory audit desk"
           }
         ]
