@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T22:34:42-05:00",
+  "generated_at": "2026-08-19T22:35:20-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "OpenAI",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T03:34:37Z",
+          "summary_generated_at": "2026-08-20T03:35:01Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T03:34:37Z",
+          "summary_generated_at": "2026-08-20T03:35:01Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-20T03:34:37Z",
+      "generated_at": "2026-08-20T03:35:01Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -3934,7 +3934,7 @@
       "name": "Ivy",
       "role": "Head of Commerce",
       "mission": "Managing Etsy catalog triage, listing safety deactivations, and order reconciliation.",
-      "status": "recently active",
+      "status": "standby",
       "automation": "On demand",
       "last_outcome": "Recent run ok",
       "last_activity": "Aug 19, 10:05 PM",
@@ -3962,10 +3962,10 @@
       "city": {
         "district": "Commerce Row",
         "workspace": "Checkout and buyer-care studio",
-        "presence": "recently_active",
-        "activity_mode": "Recently active",
-        "location": "Commerce Row · Checkout and buyer-care studio",
-        "current_activity": "Recently completed an on-demand session; now standing by",
+        "presence": "ready_room",
+        "activity_mode": "Ready",
+        "location": "Commerce Row · ready room",
+        "current_activity": "Standing by — Managing Etsy catalog triage, listing safety deactivations, and order reconciliation.",
         "current_assignment": "Managing Etsy catalog triage, listing safety deactivations, and order reconciliation.",
         "observed_at": "Aug 19, 10:05 PM",
         "observed_at_iso": "2026-08-19T22:05:00-05:00",
