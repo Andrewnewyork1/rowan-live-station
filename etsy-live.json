@@ -1,0 +1,21 @@
+{
+  "shop_id": 66934708,
+  "shop_name": "SwirlCraftShop",
+  "shop_url": "https://www.etsy.com/shop/SwirlCraftShop",
+  "active_listings": 100,
+  "total_views": 162,
+  "total_sales": 2,
+  "revenue_mtd_usd": 0.0,
+  "revenue_earned_usd": 0.0,
+  "avg_listing_price": 23.93,
+  "listings_zero_views": 55,
+  "listings_optimized": 0,
+  "listings_to_optimize": 100,
+  "etsy_api_connected": true,
+  "oauth_pending": true,
+  "last_updated": "2026-08-20T04:05:28.500587+00:00",
+  "listing_categories": {
+    "planners_journals": 89,
+    "home_care_forms": 11
+  }
+}
