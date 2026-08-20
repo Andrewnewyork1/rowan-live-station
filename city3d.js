@@ -441,7 +441,7 @@ export async function bootCity3D() {
     { id:'fulfillment',  x:  35, z: 76, h: 14, w:5,d:5, col:0x60a5fa, type:'box',     label:'Fulfillment Hub',sub:'Instant Delivery',          icon:'📦' },
 
     // ─── OPERATIONS (North, z=-65 to -90) ───
-    { id:'mgr-tower',    x: -14, z:-78, h: 36, w:8,d:7, col:0xc4b5fd, type:'needle',  label:'Manager Tower', sub:'Sage · Atlas · Nova',       icon:'🏢' },
+    { id:'mgr-tower',    x: -14, z:-78, h: 42, w:8,d:7, col:0xc4b5fd, type:'needle',  label:'Manager Tower', sub:'Sage · Atlas · Nova',       icon:'🏢' },
     { id:'task-depot',   x:   4, z:-78, h: 20, w:6,d:5, col:0xfde68a, type:'stepped', label:'Task Depot',    sub:'Work Queue',                icon:'📋' },
     { id:'decision-box', x:  20, z:-78, h: 16, w:5,d:5, col:0xfb923c, type:'box',     label:'Decision Inbox',sub:'Owner Approvals',           icon:'📬' },
     { id:'approval-gate',x:  35, z:-78, h: 13, w:5,d:5, col:0xf43f5e, type:'wide',    label:'Approval Gate', sub:'Auth Required',             icon:'✅' },
