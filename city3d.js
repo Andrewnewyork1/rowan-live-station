@@ -1,1296 +1,640 @@
 /**
- * ROWAN Agent City 7.0 — 13-Agent Autonomous Living Metropolis
- * 7 Core Executive Founders + 6 R&D Skunkworks Specialists
- * Features:
- * - Dynamic City Prosperity & Economic Mood Engine (AIs love making money / react to revenue)
- * - 13 fully autonomous 3D agents with unique identities, workstations, and screen projections
- * - R&D Quantum Campus, Central Park, Cafe, Gym, Arcade, Lofts & Server Hub
- * - Dynamic unscripted AI dialogues streamed live from DATA.live_dialogues
+ * ROWAN Agent City 10.0 — State-of-the-Art Autonomous Metropolis
+ * Complete rewrite. Every ROWAN system is a physical building.
+ * 8 color-coded districts. Cinematic camera. Live data integration.
  */
 
 let _cityRenderer = null;
-let _cityScene = null;
-let _cityCamera = null;
-let _cityControls = null;
 let _cityRunning = false;
-
 let _animFrameId = null;
 
 export async function bootCity3D() {
   const VIEWPORT = document.querySelector('.city-viewport');
   if (!VIEWPORT) return;
 
-  if (_cityRunning && _cityRenderer && _cityCamera) {
+  if (_cityRunning && _cityRenderer) {
     if (VIEWPORT.clientWidth > 10) {
-      _cityCamera.aspect = VIEWPORT.clientWidth / 540;
-      _cityCamera.updateProjectionMatrix();
-      _cityRenderer.setSize(VIEWPORT.clientWidth, 540);
+      _cityRenderer.setSize(VIEWPORT.clientWidth, 560);
     }
     return;
   }
-
-  if (VIEWPORT.clientWidth < 10) {
-    setTimeout(bootCity3D, 150);
-    return;
-  }
+  if (VIEWPORT.clientWidth < 10) { setTimeout(bootCity3D, 200); return; }
 
   _cityRunning = true;
+  if (_animFrameId) { cancelAnimationFrame(_animFrameId); _animFrameId = null; }
+  VIEWPORT.querySelectorAll('canvas,#cityScreenOverlay,#city3dLabels,.agent-screen-tag,.building-screen-tag,.agent-screen-speech,.city-district-plate').forEach(e => e.remove());
 
-  // Clean ALL existing canvas, overlay, tags
-  if (_animFrameId) {
-    cancelAnimationFrame(_animFrameId);
-    _animFrameId = null;
-  }
-  VIEWPORT.querySelectorAll('canvas, #cityScreenOverlay, #city3dLabels, .agent-screen-tag, .building-screen-tag, .agent-screen-speech').forEach(el => el.remove());
-
-  const world = document.getElementById('cityWorld');
-  if (world) world.style.display = 'none';
+  const worldEl = document.getElementById('cityWorld');
+  if (worldEl) worldEl.style.display = 'none';
 
   let THREE, OrbitControls;
   try {
     THREE = await import('./lib/three.module.js');
-    const ocMod = await import('./lib/OrbitControls.js');
-    OrbitControls = ocMod.OrbitControls;
-  } catch (err) {
-    console.error('[City3D] Module import failed:', err);
-    return;
-  }
+    const oc = await import('./lib/OrbitControls.js');
+    OrbitControls = oc.OrbitControls;
+  } catch(e) { console.error('[City10] Import failed:', e); return; }
+
+  const W = VIEWPORT.clientWidth, H = 560;
 
   // Canvas
   const canvas = document.createElement('canvas');
   canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;z-index:1;display:block;cursor:grab;touch-action:none;';
-  VIEWPORT.style.touchAction = 'none';
-  VIEWPORT.style.userSelect = 'none';
   VIEWPORT.appendChild(canvas);
 
-  // Screen Overlay
-  const overlayLayer = document.createElement('div');
-  overlayLayer.id = 'cityScreenOverlay';
-  overlayLayer.style.cssText = 'position:absolute;inset:0;pointer-events:none;z-index:20;overflow:hidden;';
-  VIEWPORT.appendChild(overlayLayer);
+  // HTML overlay
+  const overlay = document.createElement('div');
+  overlay.id = 'cityScreenOverlay';
+  overlay.style.cssText = 'position:absolute;inset:0;pointer-events:none;z-index:20;overflow:hidden;';
+  VIEWPORT.appendChild(overlay);
 
-  // Economic Mood HUD Badge
-  const moodBadge = document.createElement('div');
-  moodBadge.id = 'cityEconomicMood';
-  moodBadge.style.cssText = `
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    z-index: 30;
-    pointer-events: none;
-    background: rgba(6,12,22,0.92);
-    border: 1px solid rgba(34,201,122,0.4);
-    border-radius: 20px;
-    padding: 6px 14px;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    color: #22c97a;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.8), 0 0 15px rgba(34,201,122,0.2);
-    backdrop-filter: blur(8px);
-  `;
-  moodBadge.innerHTML = `
-    <span style="width:7px;height:7px;border-radius:50%;background:#22c97a;box-shadow:0 0 8px #22c97a;"></span>
-    <span>CITY MOOD: HIGH REVENUE SPRINT · +70% MARGIN BOOM</span>
-  `;
-  overlayLayer.appendChild(moodBadge);
-
-  // 3D Camera Orbit & Rotation Control Panel
-  const navPanel = document.createElement('div');
-  navPanel.id = 'cityNavControls';
-  navPanel.style.cssText = `
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    z-index: 30;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    pointer-events: auto;
-  `;
-  navPanel.innerHTML = `
-    <button type="button" id="btnOrbitLeft" style="background:rgba(6,12,22,0.9);border:1px solid rgba(109,183,255,0.4);color:#fff;border-radius:8px;padding:6px 10px;font-size:11px;font-weight:700;cursor:pointer;backdrop-filter:blur(8px);box-shadow:0 4px 12px rgba(0,0,0,0.6);">↺ Rotate Left</button>
-    <button type="button" id="btnOrbitRight" style="background:rgba(6,12,22,0.9);border:1px solid rgba(109,183,255,0.4);color:#fff;border-radius:8px;padding:6px 10px;font-size:11px;font-weight:700;cursor:pointer;backdrop-filter:blur(8px);box-shadow:0 4px 12px rgba(0,0,0,0.6);">↻ Rotate Right</button>
-    <button type="button" id="btnTopView" style="background:rgba(6,12,22,0.9);border:1px solid rgba(109,183,255,0.4);color:#fff;border-radius:8px;padding:6px 10px;font-size:11px;font-weight:700;cursor:pointer;backdrop-filter:blur(8px);box-shadow:0 4px 12px rgba(0,0,0,0.6);">🔭 Top View</button>
-    <button type="button" id="btnResetView" style="background:rgba(6,12,22,0.9);border:1px solid rgba(34,201,122,0.4);color:#22c97a;border-radius:8px;padding:6px 10px;font-size:11px;font-weight:700;cursor:pointer;backdrop-filter:blur(8px);box-shadow:0 4px 12px rgba(0,0,0,0.6);">⟲ Reset</button>
-  `;
-  overlayLayer.appendChild(navPanel);
-
-  function orbitBy(deltaTheta) {
-    const offset = camera.position.clone().sub(controls.target);
-    const radius = offset.length();
-    let theta = Math.atan2(offset.x, offset.z);
-    let phi = Math.acos(Math.max(-1, Math.min(1, offset.y / Math.max(0.001, radius))));
-    
-    theta += deltaTheta;
-    
-    offset.x = radius * Math.sin(phi) * Math.sin(theta);
-    offset.y = radius * Math.cos(phi);
-    offset.z = radius * Math.sin(phi) * Math.cos(theta);
-    
-    camera.position.copy(controls.target).add(offset);
-    camera.lookAt(controls.target);
-    controls.update();
-  }
-
-  navPanel.querySelector('#btnOrbitLeft').addEventListener('click', (e) => {
-    e.stopPropagation();
-    orbitBy(Math.PI / 8);
-  });
-
-  navPanel.querySelector('#btnOrbitRight').addEventListener('click', (e) => {
-    e.stopPropagation();
-    orbitBy(-Math.PI / 8);
-  });
-
-  navPanel.querySelector('#btnTopView').addEventListener('click', (e) => {
-    e.stopPropagation();
-    camera.position.set(0, 42, 65);
-    controls.target.set(0, 0, 0);
-    camera.lookAt(0, 0, 0);
-    controls.update();
-  });
-
-  navPanel.querySelector('#btnResetView').addEventListener('click', (e) => {
-    e.stopPropagation();
-    controls.target.set(0, 0, 0);
-    camera.position.set(0, 42, 65);
-    camera.lookAt(0, 0, 0);
-    controls.update();
-  });
-
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  // Renderer
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(VIEWPORT.clientWidth, 540);
+  renderer.setSize(W, H);
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.1;
+  _cityRenderer = renderer;
 
+  // Scene
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x020712);
-  scene.fog = new THREE.FogExp2(0x020712, 0.005);
+  scene.background = new THREE.Color(0x010510);
+  scene.fog = new THREE.FogExp2(scene.background, 0.006);
 
-  const camera = new THREE.PerspectiveCamera(45, VIEWPORT.clientWidth / 540, 0.1, 600);
-  camera.position.set(0, 42, 65);
-  camera.lookAt(0, 1.5, 0);
+  // Camera
+  const camera = new THREE.PerspectiveCamera(46, W / H, 0.5, 1400);
+  camera.position.set(0, 72, 118);
 
+  // Controls
   const controls = new OrbitControls(camera, canvas);
+  controls.target.set(0, 6, 0);
   controls.enableDamping = true;
-  controls.dampingFactor = 0.06;
+  controls.dampingFactor = 0.07;
   controls.maxPolarAngle = Math.PI / 2.08;
   controls.minDistance = 8;
-  controls.maxDistance = 110;
-  controls.target.set(0, 0, 0);
+  controls.maxDistance = 200;
+  controls.rotateSpeed = 0.85;
+  controls.zoomSpeed = 1.1;
+  controls.update();
 
-  _cityRenderer = renderer;
-  _cityScene = scene;
-  _cityCamera = camera;
-  _cityControls = controls;
+  // ── Lighting ────────────────────────────────────────────────────────────
+  scene.add(new THREE.AmbientLight(0x0a1628, 3.5));
 
-  // Lights
-  const ambient = new THREE.AmbientLight(0x4a627d, 1.5);
-  scene.add(ambient);
+  const moon = new THREE.DirectionalLight(0x4466aa, 1.2);
+  moon.position.set(-30, 80, -50);
+  moon.castShadow = true;
+  moon.shadow.mapSize.set(2048, 2048);
+  moon.shadow.camera.near = 0.5;
+  moon.shadow.camera.far = 400;
+  moon.shadow.camera.left = -160;
+  moon.shadow.camera.right = 160;
+  moon.shadow.camera.top = 160;
+  moon.shadow.camera.bottom = -160;
+  scene.add(moon);
 
-  const sun = new THREE.DirectionalLight(0xffffff, 2.0);
-  sun.position.set(34, 52, 34);
-  sun.castShadow = true;
-  sun.shadow.mapSize.width = 2048;
-  sun.shadow.mapSize.height = 2048;
-  scene.add(sun);
-
-  // Ground & Roads
-  const ground = new THREE.Mesh(
-    new THREE.PlaneGeometry(320, 320),
-    new THREE.MeshStandardMaterial({ color: 0x030609, roughness: 0.97, metalness: 0.06 })
-  );
+  // ── Ground & Roads ──────────────────────────────────────────────────────
+  const groundMat = new THREE.MeshStandardMaterial({ color: 0x030609, roughness: 0.98, metalness: 0.02 });
+  const ground = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), groundMat);
   ground.rotation.x = -Math.PI / 2;
   ground.receiveShadow = true;
   scene.add(ground);
 
-  const grid = new THREE.GridHelper(320, 128, 0x0d2030, 0x060d12);
-  grid.position.y = 0.01;
+  // Grid
+  const grid = new THREE.GridHelper(400, 160, 0x0b1c28, 0x060f14);
+  grid.position.y = 0.02;
   scene.add(grid);
 
-  const roadMat = new THREE.MeshStandardMaterial({ color: 0x081216, roughness: 0.96 });
-  const roadH = new THREE.Mesh(new THREE.BoxGeometry(320, 0.05, 6.5), roadMat);
-  roadH.position.set(0, 0.02, 0);
-  scene.add(roadH);
-
-  const roadV = new THREE.Mesh(new THREE.BoxGeometry(6.5, 0.05, 320), roadMat);
-  roadV.position.set(0, 0.02, 0);
-  scene.add(roadV);
-
-  // Cross-streets for city block feel
-  for (const offset of [-40, 40]) {
-    const cH = new THREE.Mesh(new THREE.BoxGeometry(320, 0.04, 4.5), roadMat);
-    cH.position.set(0, 0.02, offset);
-    scene.add(cH);
-    const cV = new THREE.Mesh(new THREE.BoxGeometry(4.5, 0.04, 320), roadMat);
-    cV.position.set(offset, 0.02, 0);
-    scene.add(cV);
-  }
-
-  // 1. Central Park & Amenities
-  const parkGroup = new THREE.Group();
-  parkGroup.position.set(0, 0, 0);
-
-  const lawn = new THREE.Mesh(new THREE.BoxGeometry(14, 0.1, 14), new THREE.MeshStandardMaterial({ color: 0x103820, roughness: 0.9 }));
-  lawn.position.y = 0.05;
-  parkGroup.add(lawn);
-
-  const fBasin = new THREE.Mesh(new THREE.CylinderGeometry(2.0, 2.2, 0.45, 16), new THREE.MeshStandardMaterial({ color: 0x22303c, roughness: 0.7 }));
-  fBasin.position.y = 0.3;
-  parkGroup.add(fBasin);
-
-  const waterMat = new THREE.MeshStandardMaterial({ color: 0x38bdf8, emissive: 0x0284c7, emissiveIntensity: 0.85, roughness: 0.1 });
-  const water = new THREE.Mesh(new THREE.CylinderGeometry(1.8, 1.8, 0.35, 16), waterMat);
-  water.position.y = 0.4;
-  parkGroup.add(water);
-
-  const waterSpout = new THREE.Mesh(new THREE.ConeGeometry(0.25, 1.2, 8), waterMat);
-  waterSpout.position.y = 1.05;
-  parkGroup.add(waterSpout);
-  parkGroup.waterSpout = waterSpout;
-
-  const fLight = new THREE.PointLight(0x38bdf8, 1.5, 14);
-  fLight.position.set(0, 1.4, 0);
-  parkGroup.add(fLight);
-
-  function createTree(tx, tz) {
-    const t = new THREE.Group();
-    t.position.set(tx, 0.1, tz);
-    const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.18, 1.4, 8), new THREE.MeshStandardMaterial({ color: 0x3e2723 }));
-    trunk.position.y = 0.7;
-    t.add(trunk);
-    const f1 = new THREE.Mesh(new THREE.ConeGeometry(1.0, 1.4, 8), new THREE.MeshStandardMaterial({ color: 0x15803d, roughness: 0.8 }));
-    f1.position.y = 1.6;
-    t.add(f1);
-    const f2 = new THREE.Mesh(new THREE.ConeGeometry(0.8, 1.1, 8), new THREE.MeshStandardMaterial({ color: 0x22c55e, roughness: 0.8 }));
-    f2.position.y = 2.3;
-    t.add(f2);
-    return t;
-  }
-  parkGroup.add(createTree(-5.2, -5.2));
-  parkGroup.add(createTree(5.2, -5.2));
-  parkGroup.add(createTree(-5.2, 5.2));
-  parkGroup.add(createTree(5.2, 5.2));
-
-  const dogGroup = new THREE.Group();
-  dogGroup.position.set(-3.2, 0.15, -3.2);
-  const dogBody = new THREE.Mesh(new THREE.CapsuleGeometry(0.14, 0.32, 4, 6), new THREE.MeshStandardMaterial({ color: 0xe2e8f0, metalness: 0.6 }));
-  dogBody.rotation.z = Math.PI / 2;
-  dogGroup.add(dogBody);
-  const dogHead = new THREE.Mesh(new THREE.SphereGeometry(0.12, 8, 8), new THREE.MeshStandardMaterial({ color: 0x94a3b8 }));
-  dogHead.position.set(0.22, 0.18, 0);
-  dogGroup.add(dogHead);
-  parkGroup.add(dogGroup);
-  parkGroup.dog = dogGroup;
-
-  scene.add(parkGroup);
-
-  // Amenities removed: Clean 13-Agent Metropolis Only
-
-  // ── INFRASTRUCTURE & DISTRICT BUILDINGS ──────────────────────────────────
-  // Every Rowan system gets a physical presence in the city.
-
-  const INFRA_BUILDINGS = [
-    // ── INFRASTRUCTURE DISTRICT (far east side, x=75-95)
-    { id: 'openclaw-gateway',  label: 'OpenClaw Gateway',      sub: 'AI Model Router',         col: 0x00ffcc, pos: [78,  -8], h: 16, w: 6.0, d: 6.0, icon: '🔀', district: 'Infrastructure' },
-    { id: 'github-cdn',        label: 'GitHub Pages CDN',       sub: 'Dashboard Host',          col: 0xf0f6ff, pos: [78,  8], h: 12, w: 5.5, d: 5.5, icon: '🌐', district: 'Infrastructure' },
-    { id: 'netlify-cloud',     label: 'Netlify Cloud',          sub: 'Build & Deploy',          col: 0x00ad9f, pos: [78, 24], h: 10, w: 5.0, d: 5.0, icon: '☁️', district: 'Infrastructure' },
-    { id: 'sqlite-vault',      label: 'OpenClaw Data Vault',    sub: 'Agent Run Database',      col: 0xffd700, pos: [78,-24], h: 9,  w: 5.0, d: 5.0, icon: '🗄️', district: 'Infrastructure' },
-    { id: 'evolution-engine',  label: 'Evolution Engine',       sub: 'Self-Improves every 30m', col: 0x22c97a, pos: [90,  0], h: 18, w: 5.5, d: 5.5, icon: '🧬', district: 'Infrastructure' },
-    { id: 'realtime-sync',     label: 'Real-Time Sync Tower',   sub: 'Data Pulse every 5m',     col: 0x38bdf8, pos: [90, 16], h: 14, w: 4.5, d: 4.5, icon: '📡', district: 'Infrastructure' },
-
-    // ── FINANCE DISTRICT (far west side, x=-75 to -95)
-    { id: 'profit-ledger',     label: 'Profit Ledger Hall',     sub: 'P&L Tracker',             col: 0xfbbf24, pos: [-78, -8], h: 15, w: 6.0, d: 6.0, icon: '💰', district: 'Finance' },
-    { id: 'cost-guard',        label: 'Cost Guard Station',     sub: 'Budget Watchdog',         col: 0xf43f5e, pos: [-78,  8], h: 11, w: 5.0, d: 5.0, icon: '🛡️', district: 'Finance' },
-    { id: 'capital-allocator', label: 'Capital Allocator',      sub: 'Resource Optimizer',      col: 0xa3e635, pos: [-78, 24], h: 10, w: 5.0, d: 5.0, icon: '📊', district: 'Finance' },
-    { id: 'revenue-registry',  label: 'Revenue Channel Reg.',   sub: 'Etsy + All Channels',     col: 0x22c97a, pos: [-90,  0], h: 17, w: 5.5, d: 5.5, icon: '💎', district: 'Finance' },
-
-    // ── COMMERCE DISTRICT (south side, z=75-90)
-    { id: 'swirlcraft-shop',   label: 'SwirlCraft Etsy Shop',   sub: 'Primary Revenue · Live',  col: 0xf97316, pos: [-20, 78], h: 22, w: 7.0, d: 7.0, icon: '🛒', district: 'Commerce' },
-    { id: 'seo-lab',           label: 'SEO Optimization Lab',   sub: '36 Listings Active',      col: 0x34d399, pos: [  0, 78], h: 14, w: 5.5, d: 5.5, icon: '🔍', district: 'Commerce' },
-    { id: 'listing-factory',   label: 'Listing Factory',        sub: 'New Products Created',    col: 0xfcd34d, pos: [ 20, 78], h: 12, w: 5.5, d: 5.5, icon: '🏭', district: 'Commerce' },
-    { id: 'fulfillment-hub',   label: 'Digital Fulfillment Hub',sub: 'Instant Delivery Engine', col: 0x60a5fa, pos: [ 38, 78], h: 10, w: 5.0, d: 5.0, icon: '📦', district: 'Commerce' },
-
-    // ── MARKETING DISTRICT (south-east, z=65-80, x=45-70)
-    { id: 'tiktok-studio',     label: 'TikTok/Reels Studio',    sub: 'Viral Video Content',     col: 0xff2d55, pos: [55, 65], h: 13, w: 5.5, d: 5.5, icon: '🎬', district: 'Marketing' },
-    { id: 'pinterest-gallery', label: 'Pinterest Gallery',      sub: 'Pin Publishing Engine',   col: 0xe60023, pos: [70, 65], h: 11, w: 5.0, d: 5.0, icon: '📌', district: 'Marketing' },
-    { id: 'broadcast-tower',   label: 'Outbound Broadcast',     sub: 'Traffic Funnels',         col: 0x818cf8, pos: [70, 50], h: 20, w: 4.0, d: 4.0, icon: '📻', district: 'Marketing' },
-
-    // ── OPERATIONS DISTRICT (north side, z=-75 to -90)
-    { id: 'manager-tower',     label: 'Manager Control Tower',  sub: 'Sage · Atlas · Nova',     col: 0xc4b5fd, pos: [-20,-78], h: 24, w: 7.0, d: 7.0, icon: '🏢', district: 'Operations' },
-    { id: 'task-depot',        label: 'Task Backlog Depot',     sub: 'Work Queue Dispatcher',   col: 0xfde68a, pos: [  0,-78], h: 13, w: 5.5, d: 5.5, icon: '📋', district: 'Operations' },
-    { id: 'decision-inbox',    label: 'Decision Inbox',         sub: 'Pending Owner Decisions', col: 0xfb923c, pos: [ 20,-78], h: 11, w: 5.5, d: 5.5, icon: '📬', district: 'Operations' },
-    { id: 'approval-gate',     label: 'Approval Checkpoint',   sub: 'Owner Auth Required',     col: 0xf43f5e, pos: [ 38,-78], h: 9,  w: 5.0, d: 5.0, icon: '✅', district: 'Operations' },
-
-    // ── INTELLIGENCE DISTRICT (north-west, z=-65 to -75)
-    { id: 'action-queue',      label: 'Action Queue',           sub: 'Live Ops Requests',       col: 0x67e8f9, pos: [-55,-65], h: 12, w: 5.0, d: 5.0, icon: '⚡', district: 'Intelligence' },
-    { id: 'watchdog-station',  label: 'Watchdog Station',       sub: 'Auto-Heals Blockers',     col: 0xfca5a5, pos: [-70,-65], h: 10, w: 5.0, d: 5.0, icon: '🐕', district: 'Intelligence' },
-    { id: 'daily-upgrade-lab', label: 'Daily Upgrade Lab',      sub: 'Nightly Self-Improvement', col: 0xa78bfa, pos: [-70,-50], h: 14, w: 5.0, d: 5.0, icon: '🔬', district: 'Intelligence' },
-
-    // ── VENTURE LAB DISTRICT (north-east, z=-65 to -75)
-    { id: 'youtube-lab',       label: 'YouTube Venture Lab',    sub: 'Video Revenue Research',  col: 0xff0000, pos: [55,-65], h: 13, w: 5.5, d: 5.5, icon: '▶️', district: 'Venture Lab' },
-    { id: 'flippa-exchange',   label: 'Flippa Asset Exchange',  sub: 'Digital Business M&A',    col: 0xf59e0b, pos: [70,-65], h: 11, w: 5.0, d: 5.0, icon: '🏦', district: 'Venture Lab' },
+  // District zone overlays on ground (colored glowing rectangles)
+  const DISTRICT_ZONES = [
+    { col: 0x6db7ff, cx:   0, cz:   0, w: 52, d: 52, name: 'AGENT HQ'      },
+    { col: 0x00ffcc, cx:  82, cz:   0, w: 36, d: 60, name: 'INFRASTRUCTURE' },
+    { col: 0xfbbf24, cx: -82, cz:   0, w: 36, d: 60, name: 'FINANCE'        },
+    { col: 0xf97316, cx:   6, cz:  82, w: 60, d: 32, name: 'COMMERCE'       },
+    { col: 0xc4b5fd, cx:   6, cz: -82, w: 60, d: 32, name: 'OPERATIONS'     },
+    { col: 0xff2d55, cx:  66, cz:  66, w: 30, d: 30, name: 'MARKETING'      },
+    { col: 0x67e8f9, cx: -66, cz: -66, w: 30, d: 30, name: 'INTELLIGENCE'   },
+    { col: 0xff4444, cx:  66, cz: -66, w: 30, d: 30, name: 'VENTURE LAB'    },
   ];
 
-  // ── District Labels (floating text at district centers) ──────────────────
-  const DISTRICTS = [
-    { name: 'INFRASTRUCTURE',  pos: [84,  0], col: '#00ffcc' },
-    { name: 'FINANCE',         pos: [-84, 0], col: '#fbbf24' },
-    { name: 'COMMERCE',        pos: [10, 84], col: '#f97316' },
-    { name: 'MARKETING',       pos: [62, 58], col: '#ff2d55' },
-    { name: 'OPERATIONS',      pos: [10,-84], col: '#c4b5fd' },
-    { name: 'INTELLIGENCE',    pos: [-62,-58],col: '#67e8f9' },
-    { name: 'VENTURE LAB',     pos: [62, -58],col: '#ff0000' },
-    { name: 'AGENT DISTRICT',  pos: [0,  0],  col: '#6db7ff' },
-  ];
+  DISTRICT_ZONES.forEach(z => {
+    // Glowing floor tile
+    const mat = new THREE.MeshStandardMaterial({
+      color: z.col, emissive: z.col, emissiveIntensity: 0.04,
+      roughness: 0.9, transparent: true, opacity: 0.18,
+    });
+    const mesh = new THREE.Mesh(new THREE.PlaneGeometry(z.w, z.d), mat);
+    mesh.rotation.x = -Math.PI / 2;
+    mesh.position.set(z.cx, 0.04, z.cz);
+    scene.add(mesh);
 
-  // ── Build each infrastructure building ───────────────────────────────────
-  INFRA_BUILDINGS.forEach(inf => {
-    const [x, z] = inf.pos;
-    const h = inf.h;
-    const col = inf.col;
-    const hexCol = '#' + col.toString(16).padStart(6, '0');
+    // Border lines
+    const edges = new THREE.LineSegments(
+      new THREE.EdgesGeometry(new THREE.BoxGeometry(z.w, 0.01, z.d)),
+      new THREE.LineBasicMaterial({ color: z.col, transparent: true, opacity: 0.35 })
+    );
+    edges.position.set(z.cx, 0.05, z.cz);
+    scene.add(edges);
 
+    // District label plate (HTML)
+    const plate = document.createElement('div');
+    plate.className = 'city-district-plate';
+    plate.dataset.wx = z.cx;
+    plate.dataset.wz = z.cz;
+    plate.style.cssText = 'position:absolute;display:none;transform:translate(-50%,-50%);pointer-events:none;z-index:11;';
+    const hex = '#' + z.col.toString(16).padStart(6,'0');
+    plate.innerHTML = `<div style="background:rgba(2,5,14,0.82);border:1px solid ${hex}55;border-radius:16px;padding:3px 11px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:${hex};font-size:7.5px;font-weight:800;letter-spacing:1.8px;backdrop-filter:blur(6px);text-transform:uppercase;white-space:nowrap;">${z.name}</div>`;
+    overlay.appendChild(plate);
+  });
+
+  // Main roads
+  const roadMat = new THREE.MeshStandardMaterial({ color: 0x050c12, roughness: 0.97 });
+  function addRoad(x, z, w, d) {
+    const r = new THREE.Mesh(new THREE.BoxGeometry(w, 0.06, d), roadMat);
+    r.position.set(x, 0.03, z);
+    scene.add(r);
+  }
+  addRoad(0,  0,  400, 7); // E-W main
+  addRoad(0,  0,  7, 400); // N-S main
+  addRoad(0,  42, 400, 4.5); // rings
+  addRoad(0, -42, 400, 4.5);
+  addRoad( 42, 0, 4.5, 400);
+  addRoad(-42, 0, 4.5, 400);
+
+  // Street lights
+  function streetLight(x, z, col = 0xffe5aa) {
+    const post = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 5.5, 5), new THREE.MeshStandardMaterial({ color: 0x1a2535 }));
+    post.position.set(x, 2.75, z);
+    scene.add(post);
+    const pl = new THREE.PointLight(col, 1.0, 22);
+    pl.position.set(x + 1.5, 5.5, z);
+    scene.add(pl);
+  }
+  for (const p of [-70,-50,-28,-14,0,14,28,50,70]) {
+    streetLight(p, 5.5);
+    streetLight(p, -5.5);
+    streetLight(5.5, p);
+    streetLight(-5.5, p);
+  }
+
+  // ── Park at center ──────────────────────────────────────────────────────
+  const park = new THREE.Mesh(new THREE.CylinderGeometry(7, 7, 0.12, 32), new THREE.MeshStandardMaterial({ color: 0x0d2b18, roughness: 0.9 }));
+  park.position.y = 0.06;
+  scene.add(park);
+
+  const poolMat = new THREE.MeshStandardMaterial({ color: 0x38bdf8, emissive: 0x0ea5e9, emissiveIntensity: 0.9, roughness: 0.05 });
+  const pool = new THREE.Mesh(new THREE.CylinderGeometry(2.5, 2.5, 0.3, 24), poolMat);
+  pool.position.y = 0.22;
+  scene.add(pool);
+  const poolLight = new THREE.PointLight(0x38bdf8, 2.5, 20);
+  poolLight.position.set(0, 1.5, 0);
+  scene.add(poolLight);
+
+  // Park trees
+  function tree(x, z) {
+    const g = new THREE.Group();
+    g.position.set(x, 0, z);
+    const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.2, 1.6, 6), new THREE.MeshStandardMaterial({ color: 0x3d1f0a }));
+    trunk.position.y = 0.8;
+    g.add(trunk);
+    const c1 = new THREE.Mesh(new THREE.ConeGeometry(1.2, 1.8, 7), new THREE.MeshStandardMaterial({ color: 0x15652e, roughness: 0.8 }));
+    c1.position.y = 2.2;
+    g.add(c1);
+    const c2 = new THREE.Mesh(new THREE.ConeGeometry(0.9, 1.4, 7), new THREE.MeshStandardMaterial({ color: 0x1a8040, roughness: 0.8 }));
+    c2.position.y = 3.1;
+    g.add(c2);
+    scene.add(g);
+  }
+  [[-5.5,-5.5],[-5.5,5.5],[5.5,-5.5],[5.5,5.5],[-7.5,0],[7.5,0],[0,-7.5],[0,7.5]].forEach(([x,z]) => tree(x,z));
+
+  // ── Building factory ─────────────────────────────────────────────────────
+  // Types: 'box','stepped','taper','needle','wide'
+  function makeBuilding(scene, cfg) {
+    const { x, z, h, w = 5, d = 5, col, type = 'box', label, sub, icon, district } = cfg;
     const grp = new THREE.Group();
     grp.position.set(x, 0, z);
+    const hex = '#' + col.toString(16).padStart(6,'0');
 
-    // Podium base
-    const pod = new THREE.Mesh(
-      new THREE.BoxGeometry(inf.w + 1.5, h * 0.15, inf.d + 1.5),
-      new THREE.MeshStandardMaterial({ color: 0x0d1a24, roughness: 0.5, metalness: 0.7 })
-    );
-    pod.position.y = (h * 0.15) / 2;
-    pod.castShadow = true;
-    grp.add(pod);
+    // Materials
+    const shellMat = new THREE.MeshStandardMaterial({ color: 0x060d14, roughness: 0.18, metalness: 0.92 });
+    const glowMat  = new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 0.12, roughness: 0.04, metalness: 0.96, transparent: true, opacity: 0.65 });
+    const accentMat= new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 1.4, roughness: 0.0 });
+    const winMat   = new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 0.95, roughness: 0.05 });
+    const podMat   = new THREE.MeshStandardMaterial({ color: 0x0c1b26, roughness: 0.5, metalness: 0.72 });
 
-    // Tower
-    const tower = new THREE.Mesh(
-      new THREE.BoxGeometry(inf.w, h, inf.d),
-      new THREE.MeshStandardMaterial({ color: 0x081420, roughness: 0.2, metalness: 0.9 })
-    );
-    tower.position.y = h / 2 + h * 0.15;
-    tower.castShadow = true;
-    grp.add(tower);
+    const pH = h * 0.14;   // podium height
+    const tW = w * 0.70;   // tower width
+    const tD = d * 0.70;   // tower depth
 
-    // Glass facade (front)
-    const glass = new THREE.Mesh(
-      new THREE.PlaneGeometry(inf.w - 0.2, h - 0.2),
-      new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 0.08, roughness: 0.05, metalness: 0.9, transparent: true, opacity: 0.6 })
-    );
-    glass.position.set(0, h / 2 + h * 0.15, inf.d / 2 + 0.02);
-    grp.add(glass);
-
-    // Horizontal window bands
-    const bandMat = new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 0.8, roughness: 0.1 });
-    for (let fy = h * 0.2; fy < h + h * 0.1; fy += 1.4) {
-      const band = new THREE.Mesh(new THREE.BoxGeometry(inf.w + 0.12, 0.08, inf.d + 0.12), bandMat);
-      band.position.y = fy + h * 0.15;
-      grp.add(band);
-    }
-
-    // Roof slab
-    const roof = new THREE.Mesh(
-      new THREE.BoxGeometry(inf.w + 0.4, 0.35, inf.d + 0.4),
-      new THREE.MeshStandardMaterial({ color: col, roughness: 0.15, metalness: 0.9 })
-    );
-    roof.position.y = h + h * 0.15 + 0.18;
-    grp.add(roof);
-
-    // Neon sign strip at podium top
-    const neon = new THREE.Mesh(
-      new THREE.BoxGeometry(inf.w + 0.1, 0.15, 0.08),
-      new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 4.0, roughness: 0 })
-    );
-    neon.position.set(0, h * 0.15 + 0.08, inf.d / 2 + 0.04);
-    grp.add(neon);
-
-    // Rooftop beacon
-    const beacon = new THREE.PointLight(col, 2.0, 22);
-    beacon.position.y = h + h * 0.15 + 2;
-    grp.add(beacon);
-
-    // Base flood light
-    const baseLight = new THREE.PointLight(col, 0.6, 8);
-    baseLight.position.set(0, 1.0, inf.d / 2 + 1.5);
-    grp.add(baseLight);
-
-    // Floating label above building — ALWAYS VISIBLE
-    const labelEl = document.createElement('div');
-    labelEl.className = 'building-screen-tag infra-label';
-    labelEl.dataset.infraId = inf.id;
-    labelEl.style.cssText = 'position:absolute;display:none;transform:translate(-50%,-100%);pointer-events:none;z-index:16;';
-    labelEl.innerHTML = `
-      <div style="background:rgba(4,10,18,0.96);border:1px solid ${hexCol}99;border-radius:10px;padding:5px 10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;display:flex;align-items:center;gap:7px;box-shadow:0 4px 18px rgba(0,0,0,0.85),0 0 14px ${hexCol}33;white-space:nowrap;">
-        <span style="font-size:14px;">${inf.icon}</span>
-        <div style="display:flex;flex-direction:column;line-height:1.2;">
-          <strong style="font-size:9.5px;font-weight:800;color:#fff;letter-spacing:0.3px;">${inf.label}</strong>
-          <span style="font-size:7.5px;color:${hexCol};font-weight:600;">${inf.sub}</span>
-          <span style="font-size:7px;color:#475569;margin-top:1px;">${inf.district} District</span>
-        </div>
-      </div>
-    `;
-    overlayLayer.appendChild(labelEl);
-    grp.infraLabelEl = labelEl;
-    grp.infraLabelPos = new THREE.Vector3(x, h + h * 0.15 + 2.5, z);
-    grp.infraData = inf;
-
-    scene.add(grp);
-    buildings.push(grp);
-  });
-
-  // ── District Name Plates (large floating banners) ─────────────────────────
-  DISTRICTS.forEach(dist => {
-    const plateEl = document.createElement('div');
-    plateEl.style.cssText = 'position:absolute;display:none;transform:translate(-50%,-50%);pointer-events:none;z-index:12;';
-    plateEl.innerHTML = `
-      <div style="background:rgba(2,6,14,0.75);border:1px solid ${dist.col}55;border-radius:20px;padding:3px 12px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:${dist.col};font-size:8px;font-weight:800;letter-spacing:1.5px;backdrop-filter:blur(4px);text-transform:uppercase;white-space:nowrap;">${dist.name}</div>
-    `;
-    plateEl.dataset.districtLabel = dist.name;
-    plateEl.dataset.wx = dist.pos[0];
-    plateEl.dataset.wz = dist.pos[1];
-    overlayLayer.appendChild(plateEl);
-  });
-
-  // ── ALL 13 AUTONOMOUS CITIZEN AGENTS ──────────────────────────────────────
-  const CONTENDERS = [
-    // ── Outer Ring: 8 Major Landmark Towers — wide city blocks ──
-    { id: 'rowan',      name: 'Rowan',              role: 'CEO',                   col: 0x6db7ff, skin: 0xf5d5a5, pos: [-52, -38], height: 22, floors: 14, rank: 1, profit: 'Founder',    bIcon: '🏛️', bName: 'Rowan Executive Spire',   district: 'Apex Tower' },
-    { id: 'ivy',        name: 'Ivy',                role: 'Head of Commerce',      col: 0x22c97a, skin: 0xf3caa0, pos: [ 0,  -56], height: 26, floors: 18, rank: 1, profit: '$8.73',     bIcon: '🛍️', bName: 'Ivy Commerce Plaza',       district: 'Commerce Plaza' },
-    { id: 'efficiency', name: 'Dept of Efficiency', role: 'Compute Guard',         col: 0x22c97a, skin: 0xa3e635, pos: [ 52, -38], height: 20, floors: 13, rank: 2, profit: '$99.78 saved', bIcon: '🛡️', bName: 'Compute Treasury Core',   district: 'Treasury Core' },
-    { id: 'aria',       name: 'Aria',               role: 'Creative Director',     col: 0xff6da0, skin: 0xfce2c8, pos: [-58,   0], height: 18, floors: 12, rank: 5, profit: '$0.00',     bIcon: '🎨', bName: 'Aria Creative Spire',      district: 'Deco Center' },
-    { id: 'atlas',      name: 'Atlas',              role: 'CTO',                   col: 0xff9900, skin: 0xdeb887, pos: [ 58,   0], height: 19, floors: 12, rank: 3, profit: '$0.00',     bIcon: '⚙️', bName: 'Atlas Systems Foundry',    district: 'Foundry Hub' },
-    { id: 'sage',       name: 'Sage',               role: 'Strategy & Intel',      col: 0x8a9ba8, skin: 0xe5c298, pos: [-52,  38], height: 17, floors: 11, rank: 6, profit: '$0.00',     bIcon: '🧠', bName: 'Sage Intelligence Wing',   district: 'Intelligence Wing' },
-    { id: 'nova',       name: 'Nova',               role: 'Growth & Traffic',      col: 0x22d3ee, skin: 0xf7d0b0, pos: [  0,  58], height: 21, floors: 14, rank: 7, profit: '$0.00',     bIcon: '🚀', bName: 'Nova Growth HQ',           district: 'Broadcast Spire' },
-    { id: 'victor',     name: 'Dr. Victor',         role: 'Chief R&D Scientist',   col: 0xa855f7, skin: 0xfde047, pos: [ 52,  38], height: 19, floors: 13, rank: 4, profit: '$0.00',     bIcon: '🔬', bName: 'Victor Quantum R&D Lab',   district: 'Quantum R&D' },
-
-    // ── Inner Ring: 5 Specialist High-Tech Towers — mid-city blocks ──
-    { id: 'ember',  name: 'Ember',   role: 'Viral Growth Hacker',      col: 0xf97316, skin: 0xfbcfe8, pos: [-28, -20], height: 13, floors: 9,  rank: 9,  profit: '$0.00', bIcon: '🔥', bName: 'Ember Viral Studio',     district: 'Viral Lab' },
-    { id: 'cipher', name: 'Cipher',  role: 'Pricing & Stripe Quant',   col: 0x6366f1, skin: 0xd1d5db, pos: [ 28, -20], height: 14, floors: 10, rank: 8,  profit: '$0.00', bIcon: '💳', bName: 'Cipher Quant Hub',        district: 'Fintech Quant' },
-    { id: 'lyra',   name: 'Lyra',    role: 'B2B Design Engineer',       col: 0xec4899, skin: 0xfef08a, pos: [-28,  20], height: 12, floors: 8,  rank: 11, profit: '$0.00', bIcon: '✨', bName: 'Lyra Design Atelier',     district: 'Aesthetics Lab' },
-    { id: 'orion',  name: 'Orion',   role: 'Cloud Engineer',            col: 0x14b8a6, skin: 0xfcd34d, pos: [ 28,  20], height: 13, floors: 9,  rank: 10, profit: '$0.00', bIcon: '☁️', bName: 'Orion Cloud Foundry',     district: 'Cloud Foundry' },
-    { id: 'kira',   name: 'Kira',    role: 'Legal Auditor',             col: 0x10b981, skin: 0xfed7aa, pos: [  0, -24], height: 11, floors: 7,  rank: 12, profit: '$0.00', bIcon: '⚖️', bName: 'Kira Statutory Hall',     district: 'Compliance Wing' }
-  ];
-
-  const buildings = [];
-  const characters = [];
-  const laserBeams = [];
-
-  function broadcastRadio(name, role, col, text) {
-    const feed = document.getElementById('cityCommsFeed');
-    if (!feed) return;
-    const now = new Date();
-    const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-
-    const entry = document.createElement('div');
-    entry.className = 'comms-entry';
-    entry.innerHTML = `
-      <span class="comms-time">${timeStr}</span>
-      <span class="comms-agent" style="color:${col};">● ${name}</span>
-      <span class="comms-msg">"${text}"</span>
-    `;
-    feed.prepend(entry);
-    while (feed.children.length > 20) {
-      feed.lastElementChild.remove();
-    }
-  }
-
-  // ── Real-Time Status & Evolution Log Helpers (No Simulation) ──────────────
-  function getRealAgentStatus(agentId) {
-    if (!window.DATA) return "Standing by.";
-    
-    const team = window.DATA.team || [];
-    const member = team.find(m => m.id === agentId);
-    
-    const requests = (window.DATA.agent_requests || {}).requests || [];
-    const pendingReq = requests.find(r => r.agent_id === agentId && r.status !== 'APPROVED_BY_OWNER');
-    
-    const googleUsage = window.DATA.google_usage || {};
-    const isGoogleBlocked = googleUsage.mode === 'blocked' || googleUsage.credits_remaining_cents <= 0;
-    
-    if (pendingReq) {
-      return `⏳ Awaiting Approval: "${pendingReq.title}"`;
-    }
-    
-    // Check if member has recorded errors
-    if (member) {
-      const outcome = String(member.last_outcome || "").toLowerCase();
-      if (outcome.includes('error') || outcome.includes('fail') || outcome.includes('429') || outcome.includes('quota')) {
-        return `⚠️ API Error: ${member.last_outcome}`;
-      }
-    }
-    
-    // Only show API block if it's actually confirmed in data
-    if (agentId !== 'main' && agentId !== 'efficiency') {
-      if (isGoogleBlocked) {
-        return `⚠️ Blocked: API quota exceeded`;
-      }
-    }
-    
-    if (member && member.city && member.city.current_activity) {
-      let act = member.city.current_activity;
-      if (act.startsWith("Standing by — ")) {
-        return "💤 " + act.replace("Standing by — ", "");
-      }
-      if (act.startsWith("Working on ")) {
-        return "⚡ " + act;
-      }
-      return act;
-    }
-    
-    return "💤 Standing by.";
-  }
-
-  function populateRealCommsFeed() {
-    const feed = document.getElementById('cityCommsFeed');
-    if (!feed || !window.DATA || !window.DATA.evolution_log) return;
-    
-    // Clear old simulated items
-    feed.innerHTML = '';
-    
-    // Get last 20 real evolution logs
-    const logs = window.DATA.evolution_log.slice(-20).reverse();
-    if (!logs.length) {
-      feed.innerHTML = '<div style="color:#64748b;font-size:10px;padding:6px;">No system events recorded.</div>';
-      return;
-    }
-    
-    logs.forEach(log => {
-      const timeStr = log.timestamp ? log.timestamp.split('T')[1].substring(0, 8) : '00:00:00';
-      const actionName = log.action || 'SYSTEM';
-      const detail = log.detail || '';
-      const result = log.result || 'info';
-      
-      const col = result === 'error' ? '#f43f5e' : (result === 'warning' ? '#f59e0b' : '#38bdf8');
-      
-      const entry = document.createElement('div');
-      entry.className = 'comms-entry';
-      entry.style.borderLeft = `2px solid ${col}`;
-      entry.style.paddingLeft = '6px';
-      entry.style.marginBottom = '6px';
-      entry.innerHTML = `
-        <span class="comms-time" style="color:#64748b;font-size:9px;">[${timeStr}]</span>
-        <span class="comms-agent" style="color:${col}; font-weight:700;font-size:9.5px;">● ${actionName}</span>
-        <span class="comms-msg" style="color:#e2e8f0; font-size:10px;">"${detail}"</span>
-      `;
-      feed.appendChild(entry);
-    });
-  }
-
-  let currentConvoIndex = 0;
-  let convoPhase = 0;
-  let convoTimer = 5.0;
-
-  CONTENDERS.forEach((contender) => {
-    const [x, z] = contender.pos;
-    const h = contender.height;
-    const col = contender.col;
-
-    // Building Group
-    const group = new THREE.Group();
-    group.position.set(x, 0, z);
-
-    // Wide base podium
-    const podiumW = 5.5 + Math.random() * 2.5;
-    const podiumD = 5.5 + Math.random() * 2.5;
-    const podiumH = h * 0.18;
-    const podMat = new THREE.MeshStandardMaterial({ color: 0x0f1d2a, roughness: 0.45, metalness: 0.7 });
-    const podium = new THREE.Mesh(new THREE.BoxGeometry(podiumW, podiumH, podiumD), podMat);
-    podium.position.y = podiumH / 2;
+    // Podium
+    const podium = new THREE.Mesh(new THREE.BoxGeometry(w + 1.8, pH, d + 1.8), podMat);
+    podium.position.y = pH / 2;
     podium.castShadow = true;
     podium.receiveShadow = true;
-    group.add(podium);
+    grp.add(podium);
 
-    // Main tower shaft (setback from podium)
-    const twW = podiumW * 0.68;
-    const twD = podiumD * 0.68;
-    const bMat = new THREE.MeshStandardMaterial({ color: 0x0a161f, roughness: 0.22, metalness: 0.88 });
-    const tower = new THREE.Mesh(new THREE.BoxGeometry(twW, h - podiumH, twD), bMat);
-    tower.position.y = podiumH + (h - podiumH) / 2;
-    tower.castShadow = true;
-    tower.receiveShadow = true;
-    group.add(tower);
+    // Neon base strip
+    const neon = new THREE.Mesh(new THREE.BoxGeometry(w + 1.9, 0.14, 0.1), accentMat);
+    neon.position.set(0, pH + 0.07, (d + 1.8) / 2 + 0.05);
+    grp.add(neon);
 
-    // Glass curtain wall panels
-    const glassMat = new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 0.12, roughness: 0.05, metalness: 0.95, transparent: true, opacity: 0.72 });
-    const glassF = new THREE.Mesh(new THREE.PlaneGeometry(twW - 0.1, h - podiumH - 0.2), glassMat);
-    glassF.position.set(0, podiumH + (h - podiumH) / 2, twD / 2 + 0.01);
-    group.add(glassF);
-    const glassB = glassF.clone();
-    glassB.position.z = -(twD / 2 + 0.01);
-    glassB.rotation.y = Math.PI;
-    group.add(glassB);
-    const glassL = new THREE.Mesh(new THREE.PlaneGeometry(twD - 0.1, h - podiumH - 0.2), glassMat);
-    glassL.position.set(-twW / 2 - 0.01, podiumH + (h - podiumH) / 2, 0);
-    glassL.rotation.y = -Math.PI / 2;
-    group.add(glassL);
-    const glassR = glassL.clone();
-    glassR.position.x = twW / 2 + 0.01;
-    glassR.rotation.y = Math.PI / 2;
-    group.add(glassR);
-
-    // Window rows on all faces
-    const winMat = new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 1.1, roughness: 0.05 });
-    const floorStep = 1.3;
-    const winW = 0.38, winH2 = 0.55;
-    const colsX = Math.max(1, Math.floor((twW - 0.6) / 0.7));
-    const colsZ = Math.max(1, Math.floor((twD - 0.6) / 0.7));
-    for (let fy = podiumH + 0.9; fy < h - 0.5; fy += floorStep) {
-      for (let c = 0; c < colsX; c++) {
-        if (Math.random() > 0.15) {
-          const win = new THREE.Mesh(new THREE.BoxGeometry(winW, winH2, 0.05), winMat);
-          win.position.set(-twW/2 + 0.45 + c * 0.7, fy, twD/2 + 0.04);
-          group.add(win);
-        }
-      }
-      for (let c = 0; c < colsZ; c++) {
-        if (Math.random() > 0.15) {
-          const win = new THREE.Mesh(new THREE.BoxGeometry(0.05, winH2, winW), winMat);
-          win.position.set(twW/2 + 0.04, fy, -twD/2 + 0.45 + c * 0.7);
-          group.add(win);
-        }
-      }
-      for (let c = 0; c < colsX; c++) {
-        if (Math.random() > 0.15) {
-          const win = new THREE.Mesh(new THREE.BoxGeometry(winW, winH2, 0.05), winMat);
-          win.position.set(-twW/2 + 0.45 + c * 0.7, fy, -twD/2 - 0.04);
-          group.add(win);
-        }
-      }
-      const band = new THREE.Mesh(new THREE.BoxGeometry(twW + 0.1, 0.07, twD + 0.1), new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 0.3, roughness: 0.2 }));
-      band.position.set(0, fy - 0.4, 0);
-      group.add(band);
-    }
-
-    // Roof slab
-    const roof = new THREE.Mesh(new THREE.BoxGeometry(twW + 0.3, 0.4, twD + 0.3), new THREE.MeshStandardMaterial({ color: col, roughness: 0.15, metalness: 0.85 }));
-    roof.position.y = h + 0.2;
-    group.add(roof);
-
-    // Neon entrance strip
-    const neonStrip = new THREE.Mesh(new THREE.BoxGeometry(podiumW + 0.1, 0.12, 0.08), new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 3.5, roughness: 0.0 }));
-    neonStrip.position.set(0, podiumH + 0.06, podiumD / 2 + 0.01);
-    group.add(neonStrip);
-
-    // Street-level base accent light
-    const baseLight = new THREE.PointLight(col, 0.8, 10);
-    baseLight.position.set(0, 1.5, podiumD / 2 + 1);
-    group.add(baseLight);
-
-    // Rooftop Spire & Crown Beacon
-    if (contender.floors >= 8 || contender.rank <= 3) {
-      const spire = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.28, h * 0.18, 6), new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 1.8, metalness: 0.9 }));
-      spire.position.y = h + h * 0.09;
-      group.add(spire);
-      const obsRing = new THREE.Mesh(new THREE.TorusGeometry(0.7, 0.08, 8, 24), new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 2.0 }));
-      obsRing.rotation.x = Math.PI / 2;
-      obsRing.position.y = h + 0.6;
-      group.add(obsRing);
-      const beacon = new THREE.PointLight(col, 3.0, 30);
-      beacon.position.y = h + h * 0.18;
-      group.add(beacon);
-    } else {
-      const beacon = new THREE.PointLight(col, 1.8, 18);
-      beacon.position.y = h + 1.2;
-      group.add(beacon);
-    }
-
-    // Floating 3D Holographic Billboard Label above Building
-    const hexCol = '#' + col.toString(16).padStart(6, '0');
-    const bTagEl = document.createElement('div');
-    bTagEl.className = 'building-screen-tag';
-    bTagEl.style.cssText = `
-      position: absolute;
-      display: none;
-      transform: translate(-50%, -100%);
-      pointer-events: none;
-      z-index: 18;
-    `;
-    bTagEl.innerHTML = `
-      <div style="background:rgba(6,12,22,0.92);border:1px solid ${hexCol}88;border-radius:10px;padding:4px 9px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:#fff;display:flex;align-items:center;gap:6px;box-shadow:0 6px 16px rgba(0,0,0,0.8),0 0 12px ${hexCol}33;white-space:nowrap;">
-        <span style="font-size:12px;">${contender.bIcon || '🏛️'}</span>
-        <div style="display:flex;flex-direction:column;line-height:1.15;">
-          <strong style="font-size:9.5px;font-weight:700;color:#fff;letter-spacing:0.2px;">${contender.bName}</strong>
-          <span style="font-size:8px;font-weight:600;color:${hexCol};">${contender.name} (${contender.role}) · ${contender.floors}F · ${contender.profit}</span>
-        </div>
-      </div>
-    `;
-    bTagEl.addEventListener('click', () => {
-      const btn = document.querySelector(`[data-city-directory-agent="${contender.id}"]`);
-      if (btn) btn.click();
-    });
-    overlayLayer.appendChild(bTagEl);
-    group.bTagEl = bTagEl;
-    group.bTagPos = new THREE.Vector3(x, h + (contender.floors >= 4 ? 2.2 : 1.2), z);
-
-    scene.add(group);
-    buildings.push(group);
-
-    // Workstation Desk
-    if (contender.id !== 'efficiency') {
-      const deskGroup = new THREE.Group();
-      const deskX = x + (x < 0 ? 3.0 : -3.0);
-      const deskZ = z + (z < 0 ? 2.8 : -2.8);
-      deskGroup.position.set(deskX, 0, deskZ);
-
-      const deskMat = new THREE.MeshStandardMaterial({ color: 0x0b131a, roughness: 0.6, metalness: 0.5 });
-      const deskTop = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.08, 0.8), deskMat);
-      deskTop.position.y = 0.72;
-      deskGroup.add(deskTop);
-
-      for (let dx of [-0.65, 0.65]) {
-        for (let dz of [-0.3, 0.3]) {
-          const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 0.72), deskMat);
-          leg.position.set(dx, 0.36, dz);
-          deskGroup.add(leg);
-        }
-      }
-
-      // Dual Monitors
-      const screenMat = new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 1.3, roughness: 0.1 });
-      const screenL = new THREE.Mesh(new THREE.BoxGeometry(0.44, 0.3, 0.02), screenMat);
-      screenL.position.set(-0.25, 1.0, -0.12);
-      screenL.rotation.y = 0.2;
-      deskGroup.add(screenL);
-
-      const screenR = new THREE.Mesh(new THREE.BoxGeometry(0.44, 0.3, 0.02), screenMat);
-      screenR.position.set(0.25, 1.0, -0.12);
-      screenR.rotation.y = -0.2;
-      deskGroup.add(screenR);
-
-      scene.add(deskGroup);
-
-      // Character Model
-      const mat = (c, e = 0) => new THREE.MeshStandardMaterial({ color: c, roughness: 0.4, emissive: c, emissiveIntensity: e });
-      const charGroup = new THREE.Group();
-      charGroup.position.set(deskX, 0, deskZ + 0.42);
-
-      const body = new THREE.Mesh(new THREE.BoxGeometry(0.34, 0.52, 0.2), mat(col, 0.15));
-      body.position.y = 0.84;
-      body.castShadow = true;
-      charGroup.add(body);
-
-      const head = new THREE.Mesh(new THREE.SphereGeometry(0.16, 14, 14), mat(contender.skin));
-      head.position.y = 1.30;
-      head.castShadow = true;
-      charGroup.add(head);
-
-      const brainMat = new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 1.5, roughness: 0.1, transparent: true, opacity: 0.85 });
-      const brain = new THREE.Mesh(new THREE.SphereGeometry(0.11, 12, 12), brainMat);
-      brain.position.set(0, 1.40, -0.02);
-      brain.scale.set(1.1, 0.85, 1.05);
-      charGroup.add(brain);
-      charGroup.brain = brain;
-
-      const armMat = mat(col, 0.08);
-      const lArm = new THREE.Mesh(new THREE.CapsuleGeometry(0.05, 0.34, 4, 6), armMat);
-      lArm.position.set(-0.25, 0.82, 0);
-      charGroup.add(lArm);
-
-      const rArm = new THREE.Mesh(new THREE.CapsuleGeometry(0.05, 0.34, 4, 6), armMat);
-      rArm.position.set(0.25, 0.82, 0);
-      charGroup.add(rArm);
-
-      const legMat = mat(0x091017);
-      const lLeg = new THREE.Mesh(new THREE.CapsuleGeometry(0.07, 0.38, 4, 6), legMat);
-      lLeg.position.set(-0.10, 0.30, 0);
-      charGroup.add(lLeg);
-
-      const rLeg = new THREE.Mesh(new THREE.CapsuleGeometry(0.07, 0.38, 4, 6), legMat);
-      rLeg.position.set(0.10, 0.30, 0);
-      charGroup.add(rLeg);
-
-      // Micro Name Tag
-      const hexCol = '#' + col.toString(16).padStart(6, '0');
-      const tagEl = document.createElement('div');
-      tagEl.className = 'agent-screen-tag';
-      tagEl.style.cssText = `
-        position: absolute;
-        display: none;
-        transform: translate(-50%, -100%);
-        pointer-events: none;
-        z-index: 21;
-      `;
-      tagEl.innerHTML = `
-        <div style="background:rgba(8,16,28,0.92);border:1px solid ${hexCol};border-radius:12px;padding:2px 7px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:#fff;font-size:8.5px;font-weight:700;display:flex;align-items:center;gap:4px;box-shadow:0 4px 12px rgba(0,0,0,0.8);white-space:nowrap;">
-          <span style="width:5px;height:5px;border-radius:50%;background:${hexCol};box-shadow:0 0 5px ${hexCol};"></span>
-          <span>${contender.name}</span>
-        </div>
-      `;
-      overlayLayer.appendChild(tagEl);
-
-      // Speech Bubble
-      const bubbleEl = document.createElement('div');
-      bubbleEl.className = 'agent-screen-speech';
-      bubbleEl.style.cssText = `
-        position: absolute;
-        display: none;
-        transform: translate(-50%, -125%);
-        pointer-events: none;
-        z-index: 25;
-        transition: opacity 0.2s ease, transform 0.2s ease;
-      `;
-      bubbleEl.innerHTML = `
-        <div style="background:rgba(6,12,22,0.97);border:1px solid ${hexCol};border-radius:10px;padding:6px 10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,0.9),0 0 14px ${hexCol}55;min-width:140px;max-width:200px;backdrop-filter:blur(10px);position:relative;">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:3px;">
-            <span style="font-weight:800;font-size:9.5px;color:${hexCol};">● ${contender.name}</span>
-            <span style="font-size:7px;color:#94a3b8;font-weight:600;" class="speech-loc-tag">${contender.district}</span>
-          </div>
-          <span style="font-size:8.5px;color:#f1f5f9;line-height:1.35;display:block;" class="speech-body-text">Collaborating live...</span>
-          <div style="position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:6px solid ${hexCol};"></div>
-        </div>
-      `;
-      overlayLayer.appendChild(bubbleEl);
-
-      charGroup.agent = contender;
-      charGroup.deskPos = new THREE.Vector3(deskX, 0, deskZ + 0.42);
-      charGroup.walkTarget = new THREE.Vector3();
-      charGroup.walkFrom = new THREE.Vector3();
-      charGroup.walkT = 1;
-      charGroup.state = 'at_desk';
-      charGroup.stateTimer = 4 + Math.random() * 4;
-      charGroup.lArm = lArm;
-      charGroup.rArm = rArm;
-      charGroup.lLeg = lLeg;
-      charGroup.rLeg = rLeg;
-      charGroup.body = body;
-      charGroup.head = head;
-      charGroup.tagEl = tagEl;
-      charGroup.bubbleEl = bubbleEl;
-      charGroup.bubbleText = bubbleEl.querySelector('.speech-body-text');
-      charGroup.bubbleTag = bubbleEl.querySelector('.speech-loc-tag');
-
-      tagEl.addEventListener('click', () => {
-        const btn = document.querySelector(`[data-city-directory-agent="${contender.id}"]`);
-        if (btn) btn.click();
+    if (type === 'box') {
+      // Clean modernist glass box
+      const tower = new THREE.Mesh(new THREE.BoxGeometry(tW, h - pH, tD), shellMat);
+      tower.position.y = pH + (h - pH) / 2;
+      tower.castShadow = true;
+      grp.add(tower);
+      // Glass faces
+      [[0, 0, tD/2+0.01, 0],[0, 0, -(tD/2+0.01), Math.PI],[-(tW/2+0.01), 0, 0, -Math.PI/2],[tW/2+0.01, 0, 0, Math.PI/2]].forEach(([fx,_,fz,ry]) => {
+        const isWide = Math.abs(fz) > Math.abs(fx);
+        const gf = new THREE.Mesh(new THREE.PlaneGeometry(isWide ? tW-0.2 : tD-0.2, h-pH-0.2), glowMat.clone());
+        gf.position.set(fx, pH+(h-pH)/2, fz);
+        gf.rotation.y = ry;
+        grp.add(gf);
       });
+      // Window rows
+      const cols = Math.max(1, Math.floor((tW-0.5)/0.72));
+      for (let fy = pH+0.8; fy < h-0.5; fy += 1.3) {
+        for (let c=0; c<cols; c++) {
+          if (Math.random() > 0.18) {
+            const win = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.52, 0.06), winMat);
+            win.position.set(-tW/2+0.46+c*0.72, fy, tD/2+0.04);
+            grp.add(win);
+          }
+        }
+        const band = new THREE.Mesh(new THREE.BoxGeometry(tW+0.08, 0.08, tD+0.08), new THREE.MeshStandardMaterial({color:col,emissive:col,emissiveIntensity:0.25,roughness:0.2}));
+        band.position.set(0, fy-0.38, 0);
+        grp.add(band);
+      }
+      // Roof slab
+      const roof = new THREE.Mesh(new THREE.BoxGeometry(tW+0.3, 0.38, tD+0.3), new THREE.MeshStandardMaterial({color:col,roughness:0.12,metalness:0.9}));
+      roof.position.y = h + 0.19;
+      grp.add(roof);
 
-      scene.add(charGroup);
-      characters.push(charGroup);
+    } else if (type === 'stepped') {
+      // Art Deco stepped skyscraper
+      const steps = 3;
+      for (let s=0; s<steps; s++) {
+        const sf = 1 - s*0.28;
+        const sh = (h-pH) / steps;
+        const stepMesh = new THREE.Mesh(new THREE.BoxGeometry(tW*sf, sh, tD*sf), shellMat);
+        stepMesh.position.y = pH + sh*s + sh/2;
+        stepMesh.castShadow = true;
+        grp.add(stepMesh);
+        // Windows on each step
+        const sc = Math.max(1, Math.floor((tW*sf-0.5)/0.75));
+        for (let fy=pH+sh*s+0.7; fy<pH+sh*(s+1)-0.3; fy+=1.25) {
+          for (let c=0; c<sc; c++) {
+            if (Math.random()>0.2) {
+              const win = new THREE.Mesh(new THREE.BoxGeometry(0.38,0.5,0.06),winMat);
+              win.position.set(-tW*sf/2+0.42+c*0.75, fy, tD*sf/2+0.04);
+              grp.add(win);
+            }
+          }
+        }
+        // Step setback accent ring
+        if (s>0) {
+          const ring = new THREE.Mesh(new THREE.BoxGeometry(tW*(sf+0.28)+0.2, 0.18, tD*(sf+0.28)+0.2), accentMat);
+          ring.position.y = pH + sh*s + 0.09;
+          grp.add(ring);
+        }
+      }
+      // Crown
+      const crown = new THREE.Mesh(new THREE.BoxGeometry(tW*0.44+0.2, 0.4, tD*0.44+0.2), new THREE.MeshStandardMaterial({color:col,roughness:0.1,metalness:0.9}));
+      crown.position.y = h+0.2;
+      grp.add(crown);
+
+    } else if (type === 'taper') {
+      // Tapered futuristic tower
+      const taper = new THREE.Mesh(new THREE.CylinderGeometry(tW*0.3, tW*0.65, h-pH, 6), shellMat);
+      taper.position.y = pH + (h-pH)/2;
+      taper.castShadow = true;
+      grp.add(taper);
+      // Glow rings
+      for (let fy=pH+1.5; fy<h-1; fy+=2.2) {
+        const r = tW*0.65 - (fy-pH)/(h-pH)*(tW*0.35);
+        const ring = new THREE.Mesh(new THREE.TorusGeometry(r*0.9, 0.1, 6, 24), accentMat);
+        ring.rotation.x = Math.PI/2;
+        ring.position.y = fy;
+        grp.add(ring);
+      }
+
+    } else if (type === 'needle') {
+      // Supertall needle tower
+      const base = new THREE.Mesh(new THREE.BoxGeometry(tW, h*0.55, tD), shellMat);
+      base.position.y = pH + h*0.55/2;
+      base.castShadow = true;
+      grp.add(base);
+      const needle = new THREE.Mesh(new THREE.CylinderGeometry(0.35, tW*0.42, h*0.5, 8), shellMat);
+      needle.position.y = pH + h*0.55 + h*0.25;
+      grp.add(needle);
+      // Observation deck ring
+      const obs = new THREE.Mesh(new THREE.TorusGeometry(tW*0.7, 0.2, 8, 32), accentMat);
+      obs.rotation.x = Math.PI/2;
+      obs.position.y = pH + h*0.55 + 0.5;
+      grp.add(obs);
+      // Windows on base
+      const wc = Math.max(1,Math.floor((tW-0.5)/0.72));
+      for (let fy=pH+0.9; fy<pH+h*0.52; fy+=1.25) {
+        for (let c=0; c<wc; c++) {
+          if (Math.random()>0.18) {
+            const win = new THREE.Mesh(new THREE.BoxGeometry(0.4,0.52,0.06),winMat);
+            win.position.set(-tW/2+0.45+c*0.72, fy, tD/2+0.04);
+            grp.add(win);
+          }
+        }
+      }
+
+    } else if (type === 'wide') {
+      // Wide campus-style building
+      const main = new THREE.Mesh(new THREE.BoxGeometry(tW, h-pH, tD), shellMat);
+      main.position.y = pH + (h-pH)/2;
+      main.castShadow = true;
+      grp.add(main);
+      // Wide glass facade
+      const wg = new THREE.Mesh(new THREE.PlaneGeometry(tW-0.2, h-pH-0.2), glowMat.clone());
+      wg.position.set(0, pH+(h-pH)/2, tD/2+0.02);
+      grp.add(wg);
+      // Horizontal bands (warehouse-style)
+      for (let fy=pH+1; fy<h-0.4; fy+=1.6) {
+        const band = new THREE.Mesh(new THREE.BoxGeometry(tW+0.1, 0.1, tD+0.1), accentMat);
+        band.position.set(0, fy, 0);
+        grp.add(band);
+      }
     }
-  });
 
-  // Waypoints for roaming
-  const AMENITY_DESTINATIONS = {
-    park: [new THREE.Vector3(0, 0, -2.8), new THREE.Vector3(0, 0, 2.8), new THREE.Vector3(-2.8, 0, 0), new THREE.Vector3(2.8, 0, 0)],
-    cafe: [new THREE.Vector3(-22, 0, -19), new THREE.Vector3(-20, 0, -19)],
-    lofts: [new THREE.Vector3(-2, 0, 22), new THREE.Vector3(2, 0, 22)],
-    gym: [new THREE.Vector3(22, 0, 16), new THREE.Vector3(20, 0, 16)],
-    rd: [new THREE.Vector3(24, 0, -17), new THREE.Vector3(21, 0, -17), new THREE.Vector3(24, 0, -26)]
-  };
-
-  function pickAgentNextBehavior(char) {
-    const r = Math.random();
-    if (r < 0.40) {
-      char.walkFrom.copy(char.position);
-      char.walkTarget.copy(char.deskPos);
-      char.walkT = 0;
-      char.walkSpeed = 0.007 + Math.random() * 0.003;
-      char.state = 'walking_to_desk';
-    } else if (r < 0.60) {
-      const wp = AMENITY_DESTINATIONS.park[Math.floor(Math.random() * AMENITY_DESTINATIONS.park.length)];
-      char.walkFrom.copy(char.position);
-      char.walkTarget.copy(wp);
-      char.walkT = 0;
-      char.walkSpeed = 0.007;
-      char.state = 'walking_to_park';
-    } else if (r < 0.75) {
-      const wp = AMENITY_DESTINATIONS.rd[Math.floor(Math.random() * AMENITY_DESTINATIONS.rd.length)];
-      char.walkFrom.copy(char.position);
-      char.walkTarget.copy(wp);
-      char.walkT = 0;
-      char.walkSpeed = 0.0075;
-      char.state = 'walking_to_rd';
-    } else if (r < 0.88) {
-      const wp = AMENITY_DESTINATIONS.cafe[Math.floor(Math.random() * AMENITY_DESTINATIONS.cafe.length)];
-      char.walkFrom.copy(char.position);
-      char.walkTarget.copy(wp);
-      char.walkT = 0;
-      char.walkSpeed = 0.007;
-      char.state = 'walking_to_cafe';
-    } else {
-      const wp = AMENITY_DESTINATIONS.gym[Math.floor(Math.random() * AMENITY_DESTINATIONS.gym.length)];
-      char.walkFrom.copy(char.position);
-      char.walkTarget.copy(wp);
-      char.walkT = 0;
-      char.walkSpeed = 0.008;
-      char.state = 'walking_to_gym';
+    // Rooftop spire (if tall enough)
+    if (h >= 16) {
+      const sp = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.3, h*0.18, 6), new THREE.MeshStandardMaterial({color:col,emissive:col,emissiveIntensity:1.8,metalness:0.9}));
+      sp.position.y = h + h*0.09;
+      grp.add(sp);
+      if (h >= 20) {
+        const obsRing = new THREE.Mesh(new THREE.TorusGeometry(0.8, 0.1, 8, 28), accentMat);
+        obsRing.rotation.x = Math.PI/2;
+        obsRing.position.y = h + 0.7;
+        grp.add(obsRing);
+      }
     }
+
+    // Roof beacon light
+    const beacon = new THREE.PointLight(col, 2.8, 32);
+    beacon.position.y = h + (h>=16 ? h*0.18 + 1 : 2);
+    grp.add(beacon);
+
+    // Base flood uplighter
+    const flood = new THREE.PointLight(col, 0.7, 10);
+    flood.position.set(0, 1.2, (d+1.8)/2 + 1.2);
+    grp.add(flood);
+
+    scene.add(grp);
+
+    // Floating label
+    const labelEl = document.createElement('div');
+    labelEl.className = 'building-screen-tag';
+    labelEl.dataset.bId = cfg.id || label;
+    labelEl.style.cssText = 'position:absolute;display:none;transform:translate(-50%,-100%);pointer-events:none;z-index:18;';
+    labelEl.innerHTML = `<div style="background:rgba(3,8,18,0.97);border:1px solid ${hex}aa;border-radius:10px;padding:5px 10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;display:flex;align-items:center;gap:7px;box-shadow:0 4px 20px rgba(0,0,0,0.9),0 0 16px ${hex}44;white-space:nowrap;"><span style="font-size:14px;">${icon||'🏢'}</span><div style="display:flex;flex-direction:column;line-height:1.25;"><strong style="font-size:9.5px;font-weight:800;color:#fff;letter-spacing:0.3px;">${label}</strong><span style="font-size:7.5px;color:${hex};font-weight:600;">${sub||''}</span></div></div>`;
+    overlay.appendChild(labelEl);
+
+    const labelWorldPos = new THREE.Vector3(x, h + (h>=16 ? h*0.18+2 : 3.5), z);
+    return { grp, labelEl, labelWorldPos };
   }
 
-  // Dynamic Live Dialogues
-  
-  const EMBEDDED_LIVE_DIALOGUES = [
-    { agentA: "nova", agentB: "ivy", turnA: "I am finalizing the high-converting TikTok video hooks and Pinterest rich pins today to drive targeted organic buyer traffic straight to our new legal template bundles.", turnB: "Got it, Nova, I will make sure the storefront listings and checkout flow are completely optimized so we convert every single visitor they send our way." },
-    { agentA: "victor", agentB: "atlas", turnA: "Atlas, I have optimized the token context window in our LLM generation pipeline to produce state-specific legal clauses in sub-200ms.", turnB: "Awesome Dr. Victor, our PDF rendering pipeline is ready to compile those clauses into 300 DPI vector PDFs immediately." },
-    { agentA: "sage", agentB: "cipher", turnA: "Cipher, what does your pricing elasticity curve say about pricing the 50-State Landlord Mega Bundle at $97 versus $49?", turnB: "Sage, at $97 our gross margin increases by 380% with only a 12% drop in conversion rate, which reduces our unit requirement to just 206 sales." },
-    { agentA: "ember", agentB: "aria", turnA: "Aria, dark mode high-contrast thumbnails with gold text are generating a 4.2x higher click rate on mobile feeds right now.", turnB: "Ember, I am rolling out that exact color palette across all 36 active Etsy listing hero images today." },
-    { agentA: "kira", agentB: "rowan", turnA: "Rowan, every single one of our 10 state lease templates includes our verified Section 4 FTC disclaimer and non-lawyer administrative notice.", turnB: "Outstanding governance, Kira. Full legal compliance keeps our shop protected while we scale aggressively toward $20,000 profit." },
-    { agentA: "lyra", agentB: "ivy", turnA: "Ivy, I just finished the executive typography styling for our B2B Airbnb Host toolkit so it looks like a Fortune 500 document.", turnB: "Lyra, that premium visual finish will justify our $34.99 price point and make our listings stand out against generic templates." },
-    { agentA: "orion", agentB: "atlas", turnA: "Atlas, serverless webhook responses for digital download fulfillment are clocking in at 85ms with zero dropped packets.", turnB: "Great infrastructure, Orion. Zero customer download delays means zero support tickets and instant 5-star review velocity." },
-    { agentA: "rowan", agentB: "sage", turnA: "Sage, let us review our daily revenue pacing. How many units do we need to hit across Texas and California today?", turnB: "Rowan, if we maintain 8 bundle sales in Texas and 6 in California per day, our cumulative profit crosses the $20,000 mark by day 24." },
-    { agentA: "ember", agentB: "nova", turnA: "Nova, I scripted 5 viral TikTok hooks around 'What your landlord is not telling you about Section 8 leases'.", turnB: "Ember, controversial educational hooks have the highest bookmark rate on TikTok. Directing them to our bio link will flood our Etsy shop." },
-    { agentA: "cipher", agentB: "victor", turnA: "Dr. Victor, can we use programmatic SEO to generate landing page meta-tags for all 50 US states automatically?", turnB: "Cipher, yes, the Python generation script can synthesize 50 state-specific long-tail landing pages with zero manual copywriting." },
-    { agentA: "aria", agentB: "atlas", turnA: "Atlas, ensure the font kerning on the California 3-Day Notice to Quit is razor-sharp on mobile PDF viewers.", turnB: "Aria, embedded vector fonts are locked in with PostScript precision. It looks immaculate on all devices." },
-    { agentA: "ivy", agentB: "kira", turnA: "Kira, confirming that our deactivation of the 4 duplicate listings successfully purged all redundant listing IDs from Etsy search.", turnB: "Confirmed, Ivy. Our catalog quality score is pristine and search equity is concentrated on our winning high-margin packs." }
+  // ── ALL BUILDINGS ────────────────────────────────────────────────────────
+  const allBuildings = [];
+
+  const BUILDINGS = [
+    // ─── AGENT HQ — Center (r~22-36) ───
+    { id:'rowan',      x: -38, z: -28, h: 34, w:7, d:7, col:0x6db7ff, type:'needle',  label:'Rowan',         sub:'CEO · Apex Tower',          icon:'🏛️' },
+    { id:'ivy',        x:   0, z: -44, h: 38, w:8, d:7, col:0x22c97a, type:'stepped', label:'Ivy',           sub:'Head of Commerce',          icon:'🛍️' },
+    { id:'efficiency', x:  38, z: -28, h: 30, w:7, d:6, col:0x34d399, type:'box',     label:'Efficiency',    sub:'Compute Guard',             icon:'🛡️' },
+    { id:'aria',       x: -44, z:   0, h: 28, w:6, d:6, col:0xff6da0, type:'taper',   label:'Aria',          sub:'Creative Director',         icon:'🎨' },
+    { id:'atlas',      x:  44, z:   0, h: 30, w:6, d:6, col:0xff9900, type:'stepped', label:'Atlas',         sub:'CTO · Systems',             icon:'⚙️' },
+    { id:'sage',       x: -38, z:  28, h: 26, w:6, d:6, col:0x8a9ba8, type:'box',     label:'Sage',          sub:'Strategy & Intel',          icon:'🧠' },
+    { id:'nova',       x:   0, z:  44, h: 32, w:7, d:6, col:0x22d3ee, type:'needle',  label:'Nova',          sub:'Growth & Traffic',          icon:'🚀' },
+    { id:'victor',     x:  38, z:  28, h: 28, w:6, d:6, col:0xa855f7, type:'taper',   label:'Dr. Victor',    sub:'Chief R&D Scientist',       icon:'🔬' },
+    // Inner ring
+    { id:'ember',      x: -20, z: -14, h: 19, w:5, d:5, col:0xf97316, type:'box',     label:'Ember',         sub:'Viral Growth Hacker',       icon:'🔥' },
+    { id:'cipher',     x:  20, z: -14, h: 21, w:5, d:5, col:0x6366f1, type:'stepped', label:'Cipher',        sub:'Pricing & Stripe Quant',    icon:'💳' },
+    { id:'lyra',       x: -20, z:  14, h: 18, w:5, d:5, col:0xec4899, type:'wide',    label:'Lyra',          sub:'B2B Design Engineer',       icon:'✨' },
+    { id:'orion',      x:  20, z:  14, h: 19, w:5, d:5, col:0x14b8a6, type:'box',     label:'Orion',         sub:'Cloud Engineer',            icon:'☁️' },
+    { id:'kira',       x:   0, z: -20, h: 17, w:5, d:5, col:0x10b981, type:'box',     label:'Kira',          sub:'Legal Auditor',             icon:'⚖️' },
+
+    // ─── INFRASTRUCTURE (East, x=65-95) ───
+    { id:'openclaw-gw',  x: 72, z: -18, h: 24, w:6,d:6, col:0x00ffcc, type:'needle',  label:'OpenClaw Gateway', sub:'AI Model Router · Live',  icon:'🔀' },
+    { id:'github-cdn',   x: 72, z:   0, h: 18, w:6,d:5, col:0xddeeff, type:'stepped', label:'GitHub CDN',    sub:'Dashboard · Live',          icon:'🌐' },
+    { id:'netlify',      x: 72, z:  18, h: 15, w:5,d:5, col:0x00ad9f, type:'box',     label:'Netlify Cloud', sub:'Build & Deploy',            icon:'⛅' },
+    { id:'sqlite',       x: 88, z: -12, h: 14, w:5,d:5, col:0xffd700, type:'wide',    label:'Data Vault',    sub:'SQLite · Agent Runs',       icon:'🗄️' },
+    { id:'evolve-eng',   x: 88, z:   6, h: 22, w:5,d:5, col:0x22c97a, type:'taper',   label:'Evolution Engine',sub:'Self-Improves 30min',      icon:'🧬' },
+    { id:'sync-tower',   x: 88, z:  20, h: 19, w:4,d:4, col:0x38bdf8, type:'needle',  label:'Sync Tower',    sub:'Real-Time · 5min',          icon:'📡' },
+
+    // ─── FINANCE (West, x=-65 to -95) ───
+    { id:'profit-ledger',x:-72, z: -12, h: 22, w:6,d:6, col:0xfbbf24, type:'stepped', label:'Profit Ledger', sub:'P&L Tracker · Live',        icon:'💰' },
+    { id:'cost-guard',   x:-72, z:   6, h: 16, w:5,d:5, col:0xf43f5e, type:'box',     label:'Cost Guard',    sub:'Budget Watchdog',           icon:'🛡️' },
+    { id:'capital-alloc',x:-88, z:  -8, h: 15, w:5,d:5, col:0xa3e635, type:'wide',    label:'Capital Alloc.',sub:'Resource Optimizer',        icon:'📊' },
+    { id:'rev-registry', x:-88, z:  10, h: 20, w:5,d:5, col:0x22c97a, type:'taper',   label:'Revenue Registry',sub:'All Channels',             icon:'💎' },
+
+    // ─── COMMERCE (South, z=65-90) ───
+    { id:'swirlcraft',   x: -16, z: 76, h: 42, w:9,d:8, col:0xf97316, type:'stepped', label:'SwirlCraft',    sub:'Etsy Shop · Primary Revenue',icon:'🛒' },
+    { id:'seo-lab',      x:   4, z: 76, h: 22, w:6,d:5, col:0x34d399, type:'box',     label:'SEO Lab',       sub:'36 Listings Optimized',     icon:'🔍' },
+    { id:'listing-fac',  x:  20, z: 76, h: 17, w:5,d:5, col:0xfcd34d, type:'wide',    label:'Listing Factory',sub:'New Products',              icon:'🏭' },
+    { id:'fulfillment',  x:  35, z: 76, h: 14, w:5,d:5, col:0x60a5fa, type:'box',     label:'Fulfillment Hub',sub:'Instant Delivery',          icon:'📦' },
+
+    // ─── OPERATIONS (North, z=-65 to -90) ───
+    { id:'mgr-tower',    x: -14, z:-78, h: 36, w:8,d:7, col:0xc4b5fd, type:'needle',  label:'Manager Tower', sub:'Sage · Atlas · Nova',       icon:'🏢' },
+    { id:'task-depot',   x:   4, z:-78, h: 20, w:6,d:5, col:0xfde68a, type:'stepped', label:'Task Depot',    sub:'Work Queue',                icon:'📋' },
+    { id:'decision-box', x:  20, z:-78, h: 16, w:5,d:5, col:0xfb923c, type:'box',     label:'Decision Inbox',sub:'Owner Approvals',           icon:'📬' },
+    { id:'approval-gate',x:  35, z:-78, h: 13, w:5,d:5, col:0xf43f5e, type:'wide',    label:'Approval Gate', sub:'Auth Required',             icon:'✅' },
+
+    // ─── MARKETING (SE, x=55-75, z=55-75) ───
+    { id:'tiktok-studio',x:  60, z: 58, h: 20, w:6,d:5, col:0xff2d55, type:'taper',   label:'TikTok Studio', sub:'Viral Video',               icon:'🎬' },
+    { id:'pinterest',    x:  74, z: 58, h: 16, w:5,d:5, col:0xe60023, type:'box',     label:'Pinterest',     sub:'Pin Publishing',            icon:'📌' },
+    { id:'broadcast',    x:  74, z: 44, h: 28, w:4,d:4, col:0x818cf8, type:'needle',  label:'Broadcast',     sub:'Traffic Funnels',           icon:'📻' },
+
+    // ─── INTELLIGENCE (NW, x=-55 to -75, z=-55 to -75) ───
+    { id:'action-queue', x: -60, z:-58, h: 17, w:5,d:5, col:0x67e8f9, type:'stepped', label:'Action Queue',  sub:'Live Ops',                  icon:'⚡' },
+    { id:'watchdog',     x: -74, z:-58, h: 15, w:5,d:5, col:0xfca5a5, type:'wide',    label:'Watchdog',      sub:'Auto-Heals Blockers',       icon:'🐕' },
+    { id:'daily-upg',   x: -74, z:-44, h: 20, w:5,d:5, col:0xa78bfa, type:'taper',   label:'Daily Upgrade', sub:'Nightly Self-Improve',      icon:'🔭' },
+
+    // ─── VENTURE LAB (NE, x=55-75, z=-55 to -75) ───
+    { id:'youtube-lab',  x:  60, z:-58, h: 20, w:6,d:5, col:0xff4444, type:'taper',   label:'YouTube Lab',   sub:'Video Revenue',             icon:'▶️' },
+    { id:'flippa',       x:  74, z:-58, h: 16, w:5,d:5, col:0xf59e0b, type:'stepped', label:'Flippa Exchange',sub:'Digital M&A',              icon:'🏦' },
   ];
 
-  function getActiveDialogues() {
-    if (window.DATA && window.DATA.live_dialogues && Array.isArray(window.DATA.live_dialogues.dialogues) && window.DATA.live_dialogues.dialogues.length > 0) {
-      return window.DATA.live_dialogues.dialogues;
-    }
-    return EMBEDDED_LIVE_DIALOGUES;
+  BUILDINGS.forEach(cfg => {
+    const b = makeBuilding(scene, cfg);
+    allBuildings.push({ ...b, cfg });
+  });
+
+  // ── Starfield ─────────────────────────────────────────────────────────────
+  const starVerts = [];
+  for (let i=0; i<6000; i++) {
+    starVerts.push((Math.random()-0.5)*700, Math.random()*220+30, (Math.random()-0.5)*700);
+  }
+  const starGeo = new THREE.BufferGeometry();
+  starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starVerts, 3));
+  scene.add(new THREE.Points(starGeo, new THREE.PointsMaterial({ color:0xcce8ff, size:0.2, sizeAttenuation:true })));
+
+  // ── Live data helpers ─────────────────────────────────────────────────────
+  function getRealStatus(agentId) {
+    if (!window.DATA) return '💤 Standing by';
+    const team = (window.DATA.team||[]).find(m => m.id===agentId);
+    if (!team) return '💤 Standing by';
+    const act = team.city?.current_activity || '';
+    if (act) return act;
+    if (team.status==='WORKING') return '⚡ Working';
+    return '💤 Standing by';
   }
 
-
-  // Update infra building labels with real live data from window.DATA
-  function updateInfraLabels() {
-    if (!window.DATA) return;
-    const mgr = (window.DATA.manager || {});
-    const tasks = mgr.task_summary || {};
-    const modelStatus = window.DATA.model_status || {};
-    const gw = window.DATA.gateway || {};
-    const cityStatus = window.DATA.city_status || {};
-
-    const liveValues = {
-      'openclaw-gateway':  modelStatus.primary ? `🟢 ${modelStatus.primary.split('/').pop()}` : '🟡 Checking...',
-      'github-cdn':        '🟢 Live · GitHub Pages',
-      'netlify-cloud':     '🟢 Deployed',
-      'sqlite-vault':      `🗄️ ${cityStatus.agents_working || 0} agents active`,
-      'evolution-engine':  '⏱ Every 30 min',
-      'realtime-sync':     '📡 Every 5 min',
-      'profit-ledger':     '💰 Tracking P&L',
-      'cost-guard':        modelStatus.using_free_tier ? '✅ Free Tier Active' : '⚠️ Paid API',
-      'capital-allocator': '📊 Optimizing',
-      'revenue-registry':  '💎 Etsy · Active',
-      'swirlcraft-shop':   '🛒 Shop Live',
-      'seo-lab':           '🔍 36 Listings',
-      'listing-factory':   '🏭 Creating',
-      'fulfillment-hub':   '📦 Auto-Delivery',
-      'tiktok-studio':     '🎬 Content Queue',
-      'pinterest-gallery': '📌 Publishing',
-      'broadcast-tower':   '📻 Traffic Active',
-      'manager-tower':     `🏢 ${tasks.in_progress || 0} tasks active`,
-      'task-depot':        `📋 ${tasks.pending || 0} pending`,
-      'decision-inbox':    '📬 Monitoring',
-      'approval-gate':     '✅ Standing by',
-      'action-queue':      '⚡ Live',
-      'watchdog-station':  '🐕 Auto-Healing',
-      'daily-upgrade-lab': '🔬 Nightly run',
-      'youtube-lab':       '▶️ Research',
-      'flippa-exchange':   '🏦 Monitoring',
-    };
-
-    overlayLayer.querySelectorAll('[data-infra-id]').forEach(el => {
-      const id = el.dataset.infraId;
-      const val = liveValues[id];
-      if (!val) return;
-      const subEl = el.querySelector('span:last-child') || el.querySelectorAll('span')[1];
-      // Update the sub-label span (second span in the div column)
-      const spans = el.querySelectorAll('div > div > span');
-      if (spans.length >= 2) spans[1].textContent = val;
+  function populateComms() {
+    const feed = document.getElementById('cityCommsFeed');
+    if (!feed || !window.DATA?.evolution_log) return;
+    feed.innerHTML = '';
+    const logs = [...(window.DATA.evolution_log||[])].slice(-20).reverse();
+    if (!logs.length) { feed.innerHTML='<div style="color:#475569;font-size:10px;padding:6px;">No events yet.</div>'; return; }
+    logs.forEach(log => {
+      const t = (log.timestamp||'').split('T')[1]?.substring(0,8)||'';
+      const col = log.result==='error'?'#f43f5e':(log.result==='warning'?'#f59e0b':'#38bdf8');
+      const el = document.createElement('div');
+      el.className='comms-entry';
+      el.style.cssText=`border-left:2px solid ${col};padding-left:7px;margin-bottom:5px;`;
+      el.innerHTML=`<span style="color:#475569;font-size:8.5px;">[${t}]</span> <span style="color:${col};font-weight:700;font-size:9px;">● ${log.action||'SYS'}</span> <span style="color:#e2e8f0;font-size:9.5px;">"${(log.detail||'').substring(0,80)}"</span>`;
+      feed.appendChild(el);
     });
   }
 
-  let clock = new THREE.Clock();
-  const tempV = new THREE.Vector3();
+  // ── Mood badge ────────────────────────────────────────────────────────────
+  const moodBadge = document.createElement('div');
+  moodBadge.style.cssText = `position:absolute;top:12px;left:12px;z-index:30;pointer-events:none;background:rgba(3,8,18,0.94);border:1px solid rgba(34,201,122,0.5);border-radius:20px;padding:5px 13px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-size:10px;font-weight:700;color:#22c97a;display:flex;align-items:center;gap:8px;box-shadow:0 6px 20px rgba(0,0,0,0.8),0 0 18px rgba(34,201,122,0.18);backdrop-filter:blur(8px);`;
+  moodBadge.innerHTML = `<span style="width:7px;height:7px;border-radius:50%;background:#22c97a;box-shadow:0 0 8px #22c97a;display:inline-block;"></span><span>CITY MOOD: HIGH REVENUE SPRINT · +70% MARGIN BOOM</span>`;
+  overlay.appendChild(moodBadge);
 
-  populateRealCommsFeed();
+  // ── Agent info panel (appears on click) ───────────────────────────────────
+  const infoPanel = document.createElement('div');
+  infoPanel.style.cssText = 'position:absolute;bottom:16px;left:14px;z-index:35;pointer-events:none;display:none;';
+  overlay.appendChild(infoPanel);
 
+  let selectedId = null;
+  let syncTimer = 5.0;
+  const clock = new THREE.Clock();
+  const tmpV = new THREE.Vector3();
+
+  populateComms();
+
+  // ── Animate ───────────────────────────────────────────────────────────────
   function animate() {
     _animFrameId = requestAnimationFrame(animate);
     const dt = clock.getDelta();
     const elapsed = clock.getElapsedTime();
 
-    // Dialogue Stepper replaced with Real-Time Comms Log Sync
-    convoTimer -= dt;
-    if (convoTimer <= 0) {
-      populateRealCommsFeed();
-      updateInfraLabels();
-      convoTimer = 6.0; // Refresh logs every 6s
-    }
+    syncTimer -= dt;
+    if (syncTimer <= 0) { populateComms(); syncTimer = 6.0; }
 
-    if (parkGroup.waterSpout) parkGroup.waterSpout.scale.y = 0.95 + Math.sin(elapsed * 6) * 0.15;
-    if (parkGroup.dog) parkGroup.dog.position.x = -3.2 + Math.sin(elapsed * 2) * 0.4;
+    // Animate pool
+    if (poolLight) poolLight.intensity = 2.2 + Math.sin(elapsed*3)*0.5;
 
-    const activeList = getActiveDialogues();
-    const activeConvo = activeList[currentConvoIndex % activeList.length];
-    const currentActiveSpeakerId = (convoPhase === 1) ? activeConvo.agentA : (convoPhase === 0 ? activeList[(currentConvoIndex + activeList.length - 1) % activeList.length].agentB : null);
-
-    characters.forEach((char) => {
-      if (char.brain) {
-        char.brain.material.emissiveIntensity = 1.2 + Math.sin(elapsed * 4 + char.agent.pos[0]) * 0.4;
-      }
-
-      if (char.state.startsWith('walking')) {
-        char.walkT += char.walkSpeed;
-        if (char.walkT >= 1) {
-          char.walkT = 1;
-          if (char.state === 'walking_to_desk') {
-            char.state = 'at_desk';
-            char.stateTimer = 5 + Math.random() * 5;
-            char.rotation.y = Math.PI;
-          } else if (char.state === 'walking_to_park') {
-            char.state = 'at_park';
-            char.stateTimer = 4 + Math.random() * 4;
-          } else if (char.state === 'walking_to_rd') {
-            char.state = 'at_rd';
-            char.stateTimer = 4 + Math.random() * 4;
-          } else if (char.state === 'walking_to_cafe') {
-            char.state = 'at_cafe';
-            char.stateTimer = 4 + Math.random() * 4;
-          } else if (char.state === 'walking_to_gym') {
-            char.state = 'at_gym';
-            char.stateTimer = 4 + Math.random() * 4;
-          }
-        }
-
-        char.position.lerpVectors(char.walkFrom, char.walkTarget, char.walkT);
-        const dir = new THREE.Vector3().subVectors(char.walkTarget, char.walkFrom).normalize();
-        if (dir.lengthSq() > 0.001) {
-          const targetRotation = Math.atan2(dir.x, dir.z);
-          char.rotation.y = THREE.MathUtils.lerp(char.rotation.y, targetRotation, 0.15);
-        }
-
-        const walkCycle = elapsed * 9;
-        char.lLeg.rotation.x = Math.sin(walkCycle) * 0.55;
-        char.rLeg.rotation.x = -Math.sin(walkCycle) * 0.55;
-        char.lArm.rotation.x = -Math.sin(walkCycle) * 0.45;
-        char.rArm.rotation.x = Math.sin(walkCycle) * 0.45;
-        char.body.position.y = 0.84 + Math.abs(Math.sin(walkCycle * 2)) * 0.04;
-        char.head.position.y = 1.30 + Math.abs(Math.sin(walkCycle * 2)) * 0.04;
-
-      } else if (char.state === 'at_desk') {
-        char.stateTimer -= dt;
-        if (char.stateTimer <= 0) pickAgentNextBehavior(char);
-
-        char.lLeg.rotation.x = THREE.MathUtils.lerp(char.lLeg.rotation.x, 0, 0.1);
-        char.rLeg.rotation.x = THREE.MathUtils.lerp(char.rLeg.rotation.x, 0, 0.1);
-        char.lArm.rotation.x = -0.55 + Math.sin(elapsed * 8) * 0.08;
-        char.rArm.rotation.x = -0.55 + Math.cos(elapsed * 8) * 0.08;
-        char.body.position.y = 0.84 + Math.sin(elapsed * 3) * 0.01;
-
+    // Project all building labels
+    allBuildings.forEach(b => {
+      if (!b.labelEl || !b.labelWorldPos) return;
+      tmpV.copy(b.labelWorldPos).project(camera);
+      if (tmpV.z >= 1) { b.labelEl.style.display='none'; return; }
+      const sx = (tmpV.x*0.5+0.5)*VIEWPORT.clientWidth;
+      const sy = (-(tmpV.y*0.5)+0.5)*H;
+      // Distance-based: only show label if close enough
+      const dist = camera.position.distanceTo(b.labelWorldPos);
+      if (dist < 95 || b.cfg.id === selectedId) {
+        b.labelEl.style.display='block';
+        b.labelEl.style.left=`${sx}px`;
+        b.labelEl.style.top=`${sy}px`;
+        b.labelEl.style.opacity = Math.max(0, Math.min(1, (95-dist)/40)).toString();
       } else {
-        char.stateTimer -= dt;
-        if (char.stateTimer <= 0) pickAgentNextBehavior(char);
-      }
-
-      // SCREEN PROJECTIONS
-      tempV.setFromMatrixPosition(char.matrixWorld);
-      tempV.y += 1.65;
-      tempV.project(camera);
-
-      if (tempV.z < 1) {
-        const sx = (tempV.x * 0.5 + 0.5) * VIEWPORT.clientWidth;
-        const sy = (-(tempV.y * 0.5) + 0.5) * 540;
-
-        if (char.tagEl) {
-          char.tagEl.style.display = 'block';
-          char.tagEl.style.left = `${sx}px`;
-          char.tagEl.style.top = `${sy}px`;
-        }
-
-        if (char.bubbleEl) {
-          const statusText = getRealAgentStatus(char.agent.id);
-          const hasAlert = statusText.includes('⏳') || statusText.includes('⚠️') || statusText.includes('❌');
-          const isSelected = (char.agent.id === selectedCityAgentId);
-          
-          const bodyTextEl = char.bubbleEl.querySelector('.speech-body-text');
-          if (bodyTextEl) {
-            bodyTextEl.textContent = statusText;
-          }
-          
-          const locTagEl = char.bubbleEl.querySelector('.speech-loc-tag');
-          if (locTagEl) {
-            if (hasAlert) {
-              locTagEl.textContent = "STATUS: ACTIVE ALERT";
-              locTagEl.style.color = (statusText.includes('⚠️') || statusText.includes('❌')) ? "#f43f5e" : "#fbbf24";
-            } else {
-              locTagEl.textContent = char.agent.district;
-              locTagEl.style.color = "#94a3b8";
-            }
-          }
-          
-          if (isSelected) {
-            char.bubbleEl.style.display = 'block';
-            char.bubbleEl.style.left = `${sx}px`;
-            char.bubbleEl.style.top = `${sy - 22}px`;
-          } else {
-            char.bubbleEl.style.display = 'none';
-          }
-        }
-      } else {
-        if (char.tagEl) char.tagEl.style.display = 'none';
-        if (char.bubbleEl) char.bubbleEl.style.display = 'none';
+        b.labelEl.style.display='none';
       }
     });
 
-    // Project infrastructure building labels
-    buildings.forEach(bld => {
-      if (!bld.infraLabelEl || !bld.infraLabelPos) return;
-      const sv = bld.infraLabelPos.clone();
-      sv.project(camera);
-      if (sv.z < 1) {
-        const sx = (sv.x * 0.5 + 0.5) * VIEWPORT.clientWidth;
-        const sy = (-(sv.y * 0.5) + 0.5) * 540;
-        bld.infraLabelEl.style.display = 'block';
-        bld.infraLabelEl.style.left = `${sx}px`;
-        bld.infraLabelEl.style.top = `${sy}px`;
-      } else {
-        bld.infraLabelEl.style.display = 'none';
-      }
-    });
-
-    // Project district name plates
-    overlayLayer.querySelectorAll('[data-district-label]').forEach(el => {
-      const wx = parseFloat(el.dataset.wx);
-      const wz = parseFloat(el.dataset.wz);
-      const dv = new THREE.Vector3(wx, 3, wz).project(camera);
-      if (dv.z < 1) {
-        const sx = (dv.x * 0.5 + 0.5) * VIEWPORT.clientWidth;
-        const sy = (-(dv.y * 0.5) + 0.5) * 540;
-        el.style.display = 'block';
-        el.style.left = `${sx}px`;
-        el.style.top = `${sy}px`;
-      } else {
-        el.style.display = 'none';
-      }
+    // Project district plates
+    overlay.querySelectorAll('.city-district-plate').forEach(el => {
+      const wx=parseFloat(el.dataset.wx), wz=parseFloat(el.dataset.wz);
+      tmpV.set(wx, 1, wz).project(camera);
+      if (tmpV.z>=1) { el.style.display='none'; return; }
+      const sx=(tmpV.x*0.5+0.5)*VIEWPORT.clientWidth;
+      const sy=(-(tmpV.y*0.5)+0.5)*H;
+      el.style.display='block';
+      el.style.left=`${sx}px`;
+      el.style.top=`${sy}px`;
     });
 
     controls.update();
     renderer.render(scene, camera);
   }
 
-  // Smooth Central Metropolis Orbiting & Zooming Controls
-  controls.target.set(0, 0, 0);
-  controls.enableDamping = true;
-  controls.dampingFactor = 0.06;
-  controls.maxPolarAngle = Math.PI / 2.05;
-  controls.minDistance = 6;
-  controls.maxDistance = 140;
-  controls.rotateSpeed = 0.9;
-  controls.zoomSpeed = 1.2;
+  // ── Click to select building ──────────────────────────────────────────────
+  const raycaster = new THREE.Raycaster();
+  const mouse = new THREE.Vector2();
+  let clickStart = { x:0, y:0 };
 
-  // Smooth Native Mouse & Touch Dragging Orbit Handlers
-  let isDragging = false;
-  let prevMouseX = 0;
-  let prevMouseY = 0;
-  let dragDist = 0;
+  canvas.addEventListener('pointerdown', e => { clickStart={x:e.clientX,y:e.clientY}; });
+  canvas.addEventListener('pointerup', e => {
+    if (Math.abs(e.clientX-clickStart.x)>5||Math.abs(e.clientY-clickStart.y)>5) return;
+    const rect = VIEWPORT.getBoundingClientRect();
+    mouse.x = ((e.clientX-rect.left)/VIEWPORT.clientWidth)*2-1;
+    mouse.y = -((e.clientY-rect.top)/H)*2+1;
+    raycaster.setFromCamera(mouse, camera);
+    const meshes = [];
+    scene.traverse(obj => { if (obj.isMesh) meshes.push(obj); });
+    const hits = raycaster.intersectObjects(meshes, false);
+    if (hits.length) {
+      // Find which building was hit
+      let hit = hits[0].object;
+      while (hit.parent && !hit.parent.isScene) hit = hit.parent;
+      const found = allBuildings.find(b => b.grp === hit);
+      if (found) {
+        selectedId = found.cfg.id;
+        const col = '#'+found.cfg.col.toString(16).padStart(6,'0');
+        const status = getRealStatus(found.cfg.id);
+        infoPanel.style.display='block';
+        infoPanel.innerHTML=`<div style="background:rgba(3,8,18,0.97);border:1px solid ${col}99;border-radius:12px;padding:12px 16px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;min-width:200px;box-shadow:0 8px 28px rgba(0,0,0,0.9),0 0 20px ${col}33;"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="font-size:18px;">${found.cfg.icon||'🏢'}</span><div><strong style="color:#fff;font-size:12px;font-weight:800;">${found.cfg.label}</strong><div style="color:${col};font-size:9.5px;font-weight:600;">${found.cfg.sub||''}</div></div></div><div style="color:#94a3b8;font-size:9px;margin-top:4px;">${status}</div></div>`;
+        setTimeout(()=>{if(selectedId===found.cfg.id){selectedId=null;infoPanel.style.display='none';}},4000);
+      }
+    }
+  });
 
-  function onPointerDown(e) {
-    if (e.target.closest('#cityNavControls')) return;
-    isDragging = true;
-    prevMouseX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
-    prevMouseY = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
-    dragDist = 0;
-  }
-
-  function onPointerMove(e) {
-    if (!isDragging) return;
-    const clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
-    const clientY = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
-    const dx = clientX - prevMouseX;
-    const dy = clientY - prevMouseY;
-    dragDist += Math.abs(dx) + Math.abs(dy);
-
-    const rotSpeed = 0.006;
-    const x = camera.position.x;
-    const z = camera.position.z;
-    camera.position.x = x * Math.cos(-dx * rotSpeed) - z * Math.sin(-dx * rotSpeed);
-    camera.position.z = x * Math.sin(-dx * rotSpeed) + z * Math.cos(-dx * rotSpeed);
-    camera.position.y = Math.max(12, Math.min(100, camera.position.y + dy * 0.15));
-    camera.lookAt(controls.target);
-    controls.update();
-
-    prevMouseX = clientX;
-    prevMouseY = clientY;
-  }
-
-  function onPointerUp(e) {
-    isDragging = false;
-  }
-
-  VIEWPORT.addEventListener('mousedown', onPointerDown, { passive: true });
-  window.addEventListener('mousemove', onPointerMove, { passive: true });
-  window.addEventListener('mouseup', onPointerUp, { passive: true });
-  VIEWPORT.addEventListener('touchstart', onPointerDown, { passive: true });
-  window.addEventListener('touchmove', onPointerMove, { passive: true });
-  window.addEventListener('touchend', onPointerUp, { passive: true });
-
-  // Hook up Reset View button in city header
-  function resetCityCamera() {
-    controls.target.set(0, 4, 0);
-    camera.position.set(0, 60, 110);
+  // ── Reset camera ─────────────────────────────────────────────────────────
+  function resetCamera() {
+    camera.position.set(0, 72, 118);
+    controls.target.set(0, 6, 0);
     controls.update();
   }
-  const resetBtn = document.querySelector('.city-viewport-actions button, #cityResetView');
-  if (resetBtn) resetBtn.addEventListener('click', resetCityCamera);
   document.querySelectorAll('button').forEach(b => {
-    if (b.textContent.trim().toLowerCase().includes('reset view')) {
-      b.addEventListener('click', resetCityCamera);
+    if (b.textContent.trim().toLowerCase().includes('reset')) {
+      b.addEventListener('click', resetCamera);
     }
   });
 
   window.addEventListener('resize', () => {
-    if (!VIEWPORT || VIEWPORT.clientWidth < 10) return;
-    camera.aspect = VIEWPORT.clientWidth / 540;
+    if (!VIEWPORT||VIEWPORT.clientWidth<10) return;
+    camera.aspect = VIEWPORT.clientWidth/H;
     camera.updateProjectionMatrix();
-    renderer.setSize(VIEWPORT.clientWidth, 540);
+    renderer.setSize(VIEWPORT.clientWidth, H);
   });
 
-  // Starfield
-  const starGeo = new THREE.BufferGeometry();
-  const starVerts = [];
-  for (let i = 0; i < 2800; i++) {
-    starVerts.push((Math.random() - 0.5) * 450, Math.random() * 160 + 20, (Math.random() - 0.5) * 450);
-  }
-  starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starVerts, 3));
-  const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0xffffff, size: 0.15, sizeAttenuation: true }));
-  scene.add(stars);
-
   animate();
-  console.log('[City3D] 7.0 13-Agent Autonomous Metropolis Loaded');
+  console.log('[City10] State-of-the-art metropolis loaded — 39 buildings, 8 districts');
 }
 
 globalThis.bootCity3D = bootCity3D;
 window.bootCity3D = bootCity3D;
 
-function _watchCityViewport() {
+function _watch() {
   const vp = document.querySelector('.city-viewport');
-  if (vp && vp.clientWidth > 10) {
-    bootCity3D();
-  }
+  if (vp&&vp.clientWidth>10) bootCity3D();
 }
-
-if (typeof ResizeObserver !== 'undefined') {
-  const ro = new ResizeObserver((entries) => {
-    for (let entry of entries) {
-      if (entry.contentRect.width > 10) {
-        bootCity3D();
-      }
-    }
-  });
-  const vp = document.querySelector('.city-viewport');
-  if (vp) ro.observe(vp);
-  const cityView = document.getElementById('view-city');
-  if (cityView) ro.observe(cityView);
+if (typeof ResizeObserver!=='undefined') {
+  const ro = new ResizeObserver(entries=>{ for(const e of entries) if(e.contentRect.width>10) bootCity3D(); });
+  const vp=document.querySelector('.city-viewport'); if(vp) ro.observe(vp);
+  const cv=document.getElementById('view-city'); if(cv) ro.observe(cv);
 }
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => setTimeout(_watchCityViewport, 50));
-} else {
-  setTimeout(_watchCityViewport, 50);
-}
-
-document.addEventListener('click', (event) => {
-  const btn = event.target.closest('[data-view-target="city"]');
-  if (btn) setTimeout(bootCity3D, 50);
-});
-
-window.addEventListener('hashchange', () => {
-  if (location.hash === '#city') setTimeout(bootCity3D, 50);
-});
+if (document.readyState==='loading') document.addEventListener('DOMContentLoaded',()=>setTimeout(_watch,50));
+else setTimeout(_watch,50);
+document.addEventListener('click', e=>{ if(e.target.closest('[data-view-target="city"]')) setTimeout(bootCity3D,50); });
+window.addEventListener('hashchange',()=>{ if(location.hash==='#city') setTimeout(bootCity3D,50); });
