@@ -1,14 +1,14 @@
 {
-  "snapshot_at": "2026-08-20T07:35:00.922314-05:00",
+  "snapshot_at": "2026-08-20T07:40:00.337634-05:00",
   "schema_version": 3,
   "source": "rowan_realtime_sync",
   "city_status": {
     "agents_working": 0,
     "agents_idle": 14,
     "agents_error": 0,
-    "tasks_pending": 17,
+    "tasks_pending": 21,
     "tasks_active": 1,
-    "tasks_done": 23
+    "tasks_done": 24
   },
   "model_status": {
     "primary": "google/gemini-3.5-flash",
@@ -53,7 +53,7 @@
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
-        "current_activity": "\ud83d\udca4 Standing by",
+        "current_activity": "\ud83d\udccc Queued: Audit top 20 Etsy listings \u2014 identify which need title updates",
         "active_task": null,
         "last_task": null,
         "last_seen": null
@@ -98,7 +98,7 @@
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
-        "current_activity": "\ud83d\udca4 Standing by",
+        "current_activity": "\ud83d\udccc Queued: Identify 3 new product ideas based on what's selling on Etsy right now",
         "active_task": null,
         "last_task": null,
         "last_seen": null
@@ -113,7 +113,7 @@
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
-        "current_activity": "\ud83d\udca4 Standing by",
+        "current_activity": "\ud83d\udccc Queued: Analyze competitor Etsy shops selling legal templates \u2014 prices and titles",
         "active_task": null,
         "last_task": null,
         "last_seen": null
@@ -143,7 +143,7 @@
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
-        "current_activity": "\ud83d\udca4 Standing by",
+        "current_activity": "\ud83d\udccc Queued: Write 10 Pinterest pin descriptions for lease template listings",
         "active_task": null,
         "last_task": null,
         "last_seen": null
@@ -173,7 +173,7 @@
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
-        "current_activity": "\ud83d\udca4 Standing by",
+        "current_activity": "\ud83d\udccc Queued: Create: 30 real estate agent Instagram post templates Canva spec ($14.99)",
         "active_task": null,
         "last_task": null,
         "last_seen": null
@@ -233,7 +233,7 @@
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
-        "current_activity": "\ud83d\udccc Queued: EFFICIENCY DEPT: Audit all agent runs this week \u2014 identify waste, optimize routing",
+        "current_activity": "\ud83d\udccc Queued: EFFICIENCY DEPT: Write compute routing rules \u2014 which tasks use flash-lite vs flash vs pro",
         "active_task": null,
         "last_task": null,
         "last_seen": null
@@ -241,28 +241,44 @@
     }
   ],
   "manager": {
-    "last_cycle": "2026-08-20T07:20:00.418997-05:00",
+    "last_cycle": "2026-08-20T07:30:01.370758-05:00",
     "task_summary": {
-      "pending": 20,
+      "pending": 18,
       "in_progress": 0,
-      "done": 22,
+      "done": 24,
       "blocked": 0,
       "total": 42
     },
     "active_tasks": [
       {
-        "id": "chase-001",
-        "title": "CHASE: Analyze optimal price points \u2014 $7.99 vs $9.99 vs $14.99 for templates",
-        "description": "Research Etsy data on digital template conversion rates at different price points. Analyze our existing listings. Recommend the optimal price tier for each product category: lease templates, email packs, prompt packs, planners. Output to data/chase-pricing-strategy.md",
-        "assigned_to": "chase",
+        "id": "seo-002",
+        "title": "SUPER SEO: Research Pinterest SEO \u2014 best keywords for landlord template pins",
+        "description": "Research Pinterest search trends for landlord, lease, property management content. Write 20 Pinterest-optimized pin titles and descriptions. Output to data/seo-pinterest-keywords.md",
+        "assigned_to": "seo",
         "priority": "HIGH",
         "status": "IN_PROGRESS",
-        "deliverable": "data/chase-pricing-strategy.md",
-        "dispatched_at": "2026-08-20T07:30:01.370758-05:00",
-        "dispatched_by": "sage"
+        "deliverable": "data/seo-pinterest-keywords.md",
+        "dispatched_at": "2026-08-20T07:40:00.333525-05:00",
+        "dispatched_by": "nova"
       }
     ],
     "pending_tasks": [
+      {
+        "id": "disc-social-001",
+        "title": "Create: 30 real estate agent Instagram post templates Canva spec ($14.99)",
+        "description": "Write complete design specifications for 30 Canva Instagram templates for real estate agents: 10 listing announcements, 5 testimonials, 5 tips/education, 5 market updates, 5 open house. Include colors, fonts, layout. Output to data/products/canva-instagram-re.md",
+        "assigned_to": "lyra",
+        "priority": "HIGH",
+        "status": "PENDING",
+        "deliverable": "data/products/canva-instagram-re.md",
+        "channel": "Etsy+Creative Market",
+        "price": "$14.99",
+        "dispatched_at": "2026-08-20T07:30:01.370758-05:00",
+        "dispatched_by": "atlas",
+        "blocked_reason": null,
+        "unblocked_by": "auto-healer",
+        "unblocked_at": "2026-08-20T07:30:01.370758-05:00"
+      },
       {
         "id": "disc-ebook-001",
         "title": "Create: 'First-Time Landlord Complete Guide' \u2014 40-page PDF ebook ($19.99)",
@@ -286,6 +302,20 @@
         "channel": "Etsy+Gumroad",
         "price": "$24.99",
         "dispatched_at": "2026-08-20T03:36:00.988372+00:00"
+      },
+      {
+        "id": "chase-001",
+        "title": "CHASE: Analyze optimal price points \u2014 $7.99 vs $9.99 vs $14.99 for templates",
+        "description": "Research Etsy data on digital template conversion rates at different price points. Analyze our existing listings. Recommend the optimal price tier for each product category: lease templates, email packs, prompt packs, planners. Output to data/chase-pricing-strategy.md",
+        "assigned_to": "chase",
+        "priority": "HIGH",
+        "status": "PENDING",
+        "deliverable": "data/chase-pricing-strategy.md",
+        "dispatched_at": "2026-08-20T07:30:01.370758-05:00",
+        "dispatched_by": "sage",
+        "blocked_reason": null,
+        "unblocked_by": "auto-healer",
+        "unblocked_at": "2026-08-20T07:30:01.370758-05:00"
       },
       {
         "id": "scout-001",
@@ -349,20 +379,6 @@
         "dispatched_at": "2026-08-20T03:36:00.988372+00:00"
       },
       {
-        "id": "efficiency-001",
-        "title": "EFFICIENCY DEPT: Audit all agent runs this week \u2014 identify waste, optimize routing",
-        "description": "Review evolution-log.json and manager-log.json. Identify: which agent tasks are taking longest, which are redundant, which models are being used inefficiently. Recommend optimizations to stay under $3.33/day compute budget. Output to data/efficiency-audit.md",
-        "assigned_to": "efficiency",
-        "priority": "HIGH",
-        "status": "PENDING",
-        "deliverable": "data/efficiency-audit.md",
-        "dispatched_at": "2026-08-20T07:20:00.418997-05:00",
-        "dispatched_by": "axiom",
-        "blocked_reason": null,
-        "unblocked_by": "auto-healer",
-        "unblocked_at": "2026-08-20T07:20:00.418997-05:00"
-      },
-      {
         "id": "efficiency-002",
         "title": "EFFICIENCY DEPT: Write compute routing rules \u2014 which tasks use flash-lite vs flash vs pro",
         "description": "Create a routing policy: simple tasks (tag generation, short summaries, health checks) \u2192 gemini-flash-lite. Medium tasks (listing copy, research) \u2192 gemini-flash. Complex tasks (strategy, multi-step) \u2192 gemini-pro. Write as actionable rules to data/efficiency-routing-rules.md",
@@ -380,16 +396,6 @@
         "priority": "CRITICAL",
         "status": "PENDING",
         "deliverable": "data/axiom-decisions.json",
-        "dispatched_at": "2026-08-20T03:36:00.988372+00:00"
-      },
-      {
-        "id": "seo-002",
-        "title": "SUPER SEO: Research Pinterest SEO \u2014 best keywords for landlord template pins",
-        "description": "Research Pinterest search trends for landlord, lease, property management content. Write 20 Pinterest-optimized pin titles and descriptions. Output to data/seo-pinterest-keywords.md",
-        "assigned_to": "seo",
-        "priority": "HIGH",
-        "status": "PENDING",
-        "deliverable": "data/seo-pinterest-keywords.md",
         "dispatched_at": "2026-08-20T03:36:00.988372+00:00"
       },
       {
@@ -441,6 +447,50 @@
         "status": "PENDING",
         "deliverable": "data/max-bulk-titles.md",
         "dispatched_at": "2026-08-20T03:36:00.988372+00:00"
+      },
+      {
+        "id": "perp-ivy-1787229600",
+        "title": "Audit top 20 Etsy listings \u2014 identify which need title updates",
+        "assigned_to": "ivy",
+        "priority": "HIGH",
+        "status": "PENDING",
+        "deliverable": "/Users/andrewhanna/.openclaw/workspace/rowan-command-station/data/ivy-title-audit.md",
+        "created_at": "2026-08-20T12:40:00.338637+00:00",
+        "revenue_goal": "$20,000/month",
+        "dispatched": false
+      },
+      {
+        "id": "perp-nova-1787229600",
+        "title": "Analyze competitor Etsy shops selling legal templates \u2014 prices and titles",
+        "assigned_to": "nova",
+        "priority": "HIGH",
+        "status": "PENDING",
+        "deliverable": "/Users/andrewhanna/.openclaw/workspace/rowan-command-station/data/nova-competitor-analysis.md",
+        "created_at": "2026-08-20T12:40:00.338637+00:00",
+        "revenue_goal": "$20,000/month",
+        "dispatched": false
+      },
+      {
+        "id": "perp-sage-1787229600",
+        "title": "Identify 3 new product ideas based on what's selling on Etsy right now",
+        "assigned_to": "sage",
+        "priority": "HIGH",
+        "status": "PENDING",
+        "deliverable": "/Users/andrewhanna/.openclaw/workspace/rowan-command-station/data/sage-product-ideas.md",
+        "created_at": "2026-08-20T12:40:00.338637+00:00",
+        "revenue_goal": "$20,000/month",
+        "dispatched": false
+      },
+      {
+        "id": "perp-ember-1787229600",
+        "title": "Write 10 Pinterest pin descriptions for lease template listings",
+        "assigned_to": "ember",
+        "priority": "HIGH",
+        "status": "PENDING",
+        "deliverable": "/Users/andrewhanna/.openclaw/workspace/rowan-command-station/data/ember-pinterest-batch1.md",
+        "created_at": "2026-08-20T12:40:00.338637+00:00",
+        "revenue_goal": "$20,000/month",
+        "dispatched": false
       }
     ],
     "done_tasks": [
@@ -745,6 +795,21 @@
         "completed_at": "2026-08-20T07:20:00.418997-05:00"
       },
       {
+        "id": "efficiency-001",
+        "title": "EFFICIENCY DEPT: Audit all agent runs this week \u2014 identify waste, optimize routing",
+        "description": "Review evolution-log.json and manager-log.json. Identify: which agent tasks are taking longest, which are redundant, which models are being used inefficiently. Recommend optimizations to stay under $3.33/day compute budget. Output to data/efficiency-audit.md",
+        "assigned_to": "efficiency",
+        "priority": "HIGH",
+        "status": "DONE",
+        "deliverable": "data/efficiency-audit.md",
+        "dispatched_at": "2026-08-20T07:20:00.418997-05:00",
+        "dispatched_by": "axiom",
+        "blocked_reason": null,
+        "unblocked_by": "auto-healer",
+        "unblocked_at": "2026-08-20T07:20:00.418997-05:00",
+        "completed_at": "2026-08-20T07:30:01.370758-05:00"
+      },
+      {
         "id": "seo-001",
         "title": "SUPER SEO: Write optimized SEO for top 10 Etsy listings \u2014 titles, tags, descriptions",
         "description": "You are Super SEO. Use your elite SEO knowledge to rewrite the top 10 most important Etsy listings for maximum search visibility. For each: 160-char title (front-load keywords), 13 tags (mix broad+long-tail), opening paragraph with keyword density. Target keywords: state + 'lease agreement template', 'landlord form', 'rental agreement PDF'. Output to data/seo-optimized-listings.md",
@@ -757,41 +822,8 @@
         "completed_at": "2026-08-20T07:30:01.370758-05:00"
       }
     ],
-    "blocked_tasks": [
-      {
-        "id": "disc-social-001",
-        "title": "Create: 30 real estate agent Instagram post templates Canva spec ($14.99)",
-        "description": "Write complete design specifications for 30 Canva Instagram templates for real estate agents: 10 listing announcements, 5 testimonials, 5 tips/education, 5 market updates, 5 open house. Include colors, fonts, layout. Output to data/products/canva-instagram-re.md",
-        "assigned_to": "lyra",
-        "priority": "HIGH",
-        "status": "BLOCKED",
-        "deliverable": "data/products/canva-instagram-re.md",
-        "channel": "Etsy+Creative Market",
-        "price": "$14.99",
-        "dispatched_at": "2026-08-20T07:30:01.370758-05:00",
-        "dispatched_by": "atlas",
-        "blocked_reason": "[TIMEOUT after 180s]"
-      }
-    ],
+    "blocked_tasks": [],
     "recent_actions": [
-      {
-        "ts": "2026-08-20T07:20:00.418997-05:00",
-        "manager": "atlas",
-        "task_id": "disc-planner-001",
-        "worker": "lyra",
-        "action": "dispatch",
-        "status": "DONE",
-        "output_preview": "I have successfully designed the **Landlord 2026 Annual Planner PDF Spec** (52 weekly pages, priced at $12.99) with an elegant Bauhaus minimalist layout, balanced grid structures, and precise property-management workflows. \n\nThe complete technical product specification has been written directly to t"
-      },
-      {
-        "ts": "2026-08-20T07:20:00.418997-05:00",
-        "manager": "sage",
-        "task_id": "finn-001",
-        "worker": "finn",
-        "action": "dispatch",
-        "status": "DONE",
-        "output_preview": "I have completed the task and established the daily revenue tracking model.\n\n### Deliverable Status\n* **File Written:** `data/finn-daily-report.md`\n* **Target Defined:** **$667/day** (to reach **$20,000 by Sept 19, 2026**)\n* **Tracking Period:** August 20, 2026 to September 18, 2026\n\nThe tracking fi"
-      },
       {
         "ts": "2026-08-20T07:20:00.418997-05:00",
         "manager": "axiom",
@@ -818,23 +850,26 @@
         "action": "dispatch",
         "status": "BLOCKED",
         "output_preview": "[TIMEOUT after 180s]"
+      },
+      {
+        "ts": "2026-08-20T07:30:01.370758-05:00",
+        "manager": "sage",
+        "task_id": "chase-001",
+        "worker": "chase",
+        "action": "dispatch",
+        "status": "BLOCKED",
+        "output_preview": "[TIMEOUT after 180s]"
+      },
+      {
+        "ts": "2026-08-20T07:30:01.370758-05:00",
+        "manager": "axiom",
+        "task_id": "efficiency-001",
+        "action": "verified_complete",
+        "status": "done"
       }
     ]
   },
   "evolution_log": [
-    {
-      "timestamp": "2026-08-19T23:00:01.070009-05:00",
-      "action": "DESIGN_COUNCIL_VOTE",
-      "detail": "\ud83c\udfa8 Dr. Victor WINS: \"Quantum entanglement, rendered\" \u2014 Laser connections visualize the neural network of agents | Votes: Lyra:1 | Nova:2 | Dr. Victor:3 | Sage:1 | Cipher:3",
-      "result": "success",
-      "triggered_by": "design-council"
-    },
-    {
-      "timestamp": "2026-08-20T04:10:00.684253+00:00",
-      "action": "PERPETUAL_ENGINE",
-      "detail": "Dispatched 0 idle agents. Active: ['aria', 'atlas', 'axiom', 'blake', 'builder', 'chase', 'cipher', 'efficiency', 'ember', 'finn', 'ivy', 'kira', 'lyra', 'max', 'nova', 'orion', 'quinn', 'rea', 'rex', 'rio', 'sage', 'scout', 'seo', 'val', 'victor', 'zara']. Goal: $20k/month",
-      "result": "all_busy"
-    },
     {
       "timestamp": "2026-08-20T04:20:00.835729+00:00",
       "action": "PERPETUAL_ENGINE",
@@ -955,6 +990,19 @@
       "detail": "Full cycle complete. Results: {\"model\": \"no_change\", \"seo\": \"complete\", \"dashboard\": \"ok\", \"watchdog\": {\"active\": [\"aria\", \"nova\", \"sage\", \"atlas\", \"ivy\", \"main\"], \"idle\": [], \"woken\": []}, \"cost\": \"ok\", \"profit_war\": \"error:'building_name'\"}",
       "result": "success",
       "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-20T07:30:01.492695-05:00",
+      "action": "COMPANY_COUNCIL",
+      "detail": "\ud83c\udfdb\ufe0f Council voted. Winner: 'Apply 36 SEO titles to all active listings' (5 votes). Done, needs execution",
+      "result": "success",
+      "triggered_by": "axiom"
+    },
+    {
+      "timestamp": "2026-08-20T12:40:00.338637+00:00",
+      "action": "PERPETUAL_ENGINE",
+      "detail": "Dispatched 4 idle agents. Active: ['aria', 'atlas', 'axiom', 'builder', 'chase', 'cipher', 'efficiency', 'lyra', 'max', 'orion', 'rea', 'scout', 'seo', 'val', 'victor']. Goal: $20k/month",
+      "result": "success"
     }
   ],
   "agent_activity": {
