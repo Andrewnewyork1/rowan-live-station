@@ -3762,3 +3762,43 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--ice); outli
 .world-card[data-world="europa"]::before { background: radial-gradient(circle at 0% 0%, rgba(0,136,255,0.08), transparent 70%); }
 .world-card[data-world="nebula7"]::before{ background: radial-gradient(circle at 0% 0%, rgba(170,0,255,0.08), transparent 70%); }
 .world-card[data-world="dyson"]::before  { background: radial-gradient(circle at 0% 0%, rgba(255,204,0,0.08), transparent 70%); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CRITICAL FIX — City Controls (rotate/zoom) + Performance
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* FIX: overlay children were stealing pointer events from canvas */
+#cityScreenOverlay,
+#cityScreenOverlay * {
+  pointer-events: none !important;
+}
+
+/* Canvas must receive ALL pointer events — highest specificity */
+.city-viewport > canvas {
+  pointer-events: all !important;
+  touch-action: none !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 5 !important;
+  cursor: grab !important;
+}
+.city-viewport > canvas:active {
+  cursor: grabbing !important;
+}
+
+/* Ensure nothing else in viewport can intercept */
+.city-legend,
+.city-holo-display,
+.city-stars,
+.city-aurora,
+.city-camera-controls {
+  pointer-events: none !important;
+  z-index: 4 !important;
+}
+.city-camera-controls { opacity: 0.9; z-index: 6 !important; }
+.city-camera-controls button { pointer-events: auto !important; }
+
+/* AXIOM bar — don't let it overlap city */
+.axiom-bar { z-index: 45; }
