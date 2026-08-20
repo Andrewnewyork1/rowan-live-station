@@ -1,14 +1,14 @@
 {
-  "snapshot_at": "2026-08-19T23:35:00.945752-05:00",
+  "snapshot_at": "2026-08-20T07:20:00.450838-05:00",
   "schema_version": 3,
   "source": "rowan_realtime_sync",
   "city_status": {
     "agents_working": 0,
     "agents_idle": 14,
     "agents_error": 0,
-    "tasks_pending": 23,
+    "tasks_pending": 22,
     "tasks_active": 0,
-    "tasks_done": 19
+    "tasks_done": 20
   },
   "model_status": {
     "primary": "google/gemini-3.5-flash",
@@ -336,17 +336,6 @@
         "priority": "HIGH",
         "status": "PENDING",
         "deliverable": "data/systems/orion-delivery-check.md",
-        "created_at": "2026-08-20T03:22:07.570421+00:00",
-        "dispatched": false,
-        "dispatched_at": "2026-08-20T03:36:00.988372+00:00"
-      },
-      {
-        "id": "perp-rio-1787196127",
-        "title": "Write 10 SEO blog post outlines: landlord tips that link to our products",
-        "assigned_to": "rio",
-        "priority": "HIGH",
-        "status": "PENDING",
-        "deliverable": "data/content/rio-blog-outlines.md",
         "created_at": "2026-08-20T03:22:07.570421+00:00",
         "dispatched": false,
         "dispatched_at": "2026-08-20T03:36:00.988372+00:00"
@@ -753,17 +742,23 @@
         "dispatched_at": "2026-08-19T23:34:17.615034-05:00",
         "dispatched_by": "axiom",
         "completed_at": "2026-08-19T23:34:17.615034-05:00"
+      },
+      {
+        "id": "perp-rio-1787196127",
+        "title": "Write 10 SEO blog post outlines: landlord tips that link to our products",
+        "assigned_to": "rio",
+        "priority": "HIGH",
+        "status": "DONE",
+        "deliverable": "data/content/rio-blog-outlines.md",
+        "created_at": "2026-08-20T03:22:07.570421+00:00",
+        "dispatched": false,
+        "dispatched_at": "2026-08-20T07:20:00.418997-05:00",
+        "dispatched_by": "nova",
+        "completed_at": "2026-08-20T07:20:00.418997-05:00"
       }
     ],
     "blocked_tasks": [],
     "recent_actions": [
-      {
-        "ts": "2026-08-19T23:33:29.366517-05:00",
-        "manager": "axiom",
-        "task_id": "maya-001",
-        "action": "verified_complete",
-        "status": "done"
-      },
       {
         "ts": "2026-08-19T23:34:17.615034-05:00",
         "manager": "nova",
@@ -793,17 +788,19 @@
         "action": "dispatch",
         "status": "DONE",
         "output_preview": "The 5 customer success email sequences have been written to `data/content/zara-post-purchase.md` as requested.\n[plugins] plugins.allow is empty; discovered non-bundled plugins may auto-load: codex (/Users/andrewhanna/.openclaw/npm/projects/openclaw-codex-8902d781d4__openclaw-generation__g-49fd4dbfde"
+      },
+      {
+        "ts": "2026-08-20T07:20:00.418997-05:00",
+        "manager": "nova",
+        "task_id": "perp-rio-1787196127",
+        "worker": "rio",
+        "action": "dispatch",
+        "status": "DONE",
+        "output_preview": "I have successfully written all 10 high-intent SEO blog post outlines targeting landlords to the designated file.\n\n**Deliverable Written To:**\n`data/content/rio-blog-outlines.md`\n\n### Strategy Highlights:\n*   **Highly Targeted Keywords:** Every outline focuses on a high-intent, transactional keyword"
       }
     ]
   },
   "evolution_log": [
-    {
-      "timestamp": "2026-08-19T23:00:01.509697-05:00",
-      "action": "MODEL_UPGRADED",
-      "detail": "Auto-upgraded primary model: google/gemini-3.1-pro-preview -> google/gemini-3.5-flash",
-      "result": "success",
-      "triggered_by": "rowan-evolve-cron"
-    },
     {
       "timestamp": "2026-08-19T23:00:01.509697-05:00",
       "action": "SEO_COMPLETE",
@@ -933,6 +930,12 @@
       "detail": "Full cycle complete. Results: {\"model\": \"upgraded:google/gemini-3.5-flash\", \"seo\": \"complete\", \"dashboard\": \"ok\", \"watchdog\": {\"active\": [\"aria\", \"nova\", \"sage\", \"atlas\", \"ivy\", \"main\"], \"idle\": [], \"woken\": []}, \"cost\": \"ok\", \"profit_war\": \"error:'building_name'\"}",
       "result": "success",
       "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-20T12:20:00.418920+00:00",
+      "action": "PERPETUAL_ENGINE",
+      "detail": "Dispatched 4 idle agents. Active: ['aria', 'atlas', 'axiom', 'builder', 'chase', 'cipher', 'efficiency', 'finn', 'lyra', 'max', 'orion', 'rea', 'rio', 'scout', 'seo', 'val', 'victor']. Goal: $20k/month",
+      "result": "success"
     }
   ],
   "agent_activity": {
