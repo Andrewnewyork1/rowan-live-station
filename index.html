@@ -23,6 +23,35 @@
 </head>
 <body>
   <div class="app-shell">
+      <div class="axiom-bar" id="axiomBar" aria-label="AXIOM AI CEO status">
+        <div class="axiom-logo">
+          <div class="axiom-logo-dot"></div>
+          AXIOM
+        </div>
+        <div class="axiom-divider"></div>
+        <div class="axiom-decision-ticker">
+          <div class="axiom-ticker-inner" id="axiomTicker">
+            <span class="axiom-ticker-item"><span class="tick-icon">🤖</span> <strong>AXIOM</strong> — Autonomous CEO running 24/7 · 7 decisions per cycle</span>
+            <span class="axiom-ticker-item"><span class="tick-icon">🏛️</span> Company Council — <strong>10 agents vote</strong> on company direction every 3 cycles</span>
+            <span class="axiom-ticker-item"><span class="tick-icon">🎨</span> Design Council — <strong>City evolves hourly</strong> via agent votes</span>
+            <span class="axiom-ticker-item"><span class="tick-icon">🌍</span> Universe — <strong>5 worlds</strong> unlock as ROWAN grows</span>
+            <span class="axiom-ticker-item"><span class="tick-icon">⚡</span> Approval Executor — <strong>Auto-executes</strong> your approvals within 5 min</span>
+            <span class="axiom-ticker-item"><span class="tick-icon">🔀</span> OpenClaw Gateway — <strong>Free Gemini Pro</strong> · 0% API cost</span>
+            <span class="axiom-ticker-item"><span class="tick-icon">🤖</span> <strong>AXIOM</strong> — Autonomous CEO running 24/7 · 7 decisions per cycle</span>
+            <span class="axiom-ticker-item"><span class="tick-icon">🏛️</span> Company Council — <strong>10 agents vote</strong> on company direction every 3 cycles</span>
+            <span class="axiom-ticker-item"><span class="tick-icon">🎨</span> Design Council — <strong>City evolves hourly</strong> via agent votes</span>
+            <span class="axiom-ticker-item"><span class="tick-icon">🌍</span> Universe — <strong>5 worlds</strong> unlock as ROWAN grows</span>
+            <span class="axiom-ticker-item"><span class="tick-icon">⚡</span> Approval Executor — <strong>Auto-executes</strong> your approvals within 5 min</span>
+            <span class="axiom-ticker-item"><span class="tick-icon">🔀</span> OpenClaw Gateway — <strong>Free Gemini Pro</strong> · 0% API cost</span>
+          </div>
+        </div>
+        <div class="axiom-world-badge" title="Current world">
+          🌍 Earth HQ
+        </div>
+        <div class="axiom-cycle-badge" id="axiomCycleBadge">
+          ⚙️ AXIOM · Cycle 1
+        </div>
+      </div>
     <aside class="sidebar" aria-label="Primary navigation">
       <div class="brand-lockup">
         <div class="brand-mark"><img src="./assets/rowan-avatar.jpg" alt="Rowan Owl Avatar"></div>
@@ -153,8 +182,55 @@
           <section class="surface ai-usage-panel google-usage-panel" id="commandGoogleUsage" aria-label="Current Google AI credit usage"></section>
         </div>
 
+        <div class="revenue-mega-bar" id="revenueMegaBar">
+          <div class="revenue-mega-label">🎯 Revenue Mission — SwirlCraft Etsy Shop</div>
+          <div class="revenue-mega-numbers">
+            <span class="revenue-mega-current count-up" id="revenueMegaCurrent">$0</span>
+            <span class="revenue-mega-goal">/ $20,000 / mo</span>
+          </div>
+          <div class="revenue-mega-track"><div class="revenue-mega-fill" id="revenueMegaFill" style="width:0.1%"></div></div>
+          <div class="revenue-mega-agents">
+            <span>👥 <span id="revenueMegaAgents">15</span> agents deployed</span>
+            <span>🌍 <span id="revenueMegaWorlds">1</span> / 5 worlds active</span>
+            <span>⚙️ AXIOM cycle <span id="revenueMegaCycle">1</span></span>
+            <span>🎨 Design sessions: <span id="revenueMegaDesign">1</span></span>
+          </div>
+        </div>
         <section class="money-grid" id="commandMoney" aria-label="Financial outcomes"></section>
 
+        <section class="axiom-decisions-panel" id="axiomDecisionsPanel" data-search-section style="margin-bottom:16px;">
+          <div class="axiom-decisions-header">
+            <span style="font-size:16px;">🤖</span>
+            <h3>AXIOM — Last Decisions</h3>
+            <span class="axiom-badge">CEO AI</span>
+          </div>
+          <div id="axiomDecisionsList">
+            <div class="axiom-decision-row">
+              <div class="axiom-decision-icon" style="background:rgba(249,115,22,0.12);">💰</div>
+              <div class="axiom-decision-body">
+                <div class="axiom-decision-title">Revenue Optimization Sprint</div>
+                <div class="axiom-decision-meta">Dispatched Ivy → Apply 36 SEO titles + create $29.99 bundle</div>
+              </div>
+              <span class="axiom-priority HIGH">HIGH</span>
+            </div>
+            <div class="axiom-decision-row">
+              <div class="axiom-decision-icon" style="background:rgba(109,183,255,0.12);">🏛️</div>
+              <div class="axiom-decision-body">
+                <div class="axiom-decision-title">Company Council Vote</div>
+                <div class="axiom-decision-meta">10 agents voted · Winner: Launch California Landlord Bundle $29.99</div>
+              </div>
+              <span class="axiom-priority MEDIUM">MEDIUM</span>
+            </div>
+            <div class="axiom-decision-row">
+              <div class="axiom-decision-icon" style="background:rgba(34,201,122,0.12);">🤖</div>
+              <div class="axiom-decision-body">
+                <div class="axiom-decision-title">Agent Expansion — Zara + Rio Spawned</div>
+                <div class="axiom-decision-meta">Zara: Customer Success · Rio: Content Wave Rider</div>
+              </div>
+              <span class="axiom-priority MEDIUM">MEDIUM</span>
+            </div>
+          </div>
+        </section>
         <section class="decision-panel surface" id="commandDecisions" data-search-section>
           <div class="section-heading">
             <div>
@@ -327,6 +403,47 @@
             </div>
           </section>
           <aside class="city-inspector surface" id="cityInspector" aria-live="polite"></aside>
+        <section class="surface" style="margin-top:20px;padding:20px 24px;border-radius:16px;" data-search-section>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+            <span style="font-size:20px;">🌌</span>
+            <div>
+              <h3 style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--ice);margin-bottom:3px;">ROWAN UNIVERSE</h3>
+              <p style="font-size:10px;color:var(--muted);">Complete tasks to unlock new worlds · Each world = new city + agents + revenue channel</p>
+            </div>
+          </div>
+          <div class="worlds-grid" id="worldsGrid">
+            <div class="world-card active" data-world="earth" style="--world-accent:#6db7ff;">
+              <span class="world-emoji">🌍</span>
+              <div class="world-name">ROWAN HQ — New York</div>
+              <div class="world-focus">Etsy commerce &amp; AI operations</div>
+              <div class="world-status-row"><span class="world-agent-count" id="earthAgentCount">15 agents</span><span class="world-unlock-badge active">🟢 ACTIVE</span></div>
+            </div>
+            <div class="world-card locked" data-world="mars" style="--world-accent:#ff4400;">
+              <span class="world-emoji">🔴</span>
+              <div class="world-name">Mars Colony Alpha</div>
+              <div class="world-focus">R&amp;D, experimental products, AI frontier</div>
+              <div class="world-status-row"><span class="world-agent-count">0 agents</span><span class="world-unlock-badge" id="marsUnlock">🔒 10 tasks</span></div>
+            </div>
+            <div class="world-card locked" data-world="europa" style="--world-accent:#0088ff;">
+              <span class="world-emoji">🔵</span>
+              <div class="world-name">Europa Deep Station</div>
+              <div class="world-focus">Data security, cryptography, fintech</div>
+              <div class="world-status-row"><span class="world-agent-count">0 agents</span><span class="world-unlock-badge">🔒 25 tasks</span></div>
+            </div>
+            <div class="world-card locked" data-world="nebula7" style="--world-accent:#aa00ff;">
+              <span class="world-emoji">🟣</span>
+              <div class="world-name">Nebula-7 Cosmic Hub</div>
+              <div class="world-focus">AGI development, emergent intelligence</div>
+              <div class="world-status-row"><span class="world-agent-count">0 agents</span><span class="world-unlock-badge">🔒 50 tasks</span></div>
+            </div>
+            <div class="world-card locked" data-world="dyson" style="--world-accent:#ffcc00;">
+              <span class="world-emoji">⭐</span>
+              <div class="world-name">Dyson Sphere</div>
+              <div class="world-focus">Post-scarcity automation, planetary commerce</div>
+              <div class="world-status-row"><span class="world-agent-count">0 agents</span><span class="world-unlock-badge">🔒 100 tasks</span></div>
+            </div>
+          </div>
+        </section>
         </div>
         <!-- Live Agent Dialogue & City Comms Radio Stream -->
         <section class="surface city-comms-panel" id="cityComms" data-search-section>
@@ -594,7 +711,7 @@
     </section>
   </dialog>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script defer src="./app.js?v=1787172392"></script>
-  <script type="module" src="city3d.js?v=1787172392"></script>
+  <script defer src="./app.js?v=1787190842"></script>
+  <script type="module" src="city3d.js?v=1787190842"></script>
 </body>
 </html>
