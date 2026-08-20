@@ -1604,6 +1604,22 @@ function renderMeta() {
   $("#sidebarPresence").textContent = DATA.meta.rowan_status;
   const remaining = DATA.ai_usage?.remaining_percent;
   $("#sidebarModel").textContent = `${DATA.meta.provider} · ${DATA.meta.model}${remaining === null || remaining === undefined ? "" : ` · ${remaining}% weekly left`}`;
+  
+  const topbarPill = $("#topbarModelPill");
+  if (topbarPill) {
+    topbarPill.innerHTML = `<span>⚡</span> ${DATA.meta.model}`;
+  }
+  
+  const compoundingStat = $("#primaryEngineName");
+  if (compoundingStat) {
+    const modelText = DATA.meta.model
+      .toLowerCase()
+      .split("-")
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+    compoundingStat.textContent = `${DATA.meta.provider} ${modelText}`;
+  }
+
   const stamp = new Date(DATA.generated_at);
   const ageHours = Math.max(0, (Date.now() - stamp.getTime()) / 3_600_000);
   const badge = $("#freshnessBadge");
