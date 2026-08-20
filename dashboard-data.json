@@ -1,14 +1,14 @@
 {
-  "snapshot_at": "2026-08-20T07:20:00.450838-05:00",
+  "snapshot_at": "2026-08-20T07:30:01.394546-05:00",
   "schema_version": 3,
   "source": "rowan_realtime_sync",
   "city_status": {
     "agents_working": 0,
     "agents_idle": 14,
     "agents_error": 0,
-    "tasks_pending": 22,
+    "tasks_pending": 19,
     "tasks_active": 0,
-    "tasks_done": 20
+    "tasks_done": 23
   },
   "model_status": {
     "primary": "google/gemini-3.5-flash",
@@ -173,7 +173,7 @@
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
-        "current_activity": "\ud83d\udccc Queued: Create: Landlord 2026 Annual Planner PDF spec \u2014 52 weekly pages ($12.99)",
+        "current_activity": "\ud83d\udccc Queued: Create: 30 real estate agent Instagram post templates Canva spec ($14.99)",
         "active_task": null,
         "last_task": null,
         "last_seen": null
@@ -241,28 +241,16 @@
     }
   ],
   "manager": {
-    "last_cycle": "2026-08-19T23:34:17.615034-05:00",
+    "last_cycle": "2026-08-20T07:20:00.418997-05:00",
     "task_summary": {
-      "pending": 23,
+      "pending": 20,
       "in_progress": 0,
-      "done": 19,
+      "done": 22,
       "blocked": 0,
       "total": 42
     },
     "active_tasks": [],
     "pending_tasks": [
-      {
-        "id": "disc-planner-001",
-        "title": "Create: Landlord 2026 Annual Planner PDF spec \u2014 52 weekly pages ($12.99)",
-        "description": "Design spec for a digital planner PDF for landlords. 52 weekly spreads: rent collection tracker, maintenance calendar, expense log, tenant notes, goal tracker. Write all page layouts and content. Output to data/products/planner-landlord-2026.md",
-        "assigned_to": "lyra",
-        "priority": "HIGH",
-        "status": "PENDING",
-        "deliverable": "data/products/planner-landlord-2026.md",
-        "channel": "Etsy+Gumroad",
-        "price": "$12.99",
-        "dispatched_at": "2026-08-20T03:36:00.988372+00:00"
-      },
       {
         "id": "disc-social-001",
         "title": "Create: 30 real estate agent Instagram post templates Canva spec ($14.99)",
@@ -297,16 +285,6 @@
         "deliverable": "data/products/airbnb-host-kit.md",
         "channel": "Etsy+Gumroad",
         "price": "$24.99",
-        "dispatched_at": "2026-08-20T03:36:00.988372+00:00"
-      },
-      {
-        "id": "finn-001",
-        "title": "FINN: Set up daily revenue tracking \u2014 compare actual vs $667/day target",
-        "description": "Read financial data from command-center-data.json. Calculate: today's revenue, week's revenue, gap to $667/day. Identify which products/channels are producing. Write daily P&L report to data/finn-daily-report.md. Flag if more than 20% behind daily target.",
-        "assigned_to": "finn",
-        "priority": "CRITICAL",
-        "status": "PENDING",
-        "deliverable": "data/finn-daily-report.md",
         "dispatched_at": "2026-08-20T03:36:00.988372+00:00"
       },
       {
@@ -388,7 +366,11 @@
         "priority": "HIGH",
         "status": "PENDING",
         "deliverable": "data/efficiency-audit.md",
-        "dispatched_at": "2026-08-20T03:36:00.988372+00:00"
+        "dispatched_at": "2026-08-20T07:20:00.418997-05:00",
+        "dispatched_by": "axiom",
+        "blocked_reason": null,
+        "unblocked_by": "auto-healer",
+        "unblocked_at": "2026-08-20T07:20:00.418997-05:00"
       },
       {
         "id": "efficiency-002",
@@ -408,16 +390,6 @@
         "priority": "CRITICAL",
         "status": "PENDING",
         "deliverable": "data/axiom-decisions.json",
-        "dispatched_at": "2026-08-20T03:36:00.988372+00:00"
-      },
-      {
-        "id": "seo-001",
-        "title": "SUPER SEO: Write optimized SEO for top 10 Etsy listings \u2014 titles, tags, descriptions",
-        "description": "You are Super SEO. Use your elite SEO knowledge to rewrite the top 10 most important Etsy listings for maximum search visibility. For each: 160-char title (front-load keywords), 13 tags (mix broad+long-tail), opening paragraph with keyword density. Target keywords: state + 'lease agreement template', 'landlord form', 'rental agreement PDF'. Output to data/seo-optimized-listings.md",
-        "assigned_to": "seo",
-        "priority": "CRITICAL",
-        "status": "PENDING",
-        "deliverable": "data/seo-optimized-listings.md",
         "dispatched_at": "2026-08-20T03:36:00.988372+00:00"
       },
       {
@@ -641,6 +613,20 @@
         "completed_at": "2026-08-19T23:34:17.615034-05:00"
       },
       {
+        "id": "disc-planner-001",
+        "title": "Create: Landlord 2026 Annual Planner PDF spec \u2014 52 weekly pages ($12.99)",
+        "description": "Design spec for a digital planner PDF for landlords. 52 weekly spreads: rent collection tracker, maintenance calendar, expense log, tenant notes, goal tracker. Write all page layouts and content. Output to data/products/planner-landlord-2026.md",
+        "assigned_to": "lyra",
+        "priority": "HIGH",
+        "status": "DONE",
+        "deliverable": "data/products/planner-landlord-2026.md",
+        "channel": "Etsy+Gumroad",
+        "price": "$12.99",
+        "dispatched_at": "2026-08-20T07:20:00.418997-05:00",
+        "dispatched_by": "atlas",
+        "completed_at": "2026-08-20T07:20:00.418997-05:00"
+      },
+      {
         "id": "disc-payhip-001",
         "title": "Research + write Payhip store setup guide for all existing products ($0 fees)",
         "description": "Research Payhip.com platform. Compare fees vs Etsy/Gumroad. Write a step-by-step guide to set up a Payhip store for ROWAN's digital products. List which products should launch there first and at what price. Output to data/research/payhip-strategy.md",
@@ -668,6 +654,18 @@
         "dispatched_by": "sage",
         "blocked_reason": null,
         "completed_at": "2026-08-19T23:34:17.615034-05:00"
+      },
+      {
+        "id": "finn-001",
+        "title": "FINN: Set up daily revenue tracking \u2014 compare actual vs $667/day target",
+        "description": "Read financial data from command-center-data.json. Calculate: today's revenue, week's revenue, gap to $667/day. Identify which products/channels are producing. Write daily P&L report to data/finn-daily-report.md. Flag if more than 20% behind daily target.",
+        "assigned_to": "finn",
+        "priority": "CRITICAL",
+        "status": "DONE",
+        "deliverable": "data/finn-daily-report.md",
+        "dispatched_at": "2026-08-20T07:20:00.418997-05:00",
+        "dispatched_by": "sage",
+        "completed_at": "2026-08-20T07:20:00.418997-05:00"
       },
       {
         "id": "maya-001",
@@ -755,40 +753,22 @@
         "dispatched_at": "2026-08-20T07:20:00.418997-05:00",
         "dispatched_by": "nova",
         "completed_at": "2026-08-20T07:20:00.418997-05:00"
+      },
+      {
+        "id": "seo-001",
+        "title": "SUPER SEO: Write optimized SEO for top 10 Etsy listings \u2014 titles, tags, descriptions",
+        "description": "You are Super SEO. Use your elite SEO knowledge to rewrite the top 10 most important Etsy listings for maximum search visibility. For each: 160-char title (front-load keywords), 13 tags (mix broad+long-tail), opening paragraph with keyword density. Target keywords: state + 'lease agreement template', 'landlord form', 'rental agreement PDF'. Output to data/seo-optimized-listings.md",
+        "assigned_to": "seo",
+        "priority": "CRITICAL",
+        "status": "DONE",
+        "deliverable": "data/seo-optimized-listings.md",
+        "dispatched_at": "2026-08-20T07:30:01.370758-05:00",
+        "dispatched_by": "nova",
+        "completed_at": "2026-08-20T07:30:01.370758-05:00"
       }
     ],
     "blocked_tasks": [],
     "recent_actions": [
-      {
-        "ts": "2026-08-19T23:34:17.615034-05:00",
-        "manager": "nova",
-        "task_id": "blake-001",
-        "action": "verified_complete",
-        "status": "done"
-      },
-      {
-        "ts": "2026-08-19T23:34:17.615034-05:00",
-        "manager": "atlas",
-        "task_id": "disc-email-001",
-        "action": "verified_complete",
-        "status": "done"
-      },
-      {
-        "ts": "2026-08-19T23:34:17.615034-05:00",
-        "manager": "sage",
-        "task_id": "disc-nft-001",
-        "action": "verified_complete",
-        "status": "done"
-      },
-      {
-        "ts": "2026-08-19T23:34:17.615034-05:00",
-        "manager": "axiom",
-        "task_id": "perp-zara-1787196127",
-        "worker": "zara",
-        "action": "dispatch",
-        "status": "DONE",
-        "output_preview": "The 5 customer success email sequences have been written to `data/content/zara-post-purchase.md` as requested.\n[plugins] plugins.allow is empty; discovered non-bundled plugins may auto-load: codex (/Users/andrewhanna/.openclaw/npm/projects/openclaw-codex-8902d781d4__openclaw-generation__g-49fd4dbfde"
-      },
       {
         "ts": "2026-08-20T07:20:00.418997-05:00",
         "manager": "nova",
@@ -797,66 +777,46 @@
         "action": "dispatch",
         "status": "DONE",
         "output_preview": "I have successfully written all 10 high-intent SEO blog post outlines targeting landlords to the designated file.\n\n**Deliverable Written To:**\n`data/content/rio-blog-outlines.md`\n\n### Strategy Highlights:\n*   **Highly Targeted Keywords:** Every outline focuses on a high-intent, transactional keyword"
+      },
+      {
+        "ts": "2026-08-20T07:20:00.418997-05:00",
+        "manager": "atlas",
+        "task_id": "disc-planner-001",
+        "worker": "lyra",
+        "action": "dispatch",
+        "status": "DONE",
+        "output_preview": "I have successfully designed the **Landlord 2026 Annual Planner PDF Spec** (52 weekly pages, priced at $12.99) with an elegant Bauhaus minimalist layout, balanced grid structures, and precise property-management workflows. \n\nThe complete technical product specification has been written directly to t"
+      },
+      {
+        "ts": "2026-08-20T07:20:00.418997-05:00",
+        "manager": "sage",
+        "task_id": "finn-001",
+        "worker": "finn",
+        "action": "dispatch",
+        "status": "DONE",
+        "output_preview": "I have completed the task and established the daily revenue tracking model.\n\n### Deliverable Status\n* **File Written:** `data/finn-daily-report.md`\n* **Target Defined:** **$667/day** (to reach **$20,000 by Sept 19, 2026**)\n* **Tracking Period:** August 20, 2026 to September 18, 2026\n\nThe tracking fi"
+      },
+      {
+        "ts": "2026-08-20T07:20:00.418997-05:00",
+        "manager": "axiom",
+        "task_id": "efficiency-001",
+        "worker": "efficiency",
+        "action": "dispatch",
+        "status": "BLOCKED",
+        "output_preview": "[TIMEOUT after 180s]"
+      },
+      {
+        "ts": "2026-08-20T07:30:01.370758-05:00",
+        "manager": "nova",
+        "task_id": "seo-001",
+        "worker": "seo",
+        "action": "dispatch",
+        "status": "DONE",
+        "output_preview": "I have successfully completed the SUPER SEO task.\n\nThe fully optimized titles, tags, and descriptions for **SwirlCraftShop's Top 10 Etsy Listing Categories** have been generated and written directly to the deliverable file:\n\ud83d\udcc1 **`data/seo-optimized-listings.md`**\n\nEach of the top 10 listings includes"
       }
     ]
   },
   "evolution_log": [
-    {
-      "timestamp": "2026-08-19T23:00:01.509697-05:00",
-      "action": "SEO_COMPLETE",
-      "detail": "All 36 Etsy SEO titles batched from aria-seo-work-2026-08-18.md",
-      "result": "success",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T23:00:01.509697-05:00",
-      "action": "DASHBOARD_HEALED",
-      "detail": "Sync OK. Warnings: 0. Stale: 0.",
-      "result": "ok",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T23:00:01.509697-05:00",
-      "action": "AGENT_WATCHDOG",
-      "detail": "Active: ['aria', 'nova', 'sage', 'atlas', 'ivy', 'main']. Idle: []. Woken: [].",
-      "result": "success",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T23:00:01.509697-05:00",
-      "action": "COST_GUARD_RUN",
-      "detail": "Daily $0.0000/$3.33. Monthly 0.2%. Alerts: []. Actions: [].",
-      "result": "ok",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T23:00:01.509697-05:00",
-      "action": "PROFIT_WAR_ERROR",
-      "detail": "'building_name'",
-      "result": "error",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T23:00:01.509697-05:00",
-      "action": "EVOLVE_CYCLE_COMPLETE",
-      "detail": "Full cycle complete. Results: {\"model\": \"upgraded:google/gemini-3.5-flash\", \"seo\": \"complete\", \"dashboard\": \"ok\", \"watchdog\": {\"active\": [\"aria\", \"nova\", \"sage\", \"atlas\", \"ivy\", \"main\"], \"idle\": [], \"woken\": []}, \"cost\": \"ok\", \"profit_war\": \"error:'building_name'\"}",
-      "result": "success",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T23:00:01.064207-05:00",
-      "action": "AGENT_SPAWNED",
-      "detail": "\ud83e\udd16 Luna (Night Operations AI) spawned for 24/7 coverage",
-      "result": "success",
-      "triggered_by": "axiom"
-    },
-    {
-      "timestamp": "2026-08-19T23:00:01.064207-05:00",
-      "action": "AXIOM_CYCLE_COMPLETE",
-      "detail": "AXIOM cycle 6: 0 executed, 2 attempted. Tasks: 0 done/0 blocked.",
-      "result": "success",
-      "triggered_by": "axiom"
-    },
     {
       "timestamp": "2026-08-19T23:00:01.070009-05:00",
       "action": "DESIGN_COUNCIL_VOTE",
@@ -936,6 +896,60 @@
       "action": "PERPETUAL_ENGINE",
       "detail": "Dispatched 4 idle agents. Active: ['aria', 'atlas', 'axiom', 'builder', 'chase', 'cipher', 'efficiency', 'finn', 'lyra', 'max', 'orion', 'rea', 'rio', 'scout', 'seo', 'val', 'victor']. Goal: $20k/month",
       "result": "success"
+    },
+    {
+      "timestamp": "2026-08-20T12:30:01.374330+00:00",
+      "action": "SALE_SPRINT_ACTIVATED",
+      "detail": "\ud83d\udea8 ALL AGENTS: Maximum priority \u2014 make 1 sale in 24 hours. Etsy, Gumroad.",
+      "result": "active"
+    },
+    {
+      "timestamp": "2026-08-20T12:30:01.448214+00:00",
+      "action": "PERPETUAL_ENGINE",
+      "detail": "Dispatched 0 idle agents. Active: ['aria', 'atlas', 'ember', 'ivy', 'nova', 'sage']. Goal: $20k/month",
+      "result": "all_busy"
+    },
+    {
+      "timestamp": "2026-08-20T07:30:01.654685-05:00",
+      "action": "SEO_COMPLETE",
+      "detail": "All 36 Etsy SEO titles batched from aria-seo-work-2026-08-18.md",
+      "result": "success",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-20T07:30:01.654685-05:00",
+      "action": "DASHBOARD_HEALED",
+      "detail": "Sync OK. Warnings: 0. Stale: 0.",
+      "result": "ok",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-20T07:30:01.654685-05:00",
+      "action": "AGENT_WATCHDOG",
+      "detail": "Active: ['aria', 'nova', 'sage', 'atlas', 'ivy', 'main']. Idle: []. Woken: [].",
+      "result": "success",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-20T07:30:01.654685-05:00",
+      "action": "COST_GUARD_RUN",
+      "detail": "Daily $0.0000/$3.33. Monthly 0.2%. Alerts: []. Actions: [].",
+      "result": "ok",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-20T07:30:01.654685-05:00",
+      "action": "PROFIT_WAR_ERROR",
+      "detail": "'building_name'",
+      "result": "error",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-20T07:30:01.654685-05:00",
+      "action": "EVOLVE_CYCLE_COMPLETE",
+      "detail": "Full cycle complete. Results: {\"model\": \"no_change\", \"seo\": \"complete\", \"dashboard\": \"ok\", \"watchdog\": {\"active\": [\"aria\", \"nova\", \"sage\", \"atlas\", \"ivy\", \"main\"], \"idle\": [], \"woken\": []}, \"cost\": \"ok\", \"profit_war\": \"error:'building_name'\"}",
+      "result": "success",
+      "triggered_by": "rowan-evolve-cron"
     }
   ],
   "agent_activity": {
