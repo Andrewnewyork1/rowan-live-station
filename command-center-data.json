@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T20:47:12-05:00",
+  "generated_at": "2026-08-19T20:50:20-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "OpenAI",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T01:47:06Z",
+          "summary_generated_at": "2026-08-20T01:50:00Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T01:47:06Z",
+          "summary_generated_at": "2026-08-20T01:50:00Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-20T01:47:06Z",
+      "generated_at": "2026-08-20T01:50:00Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -452,13 +452,6 @@
   },
   "evolution_log": [
     {
-      "timestamp": "2026-08-19T19:33:41.688885-05:00",
-      "action": "EVOLVE_CYCLE_COMPLETE",
-      "detail": "Full cycle complete. Results: {\"model\": \"no_change\", \"seo\": \"complete\", \"dashboard\": \"ok\", \"watchdog\": {\"active\": [\"aria\", \"nova\", \"sage\", \"atlas\", \"ivy\", \"main\"], \"idle\": [], \"woken\": []}, \"cost\": \"ok\", \"profit_war\": \"error:'building_name'\"}",
-      "result": "success",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
       "timestamp": "2026-08-19T20:00:00.698881-05:00",
       "action": "MODEL_UPGRADED",
       "detail": "Auto-upgraded primary model: openai/gpt-5.5 -> google/gemini-3.5-flash",
@@ -588,6 +581,13 @@
       "timestamp": "2026-08-19T20:46:15.765175-05:00",
       "action": "COMPANY_COUNCIL",
       "detail": "🏛️ Council voted. Winner: 'Launch California Landlord Bundle at $29.99' (4 votes). Highest search volume state, ready to go",
+      "result": "success",
+      "triggered_by": "axiom"
+    },
+    {
+      "timestamp": "2026-08-19T20:46:15.765175-05:00",
+      "action": "AXIOM_CYCLE_COMPLETE",
+      "detail": "AXIOM cycle 1: 2 executed, 4 attempted. Tasks: 0 done/3 blocked.",
       "result": "success",
       "triggered_by": "axiom"
     }
