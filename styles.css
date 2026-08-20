@@ -3802,3 +3802,87 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--ice); outli
 
 /* AXIOM bar — don't let it overlap city */
 .axiom-bar { z-index: 45; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   FINAL MASTER OVERRIDES v2 — wins all specificity battles
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Old 2D city — permanently dead */
+.city-world,.city-lot,.city-plot,.city-hub,.city-road,
+.city-lot-label,.city-hub-name,.city-hub-icon,#cityWorld { display:none !important; }
+
+/* City viewport — one true definition */
+.city-viewport {
+  position:relative !important; height:580px !important;
+  min-height:580px !important; overflow:hidden !important;
+  background:#010510 !important; border-radius:14px !important;
+  cursor:grab !important; touch-action:none !important;
+  user-select:none !important; -webkit-user-select:none !important;
+  isolation:isolate;
+}
+.city-viewport:active { cursor:grabbing !important; }
+.city-viewport > canvas {
+  position:absolute !important; inset:0 !important;
+  width:100% !important; height:100% !important;
+  z-index:10 !important; pointer-events:all !important;
+  touch-action:none !important; display:block !important;
+}
+.city-viewport > *:not(canvas) { pointer-events:none !important; }
+.city-camera-controls { z-index:20 !important; pointer-events:none !important; }
+.city-camera-controls button { pointer-events:auto !important; cursor:pointer !important; }
+
+/* Nav — one true definition */
+.nav-item {
+  display:flex; align-items:center; gap:9px; width:100%;
+  padding:9px 12px; border:1px solid transparent; border-radius:9px;
+  background:transparent; color:var(--muted); font-size:12px;
+  font-weight:500; cursor:pointer; transition:all 0.15s ease;
+  text-align:left;
+}
+.nav-item:hover { background:rgba(255,255,255,0.04); color:var(--text); }
+.nav-item.active {
+  background:linear-gradient(135deg,rgba(109,183,255,0.13) 0%,rgba(56,211,159,0.06) 100%);
+  border-color:rgba(109,183,255,0.25); color:#fff; font-weight:700;
+  box-shadow:inset 3px 0 0 var(--ice),0 2px 12px rgba(0,0,0,0.3);
+}
+.nav-item--critical.active {
+  background:rgba(244,63,94,0.1); border-color:rgba(244,63,94,0.3);
+  box-shadow:inset 3px 0 0 #f43f5e;
+}
+.nav-item span:first-child { font-size:14px; min-width:20px; }
+
+/* Surface — one true definition */
+.surface {
+  background:linear-gradient(145deg,rgba(255,255,255,0.032) 0%,rgba(255,255,255,0.008) 100%);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:var(--radius,14px);
+}
+
+/* Live agent status dots */
+.agent-live-dot {
+  display:inline-block; width:7px; height:7px; border-radius:50%;
+  flex-shrink:0; margin-right:4px;
+}
+.agent-live-dot.working { background:#22c97a; box-shadow:0 0 6px #22c97a; animation:livePulse 1.4s ease-in-out infinite; }
+.agent-live-dot.idle { background:#334155; }
+.agent-live-dot.blocked { background:#f43f5e; box-shadow:0 0 5px #f43f5e; }
+@keyframes livePulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
+
+/* LIVE badge */
+.live-ping {
+  display:inline-flex; align-items:center; gap:5px; font-size:9px;
+  color:var(--muted); padding:2px 8px; border-radius:99px;
+  background:rgba(34,201,122,0.07); border:1px solid rgba(34,201,122,0.15);
+}
+.live-ping-dot { width:5px; height:5px; border-radius:50%; background:#22c97a; animation:livePulse 1.4s ease-in-out infinite; }
+.live-ping.stale { opacity:0.35; }
+
+/* AXIOM bar — above sidebar content */
+.axiom-bar { margin-left:var(--sidebar,246px); z-index:45; }
+@media(max-width:900px){ .axiom-bar{margin-left:0;} .city-viewport{height:380px !important;min-height:380px !important;} .main-content{margin-left:0;} }
+
+/* Scrollbar */
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:99px}
+::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,0.18)}

@@ -2214,3 +2214,89 @@ function renderRdDepartment() {
     });
   });
 }
+
+// ── Live 30-second auto-refresh ──────────────────────────────────────────
+(function startLiveRefresh() {
+  let lastModified = null;
+  let refreshCount = 0;
+
+  function updatePingBadge(fresh) {
+    document.querySelectorAll(".live-ping").forEach(b => b.classList.toggle("stale", !fresh));
+    const cycleBadge = document.getElementById("axiomCycleBadge");
+    if (cycleBadge && window.DATA && window.DATA.axiom_state) {
+      cycleBadge.textContent = "⚙️ AXIOM · Cycle " + (window.DATA.axiom_state.total_cycles || 1);
+    }
+  }
+
+  function flashAgent(id) {
+    const card = document.querySelector("[data-agent-id=\"" + id + "\"]");
+    if (!card) return;
+    card.style.transition = "box-shadow 0.4s";
+    card.style.boxShadow = "0 0 0 2px #22c97a, 0 0 20px rgba(34,201,122,0.3)";
+    setTimeout(() => { card.style.boxShadow = ""; }, 1800);
+  }
+
+  async function refresh() {
+    try {
+      const res = await fetch("./dashboard-data.json?_=" + Date.now(), { cache: "no-store" });
+      if (!res.ok) return;
+      const lm = res.headers.get("last-modified") || res.headers.get("etag") || "";
+      const fresh = await res.json();
+      const oldTeam = (window.DATA && window.DATA.team) || [];
+      window.DATA = fresh;
+
+      // Flash agents whose status changed
+      (fresh.team || []).forEach(a => {
+        const old = oldTeam.find(o => o.id === a.id);
+        if (old && old.status !== a.status) flashAgent(a.id);
+      });
+
+      // Re-render
+      try {
+        if (typeof renderAll === "function") renderAll();
+        else {
+          if (typeof renderCommand  === "function") renderCommand();
+          if (typeof renderMoney    === "function") renderMoney();
+          if (typeof renderTeam     === "function") renderTeam();
+          if (typeof renderApprovals=== "function") renderApprovals();
+          if (typeof renderGrowth   === "function") renderGrowth();
+          if (typeof renderCritical === "function") renderCritical();
+        }
+      } catch(e) {}
+
+      // Update revenue mega bar
+      const revEl  = document.getElementById("revenueMegaCurrent");
+      const fillEl = document.getElementById("revenueMegaFill");
+      if (revEl && fresh.finance) {
+        const rev = fresh.finance.net_revenue_usd || 0;
+        revEl.textContent = "$" + rev.toLocaleString();
+        if (fillEl) fillEl.style.width = Math.max(0.5, Math.min(100, (rev/20000)*100)) + "%";
+      }
+
+      updatePingBadge(true);
+      refreshCount++;
+    } catch(e) { updatePingBadge(false); }
+  }
+
+  // Add LIVE badge to AXIOM bar
+  window.addEventListener("DOMContentLoaded", () => {
+    const axiomBar = document.getElementById("axiomBar");
+    if (axiomBar && !axiomBar.querySelector(".live-ping")) {
+      const ping = document.createElement("div");
+      ping.className = "live-ping";
+      ping.innerHTML = "<div class=\"live-ping-dot\"></div><span>LIVE 30s</span>";
+      axiomBar.appendChild(ping);
+    }
+  });
+  if (document.readyState !== "loading") {
+    const axiomBar = document.getElementById("axiomBar");
+    if (axiomBar && !axiomBar.querySelector(".live-ping")) {
+      const ping = document.createElement("div");
+      ping.className = "live-ping";
+      ping.innerHTML = "<div class=\"live-ping-dot\"></div><span>LIVE 30s</span>";
+      axiomBar.appendChild(ping);
+    }
+  }
+
+  setInterval(refresh, 30_000);
+})();
