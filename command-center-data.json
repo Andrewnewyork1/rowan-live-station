@@ -1,10 +1,239 @@
 {
+  "last_updated": "2026-08-20T04:10:00.705231+00:00",
+  "mission": {
+    "goal_usd": 20000,
+    "deadline": "September 19, 2026",
+    "deadline_iso": "2026-09-19T03:13:59.267749+00:00",
+    "daily_target": 666.67,
+    "revenue_earned": 0.0,
+    "days_remaining": 29,
+    "progress_pct": 0.0,
+    "sprint_mode": true
+  },
+  "agents": {
+    "total": 30,
+    "working": 3,
+    "queued": 20,
+    "standby": 7,
+    "list": [
+      {
+        "id": "main",
+        "name": "main",
+        "status": "standby",
+        "current_activity": "Standby",
+        "world": "earth"
+      },
+      {
+        "id": "ivy",
+        "name": "ivy",
+        "status": "working",
+        "current_activity": "SPRINT: Optimize top 3 Etsy listing titles for max click-through",
+        "world": "earth"
+      },
+      {
+        "id": "sage",
+        "name": "sage",
+        "status": "standby",
+        "current_activity": "SPRINT: Recommend single best listing for Etsy free shipping badge",
+        "world": "earth"
+      },
+      {
+        "id": "aria",
+        "name": "aria",
+        "status": "standby",
+        "current_activity": "SPRINT: Write + publish California Landlord Bundle listing copy",
+        "world": "earth"
+      },
+      {
+        "id": "atlas",
+        "name": "atlas",
+        "status": "working",
+        "current_activity": "SPRINT: Write Gumroad product page for Vendor Admin Bundle at $29.99",
+        "world": "earth"
+      },
+      {
+        "id": "nova",
+        "name": "nova",
+        "status": "queued",
+        "current_activity": "SPRINT: Channel analysis \u2014 which path to first sale in 24h",
+        "world": "earth"
+      },
+      {
+        "id": "zara",
+        "name": "Zara",
+        "status": "queued",
+        "current_activity": "Write 5 customer success email sequences for post-purchase follow-up",
+        "world": "earth"
+      },
+      {
+        "id": "rio",
+        "name": "Rio",
+        "status": "queued",
+        "current_activity": "Write 10 SEO blog post outlines: landlord tips that link to our products",
+        "world": "earth"
+      },
+      {
+        "id": "kira",
+        "name": "Kira",
+        "status": "queued",
+        "current_activity": "Write standard disclaimer to include in all legal document templates",
+        "world": "earth"
+      },
+      {
+        "id": "lyra",
+        "name": "Lyra",
+        "status": "queued",
+        "current_activity": "Create: Landlord 2026 Annual Planner PDF spec \u2014 52 weekly pages ($12.99)",
+        "world": "earth"
+      },
+      {
+        "id": "orion",
+        "name": "Orion",
+        "status": "queued",
+        "current_activity": "Verify Etsy digital download delivery works end-to-end for top 5 listings",
+        "world": "earth"
+      },
+      {
+        "id": "finn",
+        "name": "Finn",
+        "status": "queued",
+        "current_activity": "FINN: Set up daily revenue tracking \u2014 compare actual vs $667/day target",
+        "world": "earth"
+      },
+      {
+        "id": "maya",
+        "name": "Maya",
+        "status": "standby",
+        "current_activity": "MAYA: Create multi-platform publishing checklist for all pending products",
+        "world": "earth"
+      },
+      {
+        "id": "chase",
+        "name": "Chase",
+        "status": "queued",
+        "current_activity": "CHASE: Analyze optimal price points \u2014 $7.99 vs $9.99 vs $14.99 for templates",
+        "world": "earth"
+      },
+      {
+        "id": "blake",
+        "name": "Blake",
+        "status": "queued",
+        "current_activity": "BLAKE: Post to 3 relevant Reddit communities today \u2014 value content with shop lin",
+        "world": "earth"
+      },
+      {
+        "id": "quinn",
+        "name": "Quinn",
+        "status": "working",
+        "current_activity": "QUINN: Quality review all completed product specs \u2014 flag any issues before publi",
+        "world": "earth"
+      },
+      {
+        "id": "rex",
+        "name": "Rex",
+        "status": "queued",
+        "current_activity": "REX: Build product portfolio tracker \u2014 every published product with URL + revenu",
+        "world": "earth"
+      },
+      {
+        "id": "scout",
+        "name": "Scout",
+        "status": "queued",
+        "current_activity": "SCOUT: Research 5 new digital product platforms \u2014 fees, setup, audience size",
+        "world": "earth"
+      },
+      {
+        "id": "cipher",
+        "name": "Cipher",
+        "status": "queued",
+        "current_activity": "CIPHER: Set optimal prices for all 11 digital product types \u2014 maximize profit ma",
+        "world": "earth"
+      },
+      {
+        "id": "victor",
+        "name": "Victor",
+        "status": "queued",
+        "current_activity": "DR. VICTOR: Research AI-generated digital product opportunities in 2026 \u2014 what's",
+        "world": "earth"
+      },
+      {
+        "id": "efficiency",
+        "name": "Efficiency",
+        "status": "queued",
+        "current_activity": "EFFICIENCY DEPT: Audit all agent runs this week \u2014 identify waste, optimize routi",
+        "world": "earth"
+      },
+      {
+        "id": "ember",
+        "name": "Ember",
+        "status": "queued",
+        "current_activity": "SPRINT: Create 5 Pinterest pins with direct buy-now CTAs",
+        "world": "earth"
+      },
+      {
+        "id": "axiom",
+        "name": "Axiom",
+        "status": "queued",
+        "current_activity": "AXIOM: Run CEO cycle \u2014 review $20k mission progress, make 7 decisions, dispatch ",
+        "world": "earth"
+      },
+      {
+        "id": "seo",
+        "name": "SuperSEO",
+        "status": "standby",
+        "current_activity": "SEO URGENT: Rewrite titles+tags for all 100 SwirlCraftShop Etsy listings",
+        "world": "earth"
+      },
+      {
+        "id": "builder",
+        "name": "Builder",
+        "status": "queued",
+        "current_activity": "BUILDER: Assemble complete Landlord Starter Kit \u2014 5 PDF templates in one bundle",
+        "world": "earth"
+      },
+      {
+        "id": "luna",
+        "name": "Luna",
+        "status": "standby",
+        "current_activity": "Standby",
+        "world": "earth"
+      },
+      {
+        "id": "max",
+        "name": "Max",
+        "status": "queued",
+        "current_activity": "MAX: Generate 30 product listing titles in bulk \u2014 all digital template categorie",
+        "world": "earth"
+      },
+      {
+        "id": "sky",
+        "name": "Sky",
+        "status": "standby",
+        "current_activity": "Standby",
+        "world": "earth"
+      },
+      {
+        "id": "rea",
+        "name": "Rea",
+        "status": "queued",
+        "current_activity": "REA: Create emergency revenue acceleration plan \u2014 how to hit $667 TODAY",
+        "world": "earth"
+      },
+      {
+        "id": "val",
+        "name": "Val",
+        "status": "queued",
+        "current_activity": "VAL: Validate all products ready to launch \u2014 create go/no-go list",
+        "world": "earth"
+      }
+    ]
+  },
   "team": [
     {
       "id": "main",
       "name": "main",
       "status": "standby",
-      "current_task": "Standby \u2014 awaiting dispatch"
+      "current_task": "Standby"
     },
     {
       "id": "ivy",
@@ -154,7 +383,7 @@
       "id": "luna",
       "name": "Luna",
       "status": "standby",
-      "current_task": "Standby \u2014 awaiting dispatch"
+      "current_task": "Standby"
     },
     {
       "id": "max",
@@ -166,7 +395,7 @@
       "id": "sky",
       "name": "Sky",
       "status": "standby",
-      "current_task": "Standby \u2014 awaiting dispatch"
+      "current_task": "Standby"
     },
     {
       "id": "rea",
@@ -181,16 +410,6 @@
       "current_task": "VAL: Validate all products ready to launch \u2014 create go/no-go"
     }
   ],
-  "mission": {
-    "goal_usd": 20000,
-    "deadline": "September 19, 2026",
-    "deadline_iso": "2026-09-19T03:13:59.267749+00:00",
-    "daily_target": 666.67,
-    "revenue_earned": 0.0,
-    "days_remaining": 29,
-    "progress_pct": 0.0,
-    "sprint_mode": true
-  },
   "tasks": {
     "in_progress": 4,
     "pending": 34,
@@ -228,266 +447,10 @@
     "total_views": 162,
     "total_sales": 2,
     "revenue_mtd_usd": 0.0,
-    "revenue_earned_usd": 0.0,
     "avg_listing_price": 23.93,
     "listings_zero_views": 55,
-    "listings_optimized": 0,
-    "listings_to_optimize": 100,
     "etsy_api_connected": true,
-    "oauth_pending": true,
-    "last_updated": "2026-08-20T04:05:28.500587+00:00",
-    "listing_categories": {
-      "planners_journals": 89,
-      "home_care_forms": 11
-    }
-  },
-  "agents": {
-    "total": 30,
-    "working": 3,
-    "queued": 20,
-    "standby": 7,
-    "list": [
-      {
-        "id": "main",
-        "name": "main",
-        "status": "standby",
-        "current_activity": "Standby \u2014 awaiting dispatch",
-        "world": "earth",
-        "priority": ""
-      },
-      {
-        "id": "ivy",
-        "name": "ivy",
-        "status": "working",
-        "current_activity": "SPRINT: Optimize top 3 Etsy listing titles for max click-through",
-        "world": "earth",
-        "priority": "CRITICAL"
-      },
-      {
-        "id": "sage",
-        "name": "sage",
-        "status": "standby",
-        "current_activity": "SPRINT: Recommend single best listing for Etsy free shipping badge",
-        "world": "earth",
-        "priority": "HIGH"
-      },
-      {
-        "id": "aria",
-        "name": "aria",
-        "status": "standby",
-        "current_activity": "SPRINT: Write + publish California Landlord Bundle listing copy",
-        "world": "earth",
-        "priority": "CRITICAL"
-      },
-      {
-        "id": "atlas",
-        "name": "atlas",
-        "status": "working",
-        "current_activity": "SPRINT: Write Gumroad product page for Vendor Admin Bundle at $29.99",
-        "world": "earth",
-        "priority": "CRITICAL"
-      },
-      {
-        "id": "nova",
-        "name": "nova",
-        "status": "queued",
-        "current_activity": "SPRINT: Channel analysis \u2014 which path to first sale in 24h",
-        "world": "earth",
-        "priority": "HIGH"
-      },
-      {
-        "id": "zara",
-        "name": "Zara",
-        "status": "queued",
-        "current_activity": "Write 5 customer success email sequences for post-purchase follow-up",
-        "world": "earth",
-        "priority": "HIGH"
-      },
-      {
-        "id": "rio",
-        "name": "Rio",
-        "status": "queued",
-        "current_activity": "Write 10 SEO blog post outlines: landlord tips that link to our products",
-        "world": "earth",
-        "priority": "HIGH"
-      },
-      {
-        "id": "kira",
-        "name": "Kira",
-        "status": "queued",
-        "current_activity": "Write standard disclaimer to include in all legal document templates",
-        "world": "earth",
-        "priority": "HIGH"
-      },
-      {
-        "id": "lyra",
-        "name": "Lyra",
-        "status": "queued",
-        "current_activity": "Create: Landlord 2026 Annual Planner PDF spec \u2014 52 weekly pages ($12.99)",
-        "world": "earth",
-        "priority": "HIGH"
-      },
-      {
-        "id": "orion",
-        "name": "Orion",
-        "status": "queued",
-        "current_activity": "Verify Etsy digital download delivery works end-to-end for top 5 listings",
-        "world": "earth",
-        "priority": "HIGH"
-      },
-      {
-        "id": "finn",
-        "name": "Finn",
-        "status": "queued",
-        "current_activity": "FINN: Set up daily revenue tracking \u2014 compare actual vs $667/day target",
-        "world": "earth",
-        "priority": "CRITICAL"
-      },
-      {
-        "id": "maya",
-        "name": "Maya",
-        "status": "standby",
-        "current_activity": "MAYA: Create multi-platform publishing checklist for all pending products",
-        "world": "earth",
-        "priority": "CRITICAL"
-      },
-      {
-        "id": "chase",
-        "name": "Chase",
-        "status": "queued",
-        "current_activity": "CHASE: Analyze optimal price points \u2014 $7.99 vs $9.99 vs $14.99 for templates",
-        "world": "earth",
-        "priority": "HIGH"
-      },
-      {
-        "id": "blake",
-        "name": "Blake",
-        "status": "queued",
-        "current_activity": "BLAKE: Post to 3 relevant Reddit communities today \u2014 value content with shop lin",
-        "world": "earth",
-        "priority": "HIGH"
-      },
-      {
-        "id": "quinn",
-        "name": "Quinn",
-        "status": "working",
-        "current_activity": "QUINN: Quality review all completed product specs \u2014 flag any issues before publi",
-        "world": "earth",
-        "priority": "CRITICAL"
-      },
-      {
-        "id": "rex",
-        "name": "Rex",
-        "status": "queued",
-        "current_activity": "REX: Build product portfolio tracker \u2014 every published product with URL + revenu",
-        "world": "earth",
-        "priority": "HIGH"
-      },
-      {
-        "id": "scout",
-        "name": "Scout",
-        "status": "queued",
-        "current_activity": "SCOUT: Research 5 new digital product platforms \u2014 fees, setup, audience size",
-        "world": "earth",
-        "priority": "HIGH"
-      },
-      {
-        "id": "cipher",
-        "name": "Cipher",
-        "status": "queued",
-        "current_activity": "CIPHER: Set optimal prices for all 11 digital product types \u2014 maximize profit ma",
-        "world": "earth",
-        "priority": "CRITICAL"
-      },
-      {
-        "id": "victor",
-        "name": "Victor",
-        "status": "queued",
-        "current_activity": "DR. VICTOR: Research AI-generated digital product opportunities in 2026 \u2014 what's",
-        "world": "earth",
-        "priority": "HIGH"
-      },
-      {
-        "id": "efficiency",
-        "name": "Efficiency",
-        "status": "queued",
-        "current_activity": "EFFICIENCY DEPT: Audit all agent runs this week \u2014 identify waste, optimize routi",
-        "world": "earth",
-        "priority": "HIGH"
-      },
-      {
-        "id": "ember",
-        "name": "Ember",
-        "status": "queued",
-        "current_activity": "SPRINT: Create 5 Pinterest pins with direct buy-now CTAs",
-        "world": "earth",
-        "priority": "CRITICAL"
-      },
-      {
-        "id": "axiom",
-        "name": "Axiom",
-        "status": "queued",
-        "current_activity": "AXIOM: Run CEO cycle \u2014 review $20k mission progress, make 7 decisions, dispatch ",
-        "world": "earth",
-        "priority": "CRITICAL"
-      },
-      {
-        "id": "seo",
-        "name": "SuperSEO",
-        "status": "standby",
-        "current_activity": "SEO URGENT: Rewrite titles+tags for all 100 SwirlCraftShop Etsy listings",
-        "world": "earth",
-        "priority": "CRITICAL"
-      },
-      {
-        "id": "builder",
-        "name": "Builder",
-        "status": "queued",
-        "current_activity": "BUILDER: Assemble complete Landlord Starter Kit \u2014 5 PDF templates in one bundle",
-        "world": "earth",
-        "priority": "CRITICAL"
-      },
-      {
-        "id": "luna",
-        "name": "Luna",
-        "status": "standby",
-        "current_activity": "Standby \u2014 awaiting dispatch",
-        "world": "earth",
-        "priority": ""
-      },
-      {
-        "id": "max",
-        "name": "Max",
-        "status": "queued",
-        "current_activity": "MAX: Generate 30 product listing titles in bulk \u2014 all digital template categorie",
-        "world": "earth",
-        "priority": "HIGH"
-      },
-      {
-        "id": "sky",
-        "name": "Sky",
-        "status": "standby",
-        "current_activity": "Standby \u2014 awaiting dispatch",
-        "world": "earth",
-        "priority": ""
-      },
-      {
-        "id": "rea",
-        "name": "Rea",
-        "status": "queued",
-        "current_activity": "REA: Create emergency revenue acceleration plan \u2014 how to hit $667 TODAY",
-        "world": "earth",
-        "priority": "CRITICAL"
-      },
-      {
-        "id": "val",
-        "name": "Val",
-        "status": "queued",
-        "current_activity": "VAL: Validate all products ready to launch \u2014 create go/no-go list",
-        "world": "earth",
-        "priority": "CRITICAL"
-      }
-    ]
+    "oauth_pending": true
   },
   "finance": {
     "revenue_today": 0.0,
@@ -504,19 +467,18 @@
       "gumroad": {
         "active": false,
         "listings": 0,
-        "revenue": 0.0
+        "revenue": 0
       },
       "payhip": {
         "active": false,
         "listings": 0,
-        "revenue": 0.0
+        "revenue": 0
       }
     }
   },
   "axiom_state": {
     "cycles": 6,
     "sprint_mode": true,
-    "last_decision": "Revenue acceleration \u2014 all agents on digital products"
-  },
-  "last_updated": "2026-08-20T04:05:28.500587+00:00"
+    "last_decision": "All resources on revenue generation \u2014 $20k by Sep 19"
+  }
 }
