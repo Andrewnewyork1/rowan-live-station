@@ -292,6 +292,170 @@ export async function bootCity3D() {
 
   // Amenities removed: Clean 13-Agent Metropolis Only
 
+  // ── INFRASTRUCTURE & DISTRICT BUILDINGS ──────────────────────────────────
+  // Every Rowan system gets a physical presence in the city.
+
+  const INFRA_BUILDINGS = [
+    // ── INFRASTRUCTURE DISTRICT (far east side, x=75-95)
+    { id: 'openclaw-gateway',  label: 'OpenClaw Gateway',      sub: 'AI Model Router',         col: 0x00ffcc, pos: [78,  -8], h: 16, w: 6.0, d: 6.0, icon: '🔀', district: 'Infrastructure' },
+    { id: 'github-cdn',        label: 'GitHub Pages CDN',       sub: 'Dashboard Host',          col: 0xf0f6ff, pos: [78,  8], h: 12, w: 5.5, d: 5.5, icon: '🌐', district: 'Infrastructure' },
+    { id: 'netlify-cloud',     label: 'Netlify Cloud',          sub: 'Build & Deploy',          col: 0x00ad9f, pos: [78, 24], h: 10, w: 5.0, d: 5.0, icon: '☁️', district: 'Infrastructure' },
+    { id: 'sqlite-vault',      label: 'OpenClaw Data Vault',    sub: 'Agent Run Database',      col: 0xffd700, pos: [78,-24], h: 9,  w: 5.0, d: 5.0, icon: '🗄️', district: 'Infrastructure' },
+    { id: 'evolution-engine',  label: 'Evolution Engine',       sub: 'Self-Improves every 30m', col: 0x22c97a, pos: [90,  0], h: 18, w: 5.5, d: 5.5, icon: '🧬', district: 'Infrastructure' },
+    { id: 'realtime-sync',     label: 'Real-Time Sync Tower',   sub: 'Data Pulse every 5m',     col: 0x38bdf8, pos: [90, 16], h: 14, w: 4.5, d: 4.5, icon: '📡', district: 'Infrastructure' },
+
+    // ── FINANCE DISTRICT (far west side, x=-75 to -95)
+    { id: 'profit-ledger',     label: 'Profit Ledger Hall',     sub: 'P&L Tracker',             col: 0xfbbf24, pos: [-78, -8], h: 15, w: 6.0, d: 6.0, icon: '💰', district: 'Finance' },
+    { id: 'cost-guard',        label: 'Cost Guard Station',     sub: 'Budget Watchdog',         col: 0xf43f5e, pos: [-78,  8], h: 11, w: 5.0, d: 5.0, icon: '🛡️', district: 'Finance' },
+    { id: 'capital-allocator', label: 'Capital Allocator',      sub: 'Resource Optimizer',      col: 0xa3e635, pos: [-78, 24], h: 10, w: 5.0, d: 5.0, icon: '📊', district: 'Finance' },
+    { id: 'revenue-registry',  label: 'Revenue Channel Reg.',   sub: 'Etsy + All Channels',     col: 0x22c97a, pos: [-90,  0], h: 17, w: 5.5, d: 5.5, icon: '💎', district: 'Finance' },
+
+    // ── COMMERCE DISTRICT (south side, z=75-90)
+    { id: 'swirlcraft-shop',   label: 'SwirlCraft Etsy Shop',   sub: 'Primary Revenue · Live',  col: 0xf97316, pos: [-20, 78], h: 22, w: 7.0, d: 7.0, icon: '🛒', district: 'Commerce' },
+    { id: 'seo-lab',           label: 'SEO Optimization Lab',   sub: '36 Listings Active',      col: 0x34d399, pos: [  0, 78], h: 14, w: 5.5, d: 5.5, icon: '🔍', district: 'Commerce' },
+    { id: 'listing-factory',   label: 'Listing Factory',        sub: 'New Products Created',    col: 0xfcd34d, pos: [ 20, 78], h: 12, w: 5.5, d: 5.5, icon: '🏭', district: 'Commerce' },
+    { id: 'fulfillment-hub',   label: 'Digital Fulfillment Hub',sub: 'Instant Delivery Engine', col: 0x60a5fa, pos: [ 38, 78], h: 10, w: 5.0, d: 5.0, icon: '📦', district: 'Commerce' },
+
+    // ── MARKETING DISTRICT (south-east, z=65-80, x=45-70)
+    { id: 'tiktok-studio',     label: 'TikTok/Reels Studio',    sub: 'Viral Video Content',     col: 0xff2d55, pos: [55, 65], h: 13, w: 5.5, d: 5.5, icon: '🎬', district: 'Marketing' },
+    { id: 'pinterest-gallery', label: 'Pinterest Gallery',      sub: 'Pin Publishing Engine',   col: 0xe60023, pos: [70, 65], h: 11, w: 5.0, d: 5.0, icon: '📌', district: 'Marketing' },
+    { id: 'broadcast-tower',   label: 'Outbound Broadcast',     sub: 'Traffic Funnels',         col: 0x818cf8, pos: [70, 50], h: 20, w: 4.0, d: 4.0, icon: '📻', district: 'Marketing' },
+
+    // ── OPERATIONS DISTRICT (north side, z=-75 to -90)
+    { id: 'manager-tower',     label: 'Manager Control Tower',  sub: 'Sage · Atlas · Nova',     col: 0xc4b5fd, pos: [-20,-78], h: 24, w: 7.0, d: 7.0, icon: '🏢', district: 'Operations' },
+    { id: 'task-depot',        label: 'Task Backlog Depot',     sub: 'Work Queue Dispatcher',   col: 0xfde68a, pos: [  0,-78], h: 13, w: 5.5, d: 5.5, icon: '📋', district: 'Operations' },
+    { id: 'decision-inbox',    label: 'Decision Inbox',         sub: 'Pending Owner Decisions', col: 0xfb923c, pos: [ 20,-78], h: 11, w: 5.5, d: 5.5, icon: '📬', district: 'Operations' },
+    { id: 'approval-gate',     label: 'Approval Checkpoint',   sub: 'Owner Auth Required',     col: 0xf43f5e, pos: [ 38,-78], h: 9,  w: 5.0, d: 5.0, icon: '✅', district: 'Operations' },
+
+    // ── INTELLIGENCE DISTRICT (north-west, z=-65 to -75)
+    { id: 'action-queue',      label: 'Action Queue',           sub: 'Live Ops Requests',       col: 0x67e8f9, pos: [-55,-65], h: 12, w: 5.0, d: 5.0, icon: '⚡', district: 'Intelligence' },
+    { id: 'watchdog-station',  label: 'Watchdog Station',       sub: 'Auto-Heals Blockers',     col: 0xfca5a5, pos: [-70,-65], h: 10, w: 5.0, d: 5.0, icon: '🐕', district: 'Intelligence' },
+    { id: 'daily-upgrade-lab', label: 'Daily Upgrade Lab',      sub: 'Nightly Self-Improvement', col: 0xa78bfa, pos: [-70,-50], h: 14, w: 5.0, d: 5.0, icon: '🔬', district: 'Intelligence' },
+
+    // ── VENTURE LAB DISTRICT (north-east, z=-65 to -75)
+    { id: 'youtube-lab',       label: 'YouTube Venture Lab',    sub: 'Video Revenue Research',  col: 0xff0000, pos: [55,-65], h: 13, w: 5.5, d: 5.5, icon: '▶️', district: 'Venture Lab' },
+    { id: 'flippa-exchange',   label: 'Flippa Asset Exchange',  sub: 'Digital Business M&A',    col: 0xf59e0b, pos: [70,-65], h: 11, w: 5.0, d: 5.0, icon: '🏦', district: 'Venture Lab' },
+  ];
+
+  // ── District Labels (floating text at district centers) ──────────────────
+  const DISTRICTS = [
+    { name: 'INFRASTRUCTURE',  pos: [84,  0], col: '#00ffcc' },
+    { name: 'FINANCE',         pos: [-84, 0], col: '#fbbf24' },
+    { name: 'COMMERCE',        pos: [10, 84], col: '#f97316' },
+    { name: 'MARKETING',       pos: [62, 58], col: '#ff2d55' },
+    { name: 'OPERATIONS',      pos: [10,-84], col: '#c4b5fd' },
+    { name: 'INTELLIGENCE',    pos: [-62,-58],col: '#67e8f9' },
+    { name: 'VENTURE LAB',     pos: [62, -58],col: '#ff0000' },
+    { name: 'AGENT DISTRICT',  pos: [0,  0],  col: '#6db7ff' },
+  ];
+
+  // ── Build each infrastructure building ───────────────────────────────────
+  INFRA_BUILDINGS.forEach(inf => {
+    const [x, z] = inf.pos;
+    const h = inf.h;
+    const col = inf.col;
+    const hexCol = '#' + col.toString(16).padStart(6, '0');
+
+    const grp = new THREE.Group();
+    grp.position.set(x, 0, z);
+
+    // Podium base
+    const pod = new THREE.Mesh(
+      new THREE.BoxGeometry(inf.w + 1.5, h * 0.15, inf.d + 1.5),
+      new THREE.MeshStandardMaterial({ color: 0x0d1a24, roughness: 0.5, metalness: 0.7 })
+    );
+    pod.position.y = (h * 0.15) / 2;
+    pod.castShadow = true;
+    grp.add(pod);
+
+    // Tower
+    const tower = new THREE.Mesh(
+      new THREE.BoxGeometry(inf.w, h, inf.d),
+      new THREE.MeshStandardMaterial({ color: 0x081420, roughness: 0.2, metalness: 0.9 })
+    );
+    tower.position.y = h / 2 + h * 0.15;
+    tower.castShadow = true;
+    grp.add(tower);
+
+    // Glass facade (front)
+    const glass = new THREE.Mesh(
+      new THREE.PlaneGeometry(inf.w - 0.2, h - 0.2),
+      new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 0.08, roughness: 0.05, metalness: 0.9, transparent: true, opacity: 0.6 })
+    );
+    glass.position.set(0, h / 2 + h * 0.15, inf.d / 2 + 0.02);
+    grp.add(glass);
+
+    // Horizontal window bands
+    const bandMat = new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 0.8, roughness: 0.1 });
+    for (let fy = h * 0.2; fy < h + h * 0.1; fy += 1.4) {
+      const band = new THREE.Mesh(new THREE.BoxGeometry(inf.w + 0.12, 0.08, inf.d + 0.12), bandMat);
+      band.position.y = fy + h * 0.15;
+      grp.add(band);
+    }
+
+    // Roof slab
+    const roof = new THREE.Mesh(
+      new THREE.BoxGeometry(inf.w + 0.4, 0.35, inf.d + 0.4),
+      new THREE.MeshStandardMaterial({ color: col, roughness: 0.15, metalness: 0.9 })
+    );
+    roof.position.y = h + h * 0.15 + 0.18;
+    grp.add(roof);
+
+    // Neon sign strip at podium top
+    const neon = new THREE.Mesh(
+      new THREE.BoxGeometry(inf.w + 0.1, 0.15, 0.08),
+      new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 4.0, roughness: 0 })
+    );
+    neon.position.set(0, h * 0.15 + 0.08, inf.d / 2 + 0.04);
+    grp.add(neon);
+
+    // Rooftop beacon
+    const beacon = new THREE.PointLight(col, 2.0, 22);
+    beacon.position.y = h + h * 0.15 + 2;
+    grp.add(beacon);
+
+    // Base flood light
+    const baseLight = new THREE.PointLight(col, 0.6, 8);
+    baseLight.position.set(0, 1.0, inf.d / 2 + 1.5);
+    grp.add(baseLight);
+
+    // Floating label above building — ALWAYS VISIBLE
+    const labelEl = document.createElement('div');
+    labelEl.className = 'building-screen-tag infra-label';
+    labelEl.dataset.infraId = inf.id;
+    labelEl.style.cssText = 'position:absolute;display:none;transform:translate(-50%,-100%);pointer-events:none;z-index:16;';
+    labelEl.innerHTML = `
+      <div style="background:rgba(4,10,18,0.96);border:1px solid ${hexCol}99;border-radius:10px;padding:5px 10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;display:flex;align-items:center;gap:7px;box-shadow:0 4px 18px rgba(0,0,0,0.85),0 0 14px ${hexCol}33;white-space:nowrap;">
+        <span style="font-size:14px;">${inf.icon}</span>
+        <div style="display:flex;flex-direction:column;line-height:1.2;">
+          <strong style="font-size:9.5px;font-weight:800;color:#fff;letter-spacing:0.3px;">${inf.label}</strong>
+          <span style="font-size:7.5px;color:${hexCol};font-weight:600;">${inf.sub}</span>
+          <span style="font-size:7px;color:#475569;margin-top:1px;">${inf.district} District</span>
+        </div>
+      </div>
+    `;
+    overlayLayer.appendChild(labelEl);
+    grp.infraLabelEl = labelEl;
+    grp.infraLabelPos = new THREE.Vector3(x, h + h * 0.15 + 2.5, z);
+    grp.infraData = inf;
+
+    scene.add(grp);
+    buildings.push(grp);
+  });
+
+  // ── District Name Plates (large floating banners) ─────────────────────────
+  DISTRICTS.forEach(dist => {
+    const plateEl = document.createElement('div');
+    plateEl.style.cssText = 'position:absolute;display:none;transform:translate(-50%,-50%);pointer-events:none;z-index:12;';
+    plateEl.innerHTML = `
+      <div style="background:rgba(2,6,14,0.75);border:1px solid ${dist.col}55;border-radius:20px;padding:3px 12px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:${dist.col};font-size:8px;font-weight:800;letter-spacing:1.5px;backdrop-filter:blur(4px);text-transform:uppercase;white-space:nowrap;">${dist.name}</div>
+    `;
+    plateEl.dataset.districtLabel = dist.name;
+    plateEl.dataset.wx = dist.pos[0];
+    plateEl.dataset.wz = dist.pos[1];
+    overlayLayer.appendChild(plateEl);
+  });
+
   // ── ALL 13 AUTONOMOUS CITIZEN AGENTS ──────────────────────────────────────
   const CONTENDERS = [
     // ── Outer Ring: 8 Major Landmark Towers — wide city blocks ──
@@ -783,6 +947,55 @@ export async function bootCity3D() {
   }
 
 
+  // Update infra building labels with real live data from window.DATA
+  function updateInfraLabels() {
+    if (!window.DATA) return;
+    const mgr = (window.DATA.manager || {});
+    const tasks = mgr.task_summary || {};
+    const modelStatus = window.DATA.model_status || {};
+    const gw = window.DATA.gateway || {};
+    const cityStatus = window.DATA.city_status || {};
+
+    const liveValues = {
+      'openclaw-gateway':  modelStatus.primary ? `🟢 ${modelStatus.primary.split('/').pop()}` : '🟡 Checking...',
+      'github-cdn':        '🟢 Live · GitHub Pages',
+      'netlify-cloud':     '🟢 Deployed',
+      'sqlite-vault':      `🗄️ ${cityStatus.agents_working || 0} agents active`,
+      'evolution-engine':  '⏱ Every 30 min',
+      'realtime-sync':     '📡 Every 5 min',
+      'profit-ledger':     '💰 Tracking P&L',
+      'cost-guard':        modelStatus.using_free_tier ? '✅ Free Tier Active' : '⚠️ Paid API',
+      'capital-allocator': '📊 Optimizing',
+      'revenue-registry':  '💎 Etsy · Active',
+      'swirlcraft-shop':   '🛒 Shop Live',
+      'seo-lab':           '🔍 36 Listings',
+      'listing-factory':   '🏭 Creating',
+      'fulfillment-hub':   '📦 Auto-Delivery',
+      'tiktok-studio':     '🎬 Content Queue',
+      'pinterest-gallery': '📌 Publishing',
+      'broadcast-tower':   '📻 Traffic Active',
+      'manager-tower':     `🏢 ${tasks.in_progress || 0} tasks active`,
+      'task-depot':        `📋 ${tasks.pending || 0} pending`,
+      'decision-inbox':    '📬 Monitoring',
+      'approval-gate':     '✅ Standing by',
+      'action-queue':      '⚡ Live',
+      'watchdog-station':  '🐕 Auto-Healing',
+      'daily-upgrade-lab': '🔬 Nightly run',
+      'youtube-lab':       '▶️ Research',
+      'flippa-exchange':   '🏦 Monitoring',
+    };
+
+    overlayLayer.querySelectorAll('[data-infra-id]').forEach(el => {
+      const id = el.dataset.infraId;
+      const val = liveValues[id];
+      if (!val) return;
+      const subEl = el.querySelector('span:last-child') || el.querySelectorAll('span')[1];
+      // Update the sub-label span (second span in the div column)
+      const spans = el.querySelectorAll('div > div > span');
+      if (spans.length >= 2) spans[1].textContent = val;
+    });
+  }
+
   let clock = new THREE.Clock();
   const tempV = new THREE.Vector3();
 
@@ -797,6 +1010,7 @@ export async function bootCity3D() {
     convoTimer -= dt;
     if (convoTimer <= 0) {
       populateRealCommsFeed();
+      updateInfraLabels();
       convoTimer = 6.0; // Refresh logs every 6s
     }
 
@@ -912,6 +1126,38 @@ export async function bootCity3D() {
       } else {
         if (char.tagEl) char.tagEl.style.display = 'none';
         if (char.bubbleEl) char.bubbleEl.style.display = 'none';
+      }
+    });
+
+    // Project infrastructure building labels
+    buildings.forEach(bld => {
+      if (!bld.infraLabelEl || !bld.infraLabelPos) return;
+      const sv = bld.infraLabelPos.clone();
+      sv.project(camera);
+      if (sv.z < 1) {
+        const sx = (sv.x * 0.5 + 0.5) * VIEWPORT.clientWidth;
+        const sy = (-(sv.y * 0.5) + 0.5) * 540;
+        bld.infraLabelEl.style.display = 'block';
+        bld.infraLabelEl.style.left = `${sx}px`;
+        bld.infraLabelEl.style.top = `${sy}px`;
+      } else {
+        bld.infraLabelEl.style.display = 'none';
+      }
+    });
+
+    // Project district name plates
+    overlayLayer.querySelectorAll('[data-district-label]').forEach(el => {
+      const wx = parseFloat(el.dataset.wx);
+      const wz = parseFloat(el.dataset.wz);
+      const dv = new THREE.Vector3(wx, 3, wz).project(camera);
+      if (dv.z < 1) {
+        const sx = (dv.x * 0.5 + 0.5) * VIEWPORT.clientWidth;
+        const sy = (-(dv.y * 0.5) + 0.5) * 540;
+        el.style.display = 'block';
+        el.style.left = `${sx}px`;
+        el.style.top = `${sy}px`;
+      } else {
+        el.style.display = 'none';
       }
     });
 
