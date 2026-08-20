@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T23:19:16-05:00",
+  "generated_at": "2026-08-19T23:20:49-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "Google",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T04:19:05Z",
+          "summary_generated_at": "2026-08-20T04:20:01Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T04:19:05Z",
+          "summary_generated_at": "2026-08-20T04:20:01Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-20T04:19:05Z",
+      "generated_at": "2026-08-20T04:20:01Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -453,13 +453,6 @@
   "evolution_log": [
     {
       "timestamp": "2026-08-19T22:36:27.697139-05:00",
-      "action": "DASHBOARD_HEALED",
-      "detail": "Sync OK. Warnings: 0. Stale: 0.",
-      "result": "ok",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T22:36:27.697139-05:00",
       "action": "AGENT_WATCHDOG",
       "detail": "Active: ['aria', 'nova', 'sage', 'atlas', 'ivy', 'main']. Idle: []. Woken: [].",
       "result": "success",
@@ -586,6 +579,12 @@
       "action": "PERPETUAL_ENGINE",
       "detail": "Dispatched 0 idle agents. Active: ['aria', 'atlas', 'axiom', 'blake', 'builder', 'chase', 'cipher', 'efficiency', 'ember', 'finn', 'ivy', 'kira', 'lyra', 'max', 'nova', 'orion', 'quinn', 'rea', 'rex', 'rio', 'sage', 'scout', 'seo', 'val', 'victor', 'zara']. Goal: $20k/month",
       "result": "all_busy"
+    },
+    {
+      "timestamp": "2026-08-20T04:20:00.835729+00:00",
+      "action": "PERPETUAL_ENGINE",
+      "detail": "Dispatched 2 idle agents. Active: ['aria', 'atlas', 'axiom', 'blake', 'builder', 'chase', 'cipher', 'efficiency', 'finn', 'kira', 'lyra', 'max', 'nova', 'orion', 'rea', 'rio', 'sage', 'scout', 'seo', 'val', 'victor', 'zara']. Goal: $20k/month",
+      "result": "success"
     }
   ],
   "profit_war": {
@@ -888,12 +887,13 @@
       "description": "CRITICAL \u2014 $301 in Etsy listing fees, nothing optimized since Aug 10.\n\nYou have 100 active listings. Current problems:\n- 55 listings have ZERO views\n- Average price is only $23.93 \u2014 needs to be $7-$30\n- Tags are too generic (e.g. 'pastel planner' instead of 'printable planner pdf instant download')\n- Titles missing key buyer search terms\n\nTOP 5 BY VIEWS:\n  ID:4552829320 | Digital Shop Business Templates | 1,000+ Editable Canva Temp | $599.0 | 36 views\n  ID:4552828742 | Non-Medical Home Care Agency Policy Manual | Business-in-a-B | $499.0 | 11 views\n  ID:4536027912 | Motivational Wall Art Print | &#39;Your Energy&#39; Quote (D | $3.49 | 10 views\n  ID:4552811078 | Custom Family Portrait Illustration | Photo to Art Memorial  | $11.11 | 8 views\n  ID:4552441056 | Home Management Bundle | Cleaning Schedule, Meal Planner, Or | $19.99 | 7 views\n\nYOUR TASK \u2014 write optimized versions for each category:\n\n1. PRINTABLE JOURNALS/PLANNERS (80 listings): \n   - Add \"INSTANT DOWNLOAD\" to every title\n   - Add \"Printable PDF\" prominently\n   - Price recommendation: increase from $2.49 to $4.99\n   - Tags to add: instant download, printable pdf, digital download, planner printable\n\n2. HOME CARE FORMS (11 listings at $9.99):\n   - These are GOLD \u2014 keep at $9.99 or raise to $14.99\n   - Add: \"non-medical home care\", \"caregiver documentation\", \"home health agency\"\n\nWrite a complete SEO optimization plan to: data/seo-etsy-rewrite.md\nInclude: new title template, 13 optimized tags, price recommendations per category.\nThis is MAXIMUM PRIORITY. $20k goal depends on this.",
       "assigned_to": "seo",
       "priority": "CRITICAL",
-      "status": "BLOCKED",
+      "status": "PENDING",
       "created_at": "2026-08-20T03:58:52.495845+00:00",
       "deliverable": "data/seo-etsy-rewrite.md",
       "dispatched_at": "2026-08-19T23:00:01.212681-05:00",
       "dispatched_by": "nova",
-      "blocked_reason": "OpenClaw config is invalid\nFile: ~/[config]son\nProblem:\n  - channels.etsy: unknown channel id: etsy\n\nFix: openclaw doctor --fix\nInspect: openclaw config validate\nAudit, status, health, logs, tasks list/audit, and doctor commands still run with invalid config.\n"
+      "blocked_reason": null,
+      "blocked_error": null
     },
     {
       "id": "sprint-001",
@@ -901,13 +901,14 @@
       "description": "Write a complete Etsy listing for California Landlord Bundle. Price $14.99. Title (160 chars): include 'california lease agreement template', 'landlord rental agreement california'. Write 13 tags. Full description. Output to data/sprint-etsy-listing.md",
       "assigned_to": "aria",
       "priority": "CRITICAL",
-      "status": "BLOCKED",
+      "status": "PENDING",
       "deliverable": "data/sprint-etsy-listing.md",
       "deadline": "2026-08-21T03:07:15.691177+00:00",
       "revenue_impact": "$14.99/sale",
       "dispatched_at": "2026-08-19T23:00:01.212681-05:00",
       "dispatched_by": "atlas",
-      "blocked_reason": "OpenClaw config is invalid\nFile: ~/[config]son\nProblem:\n  - channels.etsy: unknown channel id: etsy\n\nFix: openclaw doctor --fix\nInspect: openclaw config validate\nAudit, status, health, logs, tasks list/audit, and doctor commands still run with invalid config.\n"
+      "blocked_reason": null,
+      "blocked_error": null
     },
     {
       "id": "sprint-002",
@@ -959,13 +960,14 @@
       "description": "Etsy boosts free-shipping listings in search. Find the $9.99 listing with most impressions. Recommend adding free shipping. Output to data/sprint-free-shipping.md",
       "assigned_to": "sage",
       "priority": "HIGH",
-      "status": "BLOCKED",
+      "status": "PENDING",
       "deliverable": "data/sprint-free-shipping.md",
       "deadline": "2026-08-21T03:07:15.691177+00:00",
       "revenue_impact": "+20% conversion rate",
       "dispatched_at": "2026-08-19T23:00:01.212681-05:00",
       "dispatched_by": "sage",
-      "blocked_reason": "OpenClaw config is invalid\nFile: ~/[config]son\nProblem:\n  - agents: Invalid input\n\nFix: openclaw doctor --fix\nInspect: openclaw config validate\nAudit, status, health, logs, tasks list/audit, and doctor commands still run with invalid config.\n"
+      "blocked_reason": null,
+      "blocked_error": null
     },
     {
       "id": "sprint-006",
@@ -1087,12 +1089,13 @@
       "description": "Research Payhip.com platform. Compare fees vs Etsy/Gumroad. Write a step-by-step guide to set up a Payhip store for ROWAN's digital products. List which products should launch there first and at what price. Output to data/research/payhip-strategy.md",
       "assigned_to": "sage",
       "priority": "HIGH",
-      "status": "IN_PROGRESS",
+      "status": "DONE",
       "deliverable": "data/research/payhip-strategy.md",
       "channel": "Payhip",
       "price": "strategy",
       "dispatched_at": "2026-08-19T23:17:27.905545-05:00",
-      "dispatched_by": "sage"
+      "dispatched_by": "sage",
+      "completed_at": "2026-08-19T23:17:27.905545-05:00"
     },
     {
       "id": "disc-nft-001",
@@ -1122,11 +1125,12 @@
       "description": "Review all files in data/products/. For each completed product spec, create a publishing checklist: what to post on Etsy, Gumroad, Payhip. Format specs for each platform. Write publishing queue to data/maya-publish-queue.md",
       "assigned_to": "maya",
       "priority": "CRITICAL",
-      "status": "BLOCKED",
+      "status": "PENDING",
       "deliverable": "data/maya-publish-queue.md",
       "dispatched_at": "2026-08-19T23:00:01.212681-05:00",
       "dispatched_by": "axiom",
-      "blocked_reason": "OpenClaw config is invalid\nFile: ~/[config]son\nProblem:\n  - agents: Invalid input\n\nFix: openclaw doctor --fix\nInspect: openclaw config validate\nAudit, status, health, logs, tasks list/audit, and doctor commands still run with invalid config.\n"
+      "blocked_reason": null,
+      "blocked_error": null
     },
     {
       "id": "chase-001",
@@ -1166,9 +1170,11 @@
       "description": "Create a master tracker of all ROWAN digital products. For each: name, platform, URL, price, date published, revenue to date. Start with what's live on Etsy and Gumroad. Output to data/rex-product-portfolio.md",
       "assigned_to": "rex",
       "priority": "HIGH",
-      "status": "PENDING",
+      "status": "DONE",
       "deliverable": "data/rex-product-portfolio.md",
-      "dispatched_at": "2026-08-20T03:36:00.988372+00:00"
+      "dispatched_at": "2026-08-19T23:17:27.905545-05:00",
+      "dispatched_by": "axiom",
+      "completed_at": "2026-08-19T23:17:27.905545-05:00"
     },
     {
       "id": "scout-001",
@@ -3897,8 +3903,8 @@
       "status": "standby",
       "automation": "2 enabled",
       "last_outcome": "Recent run ok",
-      "last_activity": "Aug 19, 11:10 PM",
-      "last_activity_at": "2026-08-19T23:10:32-05:00",
+      "last_activity": "Aug 19, 11:20 PM",
+      "last_activity_at": "2026-08-19T23:20:26-05:00",
       "model": "OpenAI GEMINI-2.5-FLASH",
       "sessions_24h": 260,
       "sessions_7d": 287,
@@ -4139,8 +4145,8 @@
       "status": "standby",
       "automation": "On demand",
       "last_outcome": "Recent run ok",
-      "last_activity": "Aug 19, 11:18 PM",
-      "last_activity_at": "2026-08-19T23:18:29-05:00",
+      "last_activity": "Aug 19, 11:19 PM",
+      "last_activity_at": "2026-08-19T23:19:25-05:00",
       "model": "OpenAI GEMINI-2.5-FLASH-LITE",
       "sessions_24h": 3,
       "sessions_7d": 5,
@@ -4148,13 +4154,13 @@
       "authority": "Bounded",
       "performance": {
         "grade": "D",
-        "score": 66,
+        "score": 61,
         "provisional": true,
         "verified_points_7d": 0,
-        "tokens_7d": 114567,
+        "tokens_7d": 224349,
         "dimensions": {
           "reliability": 100,
-          "efficiency": 85,
+          "efficiency": 65,
           "effectiveness": 0,
           "safety": 100,
           "collaboration": 100
@@ -4169,21 +4175,21 @@
         "location": "Signal Library \u00b7 Strategy and evidence desk",
         "current_activity": "SPRINT: Recommend single best listing for Etsy free shipping badge",
         "current_assignment": "Developing 50-state legal form demand research and high-margin ($24.99\u2013$97) bundle pricing.",
-        "observed_at": "Aug 19, 11:19 PM",
-        "observed_at_iso": "2026-08-19T23:19:11-05:00",
+        "observed_at": "Aug 18, 10:33 PM",
+        "observed_at_iso": "2026-08-18T22:33:13-05:00",
         "presence_source": "Standby",
         "next_action": "On demand within the protected weekly reserve",
-        "completed_24h": 10,
+        "completed_24h": 11,
         "failed_24h": 0,
         "runs_7d": 15,
         "history": [
           {
             "at": "Aug 19, 11:19 PM",
-            "at_iso": "2026-08-19T23:19:11-05:00",
-            "at_ms": 1787199551471,
+            "at_iso": "2026-08-19T23:19:25-05:00",
+            "at_ms": 1787199565412,
             "title": "Etsy $20k Goal Sprint",
-            "detail": "In progress",
-            "status": "running",
+            "detail": "Completed successfully",
+            "status": "succeeded",
             "location": "Signal Library \u00b7 Strategy and evidence desk"
           },
           {
@@ -4499,11 +4505,11 @@
       "name": "Nova",
       "role": "Chief Growth Officer",
       "mission": "Executing 14-day TikTok, Pinterest, and community traffic campaigns to drive Etsy sales.",
-      "status": "queued",
+      "status": "working",
       "automation": "On demand",
       "last_outcome": "Recent run ok",
-      "last_activity": "Aug 19, 10:43 PM",
-      "last_activity_at": "2026-08-19T22:43:09-05:00",
+      "last_activity": "Aug 19, 11:20 PM",
+      "last_activity_at": "2026-08-19T23:20:25-05:00",
       "model": "OpenAI GEMINI-2.5-FLASH-LITE",
       "sessions_24h": 1,
       "sessions_7d": 3,
@@ -4527,19 +4533,28 @@
       "city": {
         "district": "Growth Exchange",
         "workspace": "Distribution and measurement desk",
-        "presence": "scheduled_watch",
+        "presence": "at_desk",
         "activity_mode": "Active now",
         "location": "Growth Exchange \u00b7 Distribution and measurement desk",
         "current_activity": "SPRINT: Channel analysis \u2014 which path to first sale in 24h",
         "current_assignment": "Executing 14-day TikTok, Pinterest, and community traffic campaigns to drive Etsy sales.",
-        "observed_at": "Aug 18, 10:33 PM",
-        "observed_at_iso": "2026-08-18T22:33:13-05:00",
+        "observed_at": "Aug 19, 11:20 PM",
+        "observed_at_iso": "2026-08-19T23:20:46-05:00",
         "presence_source": "Live task ledger",
         "next_action": "On demand within the protected weekly reserve",
         "completed_24h": 5,
         "failed_24h": 0,
-        "runs_7d": 10,
+        "runs_7d": 11,
         "history": [
+          {
+            "at": "Aug 19, 11:20 PM",
+            "at_iso": "2026-08-19T23:20:46-05:00",
+            "at_ms": 1787199646300,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "In progress",
+            "status": "running",
+            "location": "Growth Exchange \u00b7 Distribution and measurement desk"
+          },
           {
             "at": "Aug 19, 10:43 PM",
             "at_iso": "2026-08-19T22:43:09-05:00",
@@ -4601,15 +4616,6 @@
             "title": "Etsy Traffic \u2014 Pinterest board setup + TikTok scripts",
             "detail": "In progress",
             "status": "running",
-            "location": "Growth Exchange \u00b7 Distribution and measurement desk"
-          },
-          {
-            "at": "Aug 15, 11:40 PM",
-            "at_iso": "2026-08-15T23:40:09-05:00",
-            "at_ms": 1786855209097,
-            "title": "Etsy $20k Goal Sprint",
-            "detail": "Completed successfully",
-            "status": "succeeded",
             "location": "Growth Exchange \u00b7 Distribution and measurement desk"
           }
         ]
@@ -5504,55 +5510,55 @@
       "name": "Rex",
       "role": "Inventory Tracker",
       "mission": "Maintaining private digital file registries and asset audits.",
-      "status": "queued",
+      "status": "standby",
       "automation": "On demand",
-      "last_outcome": "On-demand ready",
-      "last_activity": "Unavailable",
-      "last_activity_at": null,
-      "model": "OpenAI GPT-5.5",
-      "sessions_24h": 0,
-      "sessions_7d": 0,
+      "last_outcome": "Recent run ok",
+      "last_activity": "Aug 19, 11:19 PM",
+      "last_activity_at": "2026-08-19T23:19:52-05:00",
+      "model": "OpenAI GEMINI-2.5-FLASH",
+      "sessions_24h": 1,
+      "sessions_7d": 1,
       "error_streak": 0,
       "authority": "Bounded",
       "performance": {
-        "grade": "D",
-        "score": 60,
+        "grade": "C",
+        "score": 70,
         "provisional": true,
         "verified_points_7d": 0,
-        "tokens_7d": 0,
+        "tokens_7d": 32804,
         "dimensions": {
           "reliability": 100,
           "efficiency": 100,
           "effectiveness": 0,
           "safety": 100,
-          "collaboration": 0
+          "collaboration": 100
         },
         "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
       },
       "city": {
         "district": "Asset Vault",
         "workspace": "Inventory and backup core",
-        "presence": "scheduled_watch",
-        "activity_mode": "Ready",
-        "location": "Asset Vault \u00b7 ready room",
+        "presence": "ready_room",
+        "activity_mode": "Recently active",
+        "location": "Asset Vault \u00b7 Inventory and backup core",
         "current_activity": "REX: Build product portfolio tracker \u2014 every published product with URL + revenu",
         "current_assignment": "Maintaining private digital file registries and asset audits.",
-        "observed_at": "Unavailable",
-        "observed_at_iso": null,
-        "presence_source": "Live task ledger",
+        "observed_at": "Aug 19, 11:19 PM",
+        "observed_at_iso": "2026-08-19T23:19:52-05:00",
+        "presence_source": "Standby",
         "next_action": "On demand within the protected weekly reserve",
-        "completed_24h": 0,
+        "completed_24h": 1,
         "failed_24h": 0,
-        "runs_7d": 0,
+        "runs_7d": 1,
         "history": [
           {
-            "at": "Now",
-            "at_iso": null,
-            "at_ms": 0,
-            "title": "Ready for bounded assignment",
-            "detail": "No scheduled model work; available on demand inside the weekly reserve.",
-            "status": "ready",
-            "location": "Asset Vault \u00b7 ready room"
+            "at": "Aug 19, 11:19 PM",
+            "at_iso": "2026-08-19T23:19:52-05:00",
+            "at_ms": 1787199592051,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Asset Vault \u00b7 Inventory and backup core"
           }
         ]
       }
@@ -6795,15 +6801,15 @@
   ],
   "tasks": {
     "in_progress": 1,
-    "pending": 31,
-    "done": 6,
+    "pending": 29,
+    "done": 8,
     "blocked": 4,
     "total": 42,
     "active_list": [
       {
-        "id": "disc-payhip-001",
-        "title": "Research + write Payhip store setup guide for all exist",
-        "agent": "sage"
+        "id": "sprint-006",
+        "title": "SPRINT: Channel analysis \u2014 which path to first sale in ",
+        "agent": "nova"
       }
     ]
   },
