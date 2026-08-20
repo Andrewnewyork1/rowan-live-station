@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T22:01:03-05:00",
+  "generated_at": "2026-08-19T22:03:30-05:00",
   "meta": {
     "rowan_status": "Rowan online",
-    "provider": "Google-Gemini-Cli",
-    "model": "GEMINI-3.1-PRO-PREVIEW",
+    "provider": "OpenAI",
+    "model": "GPT-5.5",
     "mode": "Sanitized owner snapshot with protected decision recording",
     "autonomy_stage": "etsy_legal_form_risk_control",
     "business_model": "Digital products and productized digital delivery only",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T03:00:03Z",
+          "summary_generated_at": "2026-08-20T03:03:05Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T03:00:03Z",
+          "summary_generated_at": "2026-08-20T03:03:05Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-20T03:00:03Z",
+      "generated_at": "2026-08-20T03:03:05Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -453,13 +453,6 @@
   "evolution_log": [
     {
       "timestamp": "2026-08-19T21:00:01.422677-05:00",
-      "action": "SEO_COMPLETE",
-      "detail": "All 36 Etsy SEO titles batched from aria-seo-work-2026-08-18.md",
-      "result": "success",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T21:00:01.422677-05:00",
       "action": "DASHBOARD_HEALED",
       "detail": "Sync OK. Warnings: 0. Stale: 0.",
       "result": "ok",
@@ -590,6 +583,13 @@
       "detail": "Full cycle complete. Results: {\"model\": \"no_change\", \"seo\": \"complete\", \"dashboard\": \"ok\", \"watchdog\": {\"active\": [\"aria\", \"nova\", \"sage\", \"atlas\", \"ivy\", \"main\"], \"idle\": [], \"woken\": []}, \"cost\": \"ok\", \"profit_war\": \"error:'building_name'\"}",
       "result": "success",
       "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T22:00:01.280891-05:00",
+      "action": "AGENT_SPAWNED",
+      "detail": "🤖 Zara (Customer Success AI) spawned to handle Etsy customer engagement",
+      "result": "success",
+      "triggered_by": "axiom"
     }
   ],
   "profit_war": {
@@ -1283,32 +1283,34 @@
     "automation_policy_status": "unavailable"
   },
   "netlify_usage": {
-    "checked_at": "2026-08-20T02:57:35Z",
-    "mode": "warning",
+    "checked_at": "2026-08-20T03:01:03Z",
+    "mode": "blocked",
     "billing_period_start": "2026-07-27",
     "billing_period_end": "2026-08-26",
     "last_exact_observation_at": "2026-08-19T04:14:26.446693+00:00",
     "observed_credits_available": 639.4,
-    "credits_available_upper_bound": 399.4,
-    "credits_consumed_lower_bound": 3754.1,
+    "credits_available_upper_bound": 639.4,
+    "credits_consumed_lower_bound": 3514.1,
     "plan_monthly_credits": 3000.0,
     "production_deploy_credits_observed": 3480.0,
-    "production_deploy_credits_since_observation": 240.0,
+    "production_deploy_credits_since_observation": 0.0,
     "ai_inference_credits_observed": 0.0,
     "web_request_credits_observed": 8.0,
     "compute_credits_observed": 0.2,
     "bandwidth_credits_observed": 25.9,
     "protected_reserve_credits": 300.0,
     "one_production_release_credits": 15.0,
-    "successful_production_deploys_since_observation": 16,
-    "release_authorized": true,
+    "successful_production_deploys_since_observation": 0,
+    "release_authorized": false,
     "automatic_production_deploys_enabled": null,
     "automatic_production_deploys_verified_off": false,
     "auto_recharge_enabled": false,
-    "control_api_available": true,
+    "control_api_available": false,
     "balance_basis": "Exact owner-authenticated balance less confirmed production-deploy debits; traffic meters remain conservative between exact observations.",
     "next_check_seconds": 900,
-    "issue_codes": []
+    "issue_codes": [
+      "NETLIFY_CONTROL_API_UNAVAILABLE"
+    ]
   },
   "google_usage": {
     "plan": "Google One AI Ultra",
@@ -2400,7 +2402,7 @@
       "external_actions_authorized": false,
       "model_call_required": false,
       "issue_codes": [
-        "ETSY_BROWSER_EXTENSION_SESSION_REQUIRED"
+        "ETSY_BROWSER_COMMAND_FAILED"
       ]
     },
     "etsy_browser_dispatch": {
@@ -2906,7 +2908,7 @@
       "role": "CEO / Operator",
       "mission": "Directing all agent operations toward the $20,000 Etsy profit goal.",
       "status": "working",
-      "automation": "2 enabled",
+      "automation": "On demand",
       "last_outcome": "Recent run ok",
       "last_activity": "Aug 19, 10:01 PM",
       "last_activity_at": "2026-08-19T22:01:00-05:00",
@@ -2941,7 +2943,7 @@
         "observed_at": "Aug 19, 9:29 AM",
         "observed_at_iso": "2026-08-19T09:29:17-05:00",
         "presence_source": "Live task ledger",
-        "next_action": "Rowan Autonomous Company Director · Aug 19, 10:39 PM",
+        "next_action": "On demand within the protected weekly reserve",
         "completed_24h": 16,
         "failed_24h": 8,
         "runs_7d": 374,
@@ -3026,11 +3028,11 @@
       "name": "Ivy",
       "role": "Head of Commerce",
       "mission": "Managing Etsy catalog triage, listing safety deactivations, and order reconciliation.",
-      "status": "monitoring",
-      "automation": "1 enabled",
+      "status": "working",
+      "automation": "On demand",
       "last_outcome": "Recent run ok",
-      "last_activity": "Aug 19, 9:42 PM",
-      "last_activity_at": "2026-08-19T21:42:19-05:00",
+      "last_activity": "Aug 19, 10:03 PM",
+      "last_activity_at": "2026-08-19T22:03:09-05:00",
       "model": "OpenAI GEMINI-3.1-PRO-PREVIEW",
       "sessions_24h": 1,
       "sessions_7d": 5,
@@ -3054,19 +3056,28 @@
       "city": {
         "district": "Commerce Row",
         "workspace": "Checkout and buyer-care studio",
-        "presence": "scheduled_watch",
-        "activity_mode": "Scheduled watch",
+        "presence": "at_desk",
+        "activity_mode": "Active now",
         "location": "Commerce Row · Checkout and buyer-care studio",
-        "current_activity": "Monitoring SwirlCraft 15-Minute Customer Reply Triage; no task is executing now",
+        "current_activity": "Working on Etsy $20k Goal Sprint",
         "current_assignment": "Managing Etsy catalog triage, listing safety deactivations, and order reconciliation.",
-        "observed_at": "Aug 19, 9:51 PM",
-        "observed_at_iso": "2026-08-19T21:51:55-05:00",
-        "presence_source": "Scheduler snapshot",
-        "next_action": "SwirlCraft 15-Minute Customer Reply Triage · Aug 19, 10:06 PM",
+        "observed_at": "Aug 19, 10:03 PM",
+        "observed_at_iso": "2026-08-19T22:03:09-05:00",
+        "presence_source": "Live task ledger",
+        "next_action": "On demand within the protected weekly reserve",
         "completed_24h": 94,
         "failed_24h": 5,
-        "runs_7d": 360,
+        "runs_7d": 361,
         "history": [
+          {
+            "at": "Aug 19, 10:03 PM",
+            "at_iso": "2026-08-19T22:03:09-05:00",
+            "at_ms": 1787194989548,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "In progress",
+            "status": "running",
+            "location": "Commerce Row · Checkout and buyer-care studio"
+          },
           {
             "at": "Aug 19, 9:51 PM",
             "at_iso": "2026-08-19T21:51:58-05:00",
@@ -3129,15 +3140,6 @@
             "detail": "Completed successfully",
             "status": "succeeded",
             "location": "Commerce Row · Checkout and buyer-care studio"
-          },
-          {
-            "at": "Aug 19, 8:41 PM",
-            "at_iso": "2026-08-19T20:41:58-05:00",
-            "at_ms": 1787190118808,
-            "title": "Etsy $20k Goal Sprint",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Commerce Row · Checkout and buyer-care studio"
           }
         ]
       }
@@ -3151,7 +3153,7 @@
       "automation": "On demand",
       "last_outcome": "Recent run ok",
       "last_activity": "Aug 19, 10:01 PM",
-      "last_activity_at": "2026-08-19T22:01:00-05:00",
+      "last_activity_at": "2026-08-19T22:01:30-05:00",
       "model": "OpenAI GEMINI-3.1-PRO-PREVIEW",
       "sessions_24h": 3,
       "sessions_7d": 5,
@@ -3162,7 +3164,7 @@
         "score": 66,
         "provisional": true,
         "verified_points_7d": 0,
-        "tokens_7d": 98298,
+        "tokens_7d": 96026,
         "dimensions": {
           "reliability": 100,
           "efficiency": 85,
@@ -3178,23 +3180,23 @@
         "presence": "at_desk",
         "activity_mode": "Active now",
         "location": "Signal Library · Strategy and evidence desk",
-        "current_activity": "Working on Etsy $20k Goal Sprint",
+        "current_activity": "Working on Etsy $20k: High-Margin ($24.99–$97) Bundle Pricing Models",
         "current_assignment": "Developing 50-state legal form demand research and high-margin ($24.99–$97) bundle pricing.",
-        "observed_at": "Aug 19, 10:01 PM",
-        "observed_at_iso": "2026-08-19T22:01:00-05:00",
+        "observed_at": "Aug 18, 10:33 PM",
+        "observed_at_iso": "2026-08-18T22:33:13-05:00",
         "presence_source": "Live task ledger",
         "next_action": "On demand within the protected weekly reserve",
-        "completed_24h": 3,
+        "completed_24h": 4,
         "failed_24h": 0,
         "runs_7d": 8,
         "history": [
           {
             "at": "Aug 19, 10:01 PM",
-            "at_iso": "2026-08-19T22:01:00-05:00",
-            "at_ms": 1787194860028,
+            "at_iso": "2026-08-19T22:01:30-05:00",
+            "at_ms": 1787194890130,
             "title": "Etsy $20k Goal Sprint",
-            "detail": "In progress",
-            "status": "running",
+            "detail": "Completed successfully",
+            "status": "succeeded",
             "location": "Signal Library · Strategy and evidence desk"
           },
           {
@@ -3390,23 +3392,23 @@
       "role": "Chief Technology Officer",
       "mission": "Building state-specific real estate, landlord, and home care PDF template products.",
       "status": "working",
-      "automation": "2 enabled",
+      "automation": "On demand",
       "last_outcome": "Recent run ok",
       "last_activity": "Aug 19, 8:30 PM",
       "last_activity_at": "2026-08-19T20:30:49-05:00",
       "model": "OpenAI GEMINI-3.1-PRO-PREVIEW",
       "sessions_24h": 1,
       "sessions_7d": 3,
-      "error_streak": 17,
+      "error_streak": 0,
       "authority": "Bounded",
       "performance": {
-        "grade": "F",
-        "score": 46,
+        "grade": "D",
+        "score": 66,
         "provisional": true,
         "verified_points_7d": 0,
         "tokens_7d": 71607,
         "dimensions": {
-          "reliability": 20,
+          "reliability": 100,
           "efficiency": 85,
           "effectiveness": 0,
           "safety": 100,
@@ -3425,7 +3427,7 @@
         "observed_at": "Aug 19, 6:55 PM",
         "observed_at_iso": "2026-08-19T18:55:57-05:00",
         "presence_source": "Live task ledger",
-        "next_action": "Rowan Netlify Decision Sync · Aug 19, 10:06 PM",
+        "next_action": "On demand within the protected weekly reserve",
         "completed_24h": 91,
         "failed_24h": 25,
         "runs_7d": 516,
@@ -3513,8 +3515,8 @@
       "status": "working",
       "automation": "On demand",
       "last_outcome": "Recent run ok",
-      "last_activity": "Aug 19, 8:39 PM",
-      "last_activity_at": "2026-08-19T20:39:43-05:00",
+      "last_activity": "Aug 19, 10:02 PM",
+      "last_activity_at": "2026-08-19T22:02:09-05:00",
       "model": "OpenAI GEMINI-3.1-PRO-PREVIEW",
       "sessions_24h": 1,
       "sessions_7d": 3,
@@ -3541,16 +3543,34 @@
         "presence": "at_desk",
         "activity_mode": "Active now",
         "location": "Growth Exchange · Distribution and measurement desk",
-        "current_activity": "Working on Etsy $20k: 14-Day TikTok/Reels & Pinterest Traffic Playbook",
+        "current_activity": "Working on Etsy $20k Goal Sprint",
         "current_assignment": "Executing 14-day TikTok, Pinterest, and community traffic campaigns to drive Etsy sales.",
-        "observed_at": "Aug 18, 10:33 PM",
-        "observed_at_iso": "2026-08-18T22:33:13-05:00",
+        "observed_at": "Aug 19, 10:02 PM",
+        "observed_at_iso": "2026-08-19T22:02:52-05:00",
         "presence_source": "Live task ledger",
         "next_action": "On demand within the protected weekly reserve",
         "completed_24h": 2,
         "failed_24h": 0,
-        "runs_7d": 7,
+        "runs_7d": 9,
         "history": [
+          {
+            "at": "Aug 19, 10:02 PM",
+            "at_iso": "2026-08-19T22:02:52-05:00",
+            "at_ms": 1787194972746,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "In progress",
+            "status": "running",
+            "location": "Growth Exchange · Distribution and measurement desk"
+          },
+          {
+            "at": "Aug 19, 10:02 PM",
+            "at_iso": "2026-08-19T22:02:09-05:00",
+            "at_ms": 1787194929820,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "In progress",
+            "status": "running",
+            "location": "Growth Exchange · Distribution and measurement desk"
+          },
           {
             "at": "Aug 19, 8:39 PM",
             "at_iso": "2026-08-19T20:39:43-05:00",
@@ -3600,15 +3620,6 @@
             "at": "Aug 15, 11:39 PM",
             "at_iso": "2026-08-15T23:39:13-05:00",
             "at_ms": 1786855153477,
-            "title": "Etsy $20k Goal Sprint",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Growth Exchange · Distribution and measurement desk"
-          },
-          {
-            "at": "Aug 15, 10:16 PM",
-            "at_iso": "2026-08-15T22:16:12-05:00",
-            "at_ms": 1786850172418,
             "title": "Etsy $20k Goal Sprint",
             "detail": "Completed successfully",
             "status": "succeeded",
@@ -3854,25 +3865,25 @@
       "name": "Lyra",
       "role": "B2B Design Engineer",
       "mission": "High-end corporate document aesthetics, typography, and commercial product kits.",
-      "status": "recently active",
+      "status": "working",
       "automation": "On demand",
       "last_outcome": "Recent run ok",
-      "last_activity": "Aug 19, 9:41 PM",
-      "last_activity_at": "2026-08-19T21:41:47-05:00",
-      "model": "OpenAI GEMINI-2.5-FLASH",
+      "last_activity": "Aug 19, 10:02 PM",
+      "last_activity_at": "2026-08-19T22:02:01-05:00",
+      "model": "OpenAI GEMINI-3.1-PRO-PREVIEW",
       "sessions_24h": 1,
       "sessions_7d": 1,
       "error_streak": 0,
       "authority": "Bounded",
       "performance": {
-        "grade": "D",
-        "score": 66,
+        "grade": "C",
+        "score": 70,
         "provisional": true,
         "verified_points_7d": 0,
-        "tokens_7d": 56557,
+        "tokens_7d": 26605,
         "dimensions": {
           "reliability": 100,
-          "efficiency": 85,
+          "efficiency": 100,
           "effectiveness": 0,
           "safety": 100,
           "collaboration": 100
@@ -3882,19 +3893,37 @@
       "city": {
         "district": "Aesthetics Lab",
         "workspace": "Corporate design atelier",
-        "presence": "recently_active",
-        "activity_mode": "Recently active",
+        "presence": "at_desk",
+        "activity_mode": "Active now",
         "location": "Aesthetics Lab · Corporate design atelier",
-        "current_activity": "Recently completed an on-demand session; now standing by",
+        "current_activity": "Working on Etsy $20k Goal Sprint",
         "current_assignment": "High-end corporate document aesthetics, typography, and commercial product kits.",
-        "observed_at": "Aug 19, 9:41 PM",
-        "observed_at_iso": "2026-08-19T21:41:47-05:00",
-        "presence_source": "Session metadata",
+        "observed_at": "Aug 19, 10:02 PM",
+        "observed_at_iso": "2026-08-19T22:02:17-05:00",
+        "presence_source": "Live task ledger",
         "next_action": "On demand within the protected weekly reserve",
-        "completed_24h": 2,
+        "completed_24h": 3,
         "failed_24h": 0,
-        "runs_7d": 2,
+        "runs_7d": 4,
         "history": [
+          {
+            "at": "Aug 19, 10:02 PM",
+            "at_iso": "2026-08-19T22:02:17-05:00",
+            "at_ms": 1787194937263,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "In progress",
+            "status": "running",
+            "location": "Aesthetics Lab · Corporate design atelier"
+          },
+          {
+            "at": "Aug 19, 10:02 PM",
+            "at_iso": "2026-08-19T22:02:01-05:00",
+            "at_ms": 1787194921183,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Aesthetics Lab · Corporate design atelier"
+          },
           {
             "at": "Aug 19, 9:41 PM",
             "at_iso": "2026-08-19T21:41:47-05:00",
@@ -3979,11 +4008,11 @@
       "name": "Kira",
       "role": "Statutory Legal Auditor",
       "mission": "FTC compliance, 50-state statutory legal disclosures, and IP protection.",
-      "status": "working",
+      "status": "recently active",
       "automation": "On demand",
       "last_outcome": "Recent run ok",
-      "last_activity": "Aug 19, 10:00 PM",
-      "last_activity_at": "2026-08-19T22:00:36-05:00",
+      "last_activity": "Aug 19, 10:01 PM",
+      "last_activity_at": "2026-08-19T22:01:18-05:00",
       "model": "OpenAI GEMINI-3.1-PRO-PREVIEW",
       "sessions_24h": 1,
       "sessions_7d": 1,
@@ -3994,7 +4023,7 @@
         "score": 70,
         "provisional": true,
         "verified_points_7d": 0,
-        "tokens_7d": 42613,
+        "tokens_7d": 48759,
         "dimensions": {
           "reliability": 100,
           "efficiency": 100,
@@ -4007,26 +4036,26 @@
       "city": {
         "district": "Compliance Wing",
         "workspace": "Statutory audit desk",
-        "presence": "at_desk",
-        "activity_mode": "Active now",
+        "presence": "recently_active",
+        "activity_mode": "Recently active",
         "location": "Compliance Wing · Statutory audit desk",
-        "current_activity": "Working on Etsy $20k Goal Sprint",
+        "current_activity": "Recently completed an on-demand session; now standing by",
         "current_assignment": "FTC compliance, 50-state statutory legal disclosures, and IP protection.",
-        "observed_at": "Aug 19, 10:00 PM",
-        "observed_at_iso": "2026-08-19T22:00:36-05:00",
-        "presence_source": "Live task ledger",
+        "observed_at": "Aug 19, 10:01 PM",
+        "observed_at_iso": "2026-08-19T22:01:18-05:00",
+        "presence_source": "Session metadata",
         "next_action": "On demand within the protected weekly reserve",
-        "completed_24h": 1,
+        "completed_24h": 2,
         "failed_24h": 0,
         "runs_7d": 2,
         "history": [
           {
-            "at": "Aug 19, 10:00 PM",
-            "at_iso": "2026-08-19T22:00:36-05:00",
-            "at_ms": 1787194836402,
+            "at": "Aug 19, 10:01 PM",
+            "at_iso": "2026-08-19T22:01:18-05:00",
+            "at_ms": 1787194878065,
             "title": "Etsy $20k Goal Sprint",
-            "detail": "In progress",
-            "status": "running",
+            "detail": "Completed successfully",
+            "status": "succeeded",
             "location": "Compliance Wing · Statutory audit desk"
           },
           {
@@ -4090,7 +4119,7 @@
       },
       {
         "category": "Model",
-        "name": "Google-Gemini-Cli GEMINI-3.1-PRO-PREVIEW",
+        "name": "OpenAI GPT-5.5",
         "status": "online",
         "detail": "Rowan and the named team resolve to the approved OpenAI model."
       },
@@ -4103,8 +4132,8 @@
       {
         "category": "Netlify reserve",
         "name": "Credit and deploy circuit breaker",
-        "status": "attention",
-        "detail": "At most 399.4 credits remain from the latest exact owner observation, with a 300-credit hard reserve. Automatic production deploy status is not verified off; auto recharge is disabled. One explicit release costs 15 credits. The deterministic monitor checks every 15 minutes."
+        "status": "critical",
+        "detail": "At most 639.4 credits remain from the latest exact owner observation, with a 300-credit hard reserve. Automatic production deploy status is not verified off; auto recharge is disabled. One explicit release costs 15 credits. The deterministic monitor checks every 15 minutes."
       },
       {
         "category": "AI reserve",
@@ -4185,94 +4214,8 @@
         "detail": "Sanitized state is hash-gated and refreshed through private snapshot storage. Routine updates consume no production-deploy credits; code releases require an explicit command and a passing Netlify reserve check."
       }
     ],
-    "automations": [
-      {
-        "name": "SwirlCraft 15-Minute Customer Reply Triage",
-        "owner": "ivy",
-        "cadence": "Every 15m",
-        "last_run": "Aug 19, 9:51 PM",
-        "last_run_at": "2026-08-19T21:51:55-05:00",
-        "last_run_ms": 1787194315471,
-        "next_run": "Aug 19, 10:06 PM",
-        "next_run_at": "2026-08-19T22:06:55-05:00",
-        "next_run_ms": 1787195215471,
-        "running": false,
-        "running_since": "Unavailable",
-        "running_since_at": null,
-        "status": "ok",
-        "error_streak": 0,
-        "duration_ms": 2572
-      },
-      {
-        "name": "Rowan Netlify Decision Sync",
-        "owner": "atlas",
-        "cadence": "Every 15m",
-        "last_run": "Aug 19, 9:51 PM",
-        "last_run_at": "2026-08-19T21:51:59-05:00",
-        "last_run_ms": 1787194319669,
-        "next_run": "Aug 19, 10:06 PM",
-        "next_run_at": "2026-08-19T22:06:59-05:00",
-        "next_run_ms": 1787195219669,
-        "running": false,
-        "running_since": "Unavailable",
-        "running_since_at": null,
-        "status": "ok",
-        "error_streak": 0,
-        "duration_ms": 3123
-      },
-      {
-        "name": "Rowan Autonomous Company Director",
-        "owner": "main",
-        "cadence": "Every 1h",
-        "last_run": "Aug 19, 9:39 PM",
-        "last_run_at": "2026-08-19T21:39:37-05:00",
-        "last_run_ms": 1787193577094,
-        "next_run": "Aug 19, 10:39 PM",
-        "next_run_at": "2026-08-19T22:39:37-05:00",
-        "next_run_ms": 1787197177094,
-        "running": false,
-        "running_since": "Unavailable",
-        "running_since_at": null,
-        "status": "ok",
-        "error_streak": 0,
-        "duration_ms": 18830
-      },
-      {
-        "name": "Rowan 15-Minute Resource Circuit Breaker",
-        "owner": "atlas",
-        "cadence": "Every 15m",
-        "last_run": "Aug 19, 9:57 PM",
-        "last_run_at": "2026-08-19T21:57:29-05:00",
-        "last_run_ms": 1787194649919,
-        "next_run": "Aug 19, 10:58 PM",
-        "next_run_at": "2026-08-19T22:58:14-05:00",
-        "next_run_ms": 1787198294922,
-        "running": false,
-        "running_since": "Unavailable",
-        "running_since_at": null,
-        "status": "error",
-        "error_streak": 17,
-        "duration_ms": 45003
-      },
-      {
-        "name": "Rowan Daily Etsy Finance Close",
-        "owner": "main",
-        "cadence": "35 2 * * * · America/New_York",
-        "last_run": "Aug 19, 1:35 AM",
-        "last_run_at": "2026-08-19T01:35:00-05:00",
-        "last_run_ms": 1787121300042,
-        "next_run": "Aug 20, 1:35 AM",
-        "next_run_at": "2026-08-20T01:35:00-05:00",
-        "next_run_ms": 1787207700000,
-        "running": false,
-        "running_since": "Unavailable",
-        "running_since_at": null,
-        "status": "ok",
-        "error_streak": 0,
-        "duration_ms": 94
-      }
-    ],
-    "error_count": 1
+    "automations": [],
+    "error_count": 0
   },
   "risks": [
     {
@@ -4545,7 +4488,7 @@
     {
       "time": "Today",
       "title": "Rowan restored to OpenAI",
-      "detail": "Primary runtime is Google-Gemini-Cli GEMINI-3.1-PRO-PREVIEW; the gateway and Slack connection are healthy."
+      "detail": "Primary runtime is OpenAI GPT-5.5; the gateway and Slack connection are healthy."
     },
     {
       "time": "Today",
@@ -4606,8 +4549,8 @@
     },
     {
       "label": "Automation state",
-      "status": "healthy",
-      "detail": "5 enabled jobs were sanitized from the current scheduler."
+      "status": "attention",
+      "detail": "Live scheduler data unavailable in this build."
     },
     {
       "label": "Weekly AI reserve",
@@ -4616,8 +4559,8 @@
     },
     {
       "label": "Netlify credit reserve",
-      "status": "attention",
-      "detail": "Conservative available balance is at most 399.4 credits; current-cycle consumption is at least 3,754.1. Production deploys consumed 3,480 credits at the exact observation. Automatic production deploy status is not verified off; every explicit release is budget-gated, and snapshot refreshes use private storage instead."
+      "status": "critical",
+      "detail": "Conservative available balance is at most 639.4 credits; current-cycle consumption is at least 3,514.1. Production deploys consumed 3,480 credits at the exact observation. Automatic production deploy status is not verified off; every explicit release is budget-gated, and snapshot refreshes use private storage instead."
     },
     {
       "label": "Automation signature policy",

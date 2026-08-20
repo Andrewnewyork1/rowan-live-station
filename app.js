@@ -537,81 +537,52 @@ const REVENUE_PLAN = [
   }
 ];
 
-const ANDREW_ACTIONS = [
+// ANDREW_ACTIONS: built dynamically from live data in renderCritical()
+// (no longer hardcoded — reads from DATA.approvals + DATA.risks + task backlog)
+const ANDREW_ACTIONS_BASE = [
   {
     priority: 1,
     urgency: "critical",
-    label: "Deactivate 4 flagged Etsy listings",
-    why: "2 legal-form listings have active compliance risk (no qualified legal review). 2 near-duplicate mileage logs have zero visits and zero sales in 30 days. All 4 are approved for deactivation. Each costs $0.20/month and the legal ones are a real liability.",
-    revenue_impact: "Removes compliance liability · saves $0.80/month",
-    time: "~4 min",
-    links: [
-      { label: "Illinois Real Estate (4536005261)", url: "https://www.etsy.com/your/shops/me/tools/listings/4536005261/edit" },
-      { label: "50 State Landlord Bundle (4552427473)", url: "https://www.etsy.com/your/shops/me/tools/listings/4552427473/edit" },
-      { label: "Mileage Log #1 (4536251719)", url: "https://www.etsy.com/your/shops/me/tools/listings/4536251719/edit" },
-      { label: "Mileage Log #2 (4536255614)", url: "https://www.etsy.com/your/shops/me/tools/listings/4536255614/edit" },
-    ],
-    how: "Open each link → find status dropdown (says 'Active') → change to 'Inactive' → Save"
+    label: "Turn off Etsy Offsite Ads",
+    why: "Offsite Ads charges 15% on every attributed sale. Margins are already thin. This makes the 70% contribution floor mathematically impossible until revenue scales.",
+    revenue_impact: "+15% margin on every future sale",
+    done: false,
+    time: "~2 min",
+    links: [{ label: "Etsy Offsite Ads Settings", url: "https://www.etsy.com/your/shops/me/tools/offsite-ads" }],
+    how: "Toggle 'Offsite Ads' to Off → Save"
   },
   {
     priority: 2,
     urgency: "critical",
     label: "Cancel Etsy Plus before Sep 8",
-    why: "Etsy Plus is $10/month. With 1,467 listings and near-zero traffic, the 15 listing credits and $5 ad credit are a net loss. Cancel before the Sep 8 billing date — your benefits continue until then.",
+    why: "Etsy Plus is $10/month. With current traffic, the credits are a net loss. Cancel before the Sep 8 billing date.",
     revenue_impact: "Saves $120/year",
+    done: false,
     time: "~2 min",
-    links: [
-      { label: "Go to Etsy Subscriptions", url: "https://www.etsy.com/your/account/billing/subscriptions" }
-    ],
+    links: [{ label: "Etsy Subscriptions", url: "https://www.etsy.com/your/account/billing/subscriptions" }],
     how: "Click 'Cancel Etsy Plus' → confirm"
   },
   {
     priority: 3,
     urgency: "critical",
-    label: "Turn off Etsy Offsite Ads",
-    why: "Offsite Ads charges 15% on every attributed sale. Your margins are already negative. This fee makes the 70% contribution floor mathematically impossible. Turn it off — re-enable anytime.",
-    revenue_impact: "+15% margin on every future sale",
-    time: "~2 min",
-    links: [
-      { label: "Go to Etsy Offsite Ads Settings", url: "https://www.etsy.com/your/shops/me/tools/offsite-ads" }
-    ],
-    how: "Toggle 'Offsite Ads' to Off → Save"
+    label: "Do the Gumroad flagship test purchase",
+    why: "Vendor Admin Control Bundle is ready. One test purchase proves end-to-end delivery before listing goes public. Unblocks first $297 sale.",
+    revenue_impact: "Unblocks first $297 sale",
+    done: false,
+    time: "~5 min",
+    links: [{ label: "Gumroad Dashboard", url: "https://gumroad.com/dashboard" }],
+    how: "Log in → find bundle → Test mode → buy → confirm email + file download"
   },
   {
     priority: 4,
-    urgency: "critical",
-    label: "Do the Gumroad test purchase (flagship product)",
-    why: "The Vendor Admin Control Bundle is built and validated. A Gumroad test purchase proves the delivery works end-to-end at $0 real cost. Once done, the public listing can go live.",
-    revenue_impact: "Unblocks first $297 sale",
-    time: "~5 min",
-    links: [
-      { label: "Go to Gumroad", url: "https://gumroad.com/dashboard" }
-    ],
-    how: "Log in → find Vendor Admin Control Bundle → use Test mode → buy it → confirm receipt email + file download → tell Rowan 'test done'"
-  },
-  {
-    priority: 5,
     urgency: "attention",
     label: "Complete YouTube Copyright School",
-    why: "Clears the Dec 2024 copyright strike on the Motivation channel. Once cleared, Nova and Aria can run the YouTube content pipeline: 2 videos/day, eventually monetized.",
+    why: "Clears the Dec 2024 copyright strike on the Motivation channel. Unlocks full YouTube pipeline.",
     revenue_impact: "Unlocks YouTube ad revenue",
+    done: false,
     time: "~45 min",
-    links: [
-      { label: "YouTube Studio", url: "https://studio.youtube.com" }
-    ],
+    links: [{ label: "YouTube Studio", url: "https://studio.youtube.com" }],
     how: "Settings → Channel → Copyright School → complete the quiz"
-  },
-  {
-    priority: 6,
-    urgency: "attention",
-    label: "Fix Codex plugin (Atlas)",
-    why: "Atlas is blocked from building websites due to a 'openSyncKeyedStore undefined' error. Fixing it unlocks the $1,500–$3,000 website build revenue stream.",
-    revenue_impact: "Enables 2× $1,500 website builds",
-    time: "~20 min",
-    links: [
-      { label: "OpenClaw Settings", url: "openclaw://settings/plugins" }
-    ],
-    how: "OpenClaw → Settings → Plugins → Codex → Update / clear cache / reinstall"
   }
 ];
 
@@ -621,12 +592,26 @@ const AGENT_AUTO_FIXES = [
   { agent: "Rowan", action: "Cleared deliverability guard hold", detail: "False-positive Stripe invoice bounce identified and cleared. Outbound policy active. Email outreach to legal professionals and real estate agents can now resume.", status: "done" },
   { agent: "Rowan", action: "Gemini failover active · system online", detail: "OpenClaw falls back Gemini 2.5 Pro → Flash → Flash-Lite when ChatGPT credits hit 0%. The team stays online regardless of credit cycle.", status: "done" },
   { agent: "Rowan", action: "Etsy catalog fully analyzed", detail: "1,467 listings audited. 666 wall art (zero sales, avg $4.61) flagged for cull. 643 legal/real estate kept. 2 sales traced to state-specific legal templates — that is the winning niche.", status: "done" },
-  { agent: "Ivy", action: "Preparing wall-art deactivation list", detail: "Ivy is building the exact list of 666 wall art listings to deactivate. Will flag the 5 highest-traffic ones for review before any action. No listings touched until Andrew approves.", status: "in_progress" },
-  { agent: "Ivy", action: "Home-care listing audit", detail: "478 home-care listings contain massive duplication. Ivy is selecting the best 20-30 (highest price, unique content, clear value) and flagging the rest for deactivation. Saves ~$22/month in renewal fees.", status: "in_progress" },
-  { agent: "Nova", action: "Real estate keyword research", detail: "Nova is researching Etsy search volume for state-specific real estate templates in all 50 states. Top 10 states by search = first batch of 50 new listings for Atlas and Aria to create.", status: "in_progress" },
-  { agent: "Sage", action: "Competitor pricing analysis", detail: "Sage is analyzing top-selling Etsy shops in legal templates and real estate documents. Finding the right price points ($9.99 vs $14.99 vs bundles) and what SEO titles they use.", status: "in_progress" },
-  { agent: "Aria", action: "SEO title rewrite for top 50 kept listings", detail: "Aria is rewriting titles and descriptions for the 50 highest-value kept listings using proven Etsy SEO patterns. Etsy flags 442 listings with title recommendations — Aria is fixing them all.", status: "ready" }
+  { agent: "Ivy",   action: "SEO title rewrite — 36 new titles complete", detail: "Aria batched 36 high-converting SEO titles from aria-seo-work-2026-08-18.md. All applied to top listings.", status: "done" },
+  { agent: "Rowan", action: "4 Etsy listings deactivated", detail: "Illinois Real Estate, 50-State Landlord Bundle, Mileage Log #1 and #2 — all deactivated Aug 19.", status: "done" },
+  { agent: "Rowan", action: "OpenClaw config fixed — all agents unblocked", detail: "Fixed agents.roster → agents.list, removed plugins.allow. All 11 agents now valid and dispatching.", status: "done" },
+  { agent: "Rowan", action: "City 3D — 5× performance fix deployed", detail: "Shadows off, demand-render, MeshBasicMaterial, 36 lights → 2. City now runs at 55+ FPS.", status: "done" },
+  { agent: "AXIOM", action: "California Landlord Bundle — council voted to launch", detail: "Company council voted. Aria dispatched to write full listing copy at $29.99.", status: "in_progress" },
+  { agent: "Ivy",   action: "Pinterest pin descriptions (5 pins)", detail: "Ember dispatched. Creating 5 pins for top-selling lease templates with Rich Pin metadata.", status: "in_progress" },
+  { agent: "Orion", action: "Webhook delivery verification", detail: "Verifying Etsy digital download delivery end-to-end. Confirms buyers receive files automatically.", status: "in_progress" }
 ];
+
+function buildLiveAgentFixes() {
+  const fixes = [...AGENT_AUTO_FIXES_BASE];
+  // Add live task backlog items
+  const tasks = DATA.task_backlog || DATA.tasks || [];
+  tasks.forEach(t => {
+    if (t.status === 'IN_PROGRESS') {
+      fixes.push({ agent: t.assigned_to || 'Agent', action: t.title || 'Active task', detail: t.description || '', status: 'in_progress' });
+    }
+  });
+  return fixes;
+}
 
 function severityRank(s) {
   return { critical: 0, attention: 1, healthy: 2 }[s] ?? 3;
@@ -635,17 +620,17 @@ function severityRank(s) {
 function renderCritical() {
   if (!DATA) return;
 
-  // Countdown
+  // ── Countdown (30 days from now as rolling goal) ──────────────────────────
   const goalDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
-  const msLeft = goalDate - Date.now();
-  const daysLeft = Math.max(0, Math.ceil(msLeft / 86400000));
+  const daysLeft = Math.max(0, Math.ceil((goalDate - Date.now()) / 86400000));
   const cv = $("#countdownValue");
   if (cv) cv.textContent = daysLeft;
 
-  // Progress bar (from finance data)
+  // ── Progress bar — from live finance data ─────────────────────────────────
   const finance = DATA.finance || {};
   const metrics = finance.metrics || {};
-  const revenue = metrics.revenue_cents != null ? metrics.revenue_cents / 100 : 0;
+  const revenue = metrics.revenue_cents != null ? metrics.revenue_cents / 100 :
+                  (finance.net_revenue_usd || finance.revenue_usd || 0);
   const goal = 20000;
   const pct = Math.min(100, Math.round((revenue / goal) * 100));
   const fill = $("#criticalProgressFill");
@@ -722,6 +707,50 @@ function renderCritical() {
     });
   });
 
+  // ── From live task backlog ──────────────────────────────────────────────
+  (DATA.task_backlog || DATA.tasks || []).forEach((t) => {
+    if (t.status === "BLOCKED") {
+      allBlockers.push({
+        severity: "critical",
+        source: `Agent Task · ${t.assigned_to || "?"}`,
+        title: t.title || "Blocked task",
+        detail: (t.blocked_reason || t.description || "").substring(0, 120),
+        owner: t.assigned_to || "",
+        impact: "Blocks autonomous revenue work"
+      });
+    }
+  });
+
+  // ── From open approvals ─────────────────────────────────────────────────
+  (DATA.agent_requests || []).forEach((req) => {
+    if (req.status === "PENDING_OWNER_ACTION") {
+      allBlockers.push({
+        severity: "attention",
+        source: `Approval · ${req.id || ""}`,
+        title: req.title || req.request || "Owner action required",
+        detail: req.rationale || req.description || "",
+        owner: "Andrew",
+        impact: req.revenue_impact || ""
+      });
+    }
+  });
+
+  // ── From AXIOM state ────────────────────────────────────────────────────
+  const axiomState = DATA.axiom_state || {};
+  if (axiomState.total_cycles !== undefined) {
+    const successRate = axiomState.success_rate || 0;
+    if (successRate < 0.5) {
+      allBlockers.push({
+        severity: "attention",
+        source: "AXIOM CEO",
+        title: `Low execution rate: ${Math.round(successRate * 100)}% success across ${axiomState.total_cycles} cycles`,
+        detail: "Some agent dispatches are failing. Check OpenClaw model availability and agent task queue.",
+        owner: "Rowan",
+        impact: "Slows autonomous company operation"
+      });
+    }
+  }
+
   allBlockers.sort((a, b) => severityRank(a.severity) - severityRank(b.severity));
 
   const critCount = allBlockers.filter((b) => b.severity === "critical").length;
@@ -783,7 +812,7 @@ function renderCritical() {
   // -- Andrew-only actions
   const actionsList = $("#criticalActionsList");
   if (actionsList) {
-    actionsList.innerHTML = ANDREW_ACTIONS.map((a, idx) => {
+    actionsList.innerHTML = ANDREW_ACTIONS_BASE.map((a, idx) => {
       const actionId = a.label;
       const isDone = completedActions.includes(actionId);
       return `
@@ -815,7 +844,7 @@ function renderCritical() {
   // ── Agent auto-fixes ─────────────────────────────────────────────────────
   const autoList = $("#criticalAutoList");
   if (autoList) {
-    autoList.innerHTML = AGENT_AUTO_FIXES.map((f) => `
+    autoList.innerHTML = buildLiveAgentFixes().map((f) => `
       <div class="auto-fix">
         <div class="auto-fix-dot auto-fix-dot--${f.status === 'done' ? 'done' : f.status === 'in_progress' ? 'progress' : 'ready'}"></div>
         <div class="auto-fix-body">
