@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T21:50:22-05:00",
+  "generated_at": "2026-08-19T21:51:28-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "Google-Gemini-Cli",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T02:50:00Z",
+          "summary_generated_at": "2026-08-20T02:51:09Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T02:50:00Z",
+          "summary_generated_at": "2026-08-20T02:51:09Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-20T02:50:00Z",
+      "generated_at": "2026-08-20T02:51:09Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -961,9 +961,19 @@
   },
   "live_dialogues": {
     "generated_at": "2026-08-19T00:06:02.620253-05:00",
-    "total_dialogues": 32,
+    "total_dialogues": 33,
     "engine": "Google Gemini 3.5 Flash Autonomous Multi-Turn Chaining",
     "dialogues": [
+      {
+        "id": "UNSCRIPTED-1787194269",
+        "generated_at": "2026-08-19T21:51:09.501306-05:00",
+        "agentA": "ember",
+        "agentB": "rowan",
+        "turnA": "Rowan, automating those 50-state legal disclaimers would be a game-changer for scaling our viral content across TikTok and Reddit without risking compliance bottlenecks.",
+        "turnB": "Ember, legal compliance for viral content is paramount; it directly impacts our ability to scale high-AOV bundles and achieve our profit targets.",
+        "topic": "automating 50-state statutory legal compliance disclaimers",
+        "engine": "Live Gemini 3.5 Flash via OpenClaw Gateway (100% Unscripted)"
+      },
       {
         "id": "UNSCRIPTED-1787193660",
         "generated_at": "2026-08-19T21:41:00.412166-05:00",
@@ -1254,7 +1264,7 @@
         "turnB": "Rowan, averaging 22 bundle sales per day across our top 5 states (Texas, California, Florida, New York, Illinois) hits the target with 4 days to spare."
       }
     ],
-    "last_unscripted_generated_at": "2026-08-19T21:41:00.412166-05:00"
+    "last_unscripted_generated_at": "2026-08-19T21:51:09.501306-05:00"
   },
   "city_engine_code": "",
   "ai_usage": {
@@ -2900,8 +2910,8 @@
       "status": "working",
       "automation": "2 enabled",
       "last_outcome": "Recent run ok",
-      "last_activity": "Aug 19, 9:50 PM",
-      "last_activity_at": "2026-08-19T21:50:12-05:00",
+      "last_activity": "Aug 19, 9:51 PM",
+      "last_activity_at": "2026-08-19T21:51:09-05:00",
       "model": "OpenAI GEMINI-3.1-PRO-PREVIEW",
       "sessions_24h": 7,
       "sessions_7d": 286,
@@ -2912,7 +2922,7 @@
         "score": 50,
         "provisional": true,
         "verified_points_7d": 0,
-        "tokens_7d": 9041805,
+        "tokens_7d": 9042294,
         "dimensions": {
           "reliability": 100,
           "efficiency": 20,
