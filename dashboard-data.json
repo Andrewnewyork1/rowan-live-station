@@ -1,14 +1,14 @@
 {
-  "snapshot_at": "2026-08-19T23:30:01.145168-05:00",
+  "snapshot_at": "2026-08-19T23:33:51.785436-05:00",
   "schema_version": 3,
   "source": "rowan_realtime_sync",
   "city_status": {
-    "agents_working": 1,
-    "agents_idle": 13,
+    "agents_working": 0,
+    "agents_idle": 14,
     "agents_error": 0,
-    "tasks_pending": 24,
-    "tasks_active": 1,
-    "tasks_done": 12
+    "tasks_pending": 27,
+    "tasks_active": 0,
+    "tasks_done": 15
   },
   "model_status": {
     "primary": "google/gemini-3.5-flash",
@@ -64,11 +64,11 @@
       "name": "Aria",
       "role": "Creative Director",
       "col": "#ff6da0",
-      "status": "WORKING",
+      "status": "STANDBY",
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
-        "current_activity": "\u26a1 Create: 50 landlord email templates PDF \u2014 rent reminders, notices, repairs ($14.99)",
+        "current_activity": "\ud83d\udccc Queued: Create: 50 landlord email templates PDF \u2014 rent reminders, notices, repairs ($14.99)",
         "active_task": null,
         "last_task": null,
         "last_seen": null
@@ -98,7 +98,7 @@
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
-        "current_activity": "\ud83d\udca4 Standing by",
+        "current_activity": "\ud83d\udccc Queued: Research NFT setup: OpenSea Polygon free minting + what AI art sells in 2026",
         "active_task": null,
         "last_task": null,
         "last_seen": null
@@ -241,30 +241,28 @@
     }
   ],
   "manager": {
-    "last_cycle": "2026-08-19T23:20:00.764817-05:00",
+    "last_cycle": "2026-08-19T23:33:29.366517-05:00",
     "task_summary": {
-      "pending": 26,
+      "pending": 27,
       "in_progress": 0,
-      "done": 11,
-      "blocked": 5,
+      "done": 15,
+      "blocked": 0,
       "total": 42
     },
-    "active_tasks": [
+    "active_tasks": [],
+    "pending_tasks": [
       {
         "id": "disc-email-001",
         "title": "Create: 50 landlord email templates PDF \u2014 rent reminders, notices, repairs ($14.99)",
         "description": "Write 50 professional, ready-to-send email templates for landlords. Categories: rent reminders (5), late rent notices (5), maintenance (10), lease renewal (5), move-in/move-out (10), tenant screening (5), general notices (10). Output to data/products/email-landlord-50.md",
         "assigned_to": "aria",
         "priority": "CRITICAL",
-        "status": "IN_PROGRESS",
+        "status": "PENDING",
         "deliverable": "data/products/email-landlord-50.md",
         "channel": "Gumroad+Etsy",
         "price": "$14.99",
-        "dispatched_at": "2026-08-19T23:27:57.529297-05:00",
-        "dispatched_by": "atlas"
-      }
-    ],
-    "pending_tasks": [
+        "dispatched_at": "2026-08-20T03:36:00.988372+00:00"
+      },
       {
         "id": "disc-planner-001",
         "title": "Create: Landlord 2026 Annual Planner PDF spec \u2014 52 weekly pages ($12.99)",
@@ -314,6 +312,20 @@
         "dispatched_at": "2026-08-20T03:36:00.988372+00:00"
       },
       {
+        "id": "disc-nft-001",
+        "title": "Research NFT setup: OpenSea Polygon free minting + what AI art sells in 2026",
+        "description": "Research: 1) How to set up free NFT minting on OpenSea using Polygon network (no gas fees), 2) What type of AI-generated art is selling in 2026, 3) Realistic revenue expectations, 4) Step-by-step setup guide requiring MetaMask. Output full research + action plan to data/research/nft-strategy.md",
+        "assigned_to": "sage",
+        "priority": "MEDIUM",
+        "status": "PENDING",
+        "deliverable": "data/research/nft-strategy.md",
+        "channel": "OpenSea",
+        "price": "strategy",
+        "dispatched_at": "2026-08-19T23:20:00.764817-05:00",
+        "dispatched_by": "sage",
+        "blocked_reason": null
+      },
+      {
         "id": "finn-001",
         "title": "FINN: Set up daily revenue tracking \u2014 compare actual vs $667/day target",
         "description": "Read financial data from command-center-data.json. Calculate: today's revenue, week's revenue, gap to $667/day. Identify which products/channels are producing. Write daily P&L report to data/finn-daily-report.md. Flag if more than 20% behind daily target.",
@@ -331,6 +343,16 @@
         "priority": "HIGH",
         "status": "PENDING",
         "deliverable": "data/chase-pricing-strategy.md",
+        "dispatched_at": "2026-08-20T03:36:00.988372+00:00"
+      },
+      {
+        "id": "blake-001",
+        "title": "BLAKE: Post to 3 relevant Reddit communities today \u2014 value content with shop link",
+        "description": "Find 3 active Reddit communities (r/Landlord, r/realestateinvesting, r/Entrepreneur). Write one genuinely helpful post per community. Include natural mention of ROWAN's Etsy shop or Gumroad in context. No spam \u2014 provide real value. Output posts to data/blake-reddit-posts.md",
+        "assigned_to": "blake",
+        "priority": "HIGH",
+        "status": "PENDING",
+        "deliverable": "data/blake-reddit-posts.md",
         "dispatched_at": "2026-08-20T03:36:00.988372+00:00"
       },
       {
@@ -519,6 +541,35 @@
     ],
     "done_tasks": [
       {
+        "id": "seo-etsy-urgent-001",
+        "title": "SEO URGENT: Rewrite titles+tags for all 100 SwirlCraftShop Etsy listings",
+        "description": "CRITICAL \u2014 $301 in Etsy listing fees, nothing optimized since Aug 10.\n\nYou have 100 active listings. Current problems:\n- 55 listings have ZERO views\n- Average price is only $23.93 \u2014 needs to be $7-$30\n- Tags are too generic (e.g. 'pastel planner' instead of 'printable planner pdf instant download')\n- Titles missing key buyer search terms\n\nTOP 5 BY VIEWS:\n  ID:4552829320 | Digital Shop Business Templates | 1,000+ Editable Canva Temp | $599.0 | 36 views\n  ID:4552828742 | Non-Medical Home Care Agency Policy Manual | Business-in-a-B | $499.0 | 11 views\n  ID:4536027912 | Motivational Wall Art Print | &#39;Your Energy&#39; Quote (D | $3.49 | 10 views\n  ID:4552811078 | Custom Family Portrait Illustration | Photo to Art Memorial  | $11.11 | 8 views\n  ID:4552441056 | Home Management Bundle | Cleaning Schedule, Meal Planner, Or | $19.99 | 7 views\n\nYOUR TASK \u2014 write optimized versions for each category:\n\n1. PRINTABLE JOURNALS/PLANNERS (80 listings): \n   - Add \"INSTANT DOWNLOAD\" to every title\n   - Add \"Printable PDF\" prominently\n   - Price recommendation: increase from $2.49 to $4.99\n   - Tags to add: instant download, printable pdf, digital download, planner printable\n\n2. HOME CARE FORMS (11 listings at $9.99):\n   - These are GOLD \u2014 keep at $9.99 or raise to $14.99\n   - Add: \"non-medical home care\", \"caregiver documentation\", \"home health agency\"\n\nWrite a complete SEO optimization plan to: data/seo-etsy-rewrite.md\nInclude: new title template, 13 optimized tags, price recommendations per category.\nThis is MAXIMUM PRIORITY. $20k goal depends on this.",
+        "assigned_to": "seo",
+        "priority": "CRITICAL",
+        "status": "DONE",
+        "created_at": "2026-08-20T03:58:52.495845+00:00",
+        "deliverable": "data/seo-etsy-rewrite.md",
+        "dispatched_at": "2026-08-19T23:00:01.212681-05:00",
+        "dispatched_by": "nova",
+        "blocked_reason": null,
+        "completed_at": "2026-08-19T23:33:29.366517-05:00"
+      },
+      {
+        "id": "sprint-001",
+        "title": "SPRINT: Write + publish California Landlord Bundle listing copy",
+        "description": "Write a complete Etsy listing for California Landlord Bundle. Price $14.99. Title (160 chars): include 'california lease agreement template', 'landlord rental agreement california'. Write 13 tags. Full description. Output to data/sprint-etsy-listing.md",
+        "assigned_to": "aria",
+        "priority": "CRITICAL",
+        "status": "DONE",
+        "deliverable": "data/sprint-etsy-listing.md",
+        "deadline": "2026-08-21T03:07:15.691177+00:00",
+        "revenue_impact": "$14.99/sale",
+        "dispatched_at": "2026-08-19T23:00:01.212681-05:00",
+        "dispatched_by": "atlas",
+        "blocked_reason": null,
+        "completed_at": "2026-08-19T23:33:29.366517-05:00"
+      },
+      {
         "id": "sprint-002",
         "title": "SPRINT: Optimize top 3 Etsy listing titles for max click-through",
         "description": "Add 'INSTANT DOWNLOAD' and 'EDITABLE' to top 3 lease template listing titles. Rewrite to front-load the state name and document type. Output to data/sprint-ctr-titles.md",
@@ -561,6 +612,21 @@
         "dispatched_at": "2026-08-19T23:14:59.041762-05:00",
         "dispatched_by": "atlas",
         "completed_at": "2026-08-19T23:16:58.848217-05:00"
+      },
+      {
+        "id": "sprint-005",
+        "title": "SPRINT: Recommend single best listing for Etsy free shipping badge",
+        "description": "Etsy boosts free-shipping listings in search. Find the $9.99 listing with most impressions. Recommend adding free shipping. Output to data/sprint-free-shipping.md",
+        "assigned_to": "sage",
+        "priority": "HIGH",
+        "status": "DONE",
+        "deliverable": "data/sprint-free-shipping.md",
+        "deadline": "2026-08-21T03:07:15.691177+00:00",
+        "revenue_impact": "+20% conversion rate",
+        "dispatched_at": "2026-08-19T23:00:01.212681-05:00",
+        "dispatched_by": "sage",
+        "blocked_reason": null,
+        "completed_at": "2026-08-19T23:33:29.366517-05:00"
       },
       {
         "id": "sprint-006",
@@ -634,16 +700,17 @@
         "completed_at": "2026-08-19T23:17:27.905545-05:00"
       },
       {
-        "id": "blake-001",
-        "title": "BLAKE: Post to 3 relevant Reddit communities today \u2014 value content with shop link",
-        "description": "Find 3 active Reddit communities (r/Landlord, r/realestateinvesting, r/Entrepreneur). Write one genuinely helpful post per community. Include natural mention of ROWAN's Etsy shop or Gumroad in context. No spam \u2014 provide real value. Output posts to data/blake-reddit-posts.md",
-        "assigned_to": "blake",
-        "priority": "HIGH",
+        "id": "maya-001",
+        "title": "MAYA: Create multi-platform publishing checklist for all pending products",
+        "description": "Review all files in data/products/. For each completed product spec, create a publishing checklist: what to post on Etsy, Gumroad, Payhip. Format specs for each platform. Write publishing queue to data/maya-publish-queue.md",
+        "assigned_to": "maya",
+        "priority": "CRITICAL",
         "status": "DONE",
-        "deliverable": "data/blake-reddit-posts.md",
-        "dispatched_at": "2026-08-19T23:27:57.529297-05:00",
-        "dispatched_by": "nova",
-        "completed_at": "2026-08-19T23:27:57.529297-05:00"
+        "deliverable": "data/maya-publish-queue.md",
+        "dispatched_at": "2026-08-19T23:00:01.212681-05:00",
+        "dispatched_by": "axiom",
+        "blocked_reason": null,
+        "completed_at": "2026-08-19T23:33:29.366517-05:00"
       },
       {
         "id": "quinn-001",
@@ -683,118 +750,42 @@
         "completed_at": "2026-08-19T23:20:00.764817-05:00"
       }
     ],
-    "blocked_tasks": [
-      {
-        "id": "seo-etsy-urgent-001",
-        "title": "SEO URGENT: Rewrite titles+tags for all 100 SwirlCraftShop Etsy listings",
-        "description": "CRITICAL \u2014 $301 in Etsy listing fees, nothing optimized since Aug 10.\n\nYou have 100 active listings. Current problems:\n- 55 listings have ZERO views\n- Average price is only $23.93 \u2014 needs to be $7-$30\n- Tags are too generic (e.g. 'pastel planner' instead of 'printable planner pdf instant download')\n- Titles missing key buyer search terms\n\nTOP 5 BY VIEWS:\n  ID:4552829320 | Digital Shop Business Templates | 1,000+ Editable Canva Temp | $599.0 | 36 views\n  ID:4552828742 | Non-Medical Home Care Agency Policy Manual | Business-in-a-B | $499.0 | 11 views\n  ID:4536027912 | Motivational Wall Art Print | &#39;Your Energy&#39; Quote (D | $3.49 | 10 views\n  ID:4552811078 | Custom Family Portrait Illustration | Photo to Art Memorial  | $11.11 | 8 views\n  ID:4552441056 | Home Management Bundle | Cleaning Schedule, Meal Planner, Or | $19.99 | 7 views\n\nYOUR TASK \u2014 write optimized versions for each category:\n\n1. PRINTABLE JOURNALS/PLANNERS (80 listings): \n   - Add \"INSTANT DOWNLOAD\" to every title\n   - Add \"Printable PDF\" prominently\n   - Price recommendation: increase from $2.49 to $4.99\n   - Tags to add: instant download, printable pdf, digital download, planner printable\n\n2. HOME CARE FORMS (11 listings at $9.99):\n   - These are GOLD \u2014 keep at $9.99 or raise to $14.99\n   - Add: \"non-medical home care\", \"caregiver documentation\", \"home health agency\"\n\nWrite a complete SEO optimization plan to: data/seo-etsy-rewrite.md\nInclude: new title template, 13 optimized tags, price recommendations per category.\nThis is MAXIMUM PRIORITY. $20k goal depends on this.",
-        "assigned_to": "seo",
-        "priority": "CRITICAL",
-        "status": "BLOCKED",
-        "created_at": "2026-08-20T03:58:52.495845+00:00",
-        "deliverable": "data/seo-etsy-rewrite.md",
-        "dispatched_at": "2026-08-19T23:00:01.212681-05:00",
-        "dispatched_by": "nova",
-        "blocked_reason": "OpenClaw config is invalid\nFile: ~/[config]son\nProblem:\n  - channels.etsy: unknown channel id: etsy\n\nFix: openclaw doctor --fix\nInspect: openclaw config validate\nAudit, status, health, logs, tasks list/audit, and doctor commands still run with invalid config.\n"
-      },
-      {
-        "id": "sprint-001",
-        "title": "SPRINT: Write + publish California Landlord Bundle listing copy",
-        "description": "Write a complete Etsy listing for California Landlord Bundle. Price $14.99. Title (160 chars): include 'california lease agreement template', 'landlord rental agreement california'. Write 13 tags. Full description. Output to data/sprint-etsy-listing.md",
-        "assigned_to": "aria",
-        "priority": "CRITICAL",
-        "status": "BLOCKED",
-        "deliverable": "data/sprint-etsy-listing.md",
-        "deadline": "2026-08-21T03:07:15.691177+00:00",
-        "revenue_impact": "$14.99/sale",
-        "dispatched_at": "2026-08-19T23:00:01.212681-05:00",
-        "dispatched_by": "atlas",
-        "blocked_reason": "OpenClaw config is invalid\nFile: ~/[config]son\nProblem:\n  - channels.etsy: unknown channel id: etsy\n\nFix: openclaw doctor --fix\nInspect: openclaw config validate\nAudit, status, health, logs, tasks list/audit, and doctor commands still run with invalid config.\n"
-      },
-      {
-        "id": "sprint-005",
-        "title": "SPRINT: Recommend single best listing for Etsy free shipping badge",
-        "description": "Etsy boosts free-shipping listings in search. Find the $9.99 listing with most impressions. Recommend adding free shipping. Output to data/sprint-free-shipping.md",
-        "assigned_to": "sage",
-        "priority": "HIGH",
-        "status": "BLOCKED",
-        "deliverable": "data/sprint-free-shipping.md",
-        "deadline": "2026-08-21T03:07:15.691177+00:00",
-        "revenue_impact": "+20% conversion rate",
-        "dispatched_at": "2026-08-19T23:00:01.212681-05:00",
-        "dispatched_by": "sage",
-        "blocked_reason": "OpenClaw config is invalid\nFile: ~/[config]son\nProblem:\n  - agents: Invalid input\n\nFix: openclaw doctor --fix\nInspect: openclaw config validate\nAudit, status, health, logs, tasks list/audit, and doctor commands still run with invalid config.\n"
-      },
-      {
-        "id": "disc-nft-001",
-        "title": "Research NFT setup: OpenSea Polygon free minting + what AI art sells in 2026",
-        "description": "Research: 1) How to set up free NFT minting on OpenSea using Polygon network (no gas fees), 2) What type of AI-generated art is selling in 2026, 3) Realistic revenue expectations, 4) Step-by-step setup guide requiring MetaMask. Output full research + action plan to data/research/nft-strategy.md",
-        "assigned_to": "sage",
-        "priority": "MEDIUM",
-        "status": "BLOCKED",
-        "deliverable": "data/research/nft-strategy.md",
-        "channel": "OpenSea",
-        "price": "strategy",
-        "dispatched_at": "2026-08-19T23:20:00.764817-05:00",
-        "dispatched_by": "sage",
-        "blocked_reason": "[TIMEOUT after 90s]"
-      },
-      {
-        "id": "maya-001",
-        "title": "MAYA: Create multi-platform publishing checklist for all pending products",
-        "description": "Review all files in data/products/. For each completed product spec, create a publishing checklist: what to post on Etsy, Gumroad, Payhip. Format specs for each platform. Write publishing queue to data/maya-publish-queue.md",
-        "assigned_to": "maya",
-        "priority": "CRITICAL",
-        "status": "BLOCKED",
-        "deliverable": "data/maya-publish-queue.md",
-        "dispatched_at": "2026-08-19T23:00:01.212681-05:00",
-        "dispatched_by": "axiom",
-        "blocked_reason": "OpenClaw config is invalid\nFile: ~/[config]son\nProblem:\n  - agents: Invalid input\n\nFix: openclaw doctor --fix\nInspect: openclaw config validate\nAudit, status, health, logs, tasks list/audit, and doctor commands still run with invalid config.\n"
-      }
-    ],
+    "blocked_tasks": [],
     "recent_actions": [
       {
-        "ts": "2026-08-19T23:20:53.704401-05:00",
-        "manager": "axiom",
-        "task_id": "maya-001",
+        "ts": "2026-08-19T23:30:01.159349-05:00",
+        "manager": "atlas",
+        "task_id": "task-b2b-001",
         "action": "verified_complete",
         "status": "done"
       },
       {
-        "ts": "2026-08-19T23:20:00.764817-05:00",
-        "manager": "atlas",
-        "task_id": "disc-resume-001",
-        "worker": "aria",
-        "action": "dispatch",
-        "status": "DONE",
-        "output_preview": "I have successfully created the content for the \"Real estate agent resume template Google Docs\" product and written it to the file `data/products/resume-real-estate.md`.\n\nYou can view the content in the file `/Users/andrewhanna/.openclaw/workspace/aria/data/products/resume-real-estate.md`.I have com"
-      },
-      {
-        "ts": "2026-08-19T23:20:00.764817-05:00",
-        "manager": "sage",
-        "task_id": "disc-nft-001",
-        "worker": "sage",
-        "action": "dispatch",
-        "status": "BLOCKED",
-        "output_preview": "[TIMEOUT after 90s]"
-      },
-      {
-        "ts": "2026-08-19T23:20:00.764817-05:00",
-        "manager": "axiom",
-        "task_id": "perp-kira-1787196127",
-        "worker": "kira",
-        "action": "dispatch",
-        "status": "DONE",
-        "output_preview": "I have previously produced the standard legal disclaimer at `data/compliance/kira-disclaimer.md`. The file contains a comprehensive disclaimer covering:\n\n- **Important Notice:** Informational purposes only.\n- **Not Legal Advice:** Not a law firm, not a substitute for qualified legal advice.\n- **No A"
-      },
-      {
-        "ts": "2026-08-19T23:27:57.529297-05:00",
+        "ts": "2026-08-19T23:33:29.366517-05:00",
         "manager": "nova",
-        "task_id": "blake-001",
-        "worker": "blake",
-        "action": "dispatch",
-        "status": "DONE",
-        "output_preview": "[agents/tool-policy] tool policy removed 14 tool(s) via tools.profile (coding): agents_list, browser, canvas, dir_fetch, dir_list, file_fetch, file_write, gateway, node_inference, nodes, pdf, tts, voice_call, whatsapp_login\n[provider-transport-fetch] [model-fetch] start provider=google api=google-ge"
+        "task_id": "seo-etsy-urgent-001",
+        "action": "verified_complete",
+        "status": "done"
+      },
+      {
+        "ts": "2026-08-19T23:33:29.366517-05:00",
+        "manager": "atlas",
+        "task_id": "sprint-001",
+        "action": "verified_complete",
+        "status": "done"
+      },
+      {
+        "ts": "2026-08-19T23:33:29.366517-05:00",
+        "manager": "sage",
+        "task_id": "sprint-005",
+        "action": "verified_complete",
+        "status": "done"
+      },
+      {
+        "ts": "2026-08-19T23:33:29.366517-05:00",
+        "manager": "axiom",
+        "task_id": "maya-001",
+        "action": "verified_complete",
+        "status": "done"
       }
     ]
   },
