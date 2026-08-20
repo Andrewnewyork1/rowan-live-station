@@ -1,14 +1,14 @@
 {
-  "snapshot_at": "2026-08-19T23:29:40.821711-05:00",
+  "snapshot_at": "2026-08-19T23:30:01.145168-05:00",
   "schema_version": 3,
   "source": "rowan_realtime_sync",
   "city_status": {
-    "agents_working": 0,
-    "agents_idle": 14,
+    "agents_working": 1,
+    "agents_idle": 13,
     "agents_error": 0,
-    "tasks_pending": 29,
+    "tasks_pending": 24,
     "tasks_active": 1,
-    "tasks_done": 11
+    "tasks_done": 12
   },
   "model_status": {
     "primary": "google/gemini-3.5-flash",
@@ -53,7 +53,7 @@
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
-        "current_activity": "\ud83d\udccc Queued: Audit top 20 Etsy listings \u2014 identify which need title updates",
+        "current_activity": "\ud83d\udca4 Standing by",
         "active_task": null,
         "last_task": null,
         "last_seen": null
@@ -64,11 +64,11 @@
       "name": "Aria",
       "role": "Creative Director",
       "col": "#ff6da0",
-      "status": "STANDBY",
+      "status": "WORKING",
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
-        "current_activity": "\ud83d\udccc Queued: Create: 50 landlord email templates PDF \u2014 rent reminders, notices, repairs ($14.99)",
+        "current_activity": "\u26a1 Create: 50 landlord email templates PDF \u2014 rent reminders, notices, repairs ($14.99)",
         "active_task": null,
         "last_task": null,
         "last_seen": null
@@ -98,7 +98,7 @@
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
-        "current_activity": "\ud83d\udccc Queued: Write pricing strategy for Gumroad B2B kits ($29-$97 range)",
+        "current_activity": "\ud83d\udca4 Standing by",
         "active_task": null,
         "last_task": null,
         "last_seen": null
@@ -113,7 +113,7 @@
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
-        "current_activity": "\ud83d\udccc Queued: Write a traffic acquisition plan: Etsy SEO + Pinterest for 30 days",
+        "current_activity": "\ud83d\udca4 Standing by",
         "active_task": null,
         "last_task": null,
         "last_seen": null
@@ -143,7 +143,7 @@
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
-        "current_activity": "\ud83d\udccc Queued: Write 10 Pinterest pin descriptions for lease template listings",
+        "current_activity": "\ud83d\udca4 Standing by",
         "active_task": null,
         "last_task": null,
         "last_seen": null
@@ -251,30 +251,20 @@
     },
     "active_tasks": [
       {
-        "id": "blake-001",
-        "title": "BLAKE: Post to 3 relevant Reddit communities today \u2014 value content with shop link",
-        "description": "Find 3 active Reddit communities (r/Landlord, r/realestateinvesting, r/Entrepreneur). Write one genuinely helpful post per community. Include natural mention of ROWAN's Etsy shop or Gumroad in context. No spam \u2014 provide real value. Output posts to data/blake-reddit-posts.md",
-        "assigned_to": "blake",
-        "priority": "HIGH",
-        "status": "IN_PROGRESS",
-        "deliverable": "data/blake-reddit-posts.md",
-        "dispatched_at": "2026-08-19T23:27:57.529297-05:00",
-        "dispatched_by": "nova"
-      }
-    ],
-    "pending_tasks": [
-      {
         "id": "disc-email-001",
         "title": "Create: 50 landlord email templates PDF \u2014 rent reminders, notices, repairs ($14.99)",
         "description": "Write 50 professional, ready-to-send email templates for landlords. Categories: rent reminders (5), late rent notices (5), maintenance (10), lease renewal (5), move-in/move-out (10), tenant screening (5), general notices (10). Output to data/products/email-landlord-50.md",
         "assigned_to": "aria",
         "priority": "CRITICAL",
-        "status": "PENDING",
+        "status": "IN_PROGRESS",
         "deliverable": "data/products/email-landlord-50.md",
         "channel": "Gumroad+Etsy",
         "price": "$14.99",
-        "dispatched_at": "2026-08-20T03:36:00.988372+00:00"
-      },
+        "dispatched_at": "2026-08-19T23:27:57.529297-05:00",
+        "dispatched_by": "atlas"
+      }
+    ],
+    "pending_tasks": [
       {
         "id": "disc-planner-001",
         "title": "Create: Landlord 2026 Annual Planner PDF spec \u2014 52 weekly pages ($12.99)",
@@ -525,50 +515,6 @@
         "status": "PENDING",
         "deliverable": "data/max-bulk-titles.md",
         "dispatched_at": "2026-08-20T03:36:00.988372+00:00"
-      },
-      {
-        "id": "perp-ivy-1787200201",
-        "title": "Audit top 20 Etsy listings \u2014 identify which need title updates",
-        "assigned_to": "ivy",
-        "priority": "HIGH",
-        "status": "PENDING",
-        "deliverable": "/Users/andrewhanna/.openclaw/workspace/rowan-command-station/data/ivy-title-audit.md",
-        "created_at": "2026-08-20T04:30:01.042296+00:00",
-        "revenue_goal": "$20,000/month",
-        "dispatched": false
-      },
-      {
-        "id": "perp-nova-1787200201",
-        "title": "Write a traffic acquisition plan: Etsy SEO + Pinterest for 30 days",
-        "assigned_to": "nova",
-        "priority": "HIGH",
-        "status": "PENDING",
-        "deliverable": "/Users/andrewhanna/.openclaw/workspace/rowan-command-station/data/nova-traffic-plan.md",
-        "created_at": "2026-08-20T04:30:01.042296+00:00",
-        "revenue_goal": "$20,000/month",
-        "dispatched": false
-      },
-      {
-        "id": "perp-sage-1787200201",
-        "title": "Write pricing strategy for Gumroad B2B kits ($29-$97 range)",
-        "assigned_to": "sage",
-        "priority": "HIGH",
-        "status": "PENDING",
-        "deliverable": "/Users/andrewhanna/.openclaw/workspace/rowan-command-station/data/sage-gumroad-pricing.md",
-        "created_at": "2026-08-20T04:30:01.042296+00:00",
-        "revenue_goal": "$20,000/month",
-        "dispatched": false
-      },
-      {
-        "id": "perp-ember-1787200201",
-        "title": "Write 10 Pinterest pin descriptions for lease template listings",
-        "assigned_to": "ember",
-        "priority": "HIGH",
-        "status": "PENDING",
-        "deliverable": "/Users/andrewhanna/.openclaw/workspace/rowan-command-station/data/ember-pinterest-batch1.md",
-        "created_at": "2026-08-20T04:30:01.042296+00:00",
-        "revenue_goal": "$20,000/month",
-        "dispatched": false
       }
     ],
     "done_tasks": [
@@ -688,6 +634,18 @@
         "completed_at": "2026-08-19T23:17:27.905545-05:00"
       },
       {
+        "id": "blake-001",
+        "title": "BLAKE: Post to 3 relevant Reddit communities today \u2014 value content with shop link",
+        "description": "Find 3 active Reddit communities (r/Landlord, r/realestateinvesting, r/Entrepreneur). Write one genuinely helpful post per community. Include natural mention of ROWAN's Etsy shop or Gumroad in context. No spam \u2014 provide real value. Output posts to data/blake-reddit-posts.md",
+        "assigned_to": "blake",
+        "priority": "HIGH",
+        "status": "DONE",
+        "deliverable": "data/blake-reddit-posts.md",
+        "dispatched_at": "2026-08-19T23:27:57.529297-05:00",
+        "dispatched_by": "nova",
+        "completed_at": "2026-08-19T23:27:57.529297-05:00"
+      },
+      {
         "id": "quinn-001",
         "title": "QUINN: Quality review all completed product specs \u2014 flag any issues before publishing",
         "description": "Review all .md files in data/products/. For each: check professional tone, no legal claims, accurate pricing, complete content, ready to publish. Mark as APPROVED or FLAG WITH NOTES. Output review to data/quinn-review-log.md",
@@ -797,13 +755,6 @@
     "recent_actions": [
       {
         "ts": "2026-08-19T23:20:53.704401-05:00",
-        "manager": "sage",
-        "task_id": "sprint-005",
-        "action": "verified_complete",
-        "status": "done"
-      },
-      {
-        "ts": "2026-08-19T23:20:53.704401-05:00",
         "manager": "axiom",
         "task_id": "maya-001",
         "action": "verified_complete",
@@ -835,6 +786,15 @@
         "action": "dispatch",
         "status": "DONE",
         "output_preview": "I have previously produced the standard legal disclaimer at `data/compliance/kira-disclaimer.md`. The file contains a comprehensive disclaimer covering:\n\n- **Important Notice:** Informational purposes only.\n- **Not Legal Advice:** Not a law firm, not a substitute for qualified legal advice.\n- **No A"
+      },
+      {
+        "ts": "2026-08-19T23:27:57.529297-05:00",
+        "manager": "nova",
+        "task_id": "blake-001",
+        "worker": "blake",
+        "action": "dispatch",
+        "status": "DONE",
+        "output_preview": "[agents/tool-policy] tool policy removed 14 tool(s) via tools.profile (coding): agents_list, browser, canvas, dir_fetch, dir_list, file_fetch, file_write, gateway, node_inference, nodes, pdf, tts, voice_call, whatsapp_login\n[provider-transport-fetch] [model-fetch] start provider=google api=google-ge"
       }
     ]
   },
