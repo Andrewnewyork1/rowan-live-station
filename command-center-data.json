@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T21:25:17-05:00",
+  "generated_at": "2026-08-19T21:30:42-05:00",
   "meta": {
     "rowan_status": "Rowan online",
-    "provider": "OpenAI",
-    "model": "GPT-5.5",
+    "provider": "Google-Gemini-Cli",
+    "model": "GEMINI-3.1-PRO-PREVIEW",
     "mode": "Sanitized owner snapshot with protected decision recording",
     "autonomy_stage": "etsy_legal_form_risk_control",
     "business_model": "Digital products and productized digital delivery only",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T02:25:00Z",
+          "summary_generated_at": "2026-08-20T02:30:01Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T02:25:00Z",
+          "summary_generated_at": "2026-08-20T02:30:01Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-20T02:25:00Z",
+      "generated_at": "2026-08-20T02:30:01Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -452,48 +452,6 @@
   },
   "evolution_log": [
     {
-      "timestamp": "2026-08-19T20:30:01.387338-05:00",
-      "action": "SEO_COMPLETE",
-      "detail": "All 36 Etsy SEO titles batched from aria-seo-work-2026-08-18.md",
-      "result": "success",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T20:30:01.387338-05:00",
-      "action": "DASHBOARD_HEALED",
-      "detail": "Sync OK. Warnings: 0. Stale: 0.",
-      "result": "ok",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T20:30:01.387338-05:00",
-      "action": "AGENT_WATCHDOG",
-      "detail": "Active: ['aria', 'nova', 'sage', 'atlas', 'ivy', 'main']. Idle: []. Woken: [].",
-      "result": "success",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T20:30:01.387338-05:00",
-      "action": "COST_GUARD_RUN",
-      "detail": "Daily $0.0000/$3.33. Monthly 0.2%. Alerts: []. Actions: [].",
-      "result": "ok",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T20:30:01.387338-05:00",
-      "action": "PROFIT_WAR_ERROR",
-      "detail": "'building_name'",
-      "result": "error",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T20:30:01.387338-05:00",
-      "action": "EVOLVE_CYCLE_COMPLETE",
-      "detail": "Full cycle complete. Results: {\"model\": \"no_change\", \"seo\": \"complete\", \"dashboard\": \"ok\", \"watchdog\": {\"active\": [\"aria\", \"nova\", \"sage\", \"atlas\", \"ivy\", \"main\"], \"idle\": [], \"woken\": []}, \"cost\": \"ok\", \"profit_war\": \"error:'building_name'\"}",
-      "result": "success",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
       "timestamp": "2026-08-19T20:36:51.019719-05:00",
       "action": "DESIGN_COUNCIL_VOTE",
       "detail": "🎨 Cipher WINS: \"Fog as information filter\" — Denser fog hides low-value buildings, spotlights revenue | Votes: Aria:2 | Lyra:1 | Dr. Victor:1 | Sage:2 | Ember:1 | Cipher:3",
@@ -590,6 +548,48 @@
       "detail": "🎨 Sage WINS: \"Structure reflects hierarchy\" — The manager tower must rival Rowan's command height | Votes: Nova:2 | Sage:4 | Ember:2 | Cipher:2",
       "result": "success",
       "triggered_by": "design-council"
+    },
+    {
+      "timestamp": "2026-08-19T21:30:01.286227-05:00",
+      "action": "SEO_COMPLETE",
+      "detail": "All 36 Etsy SEO titles batched from aria-seo-work-2026-08-18.md",
+      "result": "success",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T21:30:01.286227-05:00",
+      "action": "DASHBOARD_HEALED",
+      "detail": "Sync OK. Warnings: 0. Stale: 0.",
+      "result": "ok",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T21:30:01.286227-05:00",
+      "action": "AGENT_WATCHDOG",
+      "detail": "Active: ['aria', 'nova', 'sage', 'atlas', 'ivy', 'main']. Idle: []. Woken: [].",
+      "result": "success",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T21:30:01.286227-05:00",
+      "action": "COST_GUARD_RUN",
+      "detail": "Daily $0.0000/$3.33. Monthly 0.2%. Alerts: []. Actions: [].",
+      "result": "ok",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T21:30:01.286227-05:00",
+      "action": "PROFIT_WAR_ERROR",
+      "detail": "'building_name'",
+      "result": "error",
+      "triggered_by": "rowan-evolve-cron"
+    },
+    {
+      "timestamp": "2026-08-19T21:30:01.286227-05:00",
+      "action": "EVOLVE_CYCLE_COMPLETE",
+      "detail": "Full cycle complete. Results: {\"model\": \"no_change\", \"seo\": \"complete\", \"dashboard\": \"ok\", \"watchdog\": {\"active\": [\"aria\", \"nova\", \"sage\", \"atlas\", \"ivy\", \"main\"], \"idle\": [], \"woken\": []}, \"cost\": \"ok\", \"profit_war\": \"error:'building_name'\"}",
+      "result": "success",
+      "triggered_by": "rowan-evolve-cron"
     }
   ],
   "profit_war": {
@@ -780,7 +780,7 @@
         "height_m": 4.0
       }
     ],
-    "last_updated": "2026-08-19T21:00:01.422677-05:00"
+    "last_updated": "2026-08-19T21:30:01.286227-05:00"
   },
   "agent_requests": {
     "generated_at": "2026-08-19T15:20:00-05:00",
@@ -2372,7 +2372,7 @@
       "external_actions_authorized": false,
       "model_call_required": false,
       "issue_codes": [
-        "ETSY_BROWSER_COMMAND_FAILED"
+        "ETSY_BROWSER_EXTENSION_SESSION_REQUIRED"
       ]
     },
     "etsy_browser_dispatch": {
@@ -2878,12 +2878,12 @@
       "role": "CEO / Operator",
       "mission": "Directing all agent operations toward the $20,000 Etsy profit goal.",
       "status": "working",
-      "automation": "On demand",
+      "automation": "2 enabled",
       "last_outcome": "Recent run ok",
-      "last_activity": "Aug 19, 8:40 PM",
-      "last_activity_at": "2026-08-19T20:40:55-05:00",
+      "last_activity": "Aug 19, 9:30 PM",
+      "last_activity_at": "2026-08-19T21:30:25-05:00",
       "model": "OpenAI GEMINI-3.1-PRO-PREVIEW",
-      "sessions_24h": 8,
+      "sessions_24h": 7,
       "sessions_7d": 286,
       "error_streak": 0,
       "authority": "Manager",
@@ -2892,7 +2892,7 @@
         "score": 50,
         "provisional": true,
         "verified_points_7d": 0,
-        "tokens_7d": 9024635,
+        "tokens_7d": 9040751,
         "dimensions": {
           "reliability": 100,
           "efficiency": 20,
@@ -2913,7 +2913,7 @@
         "observed_at": "Aug 19, 9:29 AM",
         "observed_at_iso": "2026-08-19T09:29:17-05:00",
         "presence_source": "Live task ledger",
-        "next_action": "On demand within the protected weekly reserve",
+        "next_action": "Rowan Autonomous Company Director · Aug 19, 9:39 PM",
         "completed_24h": 16,
         "failed_24h": 8,
         "runs_7d": 373,
@@ -2998,8 +2998,8 @@
       "name": "Ivy",
       "role": "Head of Commerce",
       "mission": "Managing Etsy catalog triage, listing safety deactivations, and order reconciliation.",
-      "status": "standby",
-      "automation": "On demand",
+      "status": "monitoring",
+      "automation": "1 enabled",
       "last_outcome": "Recent run ok",
       "last_activity": "Aug 19, 8:41 PM",
       "last_activity_at": "2026-08-19T20:41:58-05:00",
@@ -3026,15 +3026,15 @@
       "city": {
         "district": "Commerce Row",
         "workspace": "Checkout and buyer-care studio",
-        "presence": "ready_room",
-        "activity_mode": "Ready",
-        "location": "Commerce Row · ready room",
-        "current_activity": "Standing by — Managing Etsy catalog triage, listing safety deactivations, and order reconciliation.",
+        "presence": "scheduled_watch",
+        "activity_mode": "Scheduled watch",
+        "location": "Commerce Row · Checkout and buyer-care studio",
+        "current_activity": "Monitoring SwirlCraft 15-Minute Customer Reply Triage; no task is executing now",
         "current_assignment": "Managing Etsy catalog triage, listing safety deactivations, and order reconciliation.",
-        "observed_at": "Aug 19, 8:41 PM",
-        "observed_at_iso": "2026-08-19T20:41:58-05:00",
-        "presence_source": "Session metadata",
-        "next_action": "On demand within the protected weekly reserve",
+        "observed_at": "Aug 19, 9:21 PM",
+        "observed_at_iso": "2026-08-19T21:21:55-05:00",
+        "presence_source": "Scheduler snapshot",
+        "next_action": "SwirlCraft 15-Minute Customer Reply Triage · Aug 19, 9:36 PM",
         "completed_24h": 92,
         "failed_24h": 5,
         "runs_7d": 356,
@@ -3353,23 +3353,23 @@
       "role": "Chief Technology Officer",
       "mission": "Building state-specific real estate, landlord, and home care PDF template products.",
       "status": "working",
-      "automation": "On demand",
+      "automation": "2 enabled",
       "last_outcome": "Recent run ok",
       "last_activity": "Aug 19, 8:30 PM",
       "last_activity_at": "2026-08-19T20:30:49-05:00",
       "model": "OpenAI GEMINI-3.1-PRO-PREVIEW",
       "sessions_24h": 1,
       "sessions_7d": 3,
-      "error_streak": 0,
+      "error_streak": 16,
       "authority": "Bounded",
       "performance": {
-        "grade": "D",
-        "score": 66,
+        "grade": "F",
+        "score": 46,
         "provisional": true,
         "verified_points_7d": 0,
         "tokens_7d": 71607,
         "dimensions": {
-          "reliability": 100,
+          "reliability": 20,
           "efficiency": 85,
           "effectiveness": 0,
           "safety": 100,
@@ -3388,7 +3388,7 @@
         "observed_at": "Aug 19, 6:55 PM",
         "observed_at_iso": "2026-08-19T18:55:57-05:00",
         "presence_source": "Live task ledger",
-        "next_action": "On demand within the protected weekly reserve",
+        "next_action": "Rowan Netlify Decision Sync · Aug 19, 9:36 PM",
         "completed_24h": 91,
         "failed_24h": 26,
         "runs_7d": 513,
@@ -3817,19 +3817,19 @@
       "name": "Lyra",
       "role": "B2B Design Engineer",
       "mission": "High-end corporate document aesthetics, typography, and commercial product kits.",
-      "status": "standby",
+      "status": "working",
       "automation": "On demand",
-      "last_outcome": "On-demand ready",
-      "last_activity": "Unavailable",
-      "last_activity_at": null,
+      "last_outcome": "Recent run ok",
+      "last_activity": "Aug 19, 9:29 PM",
+      "last_activity_at": "2026-08-19T21:29:45-05:00",
       "model": "OpenAI GPT-5.5",
-      "sessions_24h": 0,
-      "sessions_7d": 0,
+      "sessions_24h": 1,
+      "sessions_7d": 1,
       "error_streak": 0,
       "authority": "Bounded",
       "performance": {
-        "grade": "D",
-        "score": 60,
+        "grade": "C",
+        "score": 70,
         "provisional": true,
         "verified_points_7d": 0,
         "tokens_7d": 0,
@@ -3838,34 +3838,34 @@
           "efficiency": 100,
           "effectiveness": 0,
           "safety": 100,
-          "collaboration": 0
+          "collaboration": 100
         },
         "improvement_target": "Complete and log one verified customer, revenue, fulfillment, or risk-reduction outcome"
       },
       "city": {
         "district": "Aesthetics Lab",
         "workspace": "Corporate design atelier",
-        "presence": "ready_room",
-        "activity_mode": "Ready",
-        "location": "Aesthetics Lab · ready room",
-        "current_activity": "Standing by — High-end corporate document aesthetics, typography, and commercial product kits.",
+        "presence": "at_desk",
+        "activity_mode": "Active now",
+        "location": "Aesthetics Lab · Corporate design atelier",
+        "current_activity": "Working on Etsy $20k Goal Sprint",
         "current_assignment": "High-end corporate document aesthetics, typography, and commercial product kits.",
-        "observed_at": "Unavailable",
-        "observed_at_iso": null,
-        "presence_source": "No recent task evidence",
+        "observed_at": "Aug 19, 9:30 PM",
+        "observed_at_iso": "2026-08-19T21:30:40-05:00",
+        "presence_source": "Live task ledger",
         "next_action": "On demand within the protected weekly reserve",
         "completed_24h": 0,
         "failed_24h": 0,
-        "runs_7d": 0,
+        "runs_7d": 1,
         "history": [
           {
-            "at": "Now",
-            "at_iso": null,
-            "at_ms": 0,
-            "title": "Ready for bounded assignment",
-            "detail": "No scheduled model work; available on demand inside the weekly reserve.",
-            "status": "ready",
-            "location": "Aesthetics Lab · ready room"
+            "at": "Aug 19, 9:30 PM",
+            "at_iso": "2026-08-19T21:30:40-05:00",
+            "at_ms": 1787193040280,
+            "title": "Etsy $20k Goal Sprint",
+            "detail": "In progress",
+            "status": "running",
+            "location": "Aesthetics Lab · Corporate design atelier"
           }
         ]
       }
@@ -4035,7 +4035,7 @@
       },
       {
         "category": "Model",
-        "name": "OpenAI GPT-5.5",
+        "name": "Google-Gemini-Cli GEMINI-3.1-PRO-PREVIEW",
         "status": "online",
         "detail": "Rowan and the named team resolve to the approved OpenAI model."
       },
@@ -4130,8 +4130,94 @@
         "detail": "Sanitized state is hash-gated and refreshed through private snapshot storage. Routine updates consume no production-deploy credits; code releases require an explicit command and a passing Netlify reserve check."
       }
     ],
-    "automations": [],
-    "error_count": 0
+    "automations": [
+      {
+        "name": "SwirlCraft 15-Minute Customer Reply Triage",
+        "owner": "ivy",
+        "cadence": "Every 15m",
+        "last_run": "Aug 19, 9:21 PM",
+        "last_run_at": "2026-08-19T21:21:55-05:00",
+        "last_run_ms": 1787192515408,
+        "next_run": "Aug 19, 9:36 PM",
+        "next_run_at": "2026-08-19T21:36:55-05:00",
+        "next_run_ms": 1787193415408,
+        "running": false,
+        "running_since": "Unavailable",
+        "running_since_at": null,
+        "status": "ok",
+        "error_streak": 0,
+        "duration_ms": 2695
+      },
+      {
+        "name": "Rowan Netlify Decision Sync",
+        "owner": "atlas",
+        "cadence": "Every 15m",
+        "last_run": "Aug 19, 9:21 PM",
+        "last_run_at": "2026-08-19T21:21:59-05:00",
+        "last_run_ms": 1787192519609,
+        "next_run": "Aug 19, 9:36 PM",
+        "next_run_at": "2026-08-19T21:36:59-05:00",
+        "next_run_ms": 1787193419609,
+        "running": false,
+        "running_since": "Unavailable",
+        "running_since_at": null,
+        "status": "ok",
+        "error_streak": 0,
+        "duration_ms": 2866
+      },
+      {
+        "name": "Rowan Autonomous Company Director",
+        "owner": "main",
+        "cadence": "Every 1h",
+        "last_run": "Aug 19, 8:39 PM",
+        "last_run_at": "2026-08-19T20:39:37-05:00",
+        "last_run_ms": 1787189977063,
+        "next_run": "Aug 19, 9:39 PM",
+        "next_run_at": "2026-08-19T21:39:37-05:00",
+        "next_run_ms": 1787193577063,
+        "running": false,
+        "running_since": "Unavailable",
+        "running_since_at": null,
+        "status": "ok",
+        "error_streak": 0,
+        "duration_ms": 20393
+      },
+      {
+        "name": "Rowan 15-Minute Resource Circuit Breaker",
+        "owner": "atlas",
+        "cadence": "Every 15m",
+        "last_run": "Aug 19, 8:56 PM",
+        "last_run_at": "2026-08-19T20:56:45-05:00",
+        "last_run_ms": 1787191005921,
+        "next_run": "Aug 19, 9:57 PM",
+        "next_run_at": "2026-08-19T21:57:29-05:00",
+        "next_run_ms": 1787194649883,
+        "running": false,
+        "running_since": "Unavailable",
+        "running_since_at": null,
+        "status": "error",
+        "error_streak": 16,
+        "duration_ms": 43962
+      },
+      {
+        "name": "Rowan Daily Etsy Finance Close",
+        "owner": "main",
+        "cadence": "35 2 * * * · America/New_York",
+        "last_run": "Aug 19, 1:35 AM",
+        "last_run_at": "2026-08-19T01:35:00-05:00",
+        "last_run_ms": 1787121300042,
+        "next_run": "Aug 20, 1:35 AM",
+        "next_run_at": "2026-08-20T01:35:00-05:00",
+        "next_run_ms": 1787207700000,
+        "running": false,
+        "running_since": "Unavailable",
+        "running_since_at": null,
+        "status": "ok",
+        "error_streak": 0,
+        "duration_ms": 94
+      }
+    ],
+    "error_count": 1
   },
   "risks": [
     {
@@ -4404,7 +4490,7 @@
     {
       "time": "Today",
       "title": "Rowan restored to OpenAI",
-      "detail": "Primary runtime is OpenAI GPT-5.5; the gateway and Slack connection are healthy."
+      "detail": "Primary runtime is Google-Gemini-Cli GEMINI-3.1-PRO-PREVIEW; the gateway and Slack connection are healthy."
     },
     {
       "time": "Today",
@@ -4465,8 +4551,8 @@
     },
     {
       "label": "Automation state",
-      "status": "attention",
-      "detail": "Live scheduler data unavailable in this build."
+      "status": "healthy",
+      "detail": "5 enabled jobs were sanitized from the current scheduler."
     },
     {
       "label": "Weekly AI reserve",
