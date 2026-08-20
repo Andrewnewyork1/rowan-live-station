@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T19:34:38-05:00",
+  "generated_at": "2026-08-19T19:47:06-05:00",
   "meta": {
     "rowan_status": "Rowan online",
-    "provider": "Google-Gemini-Cli",
-    "model": "GEMINI-3.5-FLASH",
+    "provider": "OpenAI",
+    "model": "GPT-5.5",
     "mode": "Sanitized owner snapshot with protected decision recording",
     "autonomy_stage": "etsy_legal_form_risk_control",
     "business_model": "Digital products and productized digital delivery only",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T00:33:43Z",
+          "summary_generated_at": "2026-08-20T00:45:04Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-20T00:33:43Z",
+          "summary_generated_at": "2026-08-20T00:45:04Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-20T00:33:43Z",
+      "generated_at": "2026-08-20T00:45:04Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -1207,7 +1207,7 @@
     "automation_policy_status": "unavailable"
   },
   "netlify_usage": {
-    "checked_at": "2026-08-20T00:03:35Z",
+    "checked_at": "2026-08-20T00:34:39Z",
     "mode": "blocked",
     "billing_period_start": "2026-07-27",
     "billing_period_end": "2026-08-26",
@@ -2834,8 +2834,8 @@
       "status": "working",
       "automation": "2 enabled",
       "last_outcome": "Recent run ok",
-      "last_activity": "Aug 19, 7:34 PM",
-      "last_activity_at": "2026-08-19T19:34:12-05:00",
+      "last_activity": "Aug 19, 7:40 PM",
+      "last_activity_at": "2026-08-19T19:40:12-05:00",
       "model": "OpenAI GEMINI-3.5-FLASH",
       "sessions_24h": 8,
       "sessions_7d": 286,
@@ -2867,11 +2867,20 @@
         "observed_at": "Aug 19, 9:29 AM",
         "observed_at_iso": "2026-08-19T09:29:17-05:00",
         "presence_source": "Live task ledger",
-        "next_action": "Rowan Autonomous Company Director · Aug 19, 7:39 PM",
-        "completed_24h": 14,
+        "next_action": "Rowan Autonomous Company Director · Aug 19, 8:39 PM",
+        "completed_24h": 15,
         "failed_24h": 8,
-        "runs_7d": 371,
+        "runs_7d": 372,
         "history": [
+          {
+            "at": "Aug 19, 7:39 PM",
+            "at_iso": "2026-08-19T19:39:58-05:00",
+            "at_ms": 1787186398782,
+            "title": "Rowan Autonomous Company Director",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Founder Tower · Executive command desk"
+          },
           {
             "at": "Aug 19, 6:40 PM",
             "at_iso": "2026-08-19T18:40:20-05:00",
@@ -2934,15 +2943,6 @@
             "detail": "Completed successfully",
             "status": "succeeded",
             "location": "Founder Tower · Executive command desk"
-          },
-          {
-            "at": "Aug 19, 11:18 AM",
-            "at_iso": "2026-08-19T11:18:20-05:00",
-            "at_ms": 1787156300231,
-            "title": "Rowan Autonomous Company Director",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Founder Tower · Executive command desk"
           }
         ]
       }
@@ -2985,14 +2985,23 @@
         "location": "Commerce Row · Checkout and buyer-care studio",
         "current_activity": "Monitoring SwirlCraft 15-Minute Customer Reply Triage; no task is executing now",
         "current_assignment": "Managing Etsy catalog triage, listing safety deactivations, and order reconciliation.",
-        "observed_at": "Aug 19, 7:21 PM",
-        "observed_at_iso": "2026-08-19T19:21:55-05:00",
+        "observed_at": "Aug 19, 7:36 PM",
+        "observed_at_iso": "2026-08-19T19:36:55-05:00",
         "presence_source": "Scheduler snapshot",
-        "next_action": "SwirlCraft 15-Minute Customer Reply Triage · Aug 19, 7:36 PM",
-        "completed_24h": 81,
+        "next_action": "SwirlCraft 15-Minute Customer Reply Triage · Aug 19, 7:51 PM",
+        "completed_24h": 82,
         "failed_24h": 5,
-        "runs_7d": 343,
+        "runs_7d": 344,
         "history": [
+          {
+            "at": "Aug 19, 7:36 PM",
+            "at_iso": "2026-08-19T19:36:58-05:00",
+            "at_ms": 1787186218444,
+            "title": "SwirlCraft 15-Minute Customer Reply Triage",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Commerce Row · Checkout and buyer-care studio"
+          },
           {
             "at": "Aug 19, 7:21 PM",
             "at_iso": "2026-08-19T19:21:57-05:00",
@@ -3055,15 +3064,6 @@
             "detail": "Completed successfully",
             "status": "succeeded",
             "location": "Commerce Row · Checkout and buyer-care studio"
-          },
-          {
-            "at": "Aug 19, 4:50 PM",
-            "at_iso": "2026-08-19T16:50:07-05:00",
-            "at_ms": 1787176207831,
-            "title": "SwirlCraft 15-Minute Customer Reply Triage",
-            "detail": "Ended with an exception",
-            "status": "failed",
-            "location": "Commerce Row · incident room"
           }
         ]
       }
@@ -3315,11 +3315,20 @@
         "observed_at": "Aug 19, 6:55 PM",
         "observed_at_iso": "2026-08-19T18:55:57-05:00",
         "presence_source": "Live task ledger",
-        "next_action": "Rowan Netlify Decision Sync · Aug 19, 7:36 PM",
-        "completed_24h": 83,
+        "next_action": "Rowan Netlify Decision Sync · Aug 19, 7:51 PM",
+        "completed_24h": 84,
         "failed_24h": 26,
-        "runs_7d": 501,
+        "runs_7d": 502,
         "history": [
+          {
+            "at": "Aug 19, 7:36 PM",
+            "at_iso": "2026-08-19T19:36:58-05:00",
+            "at_ms": 1787186218317,
+            "title": "Rowan Netlify Decision Sync",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Systems Foundry · Reliability and delivery lab"
+          },
           {
             "at": "Aug 19, 7:21 PM",
             "at_iso": "2026-08-19T19:21:58-05:00",
@@ -3382,15 +3391,6 @@
             "detail": "Ended with an exception",
             "status": "failed",
             "location": "Systems Foundry · incident room"
-          },
-          {
-            "at": "Aug 19, 5:27 PM",
-            "at_iso": "2026-08-19T17:27:24-05:00",
-            "at_ms": 1787178444046,
-            "title": "Rowan Netlify Decision Sync",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Systems Foundry · Reliability and delivery lab"
           }
         ]
       }
@@ -3944,7 +3944,7 @@
       },
       {
         "category": "Model",
-        "name": "Google-Gemini-Cli GEMINI-3.5-FLASH",
+        "name": "OpenAI GPT-5.5",
         "status": "online",
         "detail": "Rowan and the named team resolve to the approved OpenAI model."
       },
@@ -4044,52 +4044,35 @@
         "name": "SwirlCraft 15-Minute Customer Reply Triage",
         "owner": "ivy",
         "cadence": "Every 15m",
-        "last_run": "Aug 19, 7:21 PM",
-        "last_run_at": "2026-08-19T19:21:55-05:00",
-        "last_run_ms": 1787185315066,
-        "next_run": "Aug 19, 7:36 PM",
-        "next_run_at": "2026-08-19T19:36:55-05:00",
-        "next_run_ms": 1787186215066,
+        "last_run": "Aug 19, 7:36 PM",
+        "last_run_at": "2026-08-19T19:36:55-05:00",
+        "last_run_ms": 1787186215104,
+        "next_run": "Aug 19, 7:51 PM",
+        "next_run_at": "2026-08-19T19:51:55-05:00",
+        "next_run_ms": 1787187115104,
         "running": false,
         "running_since": "Unavailable",
         "running_since_at": null,
         "status": "ok",
         "error_streak": 0,
-        "duration_ms": 2761
+        "duration_ms": 3340
       },
       {
         "name": "Rowan Netlify Decision Sync",
         "owner": "atlas",
         "cadence": "Every 15m",
-        "last_run": "Aug 19, 7:21 PM",
-        "last_run_at": "2026-08-19T19:21:55-05:00",
-        "last_run_ms": 1787185315069,
-        "next_run": "Aug 19, 7:36 PM",
-        "next_run_at": "2026-08-19T19:36:55-05:00",
-        "next_run_ms": 1787186215069,
+        "last_run": "Aug 19, 7:36 PM",
+        "last_run_at": "2026-08-19T19:36:55-05:00",
+        "last_run_ms": 1787186215115,
+        "next_run": "Aug 19, 7:51 PM",
+        "next_run_at": "2026-08-19T19:51:55-05:00",
+        "next_run_ms": 1787187115115,
         "running": false,
         "running_since": "Unavailable",
         "running_since_at": null,
         "status": "ok",
         "error_streak": 0,
-        "duration_ms": 3868
-      },
-      {
-        "name": "Rowan Autonomous Company Director",
-        "owner": "main",
-        "cadence": "Every 1h",
-        "last_run": "Aug 19, 6:39 PM",
-        "last_run_at": "2026-08-19T18:39:36-05:00",
-        "last_run_ms": 1787182776992,
-        "next_run": "Aug 19, 7:39 PM",
-        "next_run_at": "2026-08-19T19:39:36-05:00",
-        "next_run_ms": 1787186376992,
-        "running": false,
-        "running_since": "Unavailable",
-        "running_since_at": null,
-        "status": "ok",
-        "error_streak": 0,
-        "duration_ms": 43965
+        "duration_ms": 3202
       },
       {
         "name": "Rowan 15-Minute Resource Circuit Breaker",
@@ -4107,6 +4090,23 @@
         "status": "error",
         "error_streak": 14,
         "duration_ms": 980962
+      },
+      {
+        "name": "Rowan Autonomous Company Director",
+        "owner": "main",
+        "cadence": "Every 1h",
+        "last_run": "Aug 19, 7:39 PM",
+        "last_run_at": "2026-08-19T19:39:37-05:00",
+        "last_run_ms": 1787186377028,
+        "next_run": "Aug 19, 8:39 PM",
+        "next_run_at": "2026-08-19T20:39:37-05:00",
+        "next_run_ms": 1787189977028,
+        "running": false,
+        "running_since": "Unavailable",
+        "running_since_at": null,
+        "status": "ok",
+        "error_streak": 0,
+        "duration_ms": 21754
       },
       {
         "name": "Rowan Daily Etsy Finance Close",
@@ -4399,7 +4399,7 @@
     {
       "time": "Today",
       "title": "Rowan restored to OpenAI",
-      "detail": "Primary runtime is Google-Gemini-Cli GEMINI-3.5-FLASH; the gateway and Slack connection are healthy."
+      "detail": "Primary runtime is OpenAI GPT-5.5; the gateway and Slack connection are healthy."
     },
     {
       "time": "Today",
