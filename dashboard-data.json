@@ -1,5 +1,5 @@
 {
-  "snapshot_at": "2026-08-20T21:34:00.246607-05:00",
+  "snapshot_at": "2026-08-20T21:40:49.479347-05:00",
   "schema_version": 3,
   "source": "rowan_realtime_sync",
   "city_status": {
@@ -883,13 +883,6 @@
   "evolution_log": [
     {
       "timestamp": "2026-08-19T23:30:01.368552-05:00",
-      "action": "MODEL_UPGRADED",
-      "detail": "Auto-upgraded primary model: google/gemini-3.1-pro-preview -> google/gemini-3.5-flash",
-      "result": "success",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T23:30:01.368552-05:00",
       "action": "SEO_COMPLETE",
       "detail": "All 36 Etsy SEO titles batched from aria-seo-work-2026-08-18.md",
       "result": "success",
@@ -1016,6 +1009,12 @@
       "detail": "AXIOM cycle 7: 3 executed, 1 attempted. Tasks: 0 done/0 blocked.",
       "result": "success",
       "triggered_by": "axiom"
+    },
+    {
+      "timestamp": "2026-08-20T21:40:47.739244-05:00",
+      "action": "ETSY_SEO_TITLES_APPLIED_LIVE",
+      "detail": "Successfully updated top 25 Etsy listings with high-CTR search-optimized titles directly in Etsy Seller Hub via verified Chrome execution.",
+      "result": "25/25 listings published"
     }
   ],
   "agent_activity": {

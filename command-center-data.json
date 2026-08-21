@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-20T21:34:09-05:00",
+  "generated_at": "2026-08-20T21:40:57-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "Google Gemini",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-21T02:34:02Z",
+          "summary_generated_at": "2026-08-21T02:40:49Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-21T02:34:02Z",
+          "summary_generated_at": "2026-08-21T02:40:49Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-21T02:34:02Z",
+      "generated_at": "2026-08-21T02:40:49Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -453,13 +453,6 @@
   "evolution_log": [
     {
       "timestamp": "2026-08-19T23:30:01.368552-05:00",
-      "action": "MODEL_UPGRADED",
-      "detail": "Auto-upgraded primary model: google/gemini-3.1-pro-preview -> google/gemini-3.5-flash",
-      "result": "success",
-      "triggered_by": "rowan-evolve-cron"
-    },
-    {
-      "timestamp": "2026-08-19T23:30:01.368552-05:00",
       "action": "SEO_COMPLETE",
       "detail": "All 36 Etsy SEO titles batched from aria-seo-work-2026-08-18.md",
       "result": "success",
@@ -586,6 +579,12 @@
       "detail": "AXIOM cycle 7: 3 executed, 1 attempted. Tasks: 0 done/0 blocked.",
       "result": "success",
       "triggered_by": "axiom"
+    },
+    {
+      "timestamp": "2026-08-20T21:40:47.739244-05:00",
+      "action": "ETSY_SEO_TITLES_APPLIED_LIVE",
+      "detail": "Successfully updated top 25 Etsy listings with high-CTR search-optimized titles directly in Etsy Seller Hub via verified Chrome execution.",
+      "result": "25/25 listings published"
     }
   ],
   "profit_war": {
@@ -4368,7 +4367,7 @@
         "observed_at_iso": "2026-08-19T09:29:17-05:00",
         "presence_source": "Live task ledger",
         "next_action": "On demand within the protected weekly reserve",
-        "completed_24h": 4,
+        "completed_24h": 3,
         "failed_24h": 0,
         "runs_7d": 377,
         "history": [
@@ -4489,7 +4488,7 @@
         "observed_at_iso": "2026-08-20T07:31:26-05:00",
         "presence_source": "Session metadata",
         "next_action": "On demand within the protected weekly reserve",
-        "completed_24h": 20,
+        "completed_24h": 19,
         "failed_24h": 0,
         "runs_7d": 377,
         "history": [
@@ -4852,7 +4851,7 @@
         "observed_at_iso": "2026-08-20T07:32:26-05:00",
         "presence_source": "Session metadata",
         "next_action": "On demand within the protected weekly reserve",
-        "completed_24h": 16,
+        "completed_24h": 15,
         "failed_24h": 6,
         "runs_7d": 535,
         "history": [
@@ -5505,7 +5504,7 @@
         "observed_at_iso": "2026-08-20T07:35:03-05:00",
         "presence_source": "Session metadata",
         "next_action": "On demand within the protected weekly reserve",
-        "completed_24h": 4,
+        "completed_24h": 3,
         "failed_24h": 0,
         "runs_7d": 4,
         "history": [
