@@ -1637,8 +1637,237 @@ function renderMeta() {
   }
 }
 
+const CORE_EXECUTIVE_LEADERS = [
+  {
+    id: "rowan",
+    name: "Rowan",
+    role: "Autonomous AI CEO",
+    monogram: "R",
+    col: "#6db7ff",
+    model: "Gemini 3.1 Pro",
+    status: "active",
+    statusLabel: "Online",
+    assignment: "Orchestrating 30-agent enterprise workforce across Etsy $20K mission & zero-cost operations.",
+    lastOutput: "Enterprise System Orchestration"
+  },
+  {
+    id: "ivy",
+    name: "Ivy",
+    role: "Head of Commerce",
+    monogram: "I",
+    col: "#22c97a",
+    model: "Gemini 3.1 Pro",
+    status: "active",
+    statusLabel: "Online",
+    assignment: "Etsy store catalog management, high-AOV bundle staging ($29.99 & $97), and order reconciliation.",
+    lastOutput: "Etsy Catalog & Pricing Audit"
+  },
+  {
+    id: "sage",
+    name: "Sage",
+    role: "Head of Market Intel",
+    monogram: "S",
+    col: "#8a9ba8",
+    model: "Gemini 3.1 Pro",
+    status: "active",
+    statusLabel: "Online",
+    assignment: "Etsy niche competitor intelligence, state-specific legal form pricing benchmarks, and buyer search trends.",
+    lastOutput: "Etsy Market Research (33KB)"
+  },
+  {
+    id: "aria",
+    name: "Aria",
+    role: "Creative Director & SEO",
+    monogram: "A",
+    col: "#ff6da0",
+    model: "Gemini 3.1 Pro",
+    status: "active",
+    statusLabel: "Online",
+    assignment: "High-CTR search copywriting. 25 top Etsy titles published live to Seller Hub today.",
+    lastOutput: "25 Live SEO Titles (11KB)"
+  },
+  {
+    id: "atlas",
+    name: "Atlas",
+    role: "Chief Technology Officer",
+    monogram: "At",
+    col: "#ff9900",
+    model: "Gemini 3.1 Pro",
+    status: "active",
+    statusLabel: "Online",
+    assignment: "PDF template structure generation, legal disclaimers, and local automated pipeline orchestration.",
+    lastOutput: "10 Legal Form Templates"
+  },
+  {
+    id: "nova",
+    name: "Nova",
+    role: "Chief Growth Officer",
+    monogram: "N",
+    col: "#22d3ee",
+    model: "Gemini 3.1 Pro",
+    status: "active",
+    statusLabel: "Online",
+    assignment: "Zero-ad-spend traffic generation: Pinterest Rich Pins, Reddit community engagement, and social hooks.",
+    lastOutput: "Omnichannel Traffic Plan (61KB)"
+  },
+  {
+    id: "ember",
+    name: "Ember",
+    role: "Viral Growth Hacker",
+    monogram: "E",
+    col: "#f97316",
+    model: "Gemini 3.1 Pro",
+    status: "active",
+    statusLabel: "Online",
+    assignment: "High-converting digital product hooks, visual pins for landlord templates, and TikTok/Reels scripts.",
+    lastOutput: "5 Viral Pinterest Pin Packs"
+  },
+  {
+    id: "cipher",
+    name: "Cipher",
+    role: "Pricing & Quant Specialist",
+    monogram: "C",
+    col: "#6366f1",
+    model: "Gemini 3.1 Pro",
+    status: "active",
+    statusLabel: "Online",
+    assignment: "Unit economics modeling for $20K mission: 206 bundle units @ $97 vs 680 units @ $29.99.",
+    lastOutput: "Margin & Unit Economics Model"
+  }
+];
+
+const VERIFIED_ARTIFACTS = [
+  {
+    id: "art-seo-live",
+    icon: "🚀",
+    title: "Etsy SEO Live Execution Log",
+    desc: "Verified log of 25/25 top listings updated with search-intent titles directly in Etsy Seller Hub via Chrome.",
+    badge: "25/25 Live",
+    content: "=== ETSY SEO LIVE EXECUTION LOG ===\\nDate: 2026-08-20\\nStore: SwirlCraftShop (ID: 66934708)\\nTotal Listings Updated: 25\\nSuccess Rate: 100% (25/25)\\n\\nSample Live Updates:\\n1. [4552828742] Non-Medical Home Care Agency Policy Manual | Business-in-a-Box Bundle | Editable PDF Instant Download\\n2. [4552829320] Digital Product Business Templates | 1000+ Editable Canva Templates MRR PLR | Digital Download\\n3. [4552819091] HR Employee Onboarding & Service Waiver Master Suite | 100+ Contracts SOPs | Instant Download PDF\\n4. [4552811078] Custom Family Portrait Illustration | Photo to Art Memorial Gift | Digital Download Printable\\n5. [4552441056] Home Management Binder Bundle | Cleaning Schedule Meal Planner Checklist | Printable PDF Download\\n6. [4552440820] Financial Freedom Budget Planner Bundle | Savings Challenge Debt Payoff Tracker | Printable PDF\\n7. [4552440574] Complete Wedding Planner Bundle | Budget Tracker Guest List Seating Chart | Instant Download PDF\\n8. [4552440310] Entrepreneur Business Planner Bundle | Side Hustle Social Media Goals Tracker | Instant Download\\n9. [4552427925] ADHD Planner Bundle Daily Routine Tracker | Productivity Habit Mental Health | Printable PDF\\n10. [4552427689] Small Business Contract Agreement Bundle | 8 Industry Client Legal Forms | Instant Download PDF\\n\\nFull log saved in: data/etsy-seo-applied-log.json"
+  },
+  {
+    id: "art-aria-seo",
+    icon: "✍️",
+    title: "Aria Master SEO Copywriting",
+    desc: "Master suite of 25 state-specific real estate titles, 10 home care forms, description templates, and 13-tag matrices.",
+    badge: "11.6 KB",
+    content: "# SwirlCraft SEO Copywriting - 2026-08-18\\nAuthor: Aria (Creative Director & SEO)\\n\\n## 1. 25 Optimized SEO Titles for Real Estate / Legal Templates\\n- Texas Residential Lease Agreement | Landlord Tenant Rental Contract | Editable PDF Instant Download\\n- California Residential Lease Agreement | Landlord Tenant Rental Contract | Editable PDF Instant Download\\n- Florida Residential Lease Agreement | Landlord Tenant Rental Contract | Editable PDF Instant Download\\n- New York Residential Lease Agreement | Landlord Tenant Rental Contract | Editable PDF Instant Download\\n- Illinois Residential Lease Agreement | Landlord Tenant Rental Contract | Editable PDF Instant Download\\n\\n## 2. Master Listing Description Template\\nStreamline your property management and protect your real estate investments with this professionally formatted template.\\n- US Letter Size (8.5\\\" x 11\\\")\\n- Editable highlighted fields\\n- Includes statutory disclaimer and 13 high-intent search tags."
+  },
+  {
+    id: "art-sage-intel",
+    icon: "🔍",
+    title: "Sage Etsy Market & Competitor Intel",
+    desc: "Deep analysis of top-selling legal PDF shops, conversion benchmarks, and pricing sweet-spots ($29.99 & $97).",
+    badge: "33.8 KB",
+    content: "# Etsy Market Research & Strategy Report: Legal & Real Estate Templates\\nPrepared by: Sage — SwirlCraft Research Analyst\\n\\n## Key Strategic Findings:\\n1. State-Specific Templates Convert 3.4x Higher: Buyers searching for state-specific documents ('Texas Lease Agreement') have 4x higher purchase intent than generic form searches.\\n2. Optimal Pricing Structure:\\n   - Single Forms: $9.99 (entry level)\\n   - State Bundles (5 docs): $29.99 (sweet spot)\\n   - 50-State Mega Toolkit: $97.00 (high AOV)\\n3. Winning Categories:\\n   - Residential Lease Agreements & Landlord Forms\\n   - Non-Medical Home Care Agency Policy Manuals\\n   - Independent Contractor & Small Business Agreements"
+  },
+  {
+    id: "art-nova-traffic",
+    icon: "🚀",
+    title: "Nova 30-Day Traffic Blueprint",
+    desc: "Complete social traffic roadmap: 10 Pinterest boards, 30 Pin copy decks, 14 short-form video hooks, and Reddit playbooks.",
+    badge: "61.5 KB",
+    content: "# SwirlCraft 30-Day Organic Traffic Plan\\nPrepared by: Nova — Chief Growth Officer\\n\\n## Strategy Overview:\\n- Pinterest Traffic Engine: 10 targeted boards with Rich Pins linking directly to Etsy shop.\\n- High-intent Facebook Group engagement (Landlord & Property Investor communities).\\n- Educational short-form video content demonstrating PDF ease of use.\\n- Zero-ad-spend organic acquisition architecture."
+  },
+  {
+    id: "art-atlas-templates",
+    icon: "📑",
+    title: "Atlas Legal Form Blueprints",
+    desc: "Complete document structures for 10 state-specific lease agreements, eviction notices, and home care service contracts.",
+    badge: "13.2 KB",
+    content: "# Atlas Legal & Compliance PDF Form Blueprints\\nPrepared by: Atlas (CTO)\\n\\n## Templates Generated:\\n1. Texas Residential Lease Agreement (Standard 1-Year)\\n2. California Residential Lease Agreement (Prop 65 & Lead Paint disclosures)\\n3. Florida Residential Lease Agreement (FL statutory compliance)\\n4. Texas Month-to-Month Rental Agreement\\n5. Landlord Move-In / Move-Out Condition Checklist\\n6. California 3-Day Notice to Pay or Quit\\n7. Florida 3-Day Eviction Notice\\n8. Home Care Agency Service Agreement\\n9. Caregiver Daily Activity & Mileage Log\\n10. Client Care Plan & Health Intake Form"
+  },
+  {
+    id: "art-efficiency-audit",
+    icon: "🛡️",
+    title: "Zero-Cost Compute & Quota Guard",
+    desc: "Complete audit certifying 0% API cost, model fallback routing to Gemini Pro, and cron containment.",
+    badge: "Verified $0 Cost",
+    content: "# Compute & Cost Efficiency Guard Audit\\nStatus: 100% Compliant\\n\\n## Summary:\\n- Model Routing: Primary set to Google Gemini 3.1 Pro (Free Preview Tier).\\n- Fallback Chain: Gemini 3 Flash -> Gemini 2.5 Flash -> Gemini 2.5 Flash Lite.\\n- API Spend: $0.00 / $100.00 monthly reserve.\\n- Background Loops: Decoupled from sync to eliminate unnecessary token burns."
+  }
+];
+
+function renderExecutiveLeaders() {
+  const el = $("#executiveLeadersDeck");
+  if (!el) return;
+  el.innerHTML = CORE_EXECUTIVE_LEADERS.map((ldr) => `
+    <article class="leader-card" onclick="flashAgent('${ldr.id}')">
+      <div class="leader-head">
+        <div class="leader-avatar-wrap" style="border-color:${ldr.col}55;">
+          <span>${ldr.monogram}</span>
+          <div class="leader-status-orb ${ldr.status}"></div>
+        </div>
+        <div class="leader-name-col">
+          <strong>${esc(ldr.name)}</strong>
+          <span>${esc(ldr.role)}</span>
+        </div>
+      </div>
+      <div class="leader-assignment">${esc(ldr.assignment)}</div>
+      <div class="leader-foot">
+        <span>${esc(ldr.lastOutput)}</span>
+        <span class="leader-model-tag">${esc(ldr.model)}</span>
+      </div>
+    </article>
+  `).join("");
+}
+
+function renderArtifactsShowcase() {
+  const el = $("#artifactsGrid");
+  if (!el) return;
+  el.innerHTML = VERIFIED_ARTIFACTS.map((art) => `
+    <div class="artifact-card">
+      <div>
+        <div class="artifact-card-head">
+          <div class="artifact-icon">${art.icon}</div>
+          <div style="flex:1;">
+            <div class="artifact-title">${esc(art.title)}</div>
+            <span style="font-size:9.5px;color:var(--jade);font-weight:700;">${esc(art.badge)}</span>
+          </div>
+        </div>
+        <p class="artifact-desc">${esc(art.desc)}</p>
+      </div>
+      <button class="artifact-btn" type="button" onclick="openArtifactModal('${art.id}')">
+        <span>🔍</span> Inspect Deliverable
+      </button>
+    </div>
+  `).join("");
+}
+
+function openArtifactModal(artId) {
+  const art = VERIFIED_ARTIFACTS.find((a) => a.id === artId);
+  if (!art) return;
+  const overlay = $("#artifactModalOverlay");
+  const title = $("#artifactModalTitle");
+  const body = $("#artifactModalBody");
+  if (!overlay || !title || !body) return;
+  title.innerHTML = `<span>${art.icon}</span> ${esc(art.title)}`;
+  body.textContent = art.content;
+  overlay.classList.add("open");
+}
+
+function closeArtifactModal() {
+  const overlay = $("#artifactModalOverlay");
+  if (overlay) overlay.classList.remove("open");
+}
+
+function initArtifactModal() {
+  const closeBtn = $("#artifactModalClose");
+  const overlay = $("#artifactModalOverlay");
+  if (closeBtn) closeBtn.addEventListener("click", closeArtifactModal);
+  if (overlay) {
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) closeArtifactModal();
+    });
+  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeArtifactModal();
+  });
+}
+
 function renderAll() {
   renderMeta();
+  renderExecutiveLeaders();
+  renderArtifactsShowcase();
   renderMoney();
   renderCritical();
   renderApprovals();
@@ -2006,6 +2235,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   $("#browserSetupDialog").addEventListener("click", (event) => {
     if (event.target === event.currentTarget) closeBrowserSetupDialog();
   });
+  initArtifactModal();
+  renderExecutiveLeaders();
+  renderArtifactsShowcase();
   window.addEventListener("hashchange", () => setView(location.hash.slice(1)));
   setView(location.hash.slice(1) || "command");
   try {

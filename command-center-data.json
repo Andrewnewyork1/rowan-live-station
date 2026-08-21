@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-20T21:40:57-05:00",
+  "generated_at": "2026-08-20T21:46:46-05:00",
   "meta": {
     "rowan_status": "Rowan online",
     "provider": "Google Gemini",
@@ -101,7 +101,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-21T02:40:49Z",
+          "summary_generated_at": "2026-08-21T02:46:40Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -236,7 +236,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-21T02:40:49Z",
+          "summary_generated_at": "2026-08-21T02:46:40Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -312,7 +312,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-21T02:40:49Z",
+      "generated_at": "2026-08-21T02:46:40Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -4488,7 +4488,7 @@
         "observed_at_iso": "2026-08-20T07:31:26-05:00",
         "presence_source": "Session metadata",
         "next_action": "On demand within the protected weekly reserve",
-        "completed_24h": 19,
+        "completed_24h": 18,
         "failed_24h": 0,
         "runs_7d": 377,
         "history": [
@@ -5343,7 +5343,7 @@
         "observed_at_iso": "2026-08-20T07:37:01-05:00",
         "presence_source": "Session metadata",
         "next_action": "On demand within the protected weekly reserve",
-        "completed_24h": 4,
+        "completed_24h": 3,
         "failed_24h": 1,
         "runs_7d": 6,
         "history": [
