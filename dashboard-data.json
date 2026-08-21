@@ -1,5 +1,5 @@
 {
-  "snapshot_at": "2026-08-20T07:41:11.927607-05:00",
+  "snapshot_at": "2026-08-20T21:07:15.211489-05:00",
   "schema_version": 3,
   "source": "rowan_realtime_sync",
   "city_status": {
@@ -11,17 +11,14 @@
     "tasks_done": 24
   },
   "model_status": {
-    "primary": "google/gemini-3.5-flash",
+    "primary": "google-gemini-cli/gemini-3.1-pro-preview",
     "fallbacks": [
-      "google/gemini-2.5-flash",
-      "google/gemini-3-flash-preview",
-      "google/gemini-2.5-flash-lite",
-      "google/gemini-3.5-flash",
-      "google/gemini-2.5-flash",
-      "openai/gpt-5.5"
+      "google-gemini-cli/gemini-3-flash-preview",
+      "google-gemini-cli/gemini-2.5-flash",
+      "google-gemini-cli/gemini-2.5-flash-lite"
     ],
-    "using_free_tier": false,
-    "provider": "google"
+    "using_free_tier": true,
+    "provider": "google-gemini-cli (FREE)"
   },
   "gateway": {
     "online": false,
@@ -871,12 +868,6 @@
   },
   "evolution_log": [
     {
-      "timestamp": "2026-08-20T04:30:01.042296+00:00",
-      "action": "PERPETUAL_ENGINE",
-      "detail": "Dispatched 4 idle agents. Active: ['aria', 'atlas', 'axiom', 'blake', 'builder', 'chase', 'cipher', 'efficiency', 'finn', 'lyra', 'max', 'orion', 'rea', 'rio', 'scout', 'seo', 'val', 'victor', 'zara']. Goal: $20k/month",
-      "result": "success"
-    },
-    {
       "timestamp": "2026-08-19T23:30:01.368552-05:00",
       "action": "MODEL_UPGRADED",
       "detail": "Auto-upgraded primary model: google/gemini-3.1-pro-preview -> google/gemini-3.5-flash",
@@ -1002,6 +993,13 @@
       "timestamp": "2026-08-20T07:30:01.492695-05:00",
       "action": "AGENT_SPAWNED",
       "detail": "\ud83e\udd16 Luna (Night Operations AI) spawned for 24/7 coverage",
+      "result": "success",
+      "triggered_by": "axiom"
+    },
+    {
+      "timestamp": "2026-08-20T07:30:01.492695-05:00",
+      "action": "AXIOM_CYCLE_COMPLETE",
+      "detail": "AXIOM cycle 7: 3 executed, 1 attempted. Tasks: 0 done/0 blocked.",
       "result": "success",
       "triggered_by": "axiom"
     }
