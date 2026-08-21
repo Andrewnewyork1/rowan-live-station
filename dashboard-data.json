@@ -1,5 +1,5 @@
 {
-  "snapshot_at": "2026-08-20T21:07:15.211489-05:00",
+  "snapshot_at": "2026-08-20T21:34:00.246607-05:00",
   "schema_version": 3,
   "source": "rowan_realtime_sync",
   "city_status": {
@@ -32,6 +32,7 @@
       "role": "CEO",
       "col": "#6db7ff",
       "status": "STANDBY",
+      "model": "Google Gemini gemini-3.1-pro-preview",
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
@@ -47,6 +48,7 @@
       "role": "Head of Commerce",
       "col": "#22c97a",
       "status": "STANDBY",
+      "model": "Google Gemini gemini-3.1-pro-preview",
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
@@ -62,6 +64,7 @@
       "role": "Creative Director",
       "col": "#ff6da0",
       "status": "STANDBY",
+      "model": "Google Gemini gemini-3.1-pro-preview",
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
@@ -77,6 +80,7 @@
       "role": "CTO",
       "col": "#ff9900",
       "status": "STANDBY",
+      "model": "Google Gemini gemini-3.1-pro-preview",
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
@@ -92,6 +96,7 @@
       "role": "Strategy & Intel",
       "col": "#8a9ba8",
       "status": "STANDBY",
+      "model": "Google Gemini gemini-3.1-pro-preview",
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
@@ -107,6 +112,7 @@
       "role": "Growth & Traffic",
       "col": "#22d3ee",
       "status": "STANDBY",
+      "model": "Google Gemini gemini-3.1-pro-preview",
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
@@ -122,6 +128,7 @@
       "role": "Chief R&D Scientist",
       "col": "#a855f7",
       "status": "STANDBY",
+      "model": "Google Gemini gemini-3.1-pro-preview",
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
@@ -137,6 +144,7 @@
       "role": "Viral Growth Hacker",
       "col": "#f97316",
       "status": "STANDBY",
+      "model": "Google Gemini gemini-3.1-pro-preview",
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
@@ -152,6 +160,7 @@
       "role": "Pricing Quant",
       "col": "#6366f1",
       "status": "STANDBY",
+      "model": "Google Gemini gemini-3.1-pro-preview",
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
@@ -167,6 +176,7 @@
       "role": "B2B Design Engineer",
       "col": "#ec4899",
       "status": "STANDBY",
+      "model": "Google Gemini gemini-3.1-pro-preview",
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
@@ -182,6 +192,7 @@
       "role": "Cloud Engineer",
       "col": "#14b8a6",
       "status": "STANDBY",
+      "model": "Google Gemini gemini-3.1-pro-preview",
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
@@ -197,6 +208,7 @@
       "role": "Legal Auditor",
       "col": "#10b981",
       "status": "STANDBY",
+      "model": "Google Gemini gemini-3.1-pro-preview",
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
@@ -212,6 +224,7 @@
       "role": "Main Runtime",
       "col": "#6db7ff",
       "status": "STANDBY",
+      "model": "Google Gemini gemini-3.1-pro-preview",
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
@@ -227,6 +240,7 @@
       "role": "Compute Guard",
       "col": "#22c97a",
       "status": "STANDBY",
+      "model": "Google Gemini gemini-3.1-pro-preview",
       "last_outcome": null,
       "tasks_24h": 0,
       "city": {
@@ -451,7 +465,7 @@
         "assigned_to": "ivy",
         "priority": "HIGH",
         "status": "PENDING",
-        "deliverable": "/Users/andrewhanna/.openclaw/workspace/rowan-command-station/data/ivy-title-audit.md",
+        "deliverable": "data/ivy-title-audit.md",
         "created_at": "2026-08-20T12:40:00.338637+00:00",
         "revenue_goal": "$20,000/month",
         "dispatched": false
@@ -462,7 +476,7 @@
         "assigned_to": "nova",
         "priority": "HIGH",
         "status": "PENDING",
-        "deliverable": "/Users/andrewhanna/.openclaw/workspace/rowan-command-station/data/nova-competitor-analysis.md",
+        "deliverable": "data/nova-competitor-analysis.md",
         "created_at": "2026-08-20T12:40:00.338637+00:00",
         "revenue_goal": "$20,000/month",
         "dispatched": false
@@ -473,7 +487,7 @@
         "assigned_to": "sage",
         "priority": "HIGH",
         "status": "PENDING",
-        "deliverable": "/Users/andrewhanna/.openclaw/workspace/rowan-command-station/data/sage-product-ideas.md",
+        "deliverable": "data/sage-product-ideas.md",
         "created_at": "2026-08-20T12:40:00.338637+00:00",
         "revenue_goal": "$20,000/month",
         "dispatched": false
@@ -484,7 +498,7 @@
         "assigned_to": "ember",
         "priority": "HIGH",
         "status": "PENDING",
-        "deliverable": "/Users/andrewhanna/.openclaw/workspace/rowan-command-station/data/ember-pinterest-batch1.md",
+        "deliverable": "data/ember-pinterest-batch1.md",
         "created_at": "2026-08-20T12:40:00.338637+00:00",
         "revenue_goal": "$20,000/month",
         "dispatched": false
