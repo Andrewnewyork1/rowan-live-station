@@ -2494,6 +2494,7 @@ function renderRdDepartment() {
 
 // ── Live 30-second auto-refresh ──────────────────────────────────────────
 (function startLiveRefresh() {
+  if (typeof window === "undefined" || typeof document === "undefined") return;
   let lastModified = null;
   let refreshCount = 0;
 

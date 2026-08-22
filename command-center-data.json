@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-22T18:18:16-05:00",
+  "generated_at": "2026-08-22T18:30:10-05:00",
   "meta": {
     "rowan_status": "Rowan running",
     "provider": "OpenAI",
@@ -152,7 +152,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-22T23:18:07Z",
+          "summary_generated_at": "2026-08-22T23:30:00Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -287,7 +287,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-22T23:18:07Z",
+          "summary_generated_at": "2026-08-22T23:30:00Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -363,7 +363,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-22T23:18:07Z",
+      "generated_at": "2026-08-22T23:30:00Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -1157,7 +1157,7 @@
     "base_height_m": 18,
     "goal_profit": 20000,
     "truth_note": "Tower height is earned only from reconciled agent-attributed net profit. Activity, tokens, drafts, forecasts, and unverified sales earn no height.",
-    "updated_at": "2026-08-22T18:18:16-05:00"
+    "updated_at": "2026-08-22T18:30:10-05:00"
   },
   "agent_requests": {
     "generated_at": "2026-08-19T15:20:00-05:00",
@@ -2754,28 +2754,28 @@
   },
   "city_engine_code": "",
   "ai_usage": {
-    "checked_at": "2026-08-22T18:18:01-05:00",
-    "mode": "paced_warning",
+    "checked_at": "2026-08-22T18:28:26-05:00",
+    "mode": "paced_pause",
     "freshness": "fresh",
-    "used_percent": 17,
-    "remaining_percent": 83,
-    "hours_until_reset": 149.97,
+    "used_percent": 18,
+    "remaining_percent": 82,
+    "hours_until_reset": 149.8,
     "reset_at": "2026-08-29T05:16:23+00:00",
     "scheduled_budget_percent": 5,
     "protected_reserve_percent": 95,
     "paced_used_ceiling_percent": 1.0,
     "autonomy_baseline_used_percent": 16.0,
-    "autonomy_used_percent_estimate": 1.0,
+    "autonomy_used_percent_estimate": 2.0,
     "absolute_stop_used_percent": 21.0,
     "protected_remaining_percent_at_activation": 79.0,
-    "enabled_model_job_count": 1,
+    "enabled_model_job_count": 0,
     "enabled_deterministic_job_count": 5,
-    "disabled_model_job_count": 32,
+    "disabled_model_job_count": 33,
     "heartbeat_disabled": true,
     "automation_policy_status": "enforced"
   },
   "netlify_usage": {
-    "checked_at": "2026-08-22T22:53:22Z",
+    "checked_at": "2026-08-22T23:18:08Z",
     "mode": "blocked",
     "billing_period_start": "2026-07-27",
     "billing_period_end": "2026-08-26",
@@ -4722,7 +4722,7 @@
       "status": "working",
       "configured": true,
       "operating_class": "Active executive agent",
-      "automation": "3 enabled",
+      "automation": "2 enabled",
       "last_outcome": "Recent run ok",
       "last_activity": "Aug 21, 9:17 AM",
       "last_activity_at": "2026-08-21T09:17:48-05:00",
@@ -4730,7 +4730,7 @@
       "reasoning_mode": "low",
       "sessions_24h": 0,
       "sessions_7d": 277,
-      "error_streak": 1,
+      "error_streak": 0,
       "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
       "verified_sales": 0,
       "verified_revenue_cents": 0,
@@ -4741,12 +4741,12 @@
       "profit_attribution_observed_at": null,
       "performance": {
         "grade": "F",
-        "score": 46,
+        "score": 50,
         "provisional": true,
         "verified_points_7d": 0,
         "tokens_7d": 8847370,
         "dimensions": {
-          "reliability": 85,
+          "reliability": 100,
           "efficiency": 20,
           "effectiveness": 0,
           "safety": 100,
@@ -4762,21 +4762,30 @@
         "location": "Founder Tower · Executive command desk",
         "current_activity": "Working on Rowan Autonomous Company Director",
         "current_assignment": "Directing the full company toward $20,000 in verified monthly net profit.",
-        "observed_at": "Aug 22, 6:18 PM",
-        "observed_at_iso": "2026-08-22T18:18:04-05:00",
+        "observed_at": "Aug 19, 9:29 AM",
+        "observed_at_iso": "2026-08-19T09:29:17-05:00",
         "presence_source": "Live task ledger",
-        "next_action": "Rowan Autonomous Company Director · Aug 22, 6:18 PM",
-        "completed_24h": 0,
+        "next_action": "Rowan Autonomous Company Director · Aug 22, 7:18 PM",
+        "completed_24h": 2,
         "failed_24h": 0,
-        "runs_7d": 131,
+        "runs_7d": 128,
         "history": [
           {
-            "at": "Aug 22, 6:18 PM",
-            "at_iso": "2026-08-22T18:18:04-05:00",
-            "at_ms": 1787440684331,
+            "at": "Aug 22, 6:25 PM",
+            "at_iso": "2026-08-22T18:25:34-05:00",
+            "at_ms": 1787441134107,
             "title": "Rowan Autonomous Company Director",
-            "detail": "In progress",
-            "status": "running",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Founder Tower · Executive command desk"
+          },
+          {
+            "at": "Aug 22, 6:18 PM",
+            "at_iso": "2026-08-22T18:18:17-05:00",
+            "at_ms": 1787440697483,
+            "title": "Rowan Autonomous Company Director",
+            "detail": "Completed successfully",
+            "status": "succeeded",
             "location": "Founder Tower · Executive command desk"
           },
           {
@@ -4828,15 +4837,6 @@
             "at": "Aug 19, 7:39 PM",
             "at_iso": "2026-08-19T19:39:58-05:00",
             "at_ms": 1787186398782,
-            "title": "Rowan Autonomous Company Director",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Founder Tower · Executive command desk"
-          },
-          {
-            "at": "Aug 19, 6:40 PM",
-            "at_iso": "2026-08-19T18:40:20-05:00",
-            "at_ms": 1787182820957,
             "title": "Rowan Autonomous Company Director",
             "detail": "Completed successfully",
             "status": "succeeded",
@@ -5258,7 +5258,7 @@
       "reasoning_mode": "low",
       "sessions_24h": 0,
       "sessions_7d": 3,
-      "error_streak": 25,
+      "error_streak": 5,
       "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
       "verified_sales": 0,
       "verified_revenue_cents": 0,
@@ -5269,12 +5269,12 @@
       "profit_attribution_observed_at": null,
       "performance": {
         "grade": "F",
-        "score": 46,
+        "score": 48,
         "provisional": true,
         "verified_points_7d": 0,
         "tokens_7d": 88662,
         "dimensions": {
-          "reliability": 20,
+          "reliability": 25,
           "efficiency": 85,
           "effectiveness": 0,
           "safety": 100,
@@ -5288,16 +5288,25 @@
         "presence": "incident_room",
         "activity_mode": "Needs review",
         "location": "Systems Foundry · incident room",
-        "current_activity": "Reviewing Rowan 15-Minute Resource Circuit Breaker",
+        "current_activity": "Reviewing Rowan Netlify Decision Sync",
         "current_assignment": "Keeping Rowan, SwirlCraft, analytics, checkout, fulfillment, attribution, and deployment systems reliable and efficient.",
-        "observed_at": "Aug 22, 5:53 PM",
-        "observed_at_iso": "2026-08-22T17:53:15-05:00",
+        "observed_at": "Aug 22, 6:03 PM",
+        "observed_at_iso": "2026-08-22T18:03:24-05:00",
         "presence_source": "Scheduler exception",
-        "next_action": "Rowan 15-Minute Resource Circuit Breaker · Aug 22, 6:54 PM",
-        "completed_24h": 0,
+        "next_action": "Rowan 15-Minute Resource Circuit Breaker · Aug 22, 6:38 PM",
+        "completed_24h": 1,
         "failed_24h": 3,
-        "runs_7d": 538,
+        "runs_7d": 539,
         "history": [
+          {
+            "at": "Aug 22, 6:25 PM",
+            "at_iso": "2026-08-22T18:25:09-05:00",
+            "at_ms": 1787441109839,
+            "title": "Rowan 15-Minute Resource Circuit Breaker",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Systems Foundry · Reliability and delivery lab"
+          },
           {
             "at": "Aug 22, 6:03 PM",
             "at_iso": "2026-08-22T18:03:29-05:00",
@@ -5357,15 +5366,6 @@
             "at_iso": "2026-08-20T07:19:03-05:00",
             "at_ms": 1787228343587,
             "title": "Rowan 15-Minute Resource Circuit Breaker",
-            "detail": "Ended with an exception",
-            "status": "failed",
-            "location": "Systems Foundry · incident room"
-          },
-          {
-            "at": "Aug 20, 7:17 AM",
-            "at_iso": "2026-08-20T07:17:55-05:00",
-            "at_ms": 1787228275390,
-            "title": "Rowan Netlify Decision Sync",
             "detail": "Ended with an exception",
             "status": "failed",
             "location": "Systems Foundry · incident room"
@@ -7355,11 +7355,11 @@
     },
     "automation_inventory": {
       "total": 41,
-      "enabled": 6,
-      "disabled": 35,
-      "enabled_model": 1,
+      "enabled": 5,
+      "disabled": 36,
+      "enabled_model": 0,
       "enabled_deterministic": 5,
-      "disabled_model": 32,
+      "disabled_model": 33,
       "disabled_deterministic": 3,
       "available": true
     },
@@ -7387,8 +7387,8 @@
       {
         "category": "AI reserve",
         "name": "Weekly usage circuit breaker",
-        "status": "attention",
-        "detail": "83% remains. Rowan activated at 16.0% used and has consumed an estimated 1.0% since activation. Scheduled model work stops at 21.0% total used, preserving about 79.0% remaining at the activation boundary. Heartbeats are hard-disabled; 1 scheduled model job is enabled."
+        "status": "critical",
+        "detail": "82% remains. Rowan activated at 16.0% used and has consumed an estimated 2.0% since activation. Scheduled model work stops at 21.0% total used, preserving about 79.0% remaining at the activation boundary. Heartbeats are hard-disabled; 0 scheduled model job is enabled."
       },
       {
         "category": "Netlify reserve",
@@ -7477,23 +7477,6 @@
     ],
     "automations": [
       {
-        "name": "Rowan Autonomous Company Director",
-        "owner": "main",
-        "cadence": "Every 1h",
-        "last_run": "Aug 20, 7:17 AM",
-        "last_run_at": "2026-08-20T07:17:24-05:00",
-        "last_run_ms": 1787228244395,
-        "next_run": "Aug 22, 6:18 PM",
-        "next_run_at": "2026-08-22T18:18:01-05:00",
-        "next_run_ms": 1787440681071,
-        "running": true,
-        "running_since": "Aug 22, 6:18 PM",
-        "running_since_at": "2026-08-22T18:18:04-05:00",
-        "status": "ok",
-        "error_streak": 0,
-        "duration_ms": 15618
-      },
-      {
         "name": "SwirlCraft 15-Minute Customer Reply Triage",
         "owner": "ivy",
         "cadence": "Every 15m",
@@ -7514,18 +7497,18 @@
         "name": "Rowan 15-Minute Resource Circuit Breaker",
         "owner": "atlas",
         "cadence": "Every 15m",
-        "last_run": "Aug 22, 5:53 PM",
-        "last_run_at": "2026-08-22T17:53:15-05:00",
-        "last_run_ms": 1787439195410,
-        "next_run": "Aug 22, 6:54 PM",
-        "next_run_at": "2026-08-22T18:54:13-05:00",
-        "next_run_ms": 1787442853897,
+        "last_run": "Aug 22, 6:25 PM",
+        "last_run_at": "2026-08-22T18:25:04-05:00",
+        "last_run_ms": 1787441104219,
+        "next_run": "Aug 22, 6:38 PM",
+        "next_run_at": "2026-08-22T18:38:15-05:00",
+        "next_run_ms": 1787441895379,
         "running": false,
         "running_since": "Unavailable",
         "running_since_at": null,
-        "status": "error",
-        "error_streak": 20,
-        "duration_ms": 58487
+        "status": "ok",
+        "error_streak": 0,
+        "duration_ms": 5620
       },
       {
         "name": "Rowan Netlify Decision Sync",
@@ -7545,6 +7528,23 @@
         "duration_ms": 4648
       },
       {
+        "name": "Rowan Autonomous Company Director",
+        "owner": "main",
+        "cadence": "Every 1h",
+        "last_run": "Aug 22, 6:25 PM",
+        "last_run_at": "2026-08-22T18:25:22-05:00",
+        "last_run_ms": 1787441122823,
+        "next_run": "Aug 22, 7:18 PM",
+        "next_run_at": "2026-08-22T19:18:04-05:00",
+        "next_run_ms": 1787444284331,
+        "running": false,
+        "running_since": "Unavailable",
+        "running_since_at": null,
+        "status": "ok",
+        "error_streak": 0,
+        "duration_ms": 11284
+      },
+      {
         "name": "Rowan Daily Etsy Finance Close",
         "owner": "main",
         "cadence": "35 2 * * * · America/New_York",
@@ -7560,26 +7560,9 @@
         "status": "ok",
         "error_streak": 0,
         "duration_ms": 72
-      },
-      {
-        "name": "Rowan Daily Profit-First CEO Review",
-        "owner": "main",
-        "cadence": "15 8 * * * · America/Jamaica",
-        "last_run": "Aug 16, 12:01 AM",
-        "last_run_at": "2026-08-16T00:01:46-05:00",
-        "last_run_ms": 1786856506775,
-        "next_run": "Aug 23, 8:15 AM",
-        "next_run_at": "2026-08-23T08:15:00-05:00",
-        "next_run_ms": 1787490900000,
-        "running": false,
-        "running_since": "Unavailable",
-        "running_since_at": null,
-        "status": "error",
-        "error_streak": 1,
-        "duration_ms": 55239
       }
     ],
-    "error_count": 3
+    "error_count": 1
   },
   "risks": [
     {
@@ -7914,12 +7897,12 @@
     {
       "label": "Automation state",
       "status": "healthy",
-      "detail": "6 enabled jobs were sanitized from the current scheduler."
+      "detail": "5 enabled jobs were sanitized from the current scheduler."
     },
     {
       "label": "Weekly AI reserve",
-      "status": "attention",
-      "detail": "83% remaining. Background model work has a 5% weekly budget, paced over seven days, with a 95% protected reserve. Heartbeats are hard-disabled; enabled scheduled model jobs: 1. Deterministic controls remain active while model work is frozen."
+      "status": "critical",
+      "detail": "82% remaining. Background model work has a 5% weekly budget, paced over seven days, with a 95% protected reserve. Heartbeats are hard-disabled; enabled scheduled model jobs: 0. Deterministic controls remain active while model work is frozen."
     },
     {
       "label": "Netlify credit reserve",
