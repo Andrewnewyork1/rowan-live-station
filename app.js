@@ -514,6 +514,7 @@ function renderTeam() {
 function ventureStatusTone(status) {
   const text = String(status || "").toLowerCase();
   if (/rights_hold|blocked|copyright/.test(text)) return "critical";
+  if (/transition_hold|transition_required|identity/.test(text)) return "attention";
   if (/setup_required|unavailable|required|stale/.test(text)) return "attention";
   return "healthy";
 }
@@ -611,19 +612,19 @@ const ANDREW_ACTIONS_BASE = [
     priority: 4,
     urgency: "attention",
     label: "Complete YouTube Copyright School",
-    why: "Clears the Dec 2024 copyright strike on the Motivation channel. Unlocks full YouTube pipeline.",
+    why: "Tech With Receipts has one active strike dated Dec 24, 2024, and Studio confirms Copyright School is incomplete. Completion plus a fresh zero-strike readback is required before publication can unlock.",
     revenue_impact: "Unlocks YouTube ad revenue",
     done: false,
     time: "~45 min",
     links: [{ label: "YouTube Studio", url: "https://studio.youtube.com" }],
-    how: "Settings → Channel → Copyright School → complete the quiz"
+    how: "Open YouTube Studio on Tech With Receipts → Channel violations → Start Copyright School → complete it → re-check the strike card"
   }
 ];
 
 
 
 const AGENT_AUTO_FIXES = [
-  { agent: "Rowan", action: "Cleared deliverability guard hold", detail: "False-positive Stripe invoice bounce identified and cleared. Outbound policy active. Email outreach to legal professionals and real estate agents can now resume.", status: "done" },
+  { agent: "Rowan", action: "Outbound identity locked to SwirlCraft", detail: "Every automated sender fails closed unless it uses andrew@swirlcraftdigital.com. Cold sends still require current domain-authentication, postal-address, suppression, dedupe, payload, and volume checks.", status: "done" },
   { agent: "Rowan", action: "Gemini failover active · system online", detail: "OpenClaw falls back Gemini 2.5 Pro → Flash → Flash-Lite when ChatGPT credits hit 0%. The team stays online regardless of credit cycle.", status: "done" },
   { agent: "Rowan", action: "Etsy catalog fully analyzed", detail: "1,467 listings audited. 666 wall art (zero sales, avg $4.61) flagged for cull. 643 legal/real estate kept. 2 sales traced to state-specific legal templates — that is the winning niche.", status: "done" },
   { agent: "Ivy",   action: "SEO title rewrite — 36 new titles complete", detail: "Aria batched 36 high-converting SEO titles from aria-seo-work-2026-08-18.md. All applied to top listings.", status: "done" },
@@ -899,7 +900,8 @@ function renderVentureLab() {
   const contentOps = lab.content_ops || {};
   const ventures = Array.isArray(lab.ventures) ? lab.ventures : [];
   const verifiedChannels = ventures.filter((item) => item.identity?.status === "verified").length;
-  const setupRequired = ventures.filter((item) => item.status === "setup_required").length;
+  const transitionRequired = ventures.filter((item) => item.identity?.status === "brand_transition_required").length;
+  const premiumStandard = contentOps.production_standard || {};
   const boundary = $("#ventureLabBoundary");
   boundary.innerHTML = `
     <div class="venture-boundary-head">
@@ -909,15 +911,17 @@ function renderVentureLab() {
     <div class="venture-boundary-facts">
       <div><span>Ventures</span><strong>${fmtNumber(ventures.length)}</strong></div>
       <div><span>Verified channels</span><strong>${fmtNumber(verifiedChannels)}</strong></div>
-      <div><span>Setup required</span><strong>${fmtNumber(setupRequired)}</strong></div>
+      <div><span>Brand transitions</span><strong>${fmtNumber(transitionRequired)}</strong></div>
       <div><span>Source freshness</span><strong>${esc(lab.source_freshness || "unavailable")} · ${esc(fmtDate(lab.observed_at))}</strong></div>
       <div><span>Private concepts</span><strong>${fmtNumber(contentOps.totals?.private_concept_count)}</strong></div>
       <div><span>Content-ops source</span><strong>${esc(contentOps.source_freshness || "unavailable")} · ${esc(fmtDate(contentOps.generated_at))}</strong></div>
       <div><span>Scheduled / published</span><strong>${fmtNumber(contentOps.planning_target?.scheduled_item_count)} / ${fmtNumber(contentOps.planning_target?.published_item_count)}</strong></div>
+      <div><span>Premium quality floor</span><strong>${fmtNumber(premiumStandard.minimum_quality_score)} / 100</strong></div>
+      <div><span>Daily format mix · each channel</span><strong>${fmtNumber(premiumStandard.format_mix_per_lane_per_day?.short_vertical)} Short + ${fmtNumber(premiumStandard.format_mix_per_lane_per_day?.long_form)} long-form</strong></div>
       <div><span>Team mode</span><strong>${esc(lab.team_execution_mode || "existing_team_on_demand").replaceAll("_", " ")}</strong></div>
       <div><span>Background model jobs</span><strong>${fmtNumber(lab.scheduled_model_job_count)}</strong></div>
     </div>
-    <p class="venture-boundary-note">Motivation is held at the copyright and source-rights gate. The Tech identity is not linked: the owner-authenticated Tech-labeled tabs resolved to Motivation, so Rowan does not claim or create a second channel. All credentials, account actions, uploads, publication, spend, external actions, and background model authority remain locked.</p>`;
+    <p class="venture-boundary-note">Tech With Receipts is verified and held because one active copyright strike remains and Copyright School is incomplete. The second channel is reserved for original motivational videos and Shorts under The Comeback Practice; its current Velocity Sounds name must be aligned with the existing @TheComebackPractice handle. Both lanes target world-class original animation and reject low-effort AI output. Uploads and publication remain locked until the channel-specific gates are cleared.</p>`;
 
   $("#ventureGrid").innerHTML = ventures.length ? ventures.map((venture) => {
     const identity = venture.identity || {};
@@ -934,10 +938,14 @@ function renderVentureLab() {
     const holdCodes = Array.isArray(system.hold_codes) ? system.hold_codes : [];
     const team = venture.team || {};
     const channelLabel = identity.verified_channel_name
-      ? `${identity.verified_channel_name}${identity.verified_handle ? ` · ${identity.verified_handle}` : ""}`
+      ? `${identity.verified_channel_name}${identity.verified_handle ? ` · ${identity.verified_handle}` : ""}${identity.target_channel_name && identity.target_channel_name !== identity.verified_channel_name ? ` → ${identity.target_channel_name}` : ""}`
       : "Distinct channel not verified";
+    const uploadDate = upload.published_on ? fmtDateOnly(upload.published_on) : "Date not captured";
+    const averageViewed = upload.average_percentage_viewed_basis_points === null || upload.average_percentage_viewed_basis_points === undefined
+      ? "average viewed unavailable"
+      : `${(Number(upload.average_percentage_viewed_basis_points) / 100).toFixed(1)}% average viewed`;
     const uploadDetail = upload.status === "partially_verified"
-      ? `${fmtDateOnly(upload.published_on)} · ${fmtNumber(upload.views)} views · ${upload.impressions_click_through_rate_basis_points === null ? "CTR unavailable" : `${(Number(upload.impressions_click_through_rate_basis_points) / 100).toFixed(1)}% CTR`} · ${upload.average_view_duration_seconds === null ? "duration unavailable" : `0:${String(upload.average_view_duration_seconds).padStart(2, "0")} average view duration`}`
+      ? `${uploadDate} · ${fmtNumber(upload.views)} views · ${upload.impressions_click_through_rate_basis_points === null ? "CTR unavailable" : `${(Number(upload.impressions_click_through_rate_basis_points) / 100).toFixed(1)}% CTR`} · ${upload.average_view_duration_seconds === null ? "duration unavailable" : `0:${String(upload.average_view_duration_seconds).padStart(2, "0")} average view duration`} · ${averageViewed}`
       : "No verified upload record for this distinct venture";
     const watchTime = metrics.watch_time_hours === null || metrics.watch_time_hours === undefined
       ? "Unavailable"
@@ -970,6 +978,7 @@ function renderVentureLab() {
           <div class="venture-content-policy">
             <div><span>Content pillars · ${fmtNumber(system.creative_pillar_count)}</span><strong>${pillars.length ? pillars.map((pillar) => esc(pillar)).join(" · ") : "Unavailable"}</strong></div>
             <div><span>Publishing target</span><strong>${target.items_per_day === null || target.items_per_day === undefined ? "Unavailable" : `${fmtNumber(target.items_per_day)} items / day`} · ${esc(String(target.status || "unavailable").replaceAll("_", " "))}</strong><small>Planning target only; it is not an upload schedule or demand forecast.</small></div>
+            <div><span>Premium production standard</span><strong>${esc(String(system.quality_standard?.label || "unavailable").replaceAll("_", " "))} · minimum ${fmtNumber(system.quality_standard?.minimum_score)} / 100</strong><small>${fmtNumber(system.format_mix_per_day?.short_vertical)} original animated Short + ${fmtNumber(system.format_mix_per_day?.long_form)} original animated long-form candidate per day. AI slop rejected.</small></div>
             <div><span>Separate queue</span><strong>${esc(queue.queue_key || "Unavailable")} · ${fmtNumber(queue.total_items)} private concepts</strong><small>${esc(String(queue.status || "unavailable").replaceAll("_", " "))} · Source ${esc(system.summary_source_freshness || "unavailable")} at ${esc(fmtDate(system.summary_generated_at))}</small></div>
             <div><span>Launch holds</span><strong>${holdCodes.length ? holdCodes.map((code) => esc(code.replaceAll("_", " "))).join(" · ") : "Unavailable"}</strong></div>
             <div><span>Coarse production path</span><strong>${workflowStates.length ? workflowStates.map((state) => esc(state)).join(" → ") : "Unavailable"}</strong><small>These labels describe the intended production path; the counts below come only from the deterministic editorial ledger.</small></div>

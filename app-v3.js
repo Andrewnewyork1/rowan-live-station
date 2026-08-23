@@ -1,8 +1,13 @@
 "use strict";
 
 let DATA = null;
+let DATA_RUNTIME = { source: "unavailable", label: "Source unavailable", fetchedAt: null };
 let currentAgentFilter = "all";
 let toastTimer = null;
+
+const PUBLIC_LIVE_FEED_URL = "https://raw.githubusercontent.com/Andrewnewyork1/rowan-live-station/live/command-center-data.json";
+const AUTO_REFRESH_MS = 60_000;
+const LIVE_FEED_STALE_MS = 10 * 60_000;
 
 const SECURE_DECISION_CENTER_URL = "https://rowan-control-panel.netlify.app/";
 const SECURE_DECISION_IDS = new Set([
@@ -50,7 +55,7 @@ const TEMPLATE = `
       <header class="topbar-v3">
         <button class="mobile-menu-v3" id="mobileMenu" type="button" aria-label="Open navigation">☰</button>
         <div class="topbar-mission-v3"><span>Mission</span><strong>$20,000 verified monthly net profit</strong></div>
-        <div class="topbar-facts-v3"><span class="top-pill-v3" id="topUsage">Usage loading…</span><span class="top-pill-v3" id="topFreshness">Snapshot loading…</span><button class="refresh-button-v3" id="refreshButton" type="button">Refresh</button></div>
+        <div class="topbar-facts-v3"><span class="top-pill-v3" id="topUsage">Usage loading…</span><span class="top-pill-v3" id="topFreshness">Snapshot loading…</span><button class="refresh-button-v3" id="refreshButton" type="button">Reload latest</button></div>
       </header>
       <div class="truth-banner-v3" id="dataBanner" hidden></div>
       <main class="content-v3">
@@ -59,7 +64,7 @@ const TEMPLATE = `
           <section class="metric-grid-v3" id="overviewMetrics"></section>
           <section class="overview-grid-v3"><article class="panel-v3"><div class="panel-heading-v3"><div><span class="eyebrow-v3 amber">Highest leverage</span><h2>What matters now</h2></div><span class="truth-chip-v3">evidence ranked</span></div><div class="priority-list-v3" id="priorityList"></div></article><article class="panel-v3"><div class="panel-heading-v3"><div><span class="eyebrow-v3 jade">Operating boundary</span><h2>Autonomy that stays safe</h2></div></div><div id="autonomySummary"></div></article></section>
           <section class="panel-v3"><div class="panel-heading-v3"><div><span class="eyebrow-v3 ice">Executive team</span><h2>Who is active and what they own</h2></div><button class="text-button-v3" data-view-target="agents">See every agent →</button></div><div class="executive-strip-v3" id="executiveStrip"></div></section>
-          <section class="overview-grid-v3"><article class="panel-v3"><div class="panel-heading-v3"><div><span class="eyebrow-v3">Verified operations</span><h2>Recent recorded outcomes</h2></div></div><div class="timeline-v3" id="overviewActivity"></div></article><article class="panel-v3"><div class="panel-heading-v3"><div><span class="eyebrow-v3 coral">Owner queue</span><h2>Decisions only you can make</h2></div><span class="count-chip-v3" id="ownerQueueCount">—</span></div><div class="decision-list-v3" id="overviewApprovals"></div></article></section>
+          <section class="overview-grid-v3"><article class="panel-v3"><div class="panel-heading-v3"><div><span class="eyebrow-v3">Verified operations</span><h2>Recent recorded outcomes</h2></div></div><div class="timeline-v3" id="overviewActivity"></div></article><article class="panel-v3"><div class="panel-heading-v3"><div><span class="eyebrow-v3 coral">Protected decisions</span><h2>Non-delegable authorizations</h2></div><span class="count-chip-v3" id="ownerQueueCount">—</span></div><div class="decision-list-v3" id="overviewApprovals"></div></article></section>
         </section>
 
         <section class="view-v3" id="view-profit" data-view="profit">
@@ -101,7 +106,7 @@ const TEMPLATE = `
 
         <section class="view-v3" id="view-attention" data-view="attention">
           <header class="page-header-v3"><span class="eyebrow-v3 coral">Action center</span><h1>Needs attention</h1><p>Owner decisions, failing controls, and material business risks—ranked without pretending work is complete.</p></header>
-          <section class="panel-v3"><div class="panel-heading-v3"><div><span class="eyebrow-v3 coral">Owner approvals</span><h2>Consequential actions remain locked</h2></div><span class="truth-chip-v3">protected owner flow</span></div><div class="approval-grid-v3" id="approvalGrid"></div></section>
+          <section class="panel-v3"><div class="panel-heading-v3"><div><span class="eyebrow-v3 coral">Protected authorizations</span><h2>Financial and irreversible actions</h2></div><span class="truth-chip-v3">non-delegable controls</span></div><div class="approval-grid-v3" id="approvalGrid"></div></section>
           <section class="panel-v3"><div class="panel-heading-v3"><div><span class="eyebrow-v3 amber">System exceptions</span><h2>Automations that need repair</h2></div></div><div class="exception-grid-v3" id="systemExceptions"></div></section>
           <section class="panel-v3"><div class="panel-heading-v3"><div><span class="eyebrow-v3">Risk register</span><h2>Material evidence and operating risks</h2></div></div><div class="risk-grid-v3" id="riskGrid"></div></section>
         </section>
@@ -121,6 +126,17 @@ function esc(value) {
 function money(value) {
   if (value === null || value === undefined || !Number.isFinite(Number(value))) return "Unavailable";
   return Number(value).toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+function moneyCents(value) {
+  if (value === null || value === undefined || !Number.isFinite(Number(value))) return "Unavailable";
+  return money(Number(value) / 100);
+}
+
+function durationSeconds(value) {
+  if (value === null || value === undefined || !Number.isFinite(Number(value))) return "Unavailable";
+  const seconds = Math.max(0, Math.round(Number(value)));
+  return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
 }
 
 function number(value) {
@@ -246,6 +262,86 @@ function automationExceptions() {
   return (DATA.systems?.automations || []).filter(item => !/^(ok|success|succeeded)$/i.test(String(item.status || "")) || Number(item.error_streak || 0) > 0);
 }
 
+function snapshotAgeMs(value = DATA?.generated_at) {
+  const parsed = new Date(value).getTime();
+  return Number.isFinite(parsed) ? Math.max(0, Date.now() - parsed) : Number.POSITIVE_INFINITY;
+}
+
+function currentPriorities() {
+  const usage = DATA.ai_usage || {};
+  const outbound = DATA.outbound || {};
+  const ventures = DATA.venture_lab?.ventures || [];
+  const priorities = [];
+
+  if (snapshotAgeMs() > LIVE_FEED_STALE_MS) {
+    priorities.push({
+      key: "snapshot-freshness",
+      title: "Operating snapshot is stale",
+      detail: `Newest available sanitized snapshot is ${ageText(DATA.generated_at)}. Current activity may have changed.`,
+      kind: "Data freshness",
+    });
+  }
+
+  if (/pause/i.test(String(usage.mode || ""))) {
+    priorities.push({
+      key: "usage-pause",
+      title: "Scheduled model work is paused by the usage guard",
+      detail: `${usage.remaining_percent ?? "Unknown"}% remains; ${usage.autonomy_used_percent_estimate ?? "unknown"}% was consumed after activation versus a ${usage.scheduled_budget_percent ?? "unknown"}% scheduled-work budget. Deterministic controls remain active.`,
+      kind: "AI reserve",
+    });
+  }
+
+  if (String(outbound.state || "").toLowerCase() === "hold") {
+    priorities.push({
+      key: "outbound-hold",
+      title: "Cold outreach is held",
+      detail: outbound.reason || "Outbound compliance evidence is incomplete.",
+      kind: "Revenue",
+    });
+  }
+
+  for (const venture of ventures) {
+    const issues = new Set(venture.issue_codes || []);
+    if (venture.venture_id === "tech_youtube" && issues.has("COPYRIGHT_SCHOOL_INCOMPLETE")) {
+      priorities.push({
+        key: "tech-copyright-school",
+        title: "Tech With Receipts needs Copyright School completed",
+        detail: "One active copyright strike is verified. Publishing stays held until Copyright School and the rights re-check are complete.",
+        kind: "YouTube",
+      });
+    }
+    if (venture.venture_id === "motivational_youtube" && issues.has("BRAND_IDENTITY_TRANSITION_REQUIRED")) {
+      priorities.push({
+        key: "motivation-brand-transition",
+        title: "Motivational channel identity is not aligned",
+        detail: "The current Velocity Sounds name must be aligned with The Comeback Practice identity before autonomous publishing begins.",
+        kind: "YouTube",
+      });
+    }
+  }
+
+  priorities.push(...automationExceptions().map(item => ({
+    key: `automation:${item.name}`,
+    title: item.name,
+    detail: `${item.status} · ${item.error_streak || 0} consecutive errors`,
+    kind: "System",
+  })));
+  priorities.push(...importantRisks().filter(item => item.severity !== "healthy").map(item => ({
+    key: `risk:${item.title}`,
+    title: item.title,
+    detail: item.detail,
+    kind: item.category,
+  })));
+
+  const seen = new Set();
+  return priorities.filter(item => {
+    const normalized = String(item.title || "").trim().toLowerCase();
+    if (!normalized || seen.has(normalized)) return false;
+    seen.add(normalized);
+    return true;
+  }).slice(0, 6);
+}
+
 function renderOverview() {
   $("#executiveSummary").textContent = DATA.meta?.executive_summary || "Executive summary unavailable.";
   const net = financeMetric("Net profit");
@@ -260,13 +356,11 @@ function renderOverview() {
     metricCard("Weekly AI reserve", usage.remaining_percent == null ? "Unavailable" : `${usage.remaining_percent}% left`, `${usage.autonomy_used_percent_estimate ?? "—"}% estimated since activation · stop at ${usage.absolute_stop_used_percent ?? "—"}% used`, tone(usage.mode))
   ].join("");
 
-  const priorities = [
-    ...automationExceptions().map(item => ({ title: item.name, detail: `${item.status} · ${item.error_streak || 0} consecutive errors`, kind: "System" })),
-    ...importantRisks().filter(item => item.severity !== "healthy").slice(0, 6).map(item => ({ title: item.title, detail: item.detail, kind: item.category }))
-  ].slice(0, 6);
+  const priorities = currentPriorities();
   $("#priorityList").innerHTML = priorities.length ? priorities.map((item, index) => `<article><span>${String(index + 1).padStart(2, "0")}</span><div><small>${esc(item.kind)}</small><strong>${esc(item.title)}</strong><p>${esc(item.detail)}</p></div></article>`).join("") : empty("No current priority exceptions.");
 
-  $("#autonomySummary").innerHTML = `<div class="boundary-grid-v3"><article class="boundary-open-v3"><span>Runs automatically</span><strong>Research · analysis · private asset work · diagnostics · prioritization</strong><small>Only inside the allowlist, usage guard, and existing accounts.</small></article><article class="boundary-locked-v3"><span>Owner-gated</span><strong>Spend · publish · messages · accounts · security · contracts · refunds · deletion</strong><small>Approval is not completion; evidence must verify every consequential action.</small></article></div><div class="guard-line-v3"><span>Usage guard</span><strong>${esc(usage.mode || "unavailable")}</strong><small>${usage.remaining_percent ?? "—"}% remaining · ${usage.enabled_model_job_count ?? "—"} model job · heartbeats ${usage.heartbeat_disabled ? "off" : "not verified off"}</small></div>`;
+  const publicationGranted = DATA.venture_lab?.owner_autonomous_publication_approval === true;
+  $("#autonomySummary").innerHTML = `<div class="boundary-grid-v3"><article class="boundary-open-v3"><span>Agent self-approved</span><strong>Research · analysis · private asset work · diagnostics · prioritization${publicationGranted ? " · gated YouTube publishing" : ""}</strong><small>YouTube publication authority activates only after automatic channel, rights, originality, and 90/100 quality checks pass.</small></article><article class="boundary-locked-v3"><span>Protected safeguards</span><strong>Spend · outbound messages · contracts · refunds · account/security ownership · legal filings · destructive deletion</strong><small>These controls prevent irreversible financial, legal, reputation, or data loss. Evidence must verify every consequential action.</small></article></div><div class="guard-line-v3"><span>Usage guard</span><strong>${esc(usage.mode || "unavailable")}</strong><small>${usage.remaining_percent ?? "—"}% remaining · ${usage.enabled_model_job_count ?? "—"} model job · heartbeats ${usage.heartbeat_disabled ? "off" : "not verified off"}</small></div>`;
 
   const executives = (DATA.team || []).filter(item => item.configured);
   $("#executiveStrip").innerHTML = executives.map(item => `<article><div class="agent-avatar-v3">${esc(item.name.slice(0, 1))}</div><div><span>${esc(item.department)}</span><strong>${esc(item.name)} · ${esc(item.role)}</strong><p>${esc(item.city?.current_activity || item.mission)}</p><small>${esc(item.model)} · ${esc(item.reasoning_mode)} reasoning</small></div>${statusPill(item.status)}</article>`).join("") || empty("No configured executive agents in the snapshot.");
@@ -291,8 +385,22 @@ function renderAssets() {
   $("#ventureGrid").innerHTML = ventures.map(item => {
     const identity = item.identity || {};
     const metrics = item.metrics || {};
-    const queue = item.content_system?.queue || {};
-    return `<article class="venture-card-v3"><div><span>${esc(item.project_label)}</span>${statusPill(item.status)}</div><h2>${esc(identity.verified_channel_name || "Identity not verified")}</h2><p>${esc(identity.verified_handle || "No verified handle")}</p><dl><div><dt>Subscribers</dt><dd>${metrics.subscribers == null ? "Unavailable" : number(metrics.subscribers)}</dd></div><div><dt>28d views</dt><dd>${metrics.views == null ? "Unavailable" : number(metrics.views)}</dd></div><div><dt>Private concepts</dt><dd>${number(queue.total_items || 0)}</dd></div><div><dt>Publishing</dt><dd>${item.authority?.publication_authorized ? "Authorized" : "Locked"}</dd></div></dl><small>${esc((item.issue_codes || []).join(" · ") || "No issue codes")}</small></article>`;
+    const content = item.content_system || {};
+    const queue = content.queue || {};
+    const pnl = item.pnl || {};
+    const lastUpload = item.last_upload || {};
+    const nextItem = item.next_content_item || {};
+    const publishingTarget = content.publishing_target || {};
+    const targetName = identity.target_channel_name && identity.target_channel_name !== identity.verified_channel_name ? ` → ${identity.target_channel_name}` : "";
+    const quality = content.quality_standard || {};
+    const publicationState = item.authority?.publication_authorized
+      ? "Active"
+      : item.authority?.owner_autonomous_publication_approval
+        ? "Agent-approved after launch gates"
+        : "Not authorized";
+    const holds = [...new Set([...(content.hold_codes || []), ...(item.issue_codes || [])])];
+    const target = publishingTarget.items_per_day == null ? "Unavailable" : `${number(publishingTarget.items_per_day)}/day · 1 Short + 1 long-form`;
+    return `<article class="venture-card-v3"><div><span>${esc(item.project_label)}</span>${statusPill(item.status)}</div><h2>${esc(identity.verified_channel_name || "Identity not verified")}${esc(targetName)}</h2><p>${esc(identity.verified_handle || "No verified handle")} · identity observed ${esc(identity.source_observed_at || "Unavailable")}</p><dl><div><dt>Subscribers</dt><dd>${metrics.subscribers == null ? "Unavailable" : number(metrics.subscribers)}</dd></div><div><dt>28d views</dt><dd>${metrics.views == null ? "Unavailable" : number(metrics.views)}</dd></div><div><dt>28d watch time</dt><dd>${metrics.watch_time_hours == null ? "Unavailable" : `${number(metrics.watch_time_hours)}h`}</dd></div><div><dt>Private concepts</dt><dd>${queue.total_items == null ? "Unavailable" : number(queue.total_items)}</dd></div><div><dt>Revenue</dt><dd>${moneyCents(pnl.revenue_cents)}</dd></div><div><dt>Cost</dt><dd>${moneyCents(pnl.cost_cents)}</dd></div><div><dt>Net profit</dt><dd>${moneyCents(pnl.profit_cents)}</dd></div><div><dt>Latest upload views</dt><dd>${lastUpload.views == null ? "Unavailable" : number(lastUpload.views)}</dd></div><div><dt>Latest CTR</dt><dd>${lastUpload.impressions_click_through_rate_basis_points == null ? "Unavailable" : `${(Number(lastUpload.impressions_click_through_rate_basis_points) / 100).toFixed(1)}%`}</dd></div><div><dt>Latest avg view</dt><dd>${durationSeconds(lastUpload.average_view_duration_seconds)}</dd></div><div><dt>Daily target</dt><dd>${esc(target)}</dd></div><div><dt>Quality floor</dt><dd>${quality.minimum_score == null ? "Unavailable" : `${number(quality.minimum_score)}/100`}</dd></div><div><dt>Publishing</dt><dd>${esc(publicationState)}</dd></div><div><dt>Next content item</dt><dd>${esc(nextItem.status || "Unavailable")}</dd></div></dl><div class="next-gate-v3"><span>Current holds</span><strong>${esc(holds.join(" · ") || "No launch holds")}</strong><small>${esc(content.rights_gate_status || "Rights status unavailable")} · accountable ${esc(item.team?.accountable || "Unavailable")}</small></div></article>`;
   }).join("") || empty("YouTube venture evidence unavailable.");
 }
 
@@ -319,9 +427,10 @@ function renderTeam() {
   $("#teamGrid").innerHTML = visible.map(item => {
     const completed = latestCompleted(item);
     const state = item.configured ? item.status : "on demand";
-    return `<article class="team-card-v3" data-agent-id="${esc(item.id)}"><header><div class="agent-avatar-v3">${esc(item.name.slice(0, 1))}</div><div><span>${esc(item.department)}</span><h2>${esc(item.name)}</h2><p>${esc(item.role)}</p></div>${statusPill(state)}</header><div class="agent-mission-v3"><span>Mission</span><strong>${esc(item.mission)}</strong></div><div class="agent-current-v3"><span>Current verified state</span><strong>${esc(item.city?.current_activity || "No verified current task")}</strong><small>${esc(item.city?.presence_source || "Source unavailable")} · observed ${esc(item.city?.observed_at || item.last_activity || "Unavailable")}</small></div><dl><div><dt>Operating class</dt><dd>${esc(item.operating_class)}</dd></div><div><dt>Model / reasoning</dt><dd>${esc(item.model)} · ${esc(item.reasoning_mode)}</dd></div><div><dt>Cadence</dt><dd>${esc(item.automation)}</dd></div><div><dt>Recent completed work</dt><dd>${esc(completed?.title || "No verified completion in sanitized history")}</dd></div><div><dt>Verified outcomes (7d)</dt><dd>${number(item.performance?.verified_points_7d || 0)}</dd></div><div><dt>Error streak</dt><dd>${number(item.error_streak || 0)}</dd></div><div><dt>Attributed sales</dt><dd>${number(item.verified_sales || 0)}</dd></div><div><dt>Attributed net profit</dt><dd>${money(item.verified_profit || 0)}</dd></div></dl><div class="authority-v3"><span>Authority boundary</span><p>${esc(item.authority)}</p></div></article>`;
+    const expertise = item.expert_standard?.status === "enforced" ? "Enforced: domain fit + sources + independent QA + measured outcome" : "Required before activation";
+    return `<article class="team-card-v3" data-agent-id="${esc(item.id)}"><header><div class="agent-avatar-v3">${esc(item.name.slice(0, 1))}</div><div><span>${esc(item.department)}</span><h2>${esc(item.name)}</h2><p>${esc(item.role)}</p></div>${statusPill(state)}</header><div class="agent-mission-v3"><span>Mission</span><strong>${esc(item.mission)}</strong></div><div class="agent-current-v3"><span>Current verified state</span><strong>${esc(item.city?.current_activity || "No verified current task")}</strong><small>${esc(item.city?.presence_source || "Source unavailable")} · observed ${esc(item.city?.observed_at || item.last_activity || "Unavailable")}</small></div><dl><div><dt>Operating class</dt><dd>${esc(item.operating_class)}</dd></div><div><dt>Expert standard</dt><dd>${esc(expertise)}</dd></div><div><dt>Model / reasoning</dt><dd>${esc(item.model)} · ${esc(item.reasoning_mode)}</dd></div><div><dt>Cadence</dt><dd>${esc(item.automation)}</dd></div><div><dt>Recent completed work</dt><dd>${esc(completed?.title || "No verified completion in sanitized history")}</dd></div><div><dt>Verified outcomes (7d)</dt><dd>${number(item.performance?.verified_points_7d || 0)}</dd></div><div><dt>Error streak</dt><dd>${number(item.error_streak || 0)}</dd></div><div><dt>Attributed sales</dt><dd>${number(item.verified_sales || 0)}</dd></div><div><dt>Attributed net profit</dt><dd>${money(item.verified_profit || 0)}</dd></div></dl><div class="authority-v3"><span>Authority boundary</span><p>${esc(item.authority)}</p></div></article>`;
   }).join("") || empty("No agents match this filter.");
-  $("#responsibilityMatrix").innerHTML = table(["Outcome", "Accountable", "Supporting", "Owner gate"], (DATA.responsibility_matrix || []).map(row => [row.outcome, row.accountable, row.supporting, row.gate]));
+  $("#responsibilityMatrix").innerHTML = table(["Outcome", "Accountable", "Supporting", "Authorization boundary"], (DATA.responsibility_matrix || []).map(row => [row.outcome, row.accountable, row.supporting, row.gate]));
 }
 
 function renderCity() {
@@ -351,7 +460,8 @@ function renderSystems() {
   const routing = systems.model_routing || {};
   const inventory = systems.automation_inventory || {};
   const usageWidth = Math.max(0, Math.min(100, Number(usage.used_percent || 0)));
-  $("#systemHeroGrid").innerHTML = `<article class="system-hero-v3 ${gateway.healthy ? "healthy" : "critical"}"><span>Gateway</span><strong>${gateway.healthy ? "RUNNING" : "NEEDS ATTENTION"}</strong><p>${esc(gateway.bind || "Local loopback")} · config ${gateway.config_valid === true ? "valid" : "unverified"}</p>${statusPill(gateway.healthy ? "healthy" : "attention")}</article><article class="system-hero-v3 ${tone(usage.mode)}"><span>Weekly OpenAI usage</span><strong>${usage.remaining_percent == null ? "Unavailable" : `${usage.remaining_percent}% LEFT`}</strong><div class="usage-track-v3"><i style="width:${usageWidth}%"></i></div><p>${usage.used_percent ?? "—"}% total used · ${usage.autonomy_used_percent_estimate ?? "—"}% estimated since activation · stop at ${usage.absolute_stop_used_percent ?? "—"}% used</p></article><article class="system-hero-v3 healthy"><span>Model router</span><strong>${esc(routing.default_model || DATA.meta?.model || "Unavailable")}</strong><p>${number(routing.luna_agents || 0)} Luna · ${number(routing.terra_agents || 0)} Terra · ${esc(routing.default_reasoning_mode || "—")} reasoning</p></article><article class="system-hero-v3 ${Number(systems.error_count || 0) ? "attention" : "healthy"}"><span>Scheduler</span><strong>${number(inventory.enabled ?? (systems.automations || []).length)} ENABLED</strong><p>${number(inventory.enabled_model ?? usage.enabled_model_job_count)} model · ${number(inventory.enabled_deterministic ?? usage.enabled_deterministic_job_count)} deterministic · ${number(inventory.disabled_model ?? usage.disabled_model_job_count)} legacy model jobs parked</p></article>`;
+  const feedFresh = snapshotAgeMs() <= LIVE_FEED_STALE_MS;
+  $("#systemHeroGrid").innerHTML = `<article class="system-hero-v3 ${gateway.healthy ? "healthy" : "critical"}"><span>Gateway</span><strong>${gateway.healthy ? "RUNNING" : "NEEDS ATTENTION"}</strong><p>${esc(gateway.bind || "Local loopback")} · config ${gateway.config_valid === true ? "valid" : "unverified"}</p>${statusPill(gateway.healthy ? "healthy" : "attention")}</article><article class="system-hero-v3 ${tone(usage.mode)}"><span>Weekly OpenAI usage</span><strong>${usage.remaining_percent == null ? "Unavailable" : `${usage.remaining_percent}% LEFT`}</strong><div class="usage-track-v3"><i style="width:${usageWidth}%"></i></div><p>${usage.used_percent ?? "—"}% total used · ${usage.autonomy_used_percent_estimate ?? "—"}% estimated since activation · stop at ${usage.absolute_stop_used_percent ?? "—"}% used</p></article><article class="system-hero-v3 healthy"><span>Model router</span><strong>${esc(routing.default_model || DATA.meta?.model || "Unavailable")}</strong><p>${number(routing.luna_agents || 0)} Luna · ${number(routing.terra_agents || 0)} Terra · ${esc(routing.default_reasoning_mode || "—")} reasoning</p></article><article class="system-hero-v3 ${Number(systems.error_count || 0) ? "attention" : "healthy"}"><span>Scheduler</span><strong>${number(inventory.enabled ?? (systems.automations || []).length)} ENABLED</strong><p>${number(inventory.enabled_model ?? usage.enabled_model_job_count)} model · ${number(inventory.enabled_deterministic ?? usage.enabled_deterministic_job_count)} deterministic · ${number(inventory.disabled_model ?? usage.disabled_model_job_count)} legacy model jobs parked</p></article><article class="system-hero-v3 ${feedFresh ? "healthy" : "critical"}"><span>Dashboard data feed</span><strong>${feedFresh ? "CURRENT" : "STALE"}</strong><p>${esc(DATA_RUNTIME.label)} · generated ${ageText(DATA.generated_at)} · browser checks every minute</p>${statusPill(feedFresh ? "healthy" : "stale")}</article>`;
   const automations = systems.automations || [];
   $("#automationSummary").textContent = `${automations.length} enabled · ${systems.error_count || 0} need attention`;
   $("#automationTable").innerHTML = table(["Automation", "Owner", "Cadence", "Last run", "Next run", "Status", "Errors"], automations.map(item => [item.name, item.owner, item.cadence, item.last_run, item.next_run, item.status, item.error_streak]));
@@ -377,11 +487,14 @@ function renderMeta() {
   $("#sidebarDot").classList.toggle("offline", !gateway.healthy);
   const usage = DATA.ai_usage || {};
   $("#topUsage").textContent = usage.remaining_percent == null ? "Usage unavailable" : `${usage.remaining_percent}% weekly usage left`;
-  $("#topFreshness").textContent = `${dateText(DATA.generated_at)} · ${ageText(DATA.generated_at)}`;
-  const ageHours = (Date.now() - new Date(DATA.generated_at).getTime()) / 3600000;
-  if (!Number.isFinite(ageHours) || ageHours > 6) {
+  $("#topFreshness").textContent = `${DATA_RUNTIME.label} · ${ageText(DATA.generated_at)}`;
+  const ageMs = snapshotAgeMs();
+  if (!Number.isFinite(ageMs) || ageMs > LIVE_FEED_STALE_MS) {
     $("#dataBanner").hidden = false;
-    $("#dataBanner").textContent = Number.isFinite(ageHours) ? `Snapshot is ${ageText(DATA.generated_at)}. Current work and financial state may have changed.` : "Snapshot timestamp is invalid; treat all current-state claims as unavailable.";
+    $("#dataBanner").textContent = Number.isFinite(ageMs) ? `Newest available sanitized snapshot is ${ageText(DATA.generated_at)}. Current work and financial state may have changed.` : "Snapshot timestamp is invalid; treat all current-state claims as unavailable.";
+  } else {
+    $("#dataBanner").hidden = true;
+    $("#dataBanner").textContent = "";
   }
   const attentionCount = openApprovals().length + automationExceptions().length + importantRisks().filter(item => item.severity === "critical").length;
   $("#attentionNavCount").textContent = attentionCount;
@@ -397,6 +510,7 @@ function safeRender(name, fn) {
 }
 
 function renderAll() {
+  safeRender("snapshot metadata", renderMeta);
   safeRender("overview", renderOverview);
   safeRender("profit", renderProfit);
   safeRender("assets", renderAssets);
@@ -404,7 +518,6 @@ function renderAll() {
   safeRender("Agent City", renderCity);
   safeRender("systems", renderSystems);
   safeRender("attention", renderAttention);
-  safeRender("snapshot metadata", renderMeta);
   document.dispatchEvent(new CustomEvent("rowan:data-ready", { detail: DATA }));
 }
 
@@ -427,14 +540,46 @@ function showToast(message) {
   toastTimer = setTimeout(() => node.classList.remove("show"), 2200);
 }
 
-async function loadData() {
-  const response = await fetch(`./command-center-data.json?v=${Date.now()}`, { cache: "no-store" });
-  if (!response.ok) throw new Error(`Snapshot request failed with ${response.status}`);
+function snapshotCandidates() {
+  const candidates = [];
+  if (["rowan-control-panel.netlify.app", "127.0.0.1", "localhost"].includes(location.hostname)) {
+    candidates.push({ source: "private-live", label: "Private live feed", url: `/api/rowan-snapshot?v=${Date.now()}` });
+  }
+  candidates.push({ source: "public-live", label: "Live sanitized feed", url: `${PUBLIC_LIVE_FEED_URL}?v=${Date.now()}` });
+  candidates.push({ source: "published-fallback", label: "Published fallback", url: `./command-center-data.json?v=${Date.now()}` });
+  return candidates;
+}
+
+function validSnapshot(snapshot) {
+  return Boolean(snapshot && snapshot.schema_version === 1 && Array.isArray(snapshot.team) && snapshot.generated_at && Number.isFinite(new Date(snapshot.generated_at).getTime()));
+}
+
+async function fetchSnapshot(candidate) {
+  const response = await fetch(candidate.url, { cache: "no-store" });
+  if (!response.ok) throw new Error(`${candidate.label} returned ${response.status}`);
   const snapshot = await response.json();
-  if (!snapshot || !Array.isArray(snapshot.team) || !snapshot.generated_at) throw new Error("Snapshot schema is incomplete");
-  DATA = snapshot;
+  if (!validSnapshot(snapshot)) throw new Error(`${candidate.label} schema is incomplete`);
+  return { ...candidate, snapshot };
+}
+
+async function loadData() {
+  const previousGeneratedAt = DATA?.generated_at || null;
+  const attempts = await Promise.allSettled(snapshotCandidates().map(fetchSnapshot));
+  const available = attempts
+    .filter(result => result.status === "fulfilled")
+    .map(result => result.value)
+    .sort((a, b) => new Date(b.snapshot.generated_at).getTime() - new Date(a.snapshot.generated_at).getTime());
+  if (!available.length) {
+    const reasons = attempts.map(result => result.status === "rejected" ? result.reason?.message : "").filter(Boolean);
+    throw new Error(reasons.join("; ") || "No valid dashboard source responded");
+  }
+  const selected = available[0];
+  DATA = selected.snapshot;
+  DATA_RUNTIME = { source: selected.source, label: selected.label, fetchedAt: new Date().toISOString() };
   window.DATA = DATA;
+  window.ROWAN_DATA_RUNTIME = DATA_RUNTIME;
   renderAll();
+  return { changed: previousGeneratedAt !== DATA.generated_at, generatedAt: DATA.generated_at, source: DATA_RUNTIME.label };
 }
 
 function bindUI() {
@@ -460,11 +605,19 @@ function bindUI() {
   $("#mobileMenu")?.addEventListener("click", () => document.body.classList.toggle("nav-open-v3"));
   $("#refreshButton")?.addEventListener("click", async event => {
     event.currentTarget.disabled = true;
-    try { await loadData(); showToast("Verified snapshot refreshed"); }
+    try {
+      const result = await loadData();
+      showToast(result.changed ? `Loaded newer ${result.source}` : `${result.source} is already the newest available`);
+    }
     catch (error) { $("#dataBanner").hidden = false; $("#dataBanner").textContent = `Snapshot refresh failed: ${error.message}. Existing data remains visible.`; }
     finally { event.currentTarget.disabled = false; }
   });
   window.addEventListener("hashchange", () => showView(location.hash.slice(1) || "overview", false));
+  window.setInterval(async () => {
+    if (document.hidden) return;
+    try { await loadData(); }
+    catch (error) { console.warn("[ROWAN] automatic snapshot check failed", error); }
+  }, AUTO_REFRESH_MS);
 }
 
 document.addEventListener("DOMContentLoaded", async () => {

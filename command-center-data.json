@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-22T21:20:12-05:00",
+  "generated_at": "2026-08-22T22:30:13-05:00",
   "meta": {
     "rowan_status": "Rowan running",
     "provider": "OpenAI",
@@ -10,7 +10,7 @@
     "business_model": "Multi-channel digital products, media, and productized services",
     "verified_monthly_revenue_target": 20000,
     "verified_monthly_net_profit_target": 20000,
-    "executive_summary": "Rowan is operating under bounded autonomy toward $20,000 in verified monthly net profit. Internal research, analysis, asset preparation, diagnostics, and prioritization may run automatically; spend, publication, outbound messages, account or security changes, contracts, refunds, and destructive actions remain owner-gated. The dashboard reports unavailable evidence as unavailable and credits agents only after reconciled profit attribution."
+    "executive_summary": "Rowan is operating under bounded autonomy toward $20,000 in verified monthly net profit. Agents may self-approve reversible zero-spend work. For the two YouTube ventures, owner publication authority is recorded and activates only after channel, originality, rights, and 90/100 quality gates pass. Spending, outbound messages, contracts, refunds, account or security ownership changes, legal filings, and destructive deletion remain protected. The dashboard reports unavailable evidence as unavailable and credits agents only after reconciled profit attribution."
   },
   "business_assets": [
     {
@@ -32,7 +32,7 @@
     {
       "name": "YouTube channels",
       "type": "Audience and media",
-      "status": "Planning only; publication gated",
+      "status": "Premium production planned; launch gates active",
       "evidence": "2 ventures tracked; identity and rights gates shown separately",
       "confidence": "Mixed verified and setup-required evidence",
       "owner": "Nova + Aria"
@@ -65,7 +65,7 @@
   "venture_lab": {
     "available": true,
     "status": "partially_verified_rights_hold",
-    "observed_at": "2026-08-16T22:45:21Z",
+    "observed_at": "2026-08-23T02:35:29Z",
     "source_freshness": "fresh",
     "observation_method": "Owner-authenticated YouTube account readback plus local workspace audit",
     "ventures": [
@@ -74,24 +74,25 @@
         "project_label": "Tech YouTube",
         "brand_key": "tech_youtube",
         "pnl_key": "tech_youtube_pnl",
-        "status": "setup_required",
+        "status": "rights_hold",
         "identity": {
-          "status": "setup_required",
-          "verified_channel_name": null,
-          "verified_handle": null,
+          "status": "verified",
+          "verified_channel_name": "Tech With Receipts",
+          "verified_handle": "@TechWithReceiptsHQ",
+          "target_channel_name": "Tech With Receipts",
           "external_channel_id": null,
           "channel_url": null,
           "source_status": "owner_authenticated_account_checked",
-          "source_observed_at": "2026-08-16T22:45:21Z",
+          "source_observed_at": "2026-08-23T02:35:29Z",
           "source_freshness": "fresh"
         },
         "metrics": {
-          "status": "unavailable",
-          "period_days": null,
-          "subscribers": null,
-          "views": null,
-          "watch_time_hours": null,
-          "source_observed_at": null
+          "status": "partially_verified",
+          "period_days": 28,
+          "subscribers": 26,
+          "views": 84,
+          "watch_time_hours": 0.3,
+          "source_observed_at": "2026-08-23T02:35:29Z"
         },
         "pnl": {
           "pnl_key": "tech_youtube_pnl",
@@ -101,22 +102,23 @@
           "profit_cents": null
         },
         "last_upload": {
-          "status": "unavailable",
+          "status": "partially_verified",
           "published_on": null,
           "title": null,
-          "views": null,
+          "views": 74,
           "impressions_click_through_rate_basis_points": null,
-          "average_view_duration_seconds": null
+          "average_view_duration_seconds": null,
+          "average_percentage_viewed_basis_points": 7440
         },
         "next_content_item": {
-          "status": "setup_required",
+          "status": "blocked_rights_hold",
           "title": null,
           "format": null,
           "scheduled_at": null
         },
         "content_system": {
-          "status": "setup_required",
-          "operating_mode": "planning_only",
+          "status": "rights_hold",
+          "operating_mode": "premium_production_planning",
           "content_pillars": [
             "Workflow literacy",
             "Security and privacy basics",
@@ -125,8 +127,28 @@
           ],
           "publishing_target": {
             "items_per_day": 2,
-            "status": "proposed_not_scheduled",
+            "status": "premium_queue_target_not_scheduled",
             "forecast": false
+          },
+          "format_mix_per_day": {
+            "short_vertical": 1,
+            "long_form": 1
+          },
+          "quality_standard": {
+            "label": "world_class_original_animation",
+            "minimum_score": 90,
+            "ai_slop_rejected": true,
+            "original_or_licensed_assets_only": true,
+            "required_dimensions": [
+              "original_script",
+              "custom_storyboard",
+              "intentional_animation",
+              "professional_sound_design",
+              "captions_and_accessibility",
+              "thumbnail_and_title_package",
+              "retention_edit",
+              "final_editorial_review"
+            ]
           },
           "workflow_states": [
             "idea",
@@ -139,141 +161,6 @@
           ],
           "queue": {
             "queue_key": "tech_youtube_content_queue",
-            "status": "held_unlinked_channel",
-            "total_items": 14,
-            "item_counts": {
-              "concept_planned": 14
-            }
-          },
-          "originality_gate_status": "setup_required",
-          "quality_gate_status": "setup_required",
-          "rights_gate_status": "setup_required",
-          "active_copyright_strike_count": null,
-          "scheduled_state_authorized": false,
-          "published_state_authorized": false,
-          "summary_available": true,
-          "summary_generated_at": "2026-08-23T02:20:04Z",
-          "summary_source_freshness": "fresh",
-          "creative_pillar_count": 4,
-          "private_concept_count": 14,
-          "publication_handoff_ready_count": 0,
-          "hold_codes": [
-            "CHANNEL_IDENTITY_REQUIRED",
-            "DISTINCT_TECH_CHANNEL_NOT_LINKED"
-          ]
-        },
-        "approvals": [
-          {
-            "approval_id": "verify_distinct_channel_identity",
-            "label": "Verify a distinct Tech channel identity",
-            "status": "required"
-          },
-          {
-            "approval_id": "approve_first_content_item",
-            "label": "Approve the first rights-cleared content item",
-            "status": "blocked"
-          },
-          {
-            "approval_id": "approve_upload_or_publication",
-            "label": "Approve one exact upload or publication",
-            "status": "blocked"
-          }
-        ],
-        "issue_codes": [
-          "DISTINCT_TECH_CHANNEL_NOT_VERIFIED",
-          "TECH_LABELED_TABS_RESOLVE_TO_MOTIVATION_CHANNEL"
-        ],
-        "team": {
-          "execution_mode": "existing_team_on_demand",
-          "accountable": "Nova",
-          "supporting": [
-            "Aria",
-            "Sage",
-            "Atlas"
-          ],
-          "scheduled_model_job_count": 0,
-          "background_model_authority": false
-        },
-        "authority": {
-          "credential_access_authorized": false,
-          "account_action_authorized": false,
-          "upload_authorized": false,
-          "publication_authorized": false,
-          "cash_spend_authorized_cents": 0,
-          "external_actions_authorized": false,
-          "model_call_required": false
-        }
-      },
-      {
-        "venture_id": "motivational_youtube",
-        "project_label": "Motivational YouTube",
-        "brand_key": "motivational_youtube",
-        "pnl_key": "motivational_youtube_pnl",
-        "status": "rights_hold",
-        "identity": {
-          "status": "verified",
-          "verified_channel_name": "Motivation",
-          "verified_handle": "@motivation5650",
-          "external_channel_id": null,
-          "channel_url": null,
-          "source_status": "owner_authenticated_account_checked",
-          "source_observed_at": "2026-08-16T22:45:21Z",
-          "source_freshness": "fresh"
-        },
-        "metrics": {
-          "status": "partially_verified",
-          "period_days": 28,
-          "subscribers": 26,
-          "views": 0,
-          "watch_time_hours": 0.0,
-          "source_observed_at": "2026-08-16T22:45:21Z"
-        },
-        "pnl": {
-          "pnl_key": "motivational_youtube_pnl",
-          "status": "unavailable",
-          "revenue_cents": null,
-          "cost_cents": null,
-          "profit_cents": null
-        },
-        "last_upload": {
-          "status": "partially_verified",
-          "published_on": "2026-05-08",
-          "title": null,
-          "views": 13,
-          "impressions_click_through_rate_basis_points": 910,
-          "average_view_duration_seconds": 38
-        },
-        "next_content_item": {
-          "status": "blocked_rights_hold",
-          "title": null,
-          "format": null,
-          "scheduled_at": null
-        },
-        "content_system": {
-          "status": "rights_hold",
-          "operating_mode": "planning_only",
-          "content_pillars": [
-            "Original resilience micro-stories",
-            "Practical reframes",
-            "Reflective challenges",
-            "Earned confidence"
-          ],
-          "publishing_target": {
-            "items_per_day": 2,
-            "status": "proposed_not_scheduled",
-            "forecast": false
-          },
-          "workflow_states": [
-            "idea",
-            "script",
-            "asset",
-            "edit",
-            "review",
-            "scheduled",
-            "published"
-          ],
-          "queue": {
-            "queue_key": "motivational_youtube_content_queue",
             "status": "held_active_copyright_strike",
             "total_items": 14,
             "item_counts": {
@@ -281,27 +168,33 @@
             }
           },
           "originality_gate_status": "required",
-          "quality_gate_status": "setup_required",
+          "quality_gate_status": "premium_90_required",
           "rights_gate_status": "blocked_active_copyright_strike",
           "active_copyright_strike_count": 1,
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-23T02:20:04Z",
+          "summary_generated_at": "2026-08-23T03:30:02Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
           "publication_handoff_ready_count": 0,
           "hold_codes": [
             "ACTIVE_COPYRIGHT_STRIKE",
+            "COPYRIGHT_SCHOOL_INCOMPLETE",
             "RIGHTS_CLEARANCE_REQUIRED"
           ]
         },
         "approvals": [
           {
             "approval_id": "verify_channel_identity",
-            "label": "Verify the Motivation channel identity",
+            "label": "Tech With Receipts identity verified",
             "status": "verified"
+          },
+          {
+            "approval_id": "complete_copyright_school",
+            "label": "Complete YouTube Copyright School and re-check the strike",
+            "status": "required"
           },
           {
             "approval_id": "clear_copyright_and_rights_gate",
@@ -309,19 +202,19 @@
             "status": "required"
           },
           {
-            "approval_id": "approve_next_content_item",
-            "label": "Approve one rights-cleared content item",
-            "status": "blocked"
+            "approval_id": "autonomous_quality_gate",
+            "label": "Agents may approve items scoring 90/100 after all rights checks",
+            "status": "owner_approved"
           },
           {
-            "approval_id": "approve_upload_or_publication",
-            "label": "Approve one exact upload or publication",
-            "status": "blocked"
+            "approval_id": "autonomous_publication",
+            "label": "Autonomous publication authority granted after launch gates clear",
+            "status": "owner_approved_waiting_gates"
           }
         ],
         "issue_codes": [
           "ACTIVE_COPYRIGHT_STRIKE",
-          "CONTENT_QUALITY_SYSTEM_REQUIRED",
+          "COPYRIGHT_SCHOOL_INCOMPLETE",
           "RIGHTS_CLEARANCE_REQUIRED"
         ],
         "team": {
@@ -336,6 +229,174 @@
           "background_model_authority": false
         },
         "authority": {
+          "owner_autonomous_publication_approval": true,
+          "publication_authority_status": "granted_waiting_launch_gates",
+          "credential_access_authorized": false,
+          "account_action_authorized": false,
+          "upload_authorized": false,
+          "publication_authorized": false,
+          "cash_spend_authorized_cents": 0,
+          "external_actions_authorized": false,
+          "model_call_required": false
+        }
+      },
+      {
+        "venture_id": "motivational_youtube",
+        "project_label": "Motivational YouTube",
+        "brand_key": "motivational_youtube",
+        "pnl_key": "motivational_youtube_pnl",
+        "status": "brand_transition_hold",
+        "identity": {
+          "status": "brand_transition_required",
+          "verified_channel_name": "Velocity Sounds",
+          "verified_handle": "@TheComebackPractice",
+          "target_channel_name": "The Comeback Practice",
+          "external_channel_id": null,
+          "channel_url": null,
+          "source_status": "owner_authenticated_account_checked",
+          "source_observed_at": "2026-08-23T02:35:29Z",
+          "source_freshness": "fresh"
+        },
+        "metrics": {
+          "status": "partially_verified",
+          "period_days": 28,
+          "subscribers": 0,
+          "views": 48,
+          "watch_time_hours": 0.3,
+          "source_observed_at": "2026-08-23T02:35:29Z"
+        },
+        "pnl": {
+          "pnl_key": "motivational_youtube_pnl",
+          "status": "unavailable",
+          "revenue_cents": null,
+          "cost_cents": null,
+          "profit_cents": null
+        },
+        "last_upload": {
+          "status": "partially_verified",
+          "published_on": null,
+          "title": null,
+          "views": 3,
+          "impressions_click_through_rate_basis_points": 1540,
+          "average_view_duration_seconds": 93,
+          "average_percentage_viewed_basis_points": null
+        },
+        "next_content_item": {
+          "status": "blocked_brand_transition",
+          "title": null,
+          "format": null,
+          "scheduled_at": null
+        },
+        "content_system": {
+          "status": "brand_transition_hold",
+          "operating_mode": "premium_production_planning",
+          "content_pillars": [
+            "Original resilience micro-stories",
+            "Practical reframes",
+            "Reflective challenges",
+            "Earned confidence"
+          ],
+          "publishing_target": {
+            "items_per_day": 2,
+            "status": "premium_queue_target_not_scheduled",
+            "forecast": false
+          },
+          "format_mix_per_day": {
+            "short_vertical": 1,
+            "long_form": 1
+          },
+          "quality_standard": {
+            "label": "world_class_original_animation",
+            "minimum_score": 90,
+            "ai_slop_rejected": true,
+            "original_or_licensed_assets_only": true,
+            "required_dimensions": [
+              "original_script",
+              "custom_storyboard",
+              "intentional_animation",
+              "professional_sound_design",
+              "captions_and_accessibility",
+              "thumbnail_and_title_package",
+              "retention_edit",
+              "final_editorial_review"
+            ]
+          },
+          "workflow_states": [
+            "idea",
+            "script",
+            "asset",
+            "edit",
+            "review",
+            "scheduled",
+            "published"
+          ],
+          "queue": {
+            "queue_key": "motivational_youtube_content_queue",
+            "status": "held_brand_transition",
+            "total_items": 14,
+            "item_counts": {
+              "concept_planned": 14
+            }
+          },
+          "originality_gate_status": "required",
+          "quality_gate_status": "premium_90_required",
+          "rights_gate_status": "original_or_licensed_assets_required",
+          "active_copyright_strike_count": null,
+          "scheduled_state_authorized": false,
+          "published_state_authorized": false,
+          "summary_available": true,
+          "summary_generated_at": "2026-08-23T03:30:02Z",
+          "summary_source_freshness": "fresh",
+          "creative_pillar_count": 4,
+          "private_concept_count": 14,
+          "publication_handoff_ready_count": 0,
+          "hold_codes": [
+            "BRAND_IDENTITY_TRANSITION_REQUIRED",
+            "CHANNEL_NAME_HANDLE_MISMATCH",
+            "CONTENT_RIGHTS_REVIEW_REQUIRED"
+          ]
+        },
+        "approvals": [
+          {
+            "approval_id": "align_channel_brand",
+            "label": "Align Velocity Sounds to The Comeback Practice motivational brand",
+            "status": "required"
+          },
+          {
+            "approval_id": "clear_content_rights_gate",
+            "label": "Verify original or licensed rights for every asset",
+            "status": "required"
+          },
+          {
+            "approval_id": "autonomous_quality_gate",
+            "label": "Agents may approve items scoring 90/100 after all rights checks",
+            "status": "owner_approved"
+          },
+          {
+            "approval_id": "autonomous_publication",
+            "label": "Autonomous publication authority granted after launch gates clear",
+            "status": "owner_approved_waiting_gates"
+          }
+        ],
+        "issue_codes": [
+          "BRAND_IDENTITY_TRANSITION_REQUIRED",
+          "CHANNEL_NAME_HANDLE_MISMATCH",
+          "CONTENT_RIGHTS_REVIEW_REQUIRED"
+        ],
+        "team": {
+          "execution_mode": "existing_team_on_demand",
+          "accountable": "Nova",
+          "supporting": [
+            "Aria",
+            "Sage",
+            "Atlas"
+          ],
+          "scheduled_model_job_count": 0,
+          "background_model_authority": false
+        },
+        "authority": {
+          "owner_autonomous_publication_approval": true,
+          "publication_authority_status": "granted_waiting_launch_gates",
           "credential_access_authorized": false,
           "account_action_authorized": false,
           "upload_authorized": false,
@@ -353,17 +414,19 @@
     "account_action_authorized": false,
     "upload_authorized": false,
     "publication_authorized": false,
+    "owner_autonomous_publication_approval": true,
+    "publication_authority_status": "granted_waiting_launch_gates",
     "cash_spend_authorized_cents": 0,
     "external_actions_authorized": false,
     "model_call_required": false,
     "issue_codes": [
-      "MOTIVATIONAL_CHANNEL_COPYRIGHT_HOLD",
-      "TECH_CHANNEL_IDENTITY_SETUP_REQUIRED"
+      "TECH_CHANNEL_COPYRIGHT_HOLD",
+      "MOTIVATIONAL_CHANNEL_BRAND_TRANSITION_REQUIRED"
     ],
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-23T02:20:04Z",
+      "generated_at": "2026-08-23T03:30:02Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -371,8 +434,46 @@
         "scheduled_item_count": 0,
         "target_only": true
       },
+      "production_standard": {
+        "label": "world_class_original_animation",
+        "format_mix_per_lane_per_day": {
+          "short_vertical": 1,
+          "long_form": 1
+        },
+        "minimum_quality_score": 90,
+        "ai_slop_rejected": true,
+        "original_or_licensed_assets_only": true,
+        "profitability_review_required": true,
+        "required_dimension_count": 8
+      },
       "lanes": {
         "motivation": {
+          "identity_status": "brand_transition_required",
+          "launch_status": "held_brand_transition",
+          "launch_ready": false,
+          "active_copyright_strike_count": null,
+          "creative_pillar_count": 4,
+          "private_concept_count": 14,
+          "queue_state_counts": {
+            "concept_planned": 14
+          },
+          "publication_handoff_ready_count": 0,
+          "economics": {
+            "status": "unavailable",
+            "period_start": null,
+            "period_end": null,
+            "currency": null,
+            "revenue_cents": null,
+            "cost_cents": null,
+            "profit_cents": null
+          },
+          "issue_codes": [
+            "BRAND_IDENTITY_TRANSITION_REQUIRED",
+            "CHANNEL_NAME_HANDLE_MISMATCH",
+            "CONTENT_RIGHTS_REVIEW_REQUIRED"
+          ]
+        },
+        "tech": {
           "identity_status": "verified",
           "launch_status": "held_active_copyright_strike",
           "launch_ready": false,
@@ -394,32 +495,8 @@
           },
           "issue_codes": [
             "ACTIVE_COPYRIGHT_STRIKE",
+            "COPYRIGHT_SCHOOL_INCOMPLETE",
             "RIGHTS_CLEARANCE_REQUIRED"
-          ]
-        },
-        "tech": {
-          "identity_status": "unlinked",
-          "launch_status": "held_unlinked_channel",
-          "launch_ready": false,
-          "active_copyright_strike_count": null,
-          "creative_pillar_count": 4,
-          "private_concept_count": 14,
-          "queue_state_counts": {
-            "concept_planned": 14
-          },
-          "publication_handoff_ready_count": 0,
-          "economics": {
-            "status": "unavailable",
-            "period_start": null,
-            "period_end": null,
-            "currency": null,
-            "revenue_cents": null,
-            "cost_cents": null,
-            "profit_cents": null
-          },
-          "issue_codes": [
-            "CHANNEL_IDENTITY_REQUIRED",
-            "DISTINCT_TECH_CHANNEL_NOT_LINKED"
           ]
         }
       },
@@ -428,7 +505,9 @@
         "publication_handoff_ready_count": 0
       },
       "controls": {
-        "human_owner_publish_gate_required": true,
+        "human_owner_publish_gate_required": false,
+        "owner_publication_authority_recorded": true,
+        "agent_self_approval_enabled": true,
         "uploads_enabled": false,
         "scheduling_enabled": false,
         "account_actions_enabled": false,
@@ -439,10 +518,31 @@
       "external_actions_authorized": false,
       "model_call_required": false,
       "issue_codes": [
-        "MOTIVATION_RIGHTS_HOLD_ACTIVE",
-        "TECH_CHANNEL_IDENTITY_HOLD_ACTIVE"
+        "TECH_RIGHTS_HOLD_ACTIVE",
+        "MOTIVATION_BRAND_TRANSITION_HOLD_ACTIVE"
       ]
     }
+  },
+  "outbound": {
+    "state": "hold",
+    "reason": "SPF, DKIM, DMARC, and MX are live, but the required physical postal address is still an unverified placeholder. Cold outreach remains blocked until a real business postal address is supplied and checked.",
+    "updated_at": "2026-08-22T22:15:00-05:00",
+    "sender_scope": "SwirlCraft business mailbox only",
+    "hourly_cold_email_cap": 1,
+    "daily_cold_email_cap": 3,
+    "auto_resume": false,
+    "deliverability": {
+      "spf": "verified",
+      "dkim": "verified",
+      "dmarc": "monitoring_policy",
+      "mx": "verified",
+      "postal_address_confirmed": false,
+      "postal_address_status": "required_missing"
+    },
+    "agent_signature_required": true,
+    "transparent_ai_title_required": true,
+    "unverified_world_first_claim_allowed": false,
+    "external_sends_enabled": false
   },
   "ai_tech_department": {
     "generated_at": "2026-08-18T23:41:00-05:00",
@@ -1157,7 +1257,7 @@
     "base_height_m": 18,
     "goal_profit": 20000,
     "truth_note": "Tower height is earned only from reconciled agent-attributed net profit. Activity, tokens, drafts, forecasts, and unverified sales earn no height.",
-    "updated_at": "2026-08-22T21:20:12-05:00"
+    "updated_at": "2026-08-22T22:30:13-05:00"
   },
   "agent_requests": {
     "generated_at": "2026-08-19T15:20:00-05:00",
@@ -2754,22 +2854,22 @@
   },
   "city_engine_code": "",
   "ai_usage": {
-    "checked_at": "2026-08-22T21:08:15-05:00",
+    "checked_at": "2026-08-22T22:28:45-05:00",
     "mode": "paused",
     "freshness": "fresh",
-    "used_percent": 21,
-    "remaining_percent": 79,
-    "hours_until_reset": 147.13,
+    "used_percent": 26,
+    "remaining_percent": 74,
+    "hours_until_reset": 145.79,
     "reset_at": "2026-08-29T05:16:23+00:00",
     "scheduled_budget_percent": 5,
     "protected_reserve_percent": 95,
     "paced_used_ceiling_percent": 1.0,
     "autonomy_baseline_used_percent": 16.0,
-    "autonomy_used_percent_estimate": 5.0,
+    "autonomy_used_percent_estimate": 10.0,
     "absolute_stop_used_percent": 21.0,
     "protected_remaining_percent_at_activation": 79.0,
     "enabled_model_job_count": 0,
-    "enabled_deterministic_job_count": 5,
+    "enabled_deterministic_job_count": 6,
     "disabled_model_job_count": 33,
     "heartbeat_disabled": true,
     "automation_policy_status": "enforced"
@@ -3320,7 +3420,7 @@
   "brief": [
     {
       "label": "Focus",
-      "text": "Use all three existing assets without scattering effort: optimize one Etsy listing cluster organically, make SwirlCraftDigital.com safe and conversion-ready, and finish one transferable Flippa website. The separate Vendor Admin Control Bundle proof remains proposed at $297."
+      "text": "Preserve the weekly AI reserve while deterministic systems keep the company observable; resolve the Tech copyright and motivational-channel identity holds; unlock compliant SwirlCraft outreach; and concentrate revenue work on evidence-backed Etsy, owned-site, YouTube, and productized-service opportunities."
     },
     {
       "label": "Money",
@@ -3332,7 +3432,7 @@
     },
     {
       "label": "Next gate",
-      "text": "Approve or decline the exact reversible deactivation of two unreviewed legal-form listings; then close the next Etsy reporting boundary and payout/company-cost evidence. The owned-site release, Caregiver listing experiment, and Flippa domain/listing package remain separate future gates. Publishing, promotion, messages, spend, price, payout, and account changes remain gated."
+      "text": "Current non-delegable items are the exact Etsy risk/cost decisions, missing outbound postal-address evidence, and any spending, message, contract, refund, legal, security-ownership, or destructive action. YouTube publication authority is already recorded but remains inactive until each channel's launch and quality gates clear. Weekly model mode is paused."
     }
   ],
   "offer": {
@@ -4199,11 +4299,11 @@
     },
     "etsy_browser_environment": {
       "available": true,
-      "status": "setup_required",
+      "status": "ready",
       "browser_profile": "chrome",
-      "extension_session_ready": false,
-      "exact_shared_etsy_tab_ready": false,
-      "shared_etsy_tab_count": null,
+      "extension_session_ready": true,
+      "exact_shared_etsy_tab_ready": true,
+      "shared_etsy_tab_count": 1,
       "passive_check_only": true,
       "browser_navigation_performed": false,
       "browser_clicks_performed": 0,
@@ -4212,9 +4312,7 @@
       "cash_spend_authorized_cents": 0,
       "external_actions_authorized": false,
       "model_call_required": false,
-      "issue_codes": [
-        "ETSY_BROWSER_EXTENSION_SESSION_REQUIRED"
-      ]
+      "issue_codes": []
     },
     "etsy_browser_dispatch": {
       "etsy-legal-form-deactivation": {
@@ -4722,16 +4820,24 @@
       "status": "working",
       "configured": true,
       "operating_class": "Active executive agent",
-      "automation": "2 enabled",
+      "automation": "3 enabled",
       "last_outcome": "Recent run ok",
       "last_activity": "Aug 21, 9:17 AM",
       "last_activity_at": "2026-08-21T09:17:48-05:00",
       "model": "OpenAI gpt-5.6-luna",
       "reasoning_mode": "low",
       "sessions_24h": 0,
-      "sessions_7d": 276,
+      "sessions_7d": 274,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "enforced",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -4760,16 +4866,34 @@
         "presence": "at_desk",
         "activity_mode": "Active now",
         "location": "Founder Tower · Executive command desk",
-        "current_activity": "Working on Rowan Autonomous Company Director",
+        "current_activity": "Working on Rowan 5-Minute Sanitized Live Dashboard",
         "current_assignment": "Directing the full company toward $20,000 in verified monthly net profit.",
-        "observed_at": "Aug 19, 9:29 AM",
-        "observed_at_iso": "2026-08-19T09:29:17-05:00",
+        "observed_at": "Aug 22, 10:30 PM",
+        "observed_at_iso": "2026-08-22T22:30:02-05:00",
         "presence_source": "Live task ledger",
-        "next_action": "Rowan Autonomous Company Director · Aug 22, 10:18 PM",
-        "completed_24h": 5,
+        "next_action": "Rowan 5-Minute Sanitized Live Dashboard · Aug 22, 10:30 PM",
+        "completed_24h": 6,
         "failed_24h": 0,
-        "runs_7d": 119,
+        "runs_7d": 116,
         "history": [
+          {
+            "at": "Aug 22, 10:30 PM",
+            "at_iso": "2026-08-22T22:30:02-05:00",
+            "at_ms": 1787455802627,
+            "title": "Rowan 5-Minute Sanitized Live Dashboard",
+            "detail": "In progress",
+            "status": "running",
+            "location": "Founder Tower · Executive command desk"
+          },
+          {
+            "at": "Aug 22, 10:18 PM",
+            "at_iso": "2026-08-22T22:18:30-05:00",
+            "at_ms": 1787455110079,
+            "title": "Rowan Autonomous Company Director",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Founder Tower · Executive command desk"
+          },
           {
             "at": "Aug 22, 9:18 PM",
             "at_iso": "2026-08-22T21:18:24-05:00",
@@ -4823,24 +4947,6 @@
             "detail": "Completed successfully",
             "status": "succeeded",
             "location": "Founder Tower · Executive command desk"
-          },
-          {
-            "at": "Aug 20, 7:17 AM",
-            "at_iso": "2026-08-20T07:17:40-05:00",
-            "at_ms": 1787228260013,
-            "title": "Rowan Autonomous Company Director",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Founder Tower · Executive command desk"
-          },
-          {
-            "at": "Aug 19, 10:39 PM",
-            "at_iso": "2026-08-19T22:39:50-05:00",
-            "at_ms": 1787197190687,
-            "title": "Rowan Autonomous Company Director",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Founder Tower · Executive command desk"
           }
         ]
       }
@@ -4861,9 +4967,17 @@
       "model": "OpenAI gpt-5.6-luna",
       "reasoning_mode": "low",
       "sessions_24h": 0,
-      "sessions_7d": 5,
+      "sessions_7d": 2,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "enforced",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -4876,7 +4990,7 @@
         "score": 66,
         "provisional": true,
         "verified_points_7d": 0,
-        "tokens_7d": 104542,
+        "tokens_7d": 85541,
         "dimensions": {
           "reliability": 100,
           "efficiency": 85,
@@ -4894,14 +5008,50 @@
         "location": "Commerce Row · Checkout and buyer-care studio",
         "current_activity": "Monitoring SwirlCraft 15-Minute Customer Reply Triage; no task is executing now",
         "current_assignment": "Owning marketplace, checkout, order, payout, refund, and channel-economics truth across Etsy, Stripe, and owned commerce.",
-        "observed_at": "Aug 22, 9:17 PM",
-        "observed_at_iso": "2026-08-22T21:17:59-05:00",
+        "observed_at": "Aug 22, 10:17 PM",
+        "observed_at_iso": "2026-08-22T22:17:59-05:00",
         "presence_source": "Scheduler snapshot",
-        "next_action": "SwirlCraft 15-Minute Customer Reply Triage · Aug 22, 9:32 PM",
-        "completed_24h": 15,
+        "next_action": "SwirlCraft 15-Minute Customer Reply Triage · Aug 22, 10:32 PM",
+        "completed_24h": 19,
         "failed_24h": 0,
-        "runs_7d": 392,
+        "runs_7d": 391,
         "history": [
+          {
+            "at": "Aug 22, 10:18 PM",
+            "at_iso": "2026-08-22T22:18:03-05:00",
+            "at_ms": 1787455083608,
+            "title": "SwirlCraft 15-Minute Customer Reply Triage",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Commerce Row · Checkout and buyer-care studio"
+          },
+          {
+            "at": "Aug 22, 10:03 PM",
+            "at_iso": "2026-08-22T22:03:02-05:00",
+            "at_ms": 1787454182843,
+            "title": "SwirlCraft 15-Minute Customer Reply Triage",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Commerce Row · Checkout and buyer-care studio"
+          },
+          {
+            "at": "Aug 22, 9:48 PM",
+            "at_iso": "2026-08-22T21:48:03-05:00",
+            "at_ms": 1787453283708,
+            "title": "SwirlCraft 15-Minute Customer Reply Triage",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Commerce Row · Checkout and buyer-care studio"
+          },
+          {
+            "at": "Aug 22, 9:33 PM",
+            "at_iso": "2026-08-22T21:33:02-05:00",
+            "at_ms": 1787452382356,
+            "title": "SwirlCraft 15-Minute Customer Reply Triage",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Commerce Row · Checkout and buyer-care studio"
+          },
           {
             "at": "Aug 22, 9:18 PM",
             "at_iso": "2026-08-22T21:18:03-05:00",
@@ -4937,42 +5087,6 @@
             "detail": "Completed successfully",
             "status": "succeeded",
             "location": "Commerce Row · Checkout and buyer-care studio"
-          },
-          {
-            "at": "Aug 22, 8:18 PM",
-            "at_iso": "2026-08-22T20:18:04-05:00",
-            "at_ms": 1787447884187,
-            "title": "SwirlCraft 15-Minute Customer Reply Triage",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Commerce Row · Checkout and buyer-care studio"
-          },
-          {
-            "at": "Aug 22, 8:03 PM",
-            "at_iso": "2026-08-22T20:03:02-05:00",
-            "at_ms": 1787446982265,
-            "title": "SwirlCraft 15-Minute Customer Reply Triage",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Commerce Row · Checkout and buyer-care studio"
-          },
-          {
-            "at": "Aug 22, 7:48 PM",
-            "at_iso": "2026-08-22T19:48:03-05:00",
-            "at_ms": 1787446083104,
-            "title": "SwirlCraft 15-Minute Customer Reply Triage",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Commerce Row · Checkout and buyer-care studio"
-          },
-          {
-            "at": "Aug 22, 7:33 PM",
-            "at_iso": "2026-08-22T19:33:02-05:00",
-            "at_ms": 1787445182006,
-            "title": "SwirlCraft 15-Minute Customer Reply Triage",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Commerce Row · Checkout and buyer-care studio"
           }
         ]
       }
@@ -4993,9 +5107,17 @@
       "model": "OpenAI gpt-5.6-terra",
       "reasoning_mode": "low",
       "sessions_24h": 0,
-      "sessions_7d": 5,
+      "sessions_7d": 4,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "enforced",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -5008,7 +5130,7 @@
         "score": 66,
         "provisional": true,
         "verified_points_7d": 0,
-        "tokens_7d": 70531,
+        "tokens_7d": 51532,
         "dimensions": {
           "reliability": 100,
           "efficiency": 85,
@@ -5032,7 +5154,7 @@
         "next_action": "On demand within the protected weekly reserve",
         "completed_24h": 0,
         "failed_24h": 0,
-        "runs_7d": 21,
+        "runs_7d": 20,
         "history": [
           {
             "at": "Aug 20, 7:39 AM",
@@ -5125,9 +5247,17 @@
       "model": "OpenAI gpt-5.6-luna",
       "reasoning_mode": "low",
       "sessions_24h": 0,
-      "sessions_7d": 3,
+      "sessions_7d": 2,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "enforced",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -5140,7 +5270,7 @@
         "score": 66,
         "provisional": true,
         "verified_points_7d": 0,
-        "tokens_7d": 82466,
+        "tokens_7d": 63468,
         "dimensions": {
           "reliability": 100,
           "efficiency": 85,
@@ -5164,7 +5294,7 @@
         "next_action": "On demand within the protected weekly reserve",
         "completed_24h": 0,
         "failed_24h": 0,
-        "runs_7d": 32,
+        "runs_7d": 31,
         "history": [
           {
             "at": "Aug 20, 7:39 AM",
@@ -5257,9 +5387,17 @@
       "model": "OpenAI gpt-5.6-terra",
       "reasoning_mode": "low",
       "sessions_24h": 0,
-      "sessions_7d": 3,
+      "sessions_7d": 2,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "enforced",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -5272,7 +5410,7 @@
         "score": 66,
         "provisional": true,
         "verified_points_7d": 0,
-        "tokens_7d": 88662,
+        "tokens_7d": 69653,
         "dimensions": {
           "reliability": 100,
           "efficiency": 85,
@@ -5288,84 +5426,84 @@
         "presence": "scheduled_watch",
         "activity_mode": "Scheduled watch",
         "location": "Systems Foundry · Reliability and delivery lab",
-        "current_activity": "Monitoring Rowan 15-Minute Resource Circuit Breaker, Rowan Netlify Decision Sync; no task is executing now",
+        "current_activity": "Monitoring Rowan Netlify Decision Sync, Rowan 15-Minute Resource Circuit Breaker; no task is executing now",
         "current_assignment": "Keeping Rowan, SwirlCraft, analytics, checkout, fulfillment, attribution, and deployment systems reliable and efficient.",
-        "observed_at": "Aug 22, 9:18 PM",
-        "observed_at_iso": "2026-08-22T21:18:06-05:00",
+        "observed_at": "Aug 22, 10:23 PM",
+        "observed_at_iso": "2026-08-22T22:23:15-05:00",
         "presence_source": "Scheduler snapshot",
-        "next_action": "Rowan 15-Minute Resource Circuit Breaker · Aug 22, 9:23 PM",
-        "completed_24h": 18,
+        "next_action": "Rowan Netlify Decision Sync · Aug 22, 10:33 PM",
+        "completed_24h": 27,
         "failed_24h": 4,
-        "runs_7d": 557,
+        "runs_7d": 565,
         "history": [
           {
-            "at": "Aug 22, 9:18 PM",
-            "at_iso": "2026-08-22T21:18:11-05:00",
-            "at_ms": 1787451491535,
-            "title": "Rowan Netlify Decision Sync",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Systems Foundry · Reliability and delivery lab"
-          },
-          {
-            "at": "Aug 22, 9:08 PM",
-            "at_iso": "2026-08-22T21:08:21-05:00",
-            "at_ms": 1787450901703,
+            "at": "Aug 22, 10:23 PM",
+            "at_iso": "2026-08-22T22:23:22-05:00",
+            "at_ms": 1787455402585,
             "title": "Rowan 15-Minute Resource Circuit Breaker",
             "detail": "Completed successfully",
             "status": "succeeded",
             "location": "Systems Foundry · Reliability and delivery lab"
           },
           {
-            "at": "Aug 22, 9:03 PM",
-            "at_iso": "2026-08-22T21:03:11-05:00",
-            "at_ms": 1787450591828,
+            "at": "Aug 22, 10:18 PM",
+            "at_iso": "2026-08-22T22:18:11-05:00",
+            "at_ms": 1787455091198,
             "title": "Rowan Netlify Decision Sync",
             "detail": "Completed successfully",
             "status": "succeeded",
             "location": "Systems Foundry · Reliability and delivery lab"
           },
           {
-            "at": "Aug 22, 8:53 PM",
-            "at_iso": "2026-08-22T20:53:22-05:00",
-            "at_ms": 1787450002051,
+            "at": "Aug 22, 10:08 PM",
+            "at_iso": "2026-08-22T22:08:22-05:00",
+            "at_ms": 1787454502397,
             "title": "Rowan 15-Minute Resource Circuit Breaker",
             "detail": "Completed successfully",
             "status": "succeeded",
             "location": "Systems Foundry · Reliability and delivery lab"
           },
           {
-            "at": "Aug 22, 8:48 PM",
-            "at_iso": "2026-08-22T20:48:13-05:00",
-            "at_ms": 1787449693586,
+            "at": "Aug 22, 10:03 PM",
+            "at_iso": "2026-08-22T22:03:10-05:00",
+            "at_ms": 1787454190995,
             "title": "Rowan Netlify Decision Sync",
             "detail": "Completed successfully",
             "status": "succeeded",
             "location": "Systems Foundry · Reliability and delivery lab"
           },
           {
-            "at": "Aug 22, 8:38 PM",
-            "at_iso": "2026-08-22T20:38:22-05:00",
-            "at_ms": 1787449102380,
+            "at": "Aug 22, 9:53 PM",
+            "at_iso": "2026-08-22T21:53:22-05:00",
+            "at_ms": 1787453602606,
             "title": "Rowan 15-Minute Resource Circuit Breaker",
             "detail": "Completed successfully",
             "status": "succeeded",
             "location": "Systems Foundry · Reliability and delivery lab"
           },
           {
-            "at": "Aug 22, 8:33 PM",
-            "at_iso": "2026-08-22T20:33:10-05:00",
-            "at_ms": 1787448790828,
+            "at": "Aug 22, 9:48 PM",
+            "at_iso": "2026-08-22T21:48:10-05:00",
+            "at_ms": 1787453290959,
             "title": "Rowan Netlify Decision Sync",
             "detail": "Completed successfully",
             "status": "succeeded",
             "location": "Systems Foundry · Reliability and delivery lab"
           },
           {
-            "at": "Aug 22, 8:23 PM",
-            "at_iso": "2026-08-22T20:23:21-05:00",
-            "at_ms": 1787448201578,
+            "at": "Aug 22, 9:38 PM",
+            "at_iso": "2026-08-22T21:38:22-05:00",
+            "at_ms": 1787452702555,
             "title": "Rowan 15-Minute Resource Circuit Breaker",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Systems Foundry · Reliability and delivery lab"
+          },
+          {
+            "at": "Aug 22, 9:33 PM",
+            "at_iso": "2026-08-22T21:33:11-05:00",
+            "at_ms": 1787452391533,
+            "title": "Rowan Netlify Decision Sync",
             "detail": "Completed successfully",
             "status": "succeeded",
             "location": "Systems Foundry · Reliability and delivery lab"
@@ -5389,9 +5527,17 @@
       "model": "OpenAI gpt-5.6-luna",
       "reasoning_mode": "low",
       "sessions_24h": 0,
-      "sessions_7d": 3,
+      "sessions_7d": 2,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "enforced",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -5404,7 +5550,7 @@
         "score": 66,
         "provisional": true,
         "verified_points_7d": 0,
-        "tokens_7d": 96926,
+        "tokens_7d": 77931,
         "dimensions": {
           "reliability": 100,
           "efficiency": 85,
@@ -5428,7 +5574,7 @@
         "next_action": "On demand within the protected weekly reserve",
         "completed_24h": 0,
         "failed_24h": 0,
-        "runs_7d": 13,
+        "runs_7d": 12,
         "history": [
           {
             "at": "Aug 20, 7:42 AM",
@@ -5523,7 +5669,15 @@
       "sessions_24h": 0,
       "sessions_7d": 1,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -5592,7 +5746,15 @@
       "sessions_24h": 0,
       "sessions_7d": 1,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -5661,7 +5823,15 @@
       "sessions_24h": 0,
       "sessions_7d": 1,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -5739,7 +5909,15 @@
       "sessions_24h": 0,
       "sessions_7d": 1,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -5817,7 +5995,15 @@
       "sessions_24h": 0,
       "sessions_7d": 1,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -5931,7 +6117,15 @@
       "sessions_24h": 0,
       "sessions_7d": 1,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -6000,7 +6194,15 @@
       "sessions_24h": 0,
       "sessions_7d": 1,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -6096,7 +6298,15 @@
       "sessions_24h": 0,
       "sessions_7d": 1,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -6165,7 +6375,15 @@
       "sessions_24h": 0,
       "sessions_7d": 1,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -6234,7 +6452,15 @@
       "sessions_24h": 0,
       "sessions_7d": 1,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -6303,7 +6529,15 @@
       "sessions_24h": 0,
       "sessions_7d": 1,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -6381,7 +6615,15 @@
       "sessions_24h": 0,
       "sessions_7d": 1,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -6450,7 +6692,15 @@
       "sessions_24h": 0,
       "sessions_7d": 1,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -6519,7 +6769,15 @@
       "sessions_24h": 0,
       "sessions_7d": 1,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -6615,7 +6873,15 @@
       "sessions_24h": 0,
       "sessions_7d": 1,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -6684,7 +6950,15 @@
       "sessions_24h": 0,
       "sessions_7d": 0,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -6753,7 +7027,15 @@
       "sessions_24h": 0,
       "sessions_7d": 0,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -6822,7 +7104,15 @@
       "sessions_24h": 0,
       "sessions_7d": 1,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -6909,7 +7199,15 @@
       "sessions_24h": 0,
       "sessions_7d": 0,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -6978,7 +7276,15 @@
       "sessions_24h": 0,
       "sessions_7d": 0,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -7047,7 +7353,15 @@
       "sessions_24h": 0,
       "sessions_7d": 0,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -7116,7 +7430,15 @@
       "sessions_24h": 0,
       "sessions_7d": 0,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -7185,7 +7507,15 @@
       "sessions_24h": 0,
       "sessions_7d": 0,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -7254,7 +7584,15 @@
       "sessions_24h": 0,
       "sessions_7d": 0,
       "error_streak": 0,
-      "authority": "Internal autonomous work only; owner approval required for spend, publication, messages, accounts, security, contracts, refunds, and destructive changes.",
+      "authority": "May self-approve reversible zero-spend internal work. The two YouTube ventures may publish after their channel, originality, rights, and 90/100 quality gates. Spending, outbound messages, contracts, refunds, account/security ownership, legal filings, and destructive deletion remain protected.",
+      "expert_standard": {
+        "status": "required_on_activation",
+        "domain_fit_required": true,
+        "primary_source_evidence_required": true,
+        "independent_quality_review_required": true,
+        "measurable_outcome_required": true,
+        "unsupported_confidence_rejected": true
+      },
       "verified_sales": 0,
       "verified_revenue_cents": 0,
       "verified_profit_cents": 0,
@@ -7354,11 +7692,11 @@
       "pid": 65574
     },
     "automation_inventory": {
-      "total": 41,
-      "enabled": 5,
+      "total": 42,
+      "enabled": 6,
       "disabled": 36,
       "enabled_model": 0,
-      "enabled_deterministic": 5,
+      "enabled_deterministic": 6,
       "disabled_model": 33,
       "disabled_deterministic": 3,
       "available": true
@@ -7388,7 +7726,7 @@
         "category": "AI reserve",
         "name": "Weekly usage circuit breaker",
         "status": "critical",
-        "detail": "79% remains. Rowan activated at 16.0% used and has consumed an estimated 5.0% since activation. Scheduled model work stops at 21.0% total used, preserving about 79.0% remaining at the activation boundary. Heartbeats are hard-disabled; 0 scheduled model job is enabled."
+        "detail": "74% remains. Rowan activated at 16.0% used and has consumed an estimated 10.0% since activation. Scheduled model work stops at 21.0% total used, preserving about 79.0% remaining at the activation boundary. Heartbeats are hard-disabled; 0 scheduled model job is enabled."
       },
       {
         "category": "Netlify reserve",
@@ -7400,7 +7738,7 @@
         "category": "AI reserve",
         "name": "Automation allowlist",
         "status": "healthy",
-        "detail": "Exact signatures and cadences are enforced for five deterministic controls and one budgeted daily model review. Unknown jobs, command drift, cadence drift, and model work outside weekly pace are disabled automatically. Current violations: 0."
+        "detail": "Exact signatures and cadences are enforced for six deterministic controls and one budgeted daily model review. Unknown jobs, command drift, cadence drift, and model work outside weekly pace are disabled automatically. Current violations: 0."
       },
       {
         "category": "Capital",
@@ -7418,7 +7756,7 @@
         "category": "Etsy",
         "name": "One-click deterministic executor",
         "status": "attention",
-        "detail": "Before approving an Etsy account action, complete the one-time secure Chrome relay setup and share exactly one authenticated SwirlCraftShop Etsy tab. Approval stays locked until that one-tab boundary is verified; after approval, the next protected sync stages and executes only the fixed action."
+        "detail": "Secure execution environment ready: the OpenClaw Chrome relay is paired and exactly one authenticated Etsy tab is shared. Unapproved controls remain inert until an exact dashboard approval and semantic match pass."
       },
       {
         "category": "Commerce",
@@ -7459,8 +7797,8 @@
       {
         "category": "Reputation",
         "name": "Microsoft 365 outbound",
-        "status": "healthy",
-        "detail": "Hard-ACTIVE: Owner decision: guard tripped by false-positive Stripe invoice bounce (2026-08-16), not a cold outreach send. DNS: SPF green, DMARC p=none, DKIM keys published pending Microsoft propagation. Postal address: 1 SwirlCraft Way, NY NY 10002. Outreach resume authorized per MEMORY.md.. Zero-cap enforcement covers cold, follow-up, reply, and direct SMTP paths."
+        "status": "critical",
+        "detail": "Hard-HOLD: SPF, DKIM, DMARC, and MX are live, but the required physical postal address is still an unverified placeholder. Cold outreach remains blocked until a real business postal address is supplied and checked.. Zero-cap enforcement covers cold, follow-up, reply, and direct SMTP paths."
       },
       {
         "category": "Reputation",
@@ -7477,72 +7815,89 @@
     ],
     "automations": [
       {
-        "name": "Rowan 15-Minute Resource Circuit Breaker",
-        "owner": "atlas",
-        "cadence": "Every 15m",
-        "last_run": "Aug 22, 9:08 PM",
-        "last_run_at": "2026-08-22T21:08:15-05:00",
-        "last_run_ms": 1787450895782,
-        "next_run": "Aug 22, 9:23 PM",
-        "next_run_at": "2026-08-22T21:23:15-05:00",
-        "next_run_ms": 1787451795782,
-        "running": false,
-        "running_since": "Unavailable",
-        "running_since_at": null,
-        "status": "ok",
+        "name": "Rowan 5-Minute Sanitized Live Dashboard",
+        "owner": "main",
+        "cadence": "Every 5m",
+        "last_run": "Unavailable",
+        "last_run_at": null,
+        "last_run_ms": 0,
+        "next_run": "Aug 22, 10:30 PM",
+        "next_run_at": "2026-08-22T22:30:02-05:00",
+        "next_run_ms": 1787455802592,
+        "running": true,
+        "running_since": "Aug 22, 10:30 PM",
+        "running_since_at": "2026-08-22T22:30:02-05:00",
+        "status": "running",
         "error_streak": 0,
-        "duration_ms": 5921
+        "duration_ms": 0
       },
       {
         "name": "SwirlCraft 15-Minute Customer Reply Triage",
         "owner": "ivy",
         "cadence": "Every 15m",
-        "last_run": "Aug 22, 9:17 PM",
-        "last_run_at": "2026-08-22T21:17:59-05:00",
-        "last_run_ms": 1787451479580,
-        "next_run": "Aug 22, 9:32 PM",
-        "next_run_at": "2026-08-22T21:32:59-05:00",
-        "next_run_ms": 1787452379580,
+        "last_run": "Aug 22, 10:17 PM",
+        "last_run_at": "2026-08-22T22:17:59-05:00",
+        "last_run_ms": 1787455079742,
+        "next_run": "Aug 22, 10:32 PM",
+        "next_run_at": "2026-08-22T22:32:59-05:00",
+        "next_run_ms": 1787455979742,
         "running": false,
         "running_since": "Unavailable",
         "running_since_at": null,
         "status": "ok",
         "error_streak": 0,
-        "duration_ms": 4156
+        "duration_ms": 3866
       },
       {
         "name": "Rowan Netlify Decision Sync",
         "owner": "atlas",
         "cadence": "Every 15m",
-        "last_run": "Aug 22, 9:18 PM",
-        "last_run_at": "2026-08-22T21:18:06-05:00",
-        "last_run_ms": 1787451486383,
-        "next_run": "Aug 22, 9:33 PM",
-        "next_run_at": "2026-08-22T21:33:06-05:00",
-        "next_run_ms": 1787452386383,
+        "last_run": "Aug 22, 10:18 PM",
+        "last_run_at": "2026-08-22T22:18:06-05:00",
+        "last_run_ms": 1787455086541,
+        "next_run": "Aug 22, 10:33 PM",
+        "next_run_at": "2026-08-22T22:33:06-05:00",
+        "next_run_ms": 1787455986541,
         "running": false,
         "running_since": "Unavailable",
         "running_since_at": null,
         "status": "ok",
         "error_streak": 0,
-        "duration_ms": 5152
+        "duration_ms": 4657
+      },
+      {
+        "name": "Rowan 15-Minute Resource Circuit Breaker",
+        "owner": "atlas",
+        "cadence": "Every 15m",
+        "last_run": "Aug 22, 10:23 PM",
+        "last_run_at": "2026-08-22T22:23:15-05:00",
+        "last_run_ms": 1787455395867,
+        "next_run": "Aug 22, 10:38 PM",
+        "next_run_at": "2026-08-22T22:38:15-05:00",
+        "next_run_ms": 1787456295867,
+        "running": false,
+        "running_since": "Unavailable",
+        "running_since_at": null,
+        "status": "ok",
+        "error_streak": 0,
+        "duration_ms": 6718
       },
       {
         "name": "Rowan Autonomous Company Director",
         "owner": "main",
         "cadence": "Every 1h",
-        "last_run": "Aug 22, 9:18 PM",
-        "last_run_at": "2026-08-22T21:18:13-05:00",
-        "last_run_ms": 1787451493591,
-        "next_run": "Aug 22, 10:18 PM",
-        "next_run_at": "2026-08-22T22:18:13-05:00",
-        "next_run_ms": 1787455093591,
+        "last_run": "Aug 22, 10:18 PM",
+        "last_run_at": "2026-08-22T22:18:13-05:00",
+        "last_run_ms": 1787455093630,
+        "next_run": "Aug 22, 11:18 PM",
+        "next_run_at": "2026-08-22T23:18:13-05:00",
+        "next_run_ms": 1787458693630,
         "running": false,
         "running_since": "Unavailable",
         "running_since_at": null,
         "status": "ok",
         "error_streak": 0,
-        "duration_ms": 11408
+        "duration_ms": 16449
       },
       {
         "name": "Rowan Daily Etsy Finance Close",
@@ -7562,9 +7917,33 @@
         "duration_ms": 72
       }
     ],
-    "error_count": 0
+    "error_count": 1
   },
   "risks": [
+    {
+      "severity": "critical",
+      "category": "AI reserve",
+      "title": "Scheduled model work paused by usage guard",
+      "detail": "74% of the weekly allowance remains. Rowan consumed an estimated 10.0% after activation against a 5% scheduled-work budget, so model jobs are paused while six deterministic controls continue.",
+      "owner": "Rowan + Atlas",
+      "impact": "Prevents rapid weekly-limit depletion"
+    },
+    {
+      "severity": "critical",
+      "category": "YouTube",
+      "title": "Tech With Receipts launch held by active copyright strike",
+      "detail": "The owner-authenticated channel check verifies one active copyright strike and incomplete Copyright School. Premium production planning may continue, but upload and publication remain held until Copyright School and the rights read-back clear.",
+      "owner": "Nova + Aria + Sage",
+      "impact": "Tech publishing held; channel standing protected"
+    },
+    {
+      "severity": "attention",
+      "category": "YouTube",
+      "title": "The Comeback Practice brand transition is incomplete",
+      "detail": "The motivational channel currently presents as Velocity Sounds while its handle points to The Comeback Practice. Original premium production planning may continue, but autonomous publication waits for the channel identity transition and rights checks.",
+      "owner": "Nova + Aria",
+      "impact": "Motivational launch held until identity aligns"
+    },
     {
       "severity": "healthy",
       "category": "Finance",
@@ -7737,7 +8116,7 @@
       "severity": "critical",
       "category": "Reputation",
       "title": "Outbound reputation is hard-held",
-      "detail": "Owner decision: guard tripped by false-positive Stripe invoice bounce (2026-08-16), not a cold outreach send. DNS: SPF green, DMARC p=none, DKIM keys published pending Microsoft propagation. Postal address: 1 SwirlCraft Way, NY NY 10002. Outreach resume authorized per MEMORY.md.. All automatic send paths share a zero-cap, fail-closed guard and cannot auto-resume.",
+      "detail": "SPF, DKIM, DMARC, and MX are live, but the required physical postal address is still an unverified placeholder. Cold outreach remains blocked until a real business postal address is supplied and checked.. All automatic send paths share a zero-cap, fail-closed guard and cannot auto-resume.",
       "owner": "Nova + Atlas",
       "impact": "Domain and inbox reputation protected"
     },
@@ -7855,6 +8234,16 @@
       "detail": "Append-only delivered-sale and cost reconciliation is complete."
     },
     {
+      "label": "YouTube channel evidence",
+      "status": "attention",
+      "detail": "Owner-authenticated evidence was observed 2026-08-23T02:35:29Z. Tech With Receipts and the motivational channel are kept separate; strike and brand-transition status come from the latest sanitized read-back."
+    },
+    {
+      "label": "Outbound compliance evidence",
+      "status": "critical",
+      "detail": "SPF, DKIM, DMARC, and MX are recorded from the live domain check. External sends are held because the required physical postal address is not verified. The public snapshot exposes no mailbox or recipient address."
+    },
+    {
       "label": "Commerce notification routing",
       "status": "attention",
       "detail": "1 unique provider commerce alert(s) are retained as PII-free review signals only. Automated order/payment senders never receive replies, and no alert is counted as revenue."
@@ -7892,17 +8281,17 @@
     {
       "label": "Email reputation",
       "status": "critical",
-      "detail": "Owner decision: guard tripped by false-positive Stripe invoice bounce (2026-08-16), not a cold outreach send. DNS: SPF green, DMARC p=none, DKIM keys published pending Microsoft propagation. Postal address: 1 SwirlCraft Way, NY NY 10002. Outreach resume authorized per MEMORY.md.. The guard is latched, caps are zero, bounces are suppressed immediately, and no path can auto-resume. A verified physical postal address is still required."
+      "detail": "SPF, DKIM, DMARC, and MX are live, but the required physical postal address is still an unverified placeholder. Cold outreach remains blocked until a real business postal address is supplied and checked.. The guard is latched, caps are zero, bounces are suppressed immediately, and no path can auto-resume. A verified physical postal address is still required."
     },
     {
       "label": "Automation state",
       "status": "healthy",
-      "detail": "5 enabled jobs were sanitized from the current scheduler."
+      "detail": "6 enabled jobs were sanitized from the current scheduler."
     },
     {
       "label": "Weekly AI reserve",
       "status": "critical",
-      "detail": "79% remaining. Background model work has a 5% weekly budget, paced over seven days, with a 95% protected reserve. Heartbeats are hard-disabled; enabled scheduled model jobs: 0. Deterministic controls remain active while model work is frozen."
+      "detail": "74% remaining. Background model work has a 5% weekly budget, paced over seven days, with a 95% protected reserve. Heartbeats are hard-disabled; enabled scheduled model jobs: 0. Deterministic controls remain active while model work is frozen."
     },
     {
       "label": "Netlify credit reserve",
@@ -7912,7 +8301,7 @@
     {
       "label": "Automation signature policy",
       "status": "healthy",
-      "detail": "Five exact deterministic jobs match their registered commands and cadences; no scheduled model job is enabled. The 15-minute resource guard disables any unknown job or signature/cadence/model-budget drift."
+      "detail": "Six exact deterministic jobs match their registered commands and cadences; no scheduled model job is enabled. The 15-minute resource guard disables any unknown job or signature/cadence/model-budget drift."
     },
     {
       "label": "Capital authority",
