@@ -4,6 +4,32 @@ let DATA = null;
 let currentAgentFilter = "all";
 let toastTimer = null;
 
+const SECURE_DECISION_CENTER_URL = "https://rowan-control-panel.netlify.app/";
+const SECURE_DECISION_IDS = new Set([
+  "owned-site-cleanup-preview",
+  "digital-product-flagship-private-test",
+  "etsy-source-rights-attestation",
+  "etsy-pause-onsite-ads",
+  "etsy-legal-form-deactivation",
+  "etsy-plus-cancellation",
+  "etsy-offsite-ads-opt-out",
+  "etsy-caregiver-daily-log-unpublished-draft",
+  "etsy-caregiver-daily-log-public-launch",
+  "etsy-mileage-log-remediation",
+  "owned-site-legal-policy-adoption",
+  "netlify-private-release"
+]);
+const RISK_DECISION_MAP = new Map([
+  ["Pause unproductive Etsy Ads", "etsy-pause-onsite-ads"],
+  ["Deactivate two unreviewed legal-form listings", "etsy-legal-form-deactivation"],
+  ["Active listings held out of growth", "etsy-mileage-log-remediation"],
+  ["Etsy Plus cancellation is prepared, not active", "etsy-plus-cancellation"],
+  ["Optional Offsite Ads makes the 70% floor impossible at every price", "etsy-offsite-ads-opt-out"],
+  ["Safe flagship test needs a new exact approval", "digital-product-flagship-private-test"],
+  ["Safe flagship test evidence remains incomplete", "digital-product-flagship-private-test"],
+  ["Current production deploy needs a controlled cleanup", "owned-site-cleanup-preview"]
+]);
+
 const TEMPLATE = `
 <div class="rowan-v3">
   <div class="app-shell-v3">
@@ -157,7 +183,56 @@ function financeMetric(label) {
 }
 
 function openApprovals() {
-  return (DATA.approvals || []).filter(item => item.active !== false && /needs_decision|pending|required/i.test(String(item.status || "")));
+  return (DATA.approvals || []).filter(item => item.active !== false && /needs_decision|pending|required/i.test(String(item.status || "")) && !currentDecision(item));
+}
+
+function currentDecision(item) {
+  const status = String(item?.status || "").toLowerCase();
+  if (status.startsWith("approved")) return "approved";
+  if (status.startsWith("declined") || status.startsWith("denied")) return "declined";
+  return null;
+}
+
+function ownerDecisionItems(data = DATA) {
+  return (data?.approvals || []).filter(item => item.execution_status !== "verified_complete" && (
+    item.active !== false || (Boolean(currentDecision(item)) && SECURE_DECISION_IDS.has(item.id))
+  ));
+}
+
+function secureDecisionUrl(item, action) {
+  if (!item || !SECURE_DECISION_IDS.has(item.id) || !["approved", "declined"].includes(action)) return null;
+  const url = new URL(SECURE_DECISION_CENTER_URL);
+  url.searchParams.set("decision", item.id);
+  url.searchParams.set("intent", action);
+  url.hash = "approvals";
+  return url.toString();
+}
+
+function decisionControls(item) {
+  if (!item || !SECURE_DECISION_IDS.has(item.id)) {
+    return `<div class="decision-control-note-v3">Decision record only · no secure web control configured</div>`;
+  }
+  const selected = currentDecision(item);
+  return `<div class="decision-actions-v3" aria-label="Owner decision controls for ${esc(item.title)}">
+    <button class="decision-button-v3 approve ${selected === "approved" ? "selected" : ""}" type="button" data-secure-decision-id="${esc(item.id)}" data-decision-action="approved" ${selected === "approved" ? "disabled" : ""}>${selected === "approved" ? "Approved" : "Approve"}</button>
+    <button class="decision-button-v3 deny ${selected === "declined" ? "selected" : ""}" type="button" data-secure-decision-id="${esc(item.id)}" data-decision-action="declined" ${selected === "declined" ? "disabled" : ""}>${selected === "declined" ? "Denied" : "Deny"}</button>
+    <small>Opens the protected owner console for confirmation.</small>
+  </div>`;
+}
+
+function decisionForRisk(risk, data = DATA) {
+  const id = RISK_DECISION_MAP.get(String(risk?.title || ""));
+  return id ? (data?.approvals || []).find(item => item.id === id && (item.active !== false || Boolean(currentDecision(item)))) || null : null;
+}
+
+function openSecureDecision(item, action) {
+  const target = secureDecisionUrl(item, action);
+  if (!target) {
+    showToast("This item has no protected web decision control");
+    return;
+  }
+  window.open(target, "_blank", "noopener,noreferrer");
+  showToast(`${action === "approved" ? "Approve" : "Deny"} selected · finish confirmation in the protected owner console`);
 }
 
 function importantRisks() {
@@ -195,9 +270,10 @@ function renderOverview() {
   $("#executiveStrip").innerHTML = executives.map(item => `<article><div class="agent-avatar-v3">${esc(item.name.slice(0, 1))}</div><div><span>${esc(item.department)}</span><strong>${esc(item.name)} · ${esc(item.role)}</strong><p>${esc(item.city?.current_activity || item.mission)}</p><small>${esc(item.model)} · ${esc(item.reasoning_mode)} reasoning</small></div>${statusPill(item.status)}</article>`).join("") || empty("No configured executive agents in the snapshot.");
 
   $("#overviewActivity").innerHTML = (DATA.activity || []).slice(0, 7).map(item => `<article><span>${esc(item.time)}</span><div><strong>${esc(item.title)}</strong><p>${esc(item.detail)}</p></div></article>`).join("") || empty("No recorded outcomes.");
-  const approvals = openApprovals();
-  $("#ownerQueueCount").textContent = `${approvals.length} open`;
-  $("#overviewApprovals").innerHTML = approvals.slice(0, 5).map(item => `<article><div>${statusPill(item.priority || item.status)}<small>${esc(item.category || "Owner decision")}</small></div><strong>${esc(item.title)}</strong><p>${esc(item.recommendation || item.action || "Review required")}</p></article>`).join("") || empty("No open owner decisions in this snapshot.");
+  const approvals = ownerDecisionItems();
+  const open = openApprovals();
+  $("#ownerQueueCount").textContent = `${open.length} awaiting · ${approvals.length} tracked`;
+  $("#overviewApprovals").innerHTML = approvals.slice(0, 5).map(item => `<article><div>${statusPill(item.execution_status_label || item.status)}<small>${esc(item.category || "Owner decision")}</small></div><strong>${esc(item.title)}</strong><p>${esc(item.recommendation || item.action || "Review required")}</p>${decisionControls(item)}</article>`).join("") || empty("No active owner decisions in this snapshot.");
 }
 
 function renderProfit() {
@@ -282,11 +358,14 @@ function renderSystems() {
 }
 
 function renderAttention() {
-  const approvals = openApprovals();
-  $("#approvalGrid").innerHTML = approvals.map(item => `<article class="approval-card-v3"><div><span>${esc(item.category || "Owner decision")}</span>${statusPill(item.priority || item.status)}</div><h2>${esc(item.title)}</h2><p>${esc(item.recommendation || item.action || "Review required")}</p><dl><div><dt>Owner</dt><dd>${esc(item.owner || "Andrew")}</dd></div><div><dt>Exposure</dt><dd>${esc(item.maximum_exposure || "Unavailable")}</dd></div><div><dt>Reversible</dt><dd>${esc(item.reversibility || "Unavailable")}</dd></div></dl><small>Decision state: ${esc(item.execution_status_label || item.status || "required")}. No completion is inferred.</small></article>`).join("") || empty("No open owner approvals.");
+  const approvals = ownerDecisionItems();
+  $("#approvalGrid").innerHTML = approvals.map(item => `<article class="approval-card-v3"><div><span>${esc(item.category || "Owner decision")}</span>${statusPill(item.execution_status_label || item.status)}</div><h2>${esc(item.title)}</h2><p>${esc(item.recommendation || item.action || "Review required")}</p><dl><div><dt>Owner</dt><dd>${esc(item.owner || "Andrew")}</dd></div><div><dt>Exposure</dt><dd>${esc(item.maximum_exposure || "Unavailable")}</dd></div><div><dt>Reversible</dt><dd>${esc(item.reversibility || "Unavailable")}</dd></div></dl><small>Decision state: ${esc(item.execution_status_label || item.status || "required")}. Approval is not completion.</small>${decisionControls(item)}</article>`).join("") || empty("No active owner decisions.");
   const exceptions = automationExceptions();
   $("#systemExceptions").innerHTML = exceptions.map(item => `<article class="exception-card-v3"><div>${statusPill(item.status)}<span>${number(item.error_streak || 0)} error streak</span></div><h2>${esc(item.name)}</h2><p>${esc(item.owner)} · ${esc(item.cadence)}</p><small>Last: ${esc(item.last_run)} · Next: ${esc(item.next_run)}</small></article>`).join("") || empty("No enabled automation exceptions.");
-  $("#riskGrid").innerHTML = importantRisks().filter(item => item.severity !== "healthy").map(item => `<article class="risk-card-v3 ${tone(item.severity)}"><div><span>${esc(item.category)}</span>${statusPill(item.severity)}</div><h2>${esc(item.title)}</h2><p>${esc(item.detail)}</p><footer><span>Owner: ${esc(item.owner)}</span><strong>${esc(item.impact)}</strong></footer></article>`).join("") || empty("No material open risks.");
+  $("#riskGrid").innerHTML = importantRisks().filter(item => item.severity !== "healthy").map(item => {
+    const decision = decisionForRisk(item);
+    return `<article class="risk-card-v3 ${tone(item.severity)}"><div><span>${esc(item.category)}</span>${statusPill(item.severity)}</div><h2>${esc(item.title)}</h2><p>${esc(item.detail)}</p><footer><span>Owner: ${esc(item.owner)}</span><strong>${esc(item.impact)}</strong></footer>${decision ? decisionControls(decision) : ""}</article>`;
+  }).join("") || empty("No material open risks.");
 }
 
 function renderMeta() {
@@ -358,6 +437,12 @@ async function loadData() {
 
 function bindUI() {
   document.addEventListener("click", event => {
+    const decisionButton = event.target.closest("[data-secure-decision-id]");
+    if (decisionButton) {
+      const item = (DATA?.approvals || []).find(entry => entry.id === decisionButton.dataset.secureDecisionId);
+      if (item) openSecureDecision(item, decisionButton.dataset.decisionAction);
+      return;
+    }
     const nav = event.target.closest("[data-view-target]");
     if (nav) showView(nav.dataset.viewTarget);
     const filter = event.target.closest("[data-agent-filter]");
@@ -393,3 +478,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     $("#executiveSummary").textContent = "Dashboard evidence unavailable.";
   }
 });
+
+globalThis.RowanV3DecisionContract = {
+  currentDecision,
+  ownerDecisionItems,
+  secureDecisionUrl,
+  decisionControls,
+  decisionForRisk
+};

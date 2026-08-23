@@ -1925,7 +1925,7 @@ function decisionEndpoint() {
 }
 
 function snapshotEndpoint() {
-  return "./command-center-data.json";
+  return isLocalPreview() ? "./command-center-data.json" : "/api/rowan-snapshot";
 }
 
 function bindDecisionButtons() {
@@ -2072,40 +2072,40 @@ async function requestDecisionState() {
 }
 
 async function submitDecision(item, action) {
-  const event = {
-    action,
-    recorded_at: new Date().toISOString(),
-    id: item.id,
-    title: item.title
-  };
-  const updated = { ...DECISION_STATE, ...getLocalDecisionState(), [item.id]: event };
-  DECISION_STATE = updated;
-  saveLocalDecisionState(updated);
-  renderApprovals();
-
-  // Background dispatch
-  try {
-    const headers = { "content-type": "application/json", "x-rowan-fixed-decision": "v1" };
-    await fetch(decisionEndpoint(), {
-      method: "POST",
-      headers,
-      body: JSON.stringify({
-        id: item.id,
-        label: item.title,
-        action,
-        snapshot_generated_at: DATA.generated_at,
-        decision: {
-          title: item.title,
-          requested_action: item.action,
-          maximum_exposure: item.maximum_exposure,
-          stop_conditions: item.stop_conditions,
-          owner: item.owner
-        }
-      })
-    });
-  } catch (e) {
-    console.warn('[Rowan] Offline decision saved locally:', e);
+  if (isLocalPreview()) {
+    throw new Error("Owner decisions can only be recorded in the protected owner console.");
   }
+  const headers = { "content-type": "application/json", "x-rowan-fixed-decision": "v1" };
+  const response = await fetch(decisionEndpoint(), {
+    method: "POST",
+    headers,
+    body: JSON.stringify({
+      id: item.id,
+      label: item.title,
+      action,
+      snapshot_generated_at: DATA.generated_at,
+      decision: {
+        title: item.title,
+        requested_action: item.action,
+        maximum_exposure: item.maximum_exposure,
+        stop_conditions: item.stop_conditions,
+        owner: item.owner
+      }
+    })
+  });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    const error = new Error(payload.error || `Decision request failed with ${response.status}`);
+    error.status = response.status;
+    throw error;
+  }
+  if (!decisionEventMatchesItem(payload.event, item) || payload.event.action !== action) {
+    throw new Error("The protected decision receipt did not match the exact requested action.");
+  }
+  DECISION_STATE = payload.state || { ...DECISION_STATE, [item.id]: payload.event };
+  saveLocalDecisionState(DECISION_STATE);
+  renderApprovals();
+  return payload;
 }
 
 async function confirmPendingDecision(event) {
@@ -2170,7 +2170,7 @@ function showLoadError(error) {
 }
 
 async function loadData() {
-  let response = await fetch(`./command-center-data.json?v=${Date.now()}`, { cache: "no-store" });
+  const response = await fetch(`${snapshotEndpoint()}?v=${Date.now()}`, { cache: "no-store" });
   if (!response.ok) throw new Error(`Snapshot request failed: ${response.status}`);
   DATA = await response.json();
   window.DATA = DATA;
