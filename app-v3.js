@@ -259,7 +259,7 @@ function importantRisks() {
 }
 
 function automationExceptions() {
-  return (DATA.systems?.automations || []).filter(item => !/^(ok|success|succeeded)$/i.test(String(item.status || "")) || Number(item.error_streak || 0) > 0);
+  return (DATA.systems?.automations || []).filter(item => !/^(ok|success|succeeded|running)$/i.test(String(item.status || "")) || Number(item.error_streak || 0) > 0);
 }
 
 function snapshotAgeMs(value = DATA?.generated_at) {
@@ -326,7 +326,9 @@ function currentPriorities() {
     detail: `${item.status} · ${item.error_streak || 0} consecutive errors`,
     kind: "System",
   })));
-  priorities.push(...importantRisks().filter(item => item.severity !== "healthy").map(item => ({
+  priorities.push(...importantRisks().filter(item => item.severity !== "healthy" && !(
+    /pause/i.test(String(usage.mode || "")) && /scheduled model work paused/i.test(String(item.title || ""))
+  )).map(item => ({
     key: `risk:${item.title}`,
     title: item.title,
     detail: item.detail,

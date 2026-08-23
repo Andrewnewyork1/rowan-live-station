@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-22T22:30:13-05:00",
+  "generated_at": "2026-08-22T22:36:24-05:00",
   "meta": {
     "rowan_status": "Rowan running",
     "provider": "OpenAI",
@@ -174,7 +174,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-23T03:30:02Z",
+          "summary_generated_at": "2026-08-23T03:36:13Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -345,7 +345,7 @@
           "scheduled_state_authorized": false,
           "published_state_authorized": false,
           "summary_available": true,
-          "summary_generated_at": "2026-08-23T03:30:02Z",
+          "summary_generated_at": "2026-08-23T03:36:13Z",
           "summary_source_freshness": "fresh",
           "creative_pillar_count": 4,
           "private_concept_count": 14,
@@ -426,7 +426,7 @@
     "content_ops": {
       "available": true,
       "status": "held",
-      "generated_at": "2026-08-23T03:30:02Z",
+      "generated_at": "2026-08-23T03:36:13Z",
       "source_freshness": "fresh",
       "planning_target": {
         "concepts_per_lane_per_day": 2,
@@ -1257,7 +1257,7 @@
     "base_height_m": 18,
     "goal_profit": 20000,
     "truth_note": "Tower height is earned only from reconciled agent-attributed net profit. Activity, tokens, drafts, forecasts, and unverified sales earn no height.",
-    "updated_at": "2026-08-22T22:30:13-05:00"
+    "updated_at": "2026-08-22T22:36:24-05:00"
   },
   "agent_requests": {
     "generated_at": "2026-08-19T15:20:00-05:00",
@@ -4866,23 +4866,32 @@
         "presence": "at_desk",
         "activity_mode": "Active now",
         "location": "Founder Tower · Executive command desk",
-        "current_activity": "Working on Rowan 5-Minute Sanitized Live Dashboard",
+        "current_activity": "Working on Rowan Autonomous Company Director",
         "current_assignment": "Directing the full company toward $20,000 in verified monthly net profit.",
-        "observed_at": "Aug 22, 10:30 PM",
-        "observed_at_iso": "2026-08-22T22:30:02-05:00",
+        "observed_at": "Aug 19, 9:29 AM",
+        "observed_at_iso": "2026-08-19T09:29:17-05:00",
         "presence_source": "Live task ledger",
-        "next_action": "Rowan 5-Minute Sanitized Live Dashboard · Aug 22, 10:30 PM",
-        "completed_24h": 6,
+        "next_action": "Rowan 5-Minute Sanitized Live Dashboard · Aug 22, 10:40 PM",
+        "completed_24h": 8,
         "failed_24h": 0,
-        "runs_7d": 116,
+        "runs_7d": 115,
         "history": [
           {
-            "at": "Aug 22, 10:30 PM",
-            "at_iso": "2026-08-22T22:30:02-05:00",
-            "at_ms": 1787455802627,
+            "at": "Aug 22, 10:35 PM",
+            "at_iso": "2026-08-22T22:35:17-05:00",
+            "at_ms": 1787456117621,
             "title": "Rowan 5-Minute Sanitized Live Dashboard",
-            "detail": "In progress",
-            "status": "running",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Founder Tower · Executive command desk"
+          },
+          {
+            "at": "Aug 22, 10:30 PM",
+            "at_iso": "2026-08-22T22:30:16-05:00",
+            "at_ms": 1787455816101,
+            "title": "Rowan 5-Minute Sanitized Live Dashboard",
+            "detail": "Completed successfully",
+            "status": "succeeded",
             "location": "Founder Tower · Executive command desk"
           },
           {
@@ -4935,15 +4944,6 @@
             "at_iso": "2026-08-22T18:18:17-05:00",
             "at_ms": 1787440697483,
             "title": "Rowan Autonomous Company Director",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Founder Tower · Executive command desk"
-          },
-          {
-            "at": "Aug 20, 7:19 AM",
-            "at_iso": "2026-08-20T07:19:03-05:00",
-            "at_ms": 1787228343659,
-            "title": "Rowan Daily Etsy Finance Close",
             "detail": "Completed successfully",
             "status": "succeeded",
             "location": "Founder Tower · Executive command desk"
@@ -5008,14 +5008,23 @@
         "location": "Commerce Row · Checkout and buyer-care studio",
         "current_activity": "Monitoring SwirlCraft 15-Minute Customer Reply Triage; no task is executing now",
         "current_assignment": "Owning marketplace, checkout, order, payout, refund, and channel-economics truth across Etsy, Stripe, and owned commerce.",
-        "observed_at": "Aug 22, 10:17 PM",
-        "observed_at_iso": "2026-08-22T22:17:59-05:00",
+        "observed_at": "Aug 22, 10:32 PM",
+        "observed_at_iso": "2026-08-22T22:32:59-05:00",
         "presence_source": "Scheduler snapshot",
-        "next_action": "SwirlCraft 15-Minute Customer Reply Triage · Aug 22, 10:32 PM",
-        "completed_24h": 19,
+        "next_action": "SwirlCraft 15-Minute Customer Reply Triage · Aug 22, 10:47 PM",
+        "completed_24h": 20,
         "failed_24h": 0,
         "runs_7d": 391,
         "history": [
+          {
+            "at": "Aug 22, 10:33 PM",
+            "at_iso": "2026-08-22T22:33:03-05:00",
+            "at_ms": 1787455983459,
+            "title": "SwirlCraft 15-Minute Customer Reply Triage",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Commerce Row · Checkout and buyer-care studio"
+          },
           {
             "at": "Aug 22, 10:18 PM",
             "at_iso": "2026-08-22T22:18:03-05:00",
@@ -5074,15 +5083,6 @@
             "at": "Aug 22, 8:48 PM",
             "at_iso": "2026-08-22T20:48:02-05:00",
             "at_ms": 1787449682617,
-            "title": "SwirlCraft 15-Minute Customer Reply Triage",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Commerce Row · Checkout and buyer-care studio"
-          },
-          {
-            "at": "Aug 22, 8:33 PM",
-            "at_iso": "2026-08-22T20:33:02-05:00",
-            "at_ms": 1787448782974,
             "title": "SwirlCraft 15-Minute Customer Reply Triage",
             "detail": "Completed successfully",
             "status": "succeeded",
@@ -5426,16 +5426,25 @@
         "presence": "scheduled_watch",
         "activity_mode": "Scheduled watch",
         "location": "Systems Foundry · Reliability and delivery lab",
-        "current_activity": "Monitoring Rowan Netlify Decision Sync, Rowan 15-Minute Resource Circuit Breaker; no task is executing now",
+        "current_activity": "Monitoring Rowan 15-Minute Resource Circuit Breaker, Rowan Netlify Decision Sync; no task is executing now",
         "current_assignment": "Keeping Rowan, SwirlCraft, analytics, checkout, fulfillment, attribution, and deployment systems reliable and efficient.",
-        "observed_at": "Aug 22, 10:23 PM",
-        "observed_at_iso": "2026-08-22T22:23:15-05:00",
+        "observed_at": "Aug 22, 10:33 PM",
+        "observed_at_iso": "2026-08-22T22:33:06-05:00",
         "presence_source": "Scheduler snapshot",
-        "next_action": "Rowan Netlify Decision Sync · Aug 22, 10:33 PM",
-        "completed_24h": 27,
+        "next_action": "Rowan 15-Minute Resource Circuit Breaker · Aug 22, 10:38 PM",
+        "completed_24h": 28,
         "failed_24h": 4,
-        "runs_7d": 565,
+        "runs_7d": 566,
         "history": [
+          {
+            "at": "Aug 22, 10:33 PM",
+            "at_iso": "2026-08-22T22:33:11-05:00",
+            "at_ms": 1787455991053,
+            "title": "Rowan Netlify Decision Sync",
+            "detail": "Completed successfully",
+            "status": "succeeded",
+            "location": "Systems Foundry · Reliability and delivery lab"
+          },
           {
             "at": "Aug 22, 10:23 PM",
             "at_iso": "2026-08-22T22:23:22-05:00",
@@ -5495,15 +5504,6 @@
             "at_iso": "2026-08-22T21:38:22-05:00",
             "at_ms": 1787452702555,
             "title": "Rowan 15-Minute Resource Circuit Breaker",
-            "detail": "Completed successfully",
-            "status": "succeeded",
-            "location": "Systems Foundry · Reliability and delivery lab"
-          },
-          {
-            "at": "Aug 22, 9:33 PM",
-            "at_iso": "2026-08-22T21:33:11-05:00",
-            "at_ms": 1787452391533,
-            "title": "Rowan Netlify Decision Sync",
             "detail": "Completed successfully",
             "status": "succeeded",
             "location": "Systems Foundry · Reliability and delivery lab"
@@ -7815,57 +7815,6 @@
     ],
     "automations": [
       {
-        "name": "Rowan 5-Minute Sanitized Live Dashboard",
-        "owner": "main",
-        "cadence": "Every 5m",
-        "last_run": "Unavailable",
-        "last_run_at": null,
-        "last_run_ms": 0,
-        "next_run": "Aug 22, 10:30 PM",
-        "next_run_at": "2026-08-22T22:30:02-05:00",
-        "next_run_ms": 1787455802592,
-        "running": true,
-        "running_since": "Aug 22, 10:30 PM",
-        "running_since_at": "2026-08-22T22:30:02-05:00",
-        "status": "running",
-        "error_streak": 0,
-        "duration_ms": 0
-      },
-      {
-        "name": "SwirlCraft 15-Minute Customer Reply Triage",
-        "owner": "ivy",
-        "cadence": "Every 15m",
-        "last_run": "Aug 22, 10:17 PM",
-        "last_run_at": "2026-08-22T22:17:59-05:00",
-        "last_run_ms": 1787455079742,
-        "next_run": "Aug 22, 10:32 PM",
-        "next_run_at": "2026-08-22T22:32:59-05:00",
-        "next_run_ms": 1787455979742,
-        "running": false,
-        "running_since": "Unavailable",
-        "running_since_at": null,
-        "status": "ok",
-        "error_streak": 0,
-        "duration_ms": 3866
-      },
-      {
-        "name": "Rowan Netlify Decision Sync",
-        "owner": "atlas",
-        "cadence": "Every 15m",
-        "last_run": "Aug 22, 10:18 PM",
-        "last_run_at": "2026-08-22T22:18:06-05:00",
-        "last_run_ms": 1787455086541,
-        "next_run": "Aug 22, 10:33 PM",
-        "next_run_at": "2026-08-22T22:33:06-05:00",
-        "next_run_ms": 1787455986541,
-        "running": false,
-        "running_since": "Unavailable",
-        "running_since_at": null,
-        "status": "ok",
-        "error_streak": 0,
-        "duration_ms": 4657
-      },
-      {
         "name": "Rowan 15-Minute Resource Circuit Breaker",
         "owner": "atlas",
         "cadence": "Every 15m",
@@ -7881,6 +7830,57 @@
         "status": "ok",
         "error_streak": 0,
         "duration_ms": 6718
+      },
+      {
+        "name": "Rowan 5-Minute Sanitized Live Dashboard",
+        "owner": "main",
+        "cadence": "Every 5m",
+        "last_run": "Aug 22, 10:35 PM",
+        "last_run_at": "2026-08-22T22:35:02-05:00",
+        "last_run_ms": 1787456102661,
+        "next_run": "Aug 22, 10:40 PM",
+        "next_run_at": "2026-08-22T22:40:02-05:00",
+        "next_run_ms": 1787456402661,
+        "running": false,
+        "running_since": "Unavailable",
+        "running_since_at": null,
+        "status": "ok",
+        "error_streak": 0,
+        "duration_ms": 14960
+      },
+      {
+        "name": "SwirlCraft 15-Minute Customer Reply Triage",
+        "owner": "ivy",
+        "cadence": "Every 15m",
+        "last_run": "Aug 22, 10:32 PM",
+        "last_run_at": "2026-08-22T22:32:59-05:00",
+        "last_run_ms": 1787455979777,
+        "next_run": "Aug 22, 10:47 PM",
+        "next_run_at": "2026-08-22T22:47:59-05:00",
+        "next_run_ms": 1787456879777,
+        "running": false,
+        "running_since": "Unavailable",
+        "running_since_at": null,
+        "status": "ok",
+        "error_streak": 0,
+        "duration_ms": 3682
+      },
+      {
+        "name": "Rowan Netlify Decision Sync",
+        "owner": "atlas",
+        "cadence": "Every 15m",
+        "last_run": "Aug 22, 10:33 PM",
+        "last_run_at": "2026-08-22T22:33:06-05:00",
+        "last_run_ms": 1787455986579,
+        "next_run": "Aug 22, 10:48 PM",
+        "next_run_at": "2026-08-22T22:48:06-05:00",
+        "next_run_ms": 1787456886579,
+        "running": false,
+        "running_since": "Unavailable",
+        "running_since_at": null,
+        "status": "ok",
+        "error_streak": 0,
+        "duration_ms": 4474
       },
       {
         "name": "Rowan Autonomous Company Director",
@@ -7917,7 +7917,7 @@
         "duration_ms": 72
       }
     ],
-    "error_count": 1
+    "error_count": 0
   },
   "risks": [
     {
