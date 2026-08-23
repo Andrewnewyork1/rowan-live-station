@@ -312,7 +312,10 @@ function decisionReadinessMarkup(item) {
 function decisionControlState(item, data = DATA, selected = currentDecision(item)) {
   const readiness = decisionApprovalReadiness(item, data);
   if (selected === "approved") {
-    return { action: "approved", disabled: true, label: "Approved", readiness };
+    if (!readiness.ready) {
+      return { action: "setup", disabled: false, label: "Review / setup", readiness };
+    }
+    return { action: "approved", disabled: false, label: "Review approval", readiness };
   }
   if (!readiness.ready) {
     return { action: "setup", disabled: false, label: "Set up securely", readiness };
@@ -329,6 +332,37 @@ function decisionControls(item, data = DATA, selected = currentDecision(item)) {
     <button class="decision-button approve ${control.action === "setup" ? "setup-required" : ""} ${selected === "approved" ? "selected" : ""}" type="button" data-decision-id="${esc(item.id)}" data-decision-action="${esc(control.action)}" ${approvalDialogAttributes} title="${esc(control.readiness.label)}" ${control.disabled ? "disabled" : ""}>${esc(control.label)}</button>
     <button class="decision-button decline ${selected === "declined" ? "selected" : ""}" type="button" data-decision-id="${esc(item.id)}" data-decision-action="declined" ${selected === "declined" ? "disabled" : ""}>${selected === "declined" ? "Declined" : "Decline"}</button>
   </div>`;
+}
+
+function ownerDecisionRequestFromUrl(href, data = DATA) {
+  let url;
+  try {
+    url = new URL(String(href || ""), "https://rowan-control-panel.netlify.app/");
+  } catch {
+    return null;
+  }
+  const id = String(url.searchParams.get("decision") || "");
+  const action = String(url.searchParams.get("intent") || "");
+  if (!id || !["approved", "declined"].includes(action)) return null;
+  const item = (data?.approvals || []).find((entry) => entry.id === id);
+  return item ? { item, action } : null;
+}
+
+function consumeOwnerDecisionRequest() {
+  const requested = ownerDecisionRequestFromUrl(location.href);
+  if (!requested) return false;
+  const cleanUrl = new URL(location.href);
+  cleanUrl.searchParams.delete("decision");
+  cleanUrl.searchParams.delete("intent");
+  cleanUrl.hash = "approvals";
+  history.replaceState(null, "", `${cleanUrl.pathname}${cleanUrl.search}${cleanUrl.hash}`);
+  setView("approvals");
+  if (requested.action === "approved" && !decisionApprovalReadiness(requested.item).ready) {
+    openBrowserSetupDialog(requested.item);
+  } else {
+    openDecisionDialog(requested.item, requested.action);
+  }
+  return true;
 }
 
 function approvalCard(item, detailed = false) {
@@ -1967,8 +2001,11 @@ function renderBrowserSetupStatus(item) {
 
 function openBrowserSetupDialog(item) {
   browserSetupDecision = item;
+  const approvalRecorded = currentDecision(item) === "approved";
   $("#browserSetupTitle").textContent = "Connect the secure Etsy executor";
-  $("#browserSetupSummary").textContent = `Approval for “${item.title}” stays locked until the connection is verified. The Rowan dashboard may remain open in Safari; the secure relay itself runs in Google Chrome.`;
+  $("#browserSetupSummary").textContent = approvalRecorded
+    ? `Approval for “${item.title}” is already recorded. Browser execution and any reconfirmation stay locked until the secure connection is verified. The Rowan dashboard may remain open in Safari; the secure relay itself runs in Google Chrome.`
+    : `Approval for “${item.title}” stays locked until the connection is verified. The Rowan dashboard may remain open in Safari; the secure relay itself runs in Google Chrome.`;
   $("#browserSetupError").hidden = true;
   renderBrowserSetupStatus(item);
   const dialog = $("#browserSetupDialog");
@@ -2011,6 +2048,7 @@ async function recheckBrowserSetup() {
 
 function openDecisionDialog(item, action) {
   const approve = action === "approved";
+  const approvalRecorded = approve && currentDecision(item) === "approved";
   const readiness = decisionApprovalReadiness(item);
   if (approve && !readiness.ready) {
     pendingDecision = null;
@@ -2018,9 +2056,11 @@ function openDecisionDialog(item, action) {
     return;
   }
   pendingDecision = { item, action };
-  $("#decisionDialogKicker").textContent = approve ? "Approve this decision" : "Decline this decision";
+  $("#decisionDialogKicker").textContent = approvalRecorded ? "Review recorded approval" : approve ? "Approve this decision" : "Decline this decision";
   $("#decisionDialogTitle").textContent = item.title;
-  $("#decisionDialogSummary").textContent = approve ? item.action : "Decline this request. Rowan will keep the action closed and retain the decision in the audit trail.";
+  $("#decisionDialogSummary").textContent = approvalRecorded
+    ? `This exact approval is already recorded. Review the fixed scope below; confirming again creates a new identical approval receipt and does not prove execution. ${item.action}`
+    : approve ? item.action : "Decline this request. Rowan will keep the action closed and retain the decision in the audit trail.";
   $("#decisionDialogReview").innerHTML = `
     <div><span>Maximum exposure</span><strong>${esc(item.maximum_exposure)}</strong></div>
     <div><span>Automatic stop</span><strong>${esc(item.stop_conditions)}</strong></div>
@@ -2028,7 +2068,7 @@ function openDecisionDialog(item, action) {
     <div><span>Execution</span><strong>${esc(item.execution || "Approval records this fixed decision. Execution starts only when a matching bounded executor and every required gate are available; otherwise it remains approved and pending.")}</strong></div>`;
   $("#decisionDialogError").hidden = true;
   const confirm = $("#confirmDecisionButton");
-  confirm.textContent = approve ? "Confirm approval" : "Confirm decline";
+  confirm.textContent = approvalRecorded ? "Confirm approval again" : approve ? "Confirm approval" : "Confirm decline";
   confirm.className = `decision-button ${approve ? "approve" : "decline"}`;
   const dialog = $("#decisionDialog");
   if (typeof dialog.showModal === "function") dialog.showModal();
@@ -2133,7 +2173,7 @@ async function confirmPendingDecision(event) {
     $("#decisionDialogError").hidden = false;
   } finally {
     confirm.disabled = false;
-    confirm.textContent = action === "approved" ? "Confirm approval" : "Confirm decline";
+    confirm.textContent = action === "approved" && currentDecision(item) === "approved" ? "Confirm approval again" : action === "approved" ? "Confirm approval" : "Confirm decline";
   }
 }
 
@@ -2250,6 +2290,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   } catch (e) {
     console.warn('[Rowan] Decision state fetch note:', e);
   }
+  consumeOwnerDecisionRequest();
   setInterval(() => {
     if (!DATA) return;
     renderMeta();
@@ -2278,7 +2319,8 @@ if (typeof globalThis !== "undefined") {
     decisionApprovalReadiness,
     decisionControlState,
     browserSetupStatus,
-    decisionControls
+    decisionControls,
+    ownerDecisionRequestFromUrl
   });
   globalThis.RowanAgentCityContract = Object.freeze({
     snapshotEvidence,

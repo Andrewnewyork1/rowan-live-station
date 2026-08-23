@@ -213,10 +213,12 @@ function decisionControls(item) {
     return `<div class="decision-control-note-v3">Decision record only · no secure web control configured</div>`;
   }
   const selected = currentDecision(item);
+  const approveUrl = secureDecisionUrl(item, "approved");
+  const denyUrl = secureDecisionUrl(item, "declined");
   return `<div class="decision-actions-v3" aria-label="Owner decision controls for ${esc(item.title)}">
-    <button class="decision-button-v3 approve ${selected === "approved" ? "selected" : ""}" type="button" data-secure-decision-id="${esc(item.id)}" data-decision-action="approved" ${selected === "approved" ? "disabled" : ""}>${selected === "approved" ? "Approved" : "Approve"}</button>
-    <button class="decision-button-v3 deny ${selected === "declined" ? "selected" : ""}" type="button" data-secure-decision-id="${esc(item.id)}" data-decision-action="declined" ${selected === "declined" ? "disabled" : ""}>${selected === "declined" ? "Denied" : "Deny"}</button>
-    <small>Opens the protected owner console for confirmation.</small>
+    <a class="decision-button-v3 approve ${selected === "approved" ? "selected" : ""}" data-owner-decision-link="approved" href="${esc(approveUrl)}" aria-label="${selected === "approved" ? "Review or reconfirm approval for" : "Approve"} ${esc(item.title)}">Approve</a>
+    <a class="decision-button-v3 deny ${selected === "declined" ? "selected" : ""}" data-owner-decision-link="declined" href="${esc(denyUrl)}" aria-label="${selected === "declined" ? "Review or reconfirm denial for" : "Deny"} ${esc(item.title)}">Deny</a>
+    <small>Current state is shown above. Either control opens this exact decision in the protected owner console.</small>
   </div>`;
 }
 
@@ -437,7 +439,7 @@ async function loadData() {
 
 function bindUI() {
   document.addEventListener("click", event => {
-    const decisionButton = event.target.closest("[data-secure-decision-id]");
+    const decisionButton = event.target.closest("button[data-secure-decision-id]");
     if (decisionButton) {
       const item = (DATA?.approvals || []).find(entry => entry.id === decisionButton.dataset.secureDecisionId);
       if (item) openSecureDecision(item, decisionButton.dataset.decisionAction);
