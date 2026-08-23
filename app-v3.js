@@ -606,13 +606,14 @@ function bindUI() {
   $("#agentSearch")?.addEventListener("input", renderTeam);
   $("#mobileMenu")?.addEventListener("click", () => document.body.classList.toggle("nav-open-v3"));
   $("#refreshButton")?.addEventListener("click", async event => {
-    event.currentTarget.disabled = true;
+    const refreshButton = event.currentTarget;
+    refreshButton.disabled = true;
     try {
       const result = await loadData();
       showToast(result.changed ? `Loaded newer ${result.source}` : `${result.source} is already the newest available`);
     }
     catch (error) { $("#dataBanner").hidden = false; $("#dataBanner").textContent = `Snapshot refresh failed: ${error.message}. Existing data remains visible.`; }
-    finally { event.currentTarget.disabled = false; }
+    finally { refreshButton.disabled = false; }
   });
   window.addEventListener("hashchange", () => showView(location.hash.slice(1) || "overview", false));
   window.setInterval(async () => {
